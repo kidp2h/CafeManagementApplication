@@ -30,11 +30,19 @@ namespace CafeManagementApplication.views
         {
             InitializeComponent();
 
+
+
+
+
             LoadListTable();
         }
 
         private void LoadListTable()
         {
+
+
+
+
 
         }
 
