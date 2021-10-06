@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace CafeManagementApplication.views
 {
-    public partial class fCafeManagement : Form
+    public partial class fManager : Form
     {
-        public fCafeManagement()
+        public fManager()
         {
             InitializeComponent();
-        }
-
-        private void fCafeManagement_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
