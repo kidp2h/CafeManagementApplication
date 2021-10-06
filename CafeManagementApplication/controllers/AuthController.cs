@@ -8,19 +8,19 @@ namespace CafeManagementApplication.controllers
 {
     class AuthController
     {
-        private fLogin _view;
+        private fLogin view;
 
         public AuthController(fLogin view)
         {
-            _view = view;
+            this.view = view;
         }
 
         public void handleLogin()
         {
-            fCafeManagement f = new fCafeManagement();
-            this._view.Hide();
+            fCafeManager f = new fCafeManager();
+            this.view.Hide();
             f.ShowDialog();
-            this._view.Show();
+            this.view.Show();
         }
         
     }
