@@ -130,7 +130,9 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="config\Database.cs" />
-    <Compile Include="controllers\AuthController.cs" />
+    <Compile Include="controllers\AuthController.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="helpers\Config.cs" />
     <Compile Include="helpers\Hash.cs" />
     <Compile Include="models\UserModel.cs" />
