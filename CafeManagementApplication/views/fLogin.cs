@@ -39,12 +39,12 @@ namespace CafeManagementApplication
         private void btnLogin_Click(object sender, EventArgs e)
         {
             fCafeManagement f = new fCafeManagement();
-            this.Hide();
+            //this.Hide();
             f.ShowDialog();
-            this.Show();
+            //this.Show();
         }
 
-        private void MainGUI_FormClosing(object sender, FormClosingEventArgs e)
+        private void fLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Bạn có thật sự muốn thoát chương trình?", "Thông báo", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
             {
