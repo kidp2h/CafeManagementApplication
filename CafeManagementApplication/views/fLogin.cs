@@ -23,12 +23,12 @@ namespace CafeManagementApplication
 
         private void button1_Click(object sender, EventArgs e)
         {
-            User UserModel = new User();
+            /*User UserModel = new User();
             List<User> users = UserModel.getUserById("615b0a0f5683612505cc66c1");
             foreach(User user in users)
             {
                 MessageBox.Show(user.Fullname);
-            }
+            }*/
         }
 
         private void btnExit_Click(object sender, EventArgs e)

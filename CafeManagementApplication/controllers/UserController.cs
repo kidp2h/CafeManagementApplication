@@ -8,6 +8,6 @@ namespace CafeManagementApplication.controllers
 {
     class UserController
     {
-        sl;dk
+        
     }
 }
