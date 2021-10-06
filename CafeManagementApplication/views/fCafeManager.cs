@@ -19,7 +19,7 @@ namespace CafeManagementApplication.views
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("btn2");
+            MessageBox.Show("555555");
         }
 
         private void button1_Click(object sender, EventArgs e)
