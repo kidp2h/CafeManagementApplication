@@ -15,11 +15,9 @@ namespace CafeManagementApplication
 {
     public partial class fLogin : Form
     {
-        private static fLogin _view;
         public fLogin()
         {
             InitializeComponent();
-            fLogin._view = this;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -29,7 +27,7 @@ namespace CafeManagementApplication
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            AuthController controller = new AuthController(fLogin._view);
+            AuthController controller = new AuthController(this);
             controller.handleLogin();
         }
 
@@ -39,6 +37,15 @@ namespace CafeManagementApplication
             {
                 e.Cancel = true;
             }
+        }
+
+        public string inputUsernameText { 
+            get { return this.inputUsername.Text; }
+            set { this.inputUsername.Text = value; }
+        }
+        public string inputPasswordText { 
+            get { return this.inputPassword.Text; }
+            set { this.inputUsername.Text = value; }
         }
     }
 }

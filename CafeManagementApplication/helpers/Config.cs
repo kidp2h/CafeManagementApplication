@@ -11,7 +11,7 @@ namespace CafeManagementApplication.helpers
 {
     class Config
     {
-        public String GetValueFromKey(String key)
+        public static String GetValueFromKey(String key)
         { 
             String url = ConfigurationManager.AppSettings[key];
             return url;

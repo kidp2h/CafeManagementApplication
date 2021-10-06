@@ -30,8 +30,8 @@ namespace CafeManagementApplication
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.inputUsername = new System.Windows.Forms.TextBox();
+            this.inputPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -47,27 +47,27 @@ namespace CafeManagementApplication
             this.panel1.Controls.Add(this.lblUserName);
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.btnLogin);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.inputPassword);
+            this.panel1.Controls.Add(this.inputUsername);
             this.panel1.Location = new System.Drawing.Point(304, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(268, 297);
             this.panel1.TabIndex = 0;
             // 
-            // textBox1
+            // inputUsername
             // 
-            this.textBox1.Location = new System.Drawing.Point(20, 73);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(238, 22);
-            this.textBox1.TabIndex = 0;
+            this.inputUsername.Location = new System.Drawing.Point(20, 73);
+            this.inputUsername.Name = "inputUsername";
+            this.inputUsername.Size = new System.Drawing.Size(238, 22);
+            this.inputUsername.TabIndex = 0;
             // 
-            // textBox2
+            // inputPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(20, 142);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(238, 22);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.inputPassword.Location = new System.Drawing.Point(20, 142);
+            this.inputPassword.Name = "inputPassword";
+            this.inputPassword.Size = new System.Drawing.Size(238, 22);
+            this.inputPassword.TabIndex = 1;
+            this.inputPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
@@ -141,8 +141,8 @@ namespace CafeManagementApplication
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox inputPassword;
+        private System.Windows.Forms.TextBox inputUsername;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
