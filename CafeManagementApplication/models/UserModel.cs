@@ -47,7 +47,7 @@ namespace CafeManagementApplication.models
             IMongoCollection<User> collection = this.getCollection();
             BsonDocument filter = new BsonDocument ("username", username);
             List<User> documents = collection.Find(filter).ToList();
-            if(documents != null)
+            if(documents.Count != 0)
             {
                 return Hash.verifyPassword(password, documents[0].Password);
             }
