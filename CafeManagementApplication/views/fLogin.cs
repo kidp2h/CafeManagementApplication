@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using CafeManagementApplication.config;
 using CafeManagementApplication.models;
 using CafeManagementApplication.views;
+using CafeManagementApplication.controllers;
 
 namespace CafeManagementApplication
 {
@@ -38,10 +39,8 @@ namespace CafeManagementApplication
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            fCafeManagement f = new fCafeManagement();
-            //this.Hide();
-            f.ShowDialog();
-            //this.Show();
+            AuthController controller = new AuthController(this);
+            controller.handleLogin();
         }
 
         private void fLogin_FormClosing(object sender, FormClosingEventArgs e)
