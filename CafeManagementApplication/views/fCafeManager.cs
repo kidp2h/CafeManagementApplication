@@ -15,21 +15,43 @@ namespace CafeManagementApplication.views
         public fCafeManager()
         {
             InitializeComponent();
+            btnSale_Click(null, null);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnSale_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("555555");
-            MessageBox.Show("555555");
-            MessageBox.Show("555555");
-            MessageBox.Show("555555");
+            if(!pnlModule.Controls.Contains(uscSale.Instance))
+            {
+                pnlModule.Controls.Add(uscSale.Instance);
+                uscSale.Instance.Dock = DockStyle.Fill;
+                uscSale.Instance.BringToFront(); 
+            }
+            else uscSale.Instance.BringToFront();
 
-            MessageBox.Show("xxxxxxxxxxasdashjdg3784678246x");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnManager_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hello world");
+            if (!pnlModule.Controls.Contains(uscManager.Instance))
+            {
+                pnlModule.Controls.Add(uscManager.Instance);
+                uscManager.Instance.Dock = DockStyle.Fill;
+                uscManager.Instance.BringToFront();
+
+            }
+            else uscManager.Instance.BringToFront();
+        }
+
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            if (!pnlModule.Controls.Contains(uscStatistics.Instance))
+            {
+                pnlModule.Controls.Add(uscStatistics.Instance);
+                uscStatistics.Instance.Dock = DockStyle.Fill;
+                uscStatistics.Instance.BringToFront();
+                
+            }
+            else uscStatistics.Instance.BringToFront();
         }
     }
 }
