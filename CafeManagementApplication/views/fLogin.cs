@@ -8,18 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CafeManagementApplication.config;
 using CafeManagementApplication.models;
-using CafeManagementApplication.views;
 using CafeManagementApplication.controllers;
 
 namespace CafeManagementApplication
 {
     public partial class fLogin : Form
     {
+        private static fLogin _view;
         public fLogin()
         {
             InitializeComponent();
+            fLogin._view = this;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace CafeManagementApplication
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            AuthController controller = new AuthController(this);
+            AuthController controller = new AuthController(fLogin._view);
             controller.handleLogin();
         }
 
