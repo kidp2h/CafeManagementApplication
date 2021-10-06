@@ -118,7 +118,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="config\Database.cs" />
-    <Compile Include="controllers\UserController.cs" />
+    <Compile Include="controllers\AuthController.cs" />
     <Compile Include="helpers\Config.cs" />
     <Compile Include="models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
