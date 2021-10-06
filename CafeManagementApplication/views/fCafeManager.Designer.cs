@@ -29,6 +29,7 @@ namespace CafeManagementApplication.views
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fCafeManager));
             this.pnlModule = new System.Windows.Forms.Panel();
             this.btnSale = new System.Windows.Forms.Button();
@@ -81,10 +82,15 @@ namespace CafeManagementApplication.views
             this.btnStatistics.UseVisualStyleBackColor = true;
             this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
             // 
+=======
+            this.SuspendLayout();
+            // 
+>>>>>>> master
             // fCafeManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(1422, 864);
             this.Controls.Add(this.btnStatistics);
@@ -93,6 +99,10 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.pnlModule);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+=======
+            this.ClientSize = new System.Drawing.Size(850, 543);
+            this.Margin = new System.Windows.Forms.Padding(2);
+>>>>>>> master
             this.Name = "fCafeManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Phần mềm quản lý quán cafe";
@@ -101,10 +111,13 @@ namespace CafeManagementApplication.views
         }
 
         #endregion
+<<<<<<< HEAD
 
         private System.Windows.Forms.Panel pnlModule;
         private System.Windows.Forms.Button btnSale;
         private System.Windows.Forms.Button btnManager;
         private System.Windows.Forms.Button btnStatistics;
+=======
+>>>>>>> master
     }
 }
