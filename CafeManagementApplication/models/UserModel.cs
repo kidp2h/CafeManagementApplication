@@ -8,6 +8,7 @@ using MongoDB.Bson;
 using CafeManagementApplication.types;
 using MongoDB.Bson.Serialization.Attributes;
 using CafeManagementApplication.config;
+using CafeManagementApplication.helpers;
 using System.Diagnostics;
 
 namespace CafeManagementApplication.models
@@ -39,6 +40,21 @@ namespace CafeManagementApplication.models
             BsonDocument filter = new BsonDocument("_id", new ObjectId(id));
             List<User> documents = collection.Find(filter).Limit(1).ToList();
             return documents;
+        }
+
+        public bool checkAccount(string username, string password)
+        {
+            IMongoCollection<User> collection = this.getCollection();
+            BsonDocument filter = new BsonDocument ("username", username);
+            List<User> documents = collection.Find(filter).ToList();
+            if(documents != null)
+            {
+                return Hash.verifyPassword(password, documents[0].Password);
+            }
+            else
+            {
+                return false;
+            }
         }
 
 

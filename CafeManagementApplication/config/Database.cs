@@ -23,8 +23,7 @@ namespace CafeManagementApplication.config
 
         public void connectDatabase()
         {
-            Config config = new Config();
-            string url = config.GetValueFromKey("url");
+            string url = Config.GetValueFromKey("url");
             MongoClientSettings settings = MongoClientSettings.FromConnectionString(url);
             MongoClient mongoClient = new MongoClient(settings);
             this.client = mongoClient;
