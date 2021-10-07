@@ -138,6 +138,11 @@
     <Compile Include="helpers\Hash.cs" />
     <Compile Include="models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="types\enums.cs" />
     <Compile Include="views\fCafeManager.cs">
       <SubType>Form</SubType>
@@ -169,16 +174,17 @@
     <Compile Include="views\uscStatistics.Designer.cs">
       <DependentUpon>uscStatistics.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\uscSale_Table.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="views\uscSale_Table.Designer.cs">
+      <DependentUpon>uscSale_Table.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="views\fCafeManager.resx">
       <DependentUpon>fCafeManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\uscStatistics.resx">
       <DependentUpon>uscStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\uscSale_Table.resx">
+      <DependentUpon>uscSale_Table.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="config\App.config" />
@@ -214,8 +223,11 @@
     <Content Include="Core\Compression\Snappy\lib\win\snappy64.dll" />
     <Content Include="Core\Compression\Zstandard\lib\win\libzstd.dll" />
     <Content Include="mongocrypt.dll" />
-    <None Include="Resources\2846fb73ae64c81b1ee96f4ef96e85a6.png" />
+    <None Include="Resources\logoCaffe.png" />
+    <None Include="Resources\9203.png" />
+    <None Include="Resources\imgTable.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets" Condition="Exists('..\packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

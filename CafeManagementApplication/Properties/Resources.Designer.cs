@@ -63,9 +63,29 @@ namespace CafeManagementApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _2846fb73ae64c81b1ee96f4ef96e85a6 {
+        internal static System.Drawing.Bitmap _9203 {
             get {
-                object obj = ResourceManager.GetObject("2846fb73ae64c81b1ee96f4ef96e85a6", resourceCulture);
+                object obj = ResourceManager.GetObject("9203", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgTable {
+            get {
+                object obj = ResourceManager.GetObject("imgTable", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logoCaffe {
+            get {
+                object obj = ResourceManager.GetObject("logoCaffe", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
