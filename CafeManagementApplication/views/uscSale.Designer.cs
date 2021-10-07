@@ -32,19 +32,19 @@ namespace CafeManagementApplication.views
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.listView2 = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -56,7 +56,7 @@ namespace CafeManagementApplication.views
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 51);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(729, 684);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(729, 723);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // label2
@@ -82,6 +82,16 @@ namespace CafeManagementApplication.views
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(657, 771);
             this.panel2.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(86, 633);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(226, 64);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "THÊM MÓN";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // richTextBox3
             // 
@@ -120,6 +130,23 @@ namespace CafeManagementApplication.views
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(482, 149);
             this.panel1.TabIndex = 12;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown1.Location = new System.Drawing.Point(206, 56);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(248, 27);
+            this.numericUpDown1.TabIndex = 15;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // richTextBox4
+            // 
+            this.richTextBox4.Location = new System.Drawing.Point(206, 91);
+            this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.Size = new System.Drawing.Size(248, 30);
+            this.richTextBox4.TabIndex = 14;
+            this.richTextBox4.Text = "";
             // 
             // label5
             // 
@@ -178,33 +205,6 @@ namespace CafeManagementApplication.views
             this.label1.Size = new System.Drawing.Size(226, 29);
             this.label1.TabIndex = 3;
             this.label1.Text = "DANH SÁCH BÀN ";
-            // 
-            // richTextBox4
-            // 
-            this.richTextBox4.Location = new System.Drawing.Point(206, 91);
-            this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(248, 30);
-            this.richTextBox4.TabIndex = 14;
-            this.richTextBox4.Text = "";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(206, 56);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(248, 27);
-            this.numericUpDown1.TabIndex = 15;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(86, 633);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(226, 64);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "THÊM MÓN";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // uscSale
             // 
