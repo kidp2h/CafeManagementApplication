@@ -110,10 +110,10 @@ namespace CafeManagementApplication
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::CafeManagementApplication.Properties.Resources._2846fb73ae64c81b1ee96f4ef96e85a6;
-            this.pictureBox1.Location = new System.Drawing.Point(5, 12);
+            this.pictureBox1.Image = global::CafeManagementApplication.Properties.Resources._9203;
+            this.pictureBox1.Location = new System.Drawing.Point(1, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(293, 297);
+            this.pictureBox1.Size = new System.Drawing.Size(297, 297);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
