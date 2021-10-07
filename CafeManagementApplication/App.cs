@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CafeManagementApplication.config;
+using CafeManagementApplication.views;
 using MongoDB.Driver;
 namespace CafeManagementApplication
 {
@@ -18,7 +19,7 @@ namespace CafeManagementApplication
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Database _ = new Database();
-            Application.Run(new fLogin());
+            Application.Run(new fCafeManager());
         }
     }
 }
