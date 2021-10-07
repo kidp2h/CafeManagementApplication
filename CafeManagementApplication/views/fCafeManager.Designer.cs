@@ -29,7 +29,6 @@ namespace CafeManagementApplication.views
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<< HEAD
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fCafeManager));
             this.pnlModule = new System.Windows.Forms.Panel();
             this.btnSale = new System.Windows.Forms.Button();
@@ -39,22 +38,24 @@ namespace CafeManagementApplication.views
             // 
             // pnlModule
             // 
-            this.pnlModule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.pnlModule.BackColor = System.Drawing.Color.White;
             this.pnlModule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pnlModule.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlModule.ForeColor = System.Drawing.Color.Black;
-            this.pnlModule.Location = new System.Drawing.Point(12, 75);
+            this.pnlModule.Location = new System.Drawing.Point(9, 77);
+            this.pnlModule.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlModule.Name = "pnlModule";
-            this.pnlModule.Size = new System.Drawing.Size(1398, 777);
+            this.pnlModule.Size = new System.Drawing.Size(1049, 615);
             this.pnlModule.TabIndex = 0;
             // 
             // btnSale
             // 
             this.btnSale.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSale.Location = new System.Drawing.Point(12, 12);
+            this.btnSale.Location = new System.Drawing.Point(9, 10);
+            this.btnSale.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSale.Name = "btnSale";
-            this.btnSale.Size = new System.Drawing.Size(153, 57);
+            this.btnSale.Size = new System.Drawing.Size(115, 46);
             this.btnSale.TabIndex = 1;
             this.btnSale.Text = "BÁN HÀNG";
             this.btnSale.UseVisualStyleBackColor = false;
@@ -63,9 +64,10 @@ namespace CafeManagementApplication.views
             // btnManager
             // 
             this.btnManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManager.Location = new System.Drawing.Point(171, 12);
+            this.btnManager.Location = new System.Drawing.Point(128, 10);
+            this.btnManager.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnManager.Name = "btnManager";
-            this.btnManager.Size = new System.Drawing.Size(153, 57);
+            this.btnManager.Size = new System.Drawing.Size(115, 46);
             this.btnManager.TabIndex = 2;
             this.btnManager.Text = "QUẢN LÝ";
             this.btnManager.UseVisualStyleBackColor = true;
@@ -74,35 +76,27 @@ namespace CafeManagementApplication.views
             // btnStatistics
             // 
             this.btnStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStatistics.Location = new System.Drawing.Point(330, 12);
+            this.btnStatistics.Location = new System.Drawing.Point(248, 10);
+            this.btnStatistics.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnStatistics.Name = "btnStatistics";
-            this.btnStatistics.Size = new System.Drawing.Size(153, 57);
+            this.btnStatistics.Size = new System.Drawing.Size(115, 46);
             this.btnStatistics.TabIndex = 3;
             this.btnStatistics.Text = "THỐNG KÊ";
             this.btnStatistics.UseVisualStyleBackColor = true;
             this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
             // 
-=======
-            this.SuspendLayout();
-            // 
->>>>>>> master
             // fCafeManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< HEAD
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1422, 864);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1064, 701);
             this.Controls.Add(this.btnStatistics);
             this.Controls.Add(this.btnManager);
             this.Controls.Add(this.btnSale);
             this.Controls.Add(this.pnlModule);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-=======
-            this.ClientSize = new System.Drawing.Size(850, 543);
             this.Margin = new System.Windows.Forms.Padding(2);
->>>>>>> master
             this.Name = "fCafeManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Phần mềm quản lý quán cafe";
@@ -111,13 +105,12 @@ namespace CafeManagementApplication.views
         }
 
         #endregion
-<<<<<<< HEAD
+
 
         private System.Windows.Forms.Panel pnlModule;
         private System.Windows.Forms.Button btnSale;
         private System.Windows.Forms.Button btnManager;
         private System.Windows.Forms.Button btnStatistics;
-=======
->>>>>>> master
+
     }
 }
