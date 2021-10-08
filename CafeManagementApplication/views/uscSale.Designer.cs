@@ -34,7 +34,7 @@ namespace CafeManagementApplication.views
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.lvBillforOneTable = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
@@ -52,6 +52,7 @@ namespace CafeManagementApplication.views
             // 
             // flpTableList
             // 
+            this.flpTableList.AutoScroll = true;
             this.flpTableList.BackColor = System.Drawing.Color.White;
             this.flpTableList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flpTableList.Location = new System.Drawing.Point(3, 51);
@@ -73,7 +74,7 @@ namespace CafeManagementApplication.views
             // 
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.listView2);
+            this.panel2.Controls.Add(this.lvBillforOneTable);
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.label2);
@@ -101,15 +102,16 @@ namespace CafeManagementApplication.views
             this.button1.TabIndex = 15;
             this.button1.Text = "THÊM MÓN";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // listView2
+            // lvBillforOneTable
             // 
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(24, 48);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(613, 388);
-            this.listView2.TabIndex = 0;
-            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.lvBillforOneTable.HideSelection = false;
+            this.lvBillforOneTable.Location = new System.Drawing.Point(24, 48);
+            this.lvBillforOneTable.Name = "lvBillforOneTable";
+            this.lvBillforOneTable.Size = new System.Drawing.Size(613, 388);
+            this.lvBillforOneTable.TabIndex = 0;
+            this.lvBillforOneTable.UseCompatibleStateImageBehavior = false;
             // 
             // panel1
             // 
@@ -227,7 +229,7 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ListView lvBillforOneTable;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;

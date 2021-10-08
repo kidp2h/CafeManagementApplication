@@ -14,13 +14,13 @@ namespace CafeManagementApplication.views
     public partial class uscSale : UserControl
     {
         private static uscSale instance;
-  
 
-        public static uscSale Instance 
-        { 
+
+        public static uscSale Instance
+        {
             get
             {
-                if(instance == null)
+                if (instance == null)
                 {
                     instance = new uscSale();
                 }
@@ -28,7 +28,7 @@ namespace CafeManagementApplication.views
             }
         }
 
-        public uscSale()
+        private uscSale()
         {
             InitializeComponent();
 
@@ -36,18 +36,8 @@ namespace CafeManagementApplication.views
         }
 
         private void LoadListTable()
-        {   
-            flpTableList.Controls.Clear();
-            Table tb = new Table();
-            List<Table> tables = new List<Table>();
-            tables = tb.GetTableList();
+        {
 
-            foreach(Table item in tables) {
-                uscSale_Table table1 = new uscSale_Table();
-                table1.TableName = item.Name;
-                table1.Status = item.Status;
-                flpTableList.Controls.Add(table1);
-            }
             /*
             foreach(Table item in tables)
             {
@@ -73,17 +63,15 @@ namespace CafeManagementApplication.views
             table1.TableName = "Bàn 1";
             table1.Status = "Trống";
 
-            flpTableList.Controls.Add(table1);
 
-            uscSale_Table table2 = new uscSale_Table();
-            table2.TableName = "Bàn 2";
-            table2.Status = "Trống";
 
-            flpTableList.Controls.Add(table2);
+            //uscSale_Table table1 = new uscSale_Table();
+            //table1.TableName = "Bàn 1";
+            //table1.Status = "Trống";
 
-            uscSale_Table table3 = new uscSale_Table();
-            table3.TableName = "Bàn 3";
-            table3.Status = "Trống";
+            //flpTableList.Controls.Add(table1);
+
+
 
             flpTableList.Controls.Add(table3);
             */
@@ -94,5 +82,13 @@ namespace CafeManagementApplication.views
         {
             throw new NotImplementedException();
         }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            fDrinksCategory f = new fDrinksCategory();
+            f.ShowDialog();
+        }
+
     }
 }
