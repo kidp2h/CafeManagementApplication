@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CafeManagementApplication.models;
+using MongoDB.Bson;
 
 namespace CafeManagementApplication.types
 {
-    public enum Role
+    interface IOderItems
     {
-        STAFF,
-        MANAGER
-    }
-    public enum sTable
-    {
-        EMPTY,
-        FULL
+        int  product { get; set; }
+        int amount { get; set; }
+        
     }
 }
