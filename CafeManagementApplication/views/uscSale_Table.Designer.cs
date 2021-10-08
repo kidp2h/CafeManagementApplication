@@ -39,6 +39,7 @@ namespace CafeManagementApplication.views
             // 
             this.lbTableName.AutoSize = true;
             this.lbTableName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTableName.ForeColor = System.Drawing.Color.White;
             this.lbTableName.Location = new System.Drawing.Point(43, 122);
             this.lbTableName.Name = "lbTableName";
             this.lbTableName.Size = new System.Drawing.Size(63, 20);
@@ -69,7 +70,7 @@ namespace CafeManagementApplication.views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.Controls.Add(this.lbTableName);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);

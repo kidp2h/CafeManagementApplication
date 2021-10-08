@@ -37,7 +37,6 @@ namespace CafeManagementApplication.views
         private void LoadListTable()
         {
             flpTableList.Controls.Clear();
-            List<>
 
             uscSale_Table table1 = new uscSale_Table();
             table1.TableName = "Bàn 1";
