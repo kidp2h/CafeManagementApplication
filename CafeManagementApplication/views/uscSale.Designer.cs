@@ -32,6 +32,7 @@ namespace CafeManagementApplication.views
             this.flpTableList = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lvBillforOneTable = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -43,11 +44,10 @@ namespace CafeManagementApplication.views
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // flpTableList
@@ -82,6 +82,16 @@ namespace CafeManagementApplication.views
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(657, 771);
             this.panel2.TabIndex = 2;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::CafeManagementApplication.Properties.Resources.logoCaffe;
+            this.pictureBox2.Location = new System.Drawing.Point(496, 439);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(158, 149);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
             // 
             // button1
             // 
@@ -191,16 +201,6 @@ namespace CafeManagementApplication.views
             this.label1.TabIndex = 3;
             this.label1.Text = "DANH SÁCH BÀN ";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::CafeManagementApplication.Properties.Resources.logoCaffe;
-            this.pictureBox2.Location = new System.Drawing.Point(496, 439);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(158, 149);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 16;
-            this.pictureBox2.TabStop = false;
-            // 
             // uscSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -213,10 +213,10 @@ namespace CafeManagementApplication.views
             this.Size = new System.Drawing.Size(1398, 777);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

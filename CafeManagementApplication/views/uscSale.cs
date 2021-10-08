@@ -14,13 +14,13 @@ namespace CafeManagementApplication.views
     public partial class uscSale : UserControl
     {
         private static uscSale instance;
-  
 
-        public static uscSale Instance 
-        { 
+
+        public static uscSale Instance
+        {
             get
             {
-                if(instance == null)
+                if (instance == null)
                 {
                     instance = new uscSale();
                 }
@@ -37,18 +37,31 @@ namespace CafeManagementApplication.views
 
         private void LoadListTable()
         {
-            flpTableList.Controls.Clear();
-            TableModel tb = new TableModel();
-            List<TableModel> tbList = new List<TableModel>();
-            tbList = tb.getTableList();
 
-            foreach(TableModel tbm in tbList)
+            /*
+            foreach(Table item in tables)
             {
                 uscSale_Table table1 = new uscSale_Table();
-                table1.TableName = tbm.Name;
-                table1.Status = tbm.Status;
+                table1.TableName = "Bàn 1";
+                table1.Status = "Trống";
                 flpTableList.Controls.Add(table1);
             }
+            */
+
+            /*
+            for (int i = 0; i < tables.Count; i++)
+            {
+                tables[i].iD = 1;
+                tables[i].name = "Bàn 1";
+                tables[i].status = "Trống";
+                flpTableList.Controls.Add();
+            }
+            */
+
+            /*
+            uscSale_Table table1 = new uscSale_Table();
+            table1.TableName = "Bàn 1";
+            table1.Status = "Trống";
 
 
 
@@ -60,13 +73,22 @@ namespace CafeManagementApplication.views
 
 
 
+            flpTableList.Controls.Add(table3);
+            */
 
         }
+
+        private void Table()
+        {
+            throw new NotImplementedException();
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
             fDrinksCategory f = new fDrinksCategory();
             f.ShowDialog();
         }
+
     }
 }
