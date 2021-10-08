@@ -43,7 +43,7 @@ namespace CafeManagementApplication.views
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
-            this.BackColor = Color.FromArgb(255, 128, 255);
+            this.BackColor = Color.FromArgb(255, 128, 0);
         }
         #endregion
     }

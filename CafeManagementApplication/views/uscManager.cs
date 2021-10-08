@@ -29,5 +29,7 @@ namespace CafeManagementApplication.views
         {
             InitializeComponent();
         }
+
+        
     }
 }
