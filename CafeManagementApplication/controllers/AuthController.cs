@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using CafeManagementApplication.views;
 using CafeManagementApplication.models;
 using System.Windows.Forms;
+using MongoDB.Bson;
+using System.Diagnostics;
 
 namespace CafeManagementApplication.controllers
 {
@@ -13,10 +15,12 @@ namespace CafeManagementApplication.controllers
     {
         private fLogin _view;
         private readonly User UserModel;
+        private readonly Table TableModel;
         public AuthController(fLogin view)
         {
             _view = view;
             UserModel = new User();
+            TableModel = new Table();
         }
 
         public void handleLogin()

@@ -15,7 +15,7 @@ using System.ComponentModel;
 
 namespace CafeManagementApplication.models
 {
-    class User
+    class User : BaseModel<User>
     {
         [BsonElement("_id")]
         public BsonObjectId Id { get; set; }
@@ -30,7 +30,7 @@ namespace CafeManagementApplication.models
         [BsonElement("role")]
         public Role Role { get; set; }
 
-        public IMongoCollection<User> getCollection()
+        public override IMongoCollection<User> getCollection()
         {
             IMongoDatabase db = Database.getDatabase();
             IMongoCollection<User> collection = db.GetCollection<User>("users");
