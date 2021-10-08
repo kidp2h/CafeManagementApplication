@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CafeManagementApplication.models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,9 +36,39 @@ namespace CafeManagementApplication.views
         }
 
         private void LoadListTable()
-        {
+        {   
             flpTableList.Controls.Clear();
+            Table tb = new Table();
+            List<Table> tables = new List<Table>();
+            tables = tb.GetTableList();
 
+            foreach(Table item in tables) {
+                uscSale_Table table1 = new uscSale_Table();
+                table1.TableName = item.Name;
+                table1.Status = item.Status;
+                flpTableList.Controls.Add(table1);
+            }
+            /*
+            foreach(Table item in tables)
+            {
+                uscSale_Table table1 = new uscSale_Table();
+                table1.TableName = "Bàn 1";
+                table1.Status = "Trống";
+                flpTableList.Controls.Add(table1);
+            }
+            */
+
+            /*
+            for (int i = 0; i < tables.Count; i++)
+            {
+                tables[i].iD = 1;
+                tables[i].name = "Bàn 1";
+                tables[i].status = "Trống";
+                flpTableList.Controls.Add();
+            }
+            */
+
+            /*
             uscSale_Table table1 = new uscSale_Table();
             table1.TableName = "Bàn 1";
             table1.Status = "Trống";
@@ -55,8 +86,13 @@ namespace CafeManagementApplication.views
             table3.Status = "Trống";
 
             flpTableList.Controls.Add(table3);
+            */
 
+        }
 
+        private void Table()
+        {
+            throw new NotImplementedException();
         }
     }
 }
