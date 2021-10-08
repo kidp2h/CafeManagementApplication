@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CafeManagementApplication.models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,7 @@ namespace CafeManagementApplication.views
             }
         }
 
-        public uscSale()
+        private uscSale()
         {
             InitializeComponent();
 
@@ -37,26 +38,35 @@ namespace CafeManagementApplication.views
         private void LoadListTable()
         {
             flpTableList.Controls.Clear();
+            TableModel tb = new TableModel();
+            List<TableModel> tbList = new List<TableModel>();
+            tbList = tb.getTableList();
 
-            uscSale_Table table1 = new uscSale_Table();
-            table1.TableName = "Bàn 1";
-            table1.Status = "Trống";
-
-            flpTableList.Controls.Add(table1);
-
-            uscSale_Table table2 = new uscSale_Table();
-            table2.TableName = "Bàn 2";
-            table2.Status = "Trống";
-
-            flpTableList.Controls.Add(table2);
-
-            uscSale_Table table3 = new uscSale_Table();
-            table3.TableName = "Bàn 3";
-            table3.Status = "Trống";
-
-            flpTableList.Controls.Add(table3);
+            foreach(TableModel tbm in tbList)
+            {
+                uscSale_Table table1 = new uscSale_Table();
+                table1.TableName = tbm.Name;
+                table1.Status = tbm.Status;
+                flpTableList.Controls.Add(table1);
+            }
 
 
+
+            //uscSale_Table table1 = new uscSale_Table();
+            //table1.TableName = "Bàn 1";
+            //table1.Status = "Trống";
+
+            //flpTableList.Controls.Add(table1);
+
+
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            fDrinksCategory f = new fDrinksCategory();
+            f.ShowDialog();
         }
     }
 }

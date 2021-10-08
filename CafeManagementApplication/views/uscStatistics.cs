@@ -24,7 +24,7 @@ namespace CafeManagementApplication.views
                 return instance;
             }
         }
-        public uscStatistics()
+        private uscStatistics()
         {
             InitializeComponent();
         }
