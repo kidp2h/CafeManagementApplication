@@ -21,7 +21,14 @@ namespace CafeManagementApplication.controllers
 
         public void handleLogin()
         {
-            fCafeManager f = new fCafeManager();
+            dynamic tables = InitializeModels.TableModel.getListTable();
+            foreach(dynamic table in tables)
+            {
+                Debug.WriteLine(table["tableName"].Value);
+                //table["tableName"].Value;
+            }
+
+            /*fCafeManager f = new fCafeManager();
             string username = this._view.inputUsernameText;
             string password = this._view.inputPasswordText;
             bool result = InitializeModels.UserModel.checkAccount(username, password);
@@ -35,7 +42,7 @@ namespace CafeManagementApplication.controllers
             else
             {
                 MessageBox.Show("Dang nhap that bai");
-            }
+            }*/
         }
     }
 }
