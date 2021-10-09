@@ -19,7 +19,7 @@ namespace CafeManagementApplication
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Database _ = new Database();
-            Application.Run(new fCafeManager());
+            Application.Run(new fLogin());
         }
     }
 }
