@@ -46,5 +46,7 @@ namespace CafeManagementApplication.views
             this.BackColor = Color.FromArgb(255, 128, 0);
         }
         #endregion
+
+   
     }
 }

@@ -37,7 +37,45 @@ namespace CafeManagementApplication.views
 
         private void LoadListTable()
         {
+            dynamic doc = InitializeModels.TableModel.getListTable();
+            
+            
+            foreach(dynamic table in doc)
+            {
+                uscSale_Table temp = new uscSale_Table();
+                temp.TableName = "Bàn" + 1;
 
+                if (table["status"].Value == 1)
+                {
+                    temp.Status = "Có người";
+                    temp.BackColor = Color.FromArgb(255, 192, 192);
+                }
+                else
+                {
+                    temp.Status = "Bàn trống";
+                    temp.BackColor = Color.FromArgb(255, 255, 255);
+                }
+
+                flpTableList.Controls.Add(temp);
+            }
+            /*
+            for(int i = 0; i < doc.Count; i++)
+            {
+                uscSale_Table temp = new uscSale_Table();
+                temp.TableName = doc[i]["tableName"].Value;
+
+                if(doc[i]["status"].Value == 1)
+                {
+                    temp.Status = "Có người";
+                }
+                else
+                {
+                    temp.Status = "Bàn trống";
+                }
+              
+                flpTableList.Controls.Add(temp);
+            }
+                */
             /*
             foreach(Table item in tables)
             {
