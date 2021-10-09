@@ -24,6 +24,13 @@ namespace CafeManagementApplication.models
         [BsonElement("bill")]
         public BsonObjectId Bill { get; set; }
 
+        public Table() { }
+        public Table (string TableName, sTable status)
+        {
+            this.TableName = TableName;
+            this.status = status;
+        }
+
         public override IMongoCollection<Table> getCollection()
         {
             IMongoDatabase db = Database.getDatabase();
@@ -46,7 +53,7 @@ namespace CafeManagementApplication.models
                 .Unwind("bill.products.product.category")
                 .AppendStage<BsonDocument>("{$set : {  'bill.products.product.category': '$bill.products.product.category.name'}}")
                 .Group("{  _id: '$_id', status : { $first: '$status' }, subtotal : {$first : '$subtotal'},'bill': { '$push': '$bill.products'  }}")
-                .ToList()[0];
+                .ToList();
             return table;
         }
 
