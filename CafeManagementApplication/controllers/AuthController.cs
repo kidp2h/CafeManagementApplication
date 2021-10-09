@@ -21,11 +21,7 @@ namespace CafeManagementApplication.controllers
 
         public void handleLogin()
         {
-            dynamic result = InitializeModels.TableModel.getBillFromIdTable("615ebc8515dd66d62ee953b3");
-            // Debug.WriteLine(result);
-            var name = result["product"]["name"].Value;
-            Debug.WriteLine(name);
-            /*fCafeManager f = new fCafeManager();
+            fCafeManager f = new fCafeManager();
             string username = this._view.inputUsernameText;
             string password = this._view.inputPasswordText;
             bool result = this.UserModel.checkAccount(username, password);
@@ -39,7 +35,7 @@ namespace CafeManagementApplication.controllers
             else
             {
                 MessageBox.Show("Dang nhap that bai");
-            }*/
+            }
         }
     }
 }
