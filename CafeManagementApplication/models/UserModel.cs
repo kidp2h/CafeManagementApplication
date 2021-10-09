@@ -58,5 +58,12 @@ namespace CafeManagementApplication.models
                 return false;
             }
         }
+
+        public void addUser(User newUser)
+        {
+            newUser.Password = Hash.hashPassword(newUser.Password);
+            IMongoCollection<User> collection = this.getCollection();
+            collection.InsertOne(newUser);
+        }
     }
 }
