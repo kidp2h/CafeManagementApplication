@@ -46,7 +46,7 @@ namespace CafeManagementApplication.models
                 .Lookup("categories", "bill.products.product.category", "_id", "bill.products.product.category")
                 .Unwind("bill.products.product.category")
                 .AppendStage<BsonDocument>("{$set : {  'bill.products.product.category': '$bill.products.product.category.name'}}")
-                .Group("{  _id: '$_id', status : { $first: '$status' }, subtotal : {$first : '$subtotal'},'bill': { '$push': '$bill.products'  }}")
+                .Group("{  _id: '$_id', status : { $first: '$status' }, subtotal : {$first : '$subtotal'},tableName : {$first : '$tableName'},'bill': { '$push': '$bill.products'  }}")
                 .ToList();
             return table;
         }
@@ -66,8 +66,8 @@ namespace CafeManagementApplication.models
                 .Lookup("categories", "bill.products.product.category", "_id", "bill.products.product.category")
                 .Unwind("bill.products.product.category")
                 .AppendStage<BsonDocument>("{$set : {  'bill.products.product.category': '$bill.products.product.category.name'}}")
-                .Group("{  _id: '$_id', status : { $first: '$status' }, subtotal : {$first : '$subtotal'},'bill': { '$push': '$bill.products'  }}")
-                .ToList()[0];
+                .Group("{  _id: '$_id', status : { $first: '$status' }, subtotal : {$first : '$subtotal'},tableName : {$first : '$tableName'},'bill': { '$push': '$bill.products'  }}")
+                .ToList();
             return table["bill"][0];
             
         }
@@ -85,7 +85,7 @@ namespace CafeManagementApplication.models
                 .Lookup("categories", "bill.products.product.category", "_id", "bill.products.product.category")
                 .Unwind("bill.products.product.category")
                 .AppendStage<BsonDocument>("{$set : {  'bill.products.product.category': '$bill.products.product.category.name'}}")
-                .Group("{  _id: '$_id', status : { $first: '$status' }, subtotal : {$first : '$subtotal'},'bill': { '$push': '$bill.products'  }}")
+                .Group("{  _id: '$_id', status : { $first: '$status' }, subtotal : {$first : '$subtotal'},tableName : {$first : '$tableName'},'bill': { '$push': '$bill.products'  }}")
                 .ToList();
             return table;
         }
