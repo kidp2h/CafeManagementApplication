@@ -14,18 +14,18 @@ namespace CafeManagementApplication.controllers
     class AuthController
     {
         private fLogin _view;
-        private readonly User UserModel;
-        private readonly Table TableModel;
         public AuthController(fLogin view)
         {
             _view = view;
-            UserModel = new User();
-            TableModel = new Table();
         }
 
         public void handleLogin()
         {
-            fCafeManager f = new fCafeManager();
+            dynamic result = InitializeModels.TableModel.getBillFromIdTable("615ebc8515dd66d62ee953b3");
+            // Debug.WriteLine(result);
+            var name = result["product"]["name"].Value;
+            Debug.WriteLine(name);
+            /*fCafeManager f = new fCafeManager();
             string username = this._view.inputUsernameText;
             string password = this._view.inputPasswordText;
             bool result = this.UserModel.checkAccount(username, password);
@@ -39,7 +39,7 @@ namespace CafeManagementApplication.controllers
             else
             {
                 MessageBox.Show("Dang nhap that bai");
-            }
+            }*/
         }
     }
 }

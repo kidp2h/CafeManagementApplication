@@ -46,11 +46,11 @@ namespace CafeManagementApplication.models
                 .Unwind("bill.products.product.category")
                 .AppendStage<BsonDocument>("{$set : {  'bill.products.product.category': '$bill.products.product.category.name'}}")
                 .Group("{  _id: '$_id', status : { $first: '$status' }, subtotal : {$first : '$subtotal'},'bill': { '$push': '$bill.products'  }}")
-                .ToList()[0];
+                .ToList();
             return table;
         }
 
-        public BsonArray getBillFromIdTable(string idTable)
+        public BsonDocument getBillFromIdTable(string idTable)
         {
             IMongoCollection<Table> collection = this.getCollection();
             dynamic table = collection.Aggregate()
@@ -67,7 +67,7 @@ namespace CafeManagementApplication.models
                 .AppendStage<BsonDocument>("{$set : {  'bill.products.product.category': '$bill.products.product.category.name'}}")
                 .Group("{  _id: '$_id', status : { $first: '$status' }, subtotal : {$first : '$subtotal'},'bill': { '$push': '$bill.products'  }}")
                 .ToList()[0];
-            return table["bill"];
+            return table["bill"][0];
             
         }
         public void addTable(Table newTable)
