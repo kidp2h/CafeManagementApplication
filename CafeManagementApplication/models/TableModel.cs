@@ -25,6 +25,13 @@ namespace CafeManagementApplication.models
         [BsonElement("bill")]
         public BsonObjectId Bill { get; set; }
 
+        public Table() { }
+        public Table (string TableName, sTable status)
+        {
+            this.TableName = TableName;
+            this.status = status;
+        }
+
         public override IMongoCollection<Table> getCollection()
         {
             IMongoDatabase db = Database.getDatabase();

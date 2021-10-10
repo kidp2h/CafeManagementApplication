@@ -1,8 +1,11 @@
 ﻿using CafeManagementApplication.models;
+using CafeManagementApplication.types;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -31,13 +34,15 @@ namespace CafeManagementApplication.views
         private uscSale()
         {
             InitializeComponent();
-
             LoadListTable();
         }
 
         private void LoadListTable()
         {
-
+            BsonDocument fiter = new BsonDocument();
+            Table tb = new Table();
+            dynamic doc = tb.getTable(fiter);
+            Table tb1 = new Table();
             /*
             foreach(Table item in tables)
             {
@@ -77,12 +82,6 @@ namespace CafeManagementApplication.views
             */
 
         }
-
-        private void Table()
-        {
-            throw new NotImplementedException();
-        }
-
 
         private void button1_Click(object sender, EventArgs e)
         {

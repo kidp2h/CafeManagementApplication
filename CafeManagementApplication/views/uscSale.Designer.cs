@@ -53,11 +53,13 @@ namespace CafeManagementApplication.views
             // flpTableList
             // 
             this.flpTableList.AutoScroll = true;
-            this.flpTableList.BackColor = System.Drawing.Color.White;
+            this.flpTableList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.flpTableList.BackgroundImage = global::CafeManagementApplication.Properties.Resources.logoCaffe;
+            this.flpTableList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.flpTableList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flpTableList.Location = new System.Drawing.Point(3, 51);
             this.flpTableList.Name = "flpTableList";
-            this.flpTableList.Size = new System.Drawing.Size(729, 723);
+            this.flpTableList.Size = new System.Drawing.Size(729, 706);
             this.flpTableList.TabIndex = 0;
             // 
             // label2
@@ -106,6 +108,7 @@ namespace CafeManagementApplication.views
             // 
             // lvBillforOneTable
             // 
+            this.lvBillforOneTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.lvBillforOneTable.HideSelection = false;
             this.lvBillforOneTable.Location = new System.Drawing.Point(24, 48);
             this.lvBillforOneTable.Name = "lvBillforOneTable";
@@ -205,6 +208,7 @@ namespace CafeManagementApplication.views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.flpTableList);

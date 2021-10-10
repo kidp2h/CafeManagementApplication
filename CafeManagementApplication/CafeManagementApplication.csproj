@@ -175,6 +175,24 @@
     <Compile Include="views\uscManager.Designer.cs">
       <DependentUpon>uscManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\uscManager_Drinks.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="views\uscManager_Drinks.Designer.cs">
+      <DependentUpon>uscManager_Drinks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\uscManager_Tables.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="views\uscManager_Tables.Designer.cs">
+      <DependentUpon>uscManager_Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\uscManager_Users.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="views\uscManager_Users.Designer.cs">
+      <DependentUpon>uscManager_Users.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\uscSale.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -209,6 +227,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\uscManager.resx">
       <DependentUpon>uscManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\uscManager_Drinks.resx">
+      <DependentUpon>uscManager_Drinks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\uscManager_Tables.resx">
+      <DependentUpon>uscManager_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\uscManager_Users.resx">
+      <DependentUpon>uscManager_Users.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\uscSale.resx">
       <DependentUpon>uscSale.cs</DependentUpon>
