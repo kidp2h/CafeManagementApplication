@@ -29,7 +29,7 @@ namespace CafeManagementApplication.controllers
             lv.Items.Clear();
             if (form == "useManager_Tables")
             {
-
+               
             }
             if (form == "useManager_Drinks")
             {
@@ -41,7 +41,7 @@ namespace CafeManagementApplication.controllers
                 foreach (dynamic user in usersList)
                 {
                     string name = user.Fullname;
-                    ListViewItem lvItem = new ListViewItem(user.Fullname);
+                    ListViewItem lvItem = new ListViewItem(user.Fullname); 
                     int Age = user.Age;
                     lvItem.SubItems.Add(Age.ToString());
                     string Gender = user.Gender;

@@ -1,4 +1,5 @@
-﻿using CafeManagementApplication.models;
+﻿using CafeManagementApplication.controllers;
+using CafeManagementApplication.models;
 using CafeManagementApplication.types;
 using MongoDB.Bson;
 using System;
@@ -34,11 +35,60 @@ namespace CafeManagementApplication.views
         private uscSale()
         {
             InitializeComponent();
-            LoadListTable();
+            LoadListTableForForm();
         }
 
-        private void LoadListTable()
+
+        private void LoadListTableForForm()
         {
+            LoadTable.Instance.LoadingTableList(flpTableList);
+        }
+
+            /*
+            private void LoadListTable()
+            {
+               // dynamic doc = TableModel.Instance.getListTable();
+
+                /*
+               foreach(dynamic table in doc)
+               {
+                   uscSale_Table temp = new uscSale_Table();
+                   temp.TableName = table["tableName"].Value;
+
+                   if (table["status"].Value == 1)
+                   {
+                       temp.Status = "Có người";
+                       temp.BackColor = Color.FromArgb(255, 192, 192);
+                   }
+                   else
+                   {
+                       temp.Status = "Bàn trống";
+                       temp.BackColor = Color.FromArgb(255, 255, 255);
+                   }
+
+                   flpTableList.Controls.Add(temp);
+               }
+                */
+            /*
+                for (int i = doc.Count - 1; i >= 0; i--)
+                {
+                    uscSale_Table temp = new uscSale_Table();
+                    temp.TableName = doc[i]["tableName"].Value;
+
+                    if (doc[i]["status"].Value == 1)
+                    {
+                        temp.Status = "Có người";
+                        temp.BackColor = Color.FromArgb(255, 192, 192);
+                    }
+                    else
+                    {
+                        temp.Status = "Bàn trống";
+                        temp.BackColor = Color.FromArgb(255, 128, 0);
+                    }
+
+                    flpTableList.Controls.Add(temp);
+                }
+        */
             /*
             foreach(Table item in tables)
             {
@@ -78,7 +128,7 @@ namespace CafeManagementApplication.views
             */
 
         }
-
+    /*
         private void button1_Click(object sender, EventArgs e)
         {
             fDrinksCategory f = new fDrinksCategory();
@@ -87,4 +137,5 @@ namespace CafeManagementApplication.views
 
 
     }
+        */
 }

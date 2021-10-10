@@ -31,8 +31,6 @@ namespace CafeManagementApplication.views
         {
             this.lbTableName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbTableName
@@ -40,7 +38,7 @@ namespace CafeManagementApplication.views
             this.lbTableName.AutoSize = true;
             this.lbTableName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTableName.ForeColor = System.Drawing.Color.White;
-            this.lbTableName.Location = new System.Drawing.Point(43, 122);
+            this.lbTableName.Location = new System.Drawing.Point(42, 122);
             this.lbTableName.Name = "lbTableName";
             this.lbTableName.Size = new System.Drawing.Size(63, 20);
             this.lbTableName.TabIndex = 1;
@@ -54,18 +52,6 @@ namespace CafeManagementApplication.views
             this.panel1.Size = new System.Drawing.Size(224, 33);
             this.panel1.TabIndex = 2;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::CafeManagementApplication.Properties.Resources.imgTable;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 147);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
-            this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
-            // 
             // uscSale_Table
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -73,9 +59,9 @@ namespace CafeManagementApplication.views
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.Controls.Add(this.lbTableName);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pictureBox1);
+            this.ForeColor = System.Drawing.Color.Coral;
             this.Name = "uscSale_Table";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.uscSale_Table_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,6 +70,5 @@ namespace CafeManagementApplication.views
         #endregion
         private System.Windows.Forms.Label lbTableName;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
