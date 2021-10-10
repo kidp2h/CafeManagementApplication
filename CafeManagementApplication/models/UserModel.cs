@@ -23,6 +23,8 @@ namespace CafeManagementApplication.models
         public string Fullname { get; set; }
         [BsonElement("age")]
         public int Age { get; set; }
+        [BsonElement("gender")]
+        public string Gender { get; set; }
         [BsonElement("username")]
         public string Username { get; set; }
         [BsonElement("password")]
@@ -64,6 +66,20 @@ namespace CafeManagementApplication.models
             newUser.Password = Hash.hashPassword(newUser.Password);
             IMongoCollection<User> collection = this.getCollection();
             collection.InsertOne(newUser);
+        }
+
+        public void deleteUserById(string id)
+        {
+            FilterDefinition<User> _id = new BsonDocument("_id", new ObjectId(id));
+            IMongoCollection<User> collection = this.getCollection();
+            collection.DeleteOneAsync(_id);
+        }
+
+        public void updateUserById(string id, UpdateDefinition<User> newUpdate)
+        {
+            FilterDefinition<User> _id = new BsonDocument("_id", new ObjectId(id));
+            IMongoCollection<User> collection = this.getCollection();
+            collection.UpdateOneAsync(_id, newUpdate);
         }
 
         public List<User> getListUser()
