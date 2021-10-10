@@ -13,6 +13,7 @@ namespace CafeManagementApplication.controllers
 {
     class AuthController
     {
+        static private AuthController instance;
         private fLogin _view;
         public AuthController(fLogin view)
         {
