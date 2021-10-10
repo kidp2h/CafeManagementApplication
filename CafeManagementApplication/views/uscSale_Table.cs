@@ -36,17 +36,12 @@ namespace CafeManagementApplication.views
         #endregion
 
         #region Hover Effect
-        private void pictureBox1_MouseHover(object sender, EventArgs e)
-        {
-            this.BackColor = Color.FromArgb(217, 229, 242);
-        }
-
-        private void pictureBox1_MouseLeave(object sender, EventArgs e)
-        {
-            this.BackColor = Color.FromArgb(255, 128, 0);
-        }
+        
+        
+            
+     
         #endregion
 
-   
+      
     }
 }
