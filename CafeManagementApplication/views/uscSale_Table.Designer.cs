@@ -59,7 +59,9 @@ namespace CafeManagementApplication.views
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.Controls.Add(this.lbTableName);
             this.Controls.Add(this.panel1);
+            this.ForeColor = System.Drawing.Color.Coral;
             this.Name = "uscSale_Table";
+            this.Load += new System.EventHandler(this.uscSale_Table_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

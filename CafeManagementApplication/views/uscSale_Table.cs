@@ -33,15 +33,19 @@ namespace CafeManagementApplication.views
             get { return status; }
             set { status = value; }
         }
+
         #endregion
 
         #region Hover Effect
-        
-        
-            
-     
+
+
+
+
         #endregion
 
-      
+        private void uscSale_Table_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace CafeManagementApplication.controllers
         public void LoadingTableList (FlowLayoutPanel a)
         {
             dynamic tables = TableModel.Instance.getListTable();
-            for (int i = tables.Count - 1; i >= 0; i--)
+            for (int i = 0; i < tables.Count; i++)
             {
                 uscSale_Table temp = new uscSale_Table();
                 temp.TableName = tables[i]["tableName"].Value;

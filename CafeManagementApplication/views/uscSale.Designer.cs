@@ -45,8 +45,6 @@ namespace CafeManagementApplication.views
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flpTableList.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -64,7 +62,6 @@ namespace CafeManagementApplication.views
             this.flpTableList.BackgroundImage = global::CafeManagementApplication.Properties.Resources.logoCaffe;
             this.flpTableList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.flpTableList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flpTableList.Controls.Add(this.flowLayoutPanel1);
             this.flpTableList.Location = new System.Drawing.Point(3, 51);
             this.flpTableList.Name = "flpTableList";
             this.flpTableList.Size = new System.Drawing.Size(729, 706);
@@ -239,13 +236,6 @@ namespace CafeManagementApplication.views
             this.panel3.Size = new System.Drawing.Size(732, 774);
             this.panel3.TabIndex = 4;
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 100);
-            this.flowLayoutPanel1.TabIndex = 0;
-            // 
             // uscSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -256,7 +246,6 @@ namespace CafeManagementApplication.views
             this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Name = "uscSale";
             this.Size = new System.Drawing.Size(1398, 777);
-            this.flpTableList.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -288,6 +277,5 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
