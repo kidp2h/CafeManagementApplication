@@ -30,7 +30,7 @@ namespace CafeManagementApplication.models
             return collection;
         }
 
-        public AggregateFluentBase<BsonDocument> lookupDepthBills()
+        private AggregateFluentBase<BsonDocument> lookupDepthBills()
         {
             IMongoCollection<Bill> collection = this.getCollection();
             dynamic bill = collection.Aggregate()
