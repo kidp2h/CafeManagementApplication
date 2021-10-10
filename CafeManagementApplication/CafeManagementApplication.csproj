@@ -141,7 +141,6 @@
     <Compile Include="models\BaseModel.cs" />
     <Compile Include="models\BillModel.cs" />
     <Compile Include="models\CategoryModel.cs" />
-    <Compile Include="models\InitializeModels.cs" />
     <Compile Include="models\ProductModel.cs" />
     <Compile Include="models\TableModel.cs" />
     <Compile Include="models\UserModel.cs" />

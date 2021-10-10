@@ -24,7 +24,7 @@ namespace CafeManagementApplication.controllers
             fCafeManager f = new fCafeManager();
             string username = this._view.inputUsernameText;
             string password = this._view.inputPasswordText;
-            bool result = InitializeModels.UserModel.checkAccount(username, password);
+            bool result = UserModel.Instance.checkAccount(username, password);
             if (result)
             {
                 MessageBox.Show("Dang nhap thanh cong");

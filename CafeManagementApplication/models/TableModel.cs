@@ -13,7 +13,8 @@ using System.Diagnostics;
 
 namespace CafeManagementApplication.models
 {
-    class Table : BaseModel<Table>
+
+    class Table
     {
         [BsonElement("_id")]
         public BsonObjectId Id { get; set; }
@@ -21,17 +22,27 @@ namespace CafeManagementApplication.models
         public string TableName { get; set; }
 
         [BsonElement("status")]
-        public sTable status { get; set; }
+        public sTable Status { get; set; }
         [BsonElement("bill")]
         public BsonObjectId Bill { get; set; }
-
         public Table() { }
-        public Table (string TableName, sTable status)
+        public Table(string TableName, sTable status)
         {
             this.TableName = TableName;
-            this.status = status;
+            this.Status = status;
         }
-
+    }
+    class TableModel : BaseModel<Table>
+    {
+        private static TableModel instance;
+        public static TableModel Instance
+        {
+            get
+            {
+                if (instance == null) instance = new TableModel();
+                return instance;
+            }
+        }
         public override IMongoCollection<Table> getCollection()
         {
             IMongoDatabase db = Database.getDatabase();
