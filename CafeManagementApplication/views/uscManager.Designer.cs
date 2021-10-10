@@ -82,6 +82,9 @@ namespace CafeManagementApplication.views
             // 
             // pnlModule
             // 
+            this.pnlModule.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlModule.Location = new System.Drawing.Point(275, 0);
             this.pnlModule.Name = "pnlModule";
             this.pnlModule.Size = new System.Drawing.Size(1123, 777);
