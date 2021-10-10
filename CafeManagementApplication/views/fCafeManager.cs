@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CafeManagementApplication.models;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace CafeManagementApplication.views
 {
