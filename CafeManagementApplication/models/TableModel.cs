@@ -19,6 +19,7 @@ namespace CafeManagementApplication.models
         public BsonObjectId Id { get; set; }
         [BsonElement("tableName")]
         public string TableName { get; set; }
+
         [BsonElement("status")]
         public sTable status { get; set; }
         [BsonElement("bill")]
@@ -37,11 +38,11 @@ namespace CafeManagementApplication.models
             IMongoCollection<Table> collection = db.GetCollection<Table>("tables");
             return collection;
         }
-        public BsonDocument getTable(BsonDocument filter)
+
+        public IAggregateFluent<dynamic> lookupDepthTable()
         {
             IMongoCollection<Table> collection = this.getCollection();
             dynamic table = collection.Aggregate()
-                .Match(filter)
                 .Lookup("bills", "bill", "_id", "bill")
                 .Unwind("bill")
                 .Unwind("bill.products")
@@ -52,30 +53,28 @@ namespace CafeManagementApplication.models
                 .Lookup("categories", "bill.products.product.category", "_id", "bill.products.product.category")
                 .Unwind("bill.products.product.category")
                 .AppendStage<BsonDocument>("{$set : {  'bill.products.product.category': '$bill.products.product.category.name'}}")
-                .Group("{  _id: '$_id', status : { $first: '$status' }, subtotal : {$first : '$subtotal'},'bill': { '$push': '$bill.products'  }}")
-                .ToList()[0];
+                .Group("{  _id: '$_id', status : { $first: '$status' }, subtotal : {$first : '$subtotal'},tableName : {$first : '$tableName'},'bill': { '$push': '$bill.products'  }}");
+            return table;
+        }
+        public BsonDocument getTableByTableName(string tableName)
+        {
+            FilterDefinition<dynamic> TableName = new BsonDocument("tableName", tableName);
+            dynamic table = this.lookupDepthTable().Match(TableName).ToList();
             return table;
         }
 
         public BsonDocument getBillFromIdTable(string idTable)
         {
-            IMongoCollection<Table> collection = this.getCollection();
-            dynamic table = collection.Aggregate()
-                .Match(new BsonDocument("_id", new ObjectId(idTable)))
-                .Lookup("bills", "bill", "_id", "bill")
-                .Unwind("bill")
-                .Unwind("bill.products")
-                .AppendStage<BsonDocument>("{$addFields : {  'subtotal':{    $add : ['$bill.subtotal']  }}}")
-                .AppendStage<BsonDocument>("{$addFields : {  'status': '$status'}}")
-                .Lookup("products", "bill.products.product", "_id", "bill.products.product")
-                .Unwind("bill.products.product")
-                .Lookup("categories", "bill.products.product.category", "_id", "bill.products.product.category")
-                .Unwind("bill.products.product.category")
-                .AppendStage<BsonDocument>("{$set : {  'bill.products.product.category': '$bill.products.product.category.name'}}")
-                .Group("{  _id: '$_id', status : { $first: '$status' }, subtotal : {$first : '$subtotal'},'bill': { '$push': '$bill.products'  }}")
-                .ToList()[0];
+            FilterDefinition<dynamic> _id = new BsonDocument("_id", new ObjectId(idTable));
+            dynamic table = this.lookupDepthTable().Match(_id).ToList();
             return table["bill"][0];
             
+        }
+        public List<BsonDocument> getListTable()
+        {
+            IMongoCollection<Table> collection = this.getCollection();
+            dynamic table = this.lookupDepthTable().ToList();
+            return table;
         }
         public void addTable(Table newTable)
         {
