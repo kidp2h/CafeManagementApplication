@@ -22,5 +22,10 @@ namespace CafeManagementApplication.models
             IMongoCollection<Category> collection = db.GetCollection<Category>("categories");
             return collection;
         }
+        public void addCategory(Category newCategory)
+        {
+            IMongoCollection<Category> collection = this.getCollection();
+            collection.InsertOne(newCategory);
+        }
     }
 }

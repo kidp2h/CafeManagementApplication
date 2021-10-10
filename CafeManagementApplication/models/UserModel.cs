@@ -36,12 +36,12 @@ namespace CafeManagementApplication.models
             IMongoCollection<User> collection = db.GetCollection<User>("users");
             return collection;
         }
-        public List<User> getUserById(string id)
+        public User getUserById(string id)
         {
             IMongoCollection<User> collection = this.getCollection();
             BsonDocument filter = new BsonDocument("_id", new ObjectId(id));
             List<User> documents = collection.Find(filter).Limit(1).ToList();
-            return documents;
+            return documents[0];
         }
 
         public bool checkAccount(string username, string password)
@@ -64,6 +64,13 @@ namespace CafeManagementApplication.models
             newUser.Password = Hash.hashPassword(newUser.Password);
             IMongoCollection<User> collection = this.getCollection();
             collection.InsertOne(newUser);
+        }
+
+        public List<User> getListUser()
+        {
+            IMongoCollection<User> collection = this.getCollection();
+            List<User> listUser = collection.Find(new BsonDocument()).ToList();
+            return listUser;
         }
     }
 }
