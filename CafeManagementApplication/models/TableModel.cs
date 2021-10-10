@@ -53,7 +53,7 @@ namespace CafeManagementApplication.models
                 .Unwind("bill.products.product.category")
                 .AppendStage<BsonDocument>("{$set : {  'bill.products.product.category': '$bill.products.product.category.name'}}")
                 .Group("{  _id: '$_id', status : { $first: '$status' }, subtotal : {$first : '$subtotal'},'bill': { '$push': '$bill.products'  }}")
-                .ToList();
+                .ToList()[0];
             return table;
         }
 
