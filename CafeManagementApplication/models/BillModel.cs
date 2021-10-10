@@ -11,16 +11,29 @@ using CafeManagementApplication.config;
 
 namespace CafeManagementApplication.models
 {
-    class Bill : BaseModel<Bill>
+
+    class Bill
     {
         [BsonElement("_id")]
-        public string Id;
+        public BsonObjectId Id { get; set; }
         [BsonElement("products")]
-        public List<IOderItems> ProductsOrdered;
+        public List<IOderItems> ProductsOrdered { get; set; }
         [BsonElement("subtotal")]
-        public int Subtotal;
-        [BsonElement("table"), BsonRepresentationAttribute(BsonType.ObjectId)]
-        public string TableId;
+        public int Subtotal { get; set; }
+        [BsonElement("table")]
+        public BsonObjectId TableId { get; set; }
+    }
+    class BillModel : BaseModel<Bill>
+    {
+        private static BillModel instance;
+        public static BillModel Instance
+        {
+            get
+            {
+                if (instance == null) instance = new BillModel();
+                return instance;
+            }
+        }
 
         public override IMongoCollection<Bill> getCollection()
         {

@@ -35,6 +35,7 @@ namespace CafeManagementApplication.views
 
         private void btnManager_Click(object sender, EventArgs e)
         {
+            UserModel.Instance.getListUser();
             if (!pnlModule.Controls.Contains(uscManager.Instance))
             {
                 pnlModule.Controls.Add(uscManager.Instance);

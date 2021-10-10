@@ -10,16 +10,28 @@ using CafeManagementApplication.config;
 
 namespace CafeManagementApplication.models
 {
-    class Product : BaseModel<Product>
+    class Product
     {
         [BsonElement("_id")]
-        public BsonObjectId Id;
+        public BsonObjectId Id { get; set; }
         [BsonElement("nameProduct")]
-        public string NameProduct;
+        public string NameProduct { get; set; }
         [BsonElement("price")]
-        public int Price;
+        public int Price { get; set; }
         [BsonElement("category")]
-        public string Category;
+        public BsonObjectId Category { get; set; }
+    }
+    class ProductModel : BaseModel<Product>
+    {
+        private static ProductModel instance;
+        public static ProductModel Instance
+        {
+            get
+            {
+                if (instance == null) instance = new ProductModel();
+                return instance;
+            }
+        }
         public override IMongoCollection<Product> getCollection()
         {
             IMongoDatabase db = Database.getDatabase();
