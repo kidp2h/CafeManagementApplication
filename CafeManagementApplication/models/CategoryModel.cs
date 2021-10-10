@@ -10,17 +10,35 @@ using System.Threading.Tasks;
 
 namespace CafeManagementApplication.models
 {
-    class Category : BaseModel<Category>
+    class Category
     {
         [BsonElement("_id")]
-        public BsonObjectId Id;
+        public BsonObjectId Id { get; set; }
         [BsonElement("name")]
-        public string NameCategory;
+        public string NameCategory { get; set; }
+    }
+    class CategoryModel : BaseModel<Category>
+    {
+        private static CategoryModel instance;
+        public static CategoryModel Instance
+        {
+            get
+            {
+                if (instance == null) instance = new CategoryModel();
+                return instance;
+            }
+        }
+
         public override IMongoCollection<Category> getCollection()
         {
             IMongoDatabase db = Database.getDatabase();
             IMongoCollection<Category> collection = db.GetCollection<Category>("categories");
             return collection;
+        }
+        public void addCategory(Category newCategory)
+        {
+            IMongoCollection<Category> collection = this.getCollection();
+            collection.InsertOne(newCategory);
         }
     }
 }

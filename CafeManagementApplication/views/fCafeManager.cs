@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CafeManagementApplication.models;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace CafeManagementApplication.views
 {
@@ -32,6 +35,7 @@ namespace CafeManagementApplication.views
 
         private void btnManager_Click(object sender, EventArgs e)
         {
+            UserModel.Instance.getListUser();
             if (!pnlModule.Controls.Contains(uscManager.Instance))
             {
                 pnlModule.Controls.Add(uscManager.Instance);

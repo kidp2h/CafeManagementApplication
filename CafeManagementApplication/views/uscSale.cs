@@ -1,8 +1,12 @@
-﻿using CafeManagementApplication.models;
+﻿using CafeManagementApplication.controllers;
+using CafeManagementApplication.models;
+using CafeManagementApplication.types;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -31,54 +35,60 @@ namespace CafeManagementApplication.views
         private uscSale()
         {
             InitializeComponent();
-
-            LoadListTable();
+            LoadListTableForForm();
         }
 
-        private void LoadListTable()
+
+        private void LoadListTableForForm()
         {
-            dynamic doc = InitializeModels.TableModel.getListTable();
+            LoadTable.Instance.LoadingTableList(flpTableList);
+        }
 
             /*
-           foreach(dynamic table in doc)
-           {
-               uscSale_Table temp = new uscSale_Table();
-               temp.TableName = table["tableName"].Value;
-
-               if (table["status"].Value == 1)
-               {
-                   temp.Status = "Có người";
-                   temp.BackColor = Color.FromArgb(255, 192, 192);
-               }
-               else
-               {
-                   temp.Status = "Bàn trống";
-                   temp.BackColor = Color.FromArgb(255, 255, 255);
-               }
-
-               flpTableList.Controls.Add(temp);
-           }
-            */
-
-            for (int i = doc.Count - 1; i >= 0; i--)
+            private void LoadListTable()
             {
-                uscSale_Table temp = new uscSale_Table();
-                temp.TableName = doc[i]["tableName"].Value;
+               // dynamic doc = TableModel.Instance.getListTable();
 
-                if (doc[i]["status"].Value == 1)
+                /*
+               foreach(dynamic table in doc)
+               {
+                   uscSale_Table temp = new uscSale_Table();
+                   temp.TableName = table["tableName"].Value;
+
+                   if (table["status"].Value == 1)
+                   {
+                       temp.Status = "Có người";
+                       temp.BackColor = Color.FromArgb(255, 192, 192);
+                   }
+                   else
+                   {
+                       temp.Status = "Bàn trống";
+                       temp.BackColor = Color.FromArgb(255, 255, 255);
+                   }
+
+                   flpTableList.Controls.Add(temp);
+               }
+                */
+            /*
+                for (int i = doc.Count - 1; i >= 0; i--)
                 {
-                    temp.Status = "Có người";
-                    temp.BackColor = Color.FromArgb(255, 192, 192);
-                }
-                else
-                {
-                    temp.Status = "Bàn trống";
-                    temp.BackColor = Color.FromArgb(255, 128, 0);
-                }
+                    uscSale_Table temp = new uscSale_Table();
+                    temp.TableName = doc[i]["tableName"].Value;
 
-                flpTableList.Controls.Add(temp);
-            }
+                    if (doc[i]["status"].Value == 1)
+                    {
+                        temp.Status = "Có người";
+                        temp.BackColor = Color.FromArgb(255, 192, 192);
+                    }
+                    else
+                    {
+                        temp.Status = "Bàn trống";
+                        temp.BackColor = Color.FromArgb(255, 128, 0);
+                    }
 
+                    flpTableList.Controls.Add(temp);
+                }
+        */
             /*
             foreach(Table item in tables)
             {
@@ -118,18 +128,14 @@ namespace CafeManagementApplication.views
             */
 
         }
-
-        private void Table()
-        {
-            throw new NotImplementedException();
-        }
-
-
+    /*
         private void button1_Click(object sender, EventArgs e)
         {
             fDrinksCategory f = new fDrinksCategory();
             f.ShowDialog();
         }
 
+
     }
+        */
 }

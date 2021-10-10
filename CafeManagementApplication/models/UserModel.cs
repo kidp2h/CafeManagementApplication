@@ -15,7 +15,7 @@ using System.ComponentModel;
 
 namespace CafeManagementApplication.models
 {
-    class User : BaseModel<User>
+    class User
     {
         [BsonElement("_id")]
         public BsonObjectId Id { get; set; }
@@ -23,25 +23,38 @@ namespace CafeManagementApplication.models
         public string Fullname { get; set; }
         [BsonElement("age")]
         public int Age { get; set; }
+        [BsonElement("gender")]
+        public string Gender { get; set; }
         [BsonElement("username")]
         public string Username { get; set; }
         [BsonElement("password")]
         public string Password { get; set; }
         [BsonElement("role")]
         public Role Role { get; set; }
-
+    }
+    class UserModel : BaseModel<User>
+    {
+        private static UserModel instance;
+        public static UserModel Instance
+        {
+            get
+            {
+                if (instance == null) instance = new UserModel();
+                return instance;
+            }
+        }
         public override IMongoCollection<User> getCollection()
         {
             IMongoDatabase db = Database.getDatabase();
             IMongoCollection<User> collection = db.GetCollection<User>("users");
             return collection;
         }
-        public List<User> getUserById(string id)
+        public User getUserById(string id)
         {
             IMongoCollection<User> collection = this.getCollection();
             BsonDocument filter = new BsonDocument("_id", new ObjectId(id));
             List<User> documents = collection.Find(filter).Limit(1).ToList();
-            return documents;
+            return documents[0];
         }
 
         public bool checkAccount(string username, string password)
@@ -64,6 +77,27 @@ namespace CafeManagementApplication.models
             newUser.Password = Hash.hashPassword(newUser.Password);
             IMongoCollection<User> collection = this.getCollection();
             collection.InsertOne(newUser);
+        }
+
+        public void deleteUserById(string id)
+        {
+            FilterDefinition<User> _id = new BsonDocument("_id", new ObjectId(id));
+            IMongoCollection<User> collection = this.getCollection();
+            collection.DeleteOneAsync(_id);
+        }
+
+        public void updateUserById(string id, UpdateDefinition<User> newUpdate)
+        {
+            FilterDefinition<User> _id = new BsonDocument("_id", new ObjectId(id));
+            IMongoCollection<User> collection = this.getCollection();
+            collection.UpdateOneAsync(_id, newUpdate);
+        }
+
+        public List<User> getListUser()
+        {
+            IMongoCollection<User> collection = this.getCollection();
+            List<User> listUser = collection.Find(new BsonDocument()).ToList();
+            return listUser;
         }
     }
 }
