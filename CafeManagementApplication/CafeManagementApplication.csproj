@@ -136,6 +136,7 @@
     <Compile Include="controllers\AuthController.cs" />
     <Compile Include="helpers\Config.cs" />
     <Compile Include="helpers\Hash.cs" />
+    <Compile Include="helpers\SaveUser.cs" />
     <Compile Include="models\BaseModel.cs" />
     <Compile Include="models\BillModel.cs" />
     <Compile Include="models\CategoryModel.cs" />

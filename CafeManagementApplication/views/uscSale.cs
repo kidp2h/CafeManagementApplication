@@ -39,7 +39,6 @@ namespace CafeManagementApplication.views
 
         private void LoadListTable()
         {
-           
             /*
             foreach(Table item in tables)
             {
