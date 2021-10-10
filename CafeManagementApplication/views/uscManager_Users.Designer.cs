@@ -50,15 +50,16 @@ namespace CafeManagementApplication.views
             this.rdoMale = new System.Windows.Forms.RadioButton();
             this.rdoFemale = new System.Windows.Forms.RadioButton();
             this.rdoOther = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnlRole = new System.Windows.Forms.Panel();
             this.rdoSaff = new System.Windows.Forms.RadioButton();
             this.rdoManager = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlInfo.SuspendLayout();
             this.pnlGender.SuspendLayout();
@@ -112,15 +113,11 @@ namespace CafeManagementApplication.views
             this.columnHeader5.Text = "Chức vụ";
             this.columnHeader5.Width = 297;
             // 
-            // btnAdd
-            // 
-        
-            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnUpdate);
-           
             this.panel1.Location = new System.Drawing.Point(758, 459);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(273, 301);
@@ -268,6 +265,26 @@ namespace CafeManagementApplication.views
             this.rdoOther.Text = "Khác";
             this.rdoOther.UseVisualStyleBackColor = true;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(3, 262);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(112, 29);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Chức vụ:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 29);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Tuổi";
+            // 
             // pnlRole
             // 
             this.pnlRole.Controls.Add(this.rdoSaff);
@@ -300,26 +317,6 @@ namespace CafeManagementApplication.views
             this.rdoManager.TabIndex = 18;
             this.rdoManager.Text = "Quản Lý";
             this.rdoManager.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 29);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Tuổi";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 262);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(112, 29);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Chức vụ:";
             // 
             // label5
             // 
@@ -361,6 +358,17 @@ namespace CafeManagementApplication.views
             this.label1.TabIndex = 12;
             this.label1.Text = "Họ và tên:";
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(0, 0);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(262, 85);
+            this.btnAdd.TabIndex = 4;
+            this.btnAdd.Text = "Thêm";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // uscManager_Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -373,6 +381,7 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.lvUsers);
             this.Name = "uscManager_Users";
             this.Size = new System.Drawing.Size(1115, 777);
+           
             this.panel1.ResumeLayout(false);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
@@ -415,5 +424,6 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnlGender;
+        private System.Windows.Forms.Button btnAdd;
     }
 }
