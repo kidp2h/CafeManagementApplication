@@ -18,7 +18,9 @@ namespace CafeManagementApplication.views
     {
         public fCafeManager()
         {
+            
             InitializeComponent();
+            btnManager_Click(null, null);
             btnSale_Click(null, null);
         }
 

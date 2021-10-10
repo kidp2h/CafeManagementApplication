@@ -41,27 +41,28 @@ namespace CafeManagementApplication.views
             this.btnUpdate = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button4 = new System.Windows.Forms.Button();
-            this.inputName = new System.Windows.Forms.RichTextBox();
-            this.inputAge = new System.Windows.Forms.RichTextBox();
-            this.inputUserName = new System.Windows.Forms.RichTextBox();
-            this.inputUserPassword = new System.Windows.Forms.RichTextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.iName = new System.Windows.Forms.RichTextBox();
+            this.iAge = new System.Windows.Forms.RichTextBox();
+            this.iUserName = new System.Windows.Forms.RichTextBox();
+            this.iUserPassword = new System.Windows.Forms.RichTextBox();
+            this.pnlInfo = new System.Windows.Forms.Panel();
+            this.pnlGender = new System.Windows.Forms.Panel();
+            this.rdoMale = new System.Windows.Forms.RadioButton();
+            this.rdoFemale = new System.Windows.Forms.RadioButton();
+            this.rdoOther = new System.Windows.Forms.RadioButton();
+            this.pnlRole = new System.Windows.Forms.Panel();
+            this.rdoSaff = new System.Windows.Forms.RadioButton();
+            this.rdoManager = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            btnAdd = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pnlInfo.SuspendLayout();
+            this.pnlGender.SuspendLayout();
+            this.pnlRole.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvUsers
@@ -74,6 +75,7 @@ namespace CafeManagementApplication.views
             this.columnHeader4,
             this.columnHeader5});
             this.lvUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvUsers.FullRowSelect = true;
             this.lvUsers.GridLines = true;
             this.lvUsers.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvUsers.HideSelection = false;
@@ -83,6 +85,7 @@ namespace CafeManagementApplication.views
             this.lvUsers.TabIndex = 0;
             this.lvUsers.UseCompatibleStateImageBehavior = false;
             this.lvUsers.View = System.Windows.Forms.View.Details;
+            this.lvUsers.SelectedIndexChanged += new System.EventHandler(this.lvUsers_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -107,23 +110,17 @@ namespace CafeManagementApplication.views
             // columnHeader5
             // 
             this.columnHeader5.Text = "Chức vụ";
-            this.columnHeader5.Width = 279;
+            this.columnHeader5.Width = 297;
             // 
             // btnAdd
             // 
-            btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnAdd.Location = new System.Drawing.Point(0, 3);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new System.Drawing.Size(262, 85);
-            btnAdd.TabIndex = 1;
-            btnAdd.Text = "Thêm";
-            btnAdd.UseVisualStyleBackColor = true;
+        
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnUpdate);
-            this.panel1.Controls.Add(btnAdd);
+           
             this.panel1.Location = new System.Drawing.Point(758, 459);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(273, 301);
@@ -138,6 +135,7 @@ namespace CafeManagementApplication.views
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
@@ -148,6 +146,7 @@ namespace CafeManagementApplication.views
             this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "Sửa";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // richTextBox1
             // 
@@ -167,153 +166,166 @@ namespace CafeManagementApplication.views
             this.button4.Text = "Tìm kiếm";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // inputName
+            // iName
             // 
-            this.inputName.Location = new System.Drawing.Point(141, 3);
-            this.inputName.Name = "inputName";
-            this.inputName.Size = new System.Drawing.Size(445, 33);
-            this.inputName.TabIndex = 7;
-            this.inputName.Text = "";
+            this.iName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iName.Location = new System.Drawing.Point(141, 3);
+            this.iName.Name = "iName";
+            this.iName.Size = new System.Drawing.Size(445, 33);
+            this.iName.TabIndex = 7;
+            this.iName.Text = "";
             // 
-            // inputAge
+            // iAge
             // 
-            this.inputAge.Location = new System.Drawing.Point(141, 52);
-            this.inputAge.Name = "inputAge";
-            this.inputAge.Size = new System.Drawing.Size(445, 33);
-            this.inputAge.TabIndex = 8;
-            this.inputAge.Text = "";
+            this.iAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iAge.Location = new System.Drawing.Point(141, 52);
+            this.iAge.Name = "iAge";
+            this.iAge.Size = new System.Drawing.Size(445, 33);
+            this.iAge.TabIndex = 8;
+            this.iAge.Text = "";
             // 
-            // inputUserName
+            // iUserName
             // 
-            this.inputUserName.Location = new System.Drawing.Point(141, 160);
-            this.inputUserName.Name = "inputUserName";
-            this.inputUserName.Size = new System.Drawing.Size(445, 33);
-            this.inputUserName.TabIndex = 10;
-            this.inputUserName.Text = "";
+            this.iUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iUserName.Location = new System.Drawing.Point(141, 160);
+            this.iUserName.Name = "iUserName";
+            this.iUserName.Size = new System.Drawing.Size(445, 33);
+            this.iUserName.TabIndex = 10;
+            this.iUserName.Text = "";
             // 
-            // inputUserPassword
+            // iUserPassword
             // 
-            this.inputUserPassword.Location = new System.Drawing.Point(141, 212);
-            this.inputUserPassword.Name = "inputUserPassword";
-            this.inputUserPassword.Size = new System.Drawing.Size(445, 33);
-            this.inputUserPassword.TabIndex = 11;
-            this.inputUserPassword.Text = "";
+            this.iUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iUserPassword.Location = new System.Drawing.Point(141, 212);
+            this.iUserPassword.Name = "iUserPassword";
+            this.iUserPassword.Size = new System.Drawing.Size(445, 33);
+            this.iUserPassword.TabIndex = 11;
+            this.iUserPassword.Text = "";
             // 
-            // panel2
+            // pnlInfo
             // 
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.radioButton3);
-            this.panel2.Controls.Add(this.radioButton2);
-            this.panel2.Controls.Add(this.radioButton1);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.inputUserPassword);
-            this.panel2.Controls.Add(this.inputName);
-            this.panel2.Controls.Add(this.inputUserName);
-            this.panel2.Controls.Add(this.inputAge);
-            this.panel2.Location = new System.Drawing.Point(99, 462);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(599, 305);
-            this.panel2.TabIndex = 12;
+            this.pnlInfo.Controls.Add(this.pnlGender);
+            this.pnlInfo.Controls.Add(this.label6);
+            this.pnlInfo.Controls.Add(this.label2);
+            this.pnlInfo.Controls.Add(this.pnlRole);
+            this.pnlInfo.Controls.Add(this.label5);
+            this.pnlInfo.Controls.Add(this.iUserPassword);
+            this.pnlInfo.Controls.Add(this.iName);
+            this.pnlInfo.Controls.Add(this.label4);
+            this.pnlInfo.Controls.Add(this.iUserName);
+            this.pnlInfo.Controls.Add(this.iAge);
+            this.pnlInfo.Controls.Add(this.label3);
+            this.pnlInfo.Controls.Add(this.label1);
+            this.pnlInfo.Location = new System.Drawing.Point(99, 462);
+            this.pnlInfo.Name = "pnlInfo";
+            this.pnlInfo.Size = new System.Drawing.Size(599, 305);
+            this.pnlInfo.TabIndex = 12;
+            // 
+            // pnlGender
+            // 
+            this.pnlGender.Controls.Add(this.rdoMale);
+            this.pnlGender.Controls.Add(this.rdoFemale);
+            this.pnlGender.Controls.Add(this.rdoOther);
+            this.pnlGender.Location = new System.Drawing.Point(144, 103);
+            this.pnlGender.Name = "pnlGender";
+            this.pnlGender.Size = new System.Drawing.Size(336, 45);
+            this.pnlGender.TabIndex = 24;
+            // 
+            // rdoMale
+            // 
+            this.rdoMale.AutoSize = true;
+            this.rdoMale.Checked = true;
+            this.rdoMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoMale.Location = new System.Drawing.Point(3, 10);
+            this.rdoMale.Name = "rdoMale";
+            this.rdoMale.Size = new System.Drawing.Size(77, 29);
+            this.rdoMale.TabIndex = 17;
+            this.rdoMale.TabStop = true;
+            this.rdoMale.Text = "Nam";
+            this.rdoMale.UseVisualStyleBackColor = true;
+            // 
+            // rdoFemale
+            // 
+            this.rdoFemale.AutoSize = true;
+            this.rdoFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoFemale.Location = new System.Drawing.Point(101, 10);
+            this.rdoFemale.Name = "rdoFemale";
+            this.rdoFemale.Size = new System.Drawing.Size(60, 29);
+            this.rdoFemale.TabIndex = 18;
+            this.rdoFemale.TabStop = true;
+            this.rdoFemale.Text = "Nữ";
+            this.rdoFemale.UseVisualStyleBackColor = true;
+            // 
+            // rdoOther
+            // 
+            this.rdoOther.AutoSize = true;
+            this.rdoOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoOther.Location = new System.Drawing.Point(192, 10);
+            this.rdoOther.Name = "rdoOther";
+            this.rdoOther.Size = new System.Drawing.Size(83, 29);
+            this.rdoOther.TabIndex = 19;
+            this.rdoOther.TabStop = true;
+            this.rdoOther.Text = "Khác";
+            this.rdoOther.UseVisualStyleBackColor = true;
+            // 
+            // pnlRole
+            // 
+            this.pnlRole.Controls.Add(this.rdoSaff);
+            this.pnlRole.Controls.Add(this.rdoManager);
+            this.pnlRole.Location = new System.Drawing.Point(141, 256);
+            this.pnlRole.Name = "pnlRole";
+            this.pnlRole.Size = new System.Drawing.Size(339, 42);
+            this.pnlRole.TabIndex = 22;
+            // 
+            // rdoSaff
+            // 
+            this.rdoSaff.AutoSize = true;
+            this.rdoSaff.Checked = true;
+            this.rdoSaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoSaff.Location = new System.Drawing.Point(0, 6);
+            this.rdoSaff.Name = "rdoSaff";
+            this.rdoSaff.Size = new System.Drawing.Size(134, 29);
+            this.rdoSaff.TabIndex = 19;
+            this.rdoSaff.TabStop = true;
+            this.rdoSaff.Text = "Nhân Viên";
+            this.rdoSaff.UseVisualStyleBackColor = true;
+            // 
+            // rdoManager
+            // 
+            this.rdoManager.AutoSize = true;
+            this.rdoManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoManager.Location = new System.Drawing.Point(140, 7);
+            this.rdoManager.Name = "rdoManager";
+            this.rdoManager.Size = new System.Drawing.Size(115, 29);
+            this.rdoManager.TabIndex = 18;
+            this.rdoManager.Text = "Quản Lý";
+            this.rdoManager.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 56);
+            this.label2.Location = new System.Drawing.Point(3, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 29);
             this.label2.TabIndex = 23;
             this.label2.Text = "Tuổi";
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.radioButton5);
-            this.panel3.Controls.Add(this.radioButton4);
-            this.panel3.Location = new System.Drawing.Point(141, 256);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(445, 42);
-            this.panel3.TabIndex = 22;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.Location = new System.Drawing.Point(124, 7);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(134, 29);
-            this.radioButton5.TabIndex = 19;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Nhân Viên";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton4.Location = new System.Drawing.Point(3, 7);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(115, 29);
-            this.radioButton4.TabIndex = 18;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Quản Lý";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 260);
+            this.label6.Location = new System.Drawing.Point(3, 262);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(112, 29);
             this.label6.TabIndex = 21;
             this.label6.Text = "Chức vụ:";
             // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(364, 111);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(83, 29);
-            this.radioButton3.TabIndex = 19;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Khác";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(261, 111);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(60, 29);
-            this.radioButton2.TabIndex = 18;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Nữ";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(141, 109);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(77, 29);
-            this.radioButton1.TabIndex = 17;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Nam";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 212);
+            this.label5.Location = new System.Drawing.Point(3, 216);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(124, 29);
             this.label5.TabIndex = 16;
@@ -323,7 +335,7 @@ namespace CafeManagementApplication.views
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 160);
+            this.label4.Location = new System.Drawing.Point(3, 164);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(135, 29);
             this.label4.TabIndex = 15;
@@ -333,7 +345,7 @@ namespace CafeManagementApplication.views
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 109);
+            this.label3.Location = new System.Drawing.Point(3, 113);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(117, 29);
             this.label3.TabIndex = 14;
@@ -343,7 +355,7 @@ namespace CafeManagementApplication.views
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 6);
+            this.label1.Location = new System.Drawing.Point(3, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 29);
             this.label1.TabIndex = 12;
@@ -354,7 +366,7 @@ namespace CafeManagementApplication.views
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel1);
@@ -362,10 +374,12 @@ namespace CafeManagementApplication.views
             this.Name = "uscManager_Users";
             this.Size = new System.Drawing.Size(1115, 777);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.pnlInfo.ResumeLayout(false);
+            this.pnlInfo.PerformLayout();
+            this.pnlGender.ResumeLayout(false);
+            this.pnlGender.PerformLayout();
+            this.pnlRole.ResumeLayout(false);
+            this.pnlRole.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -376,29 +390,30 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.RichTextBox inputName;
-        private System.Windows.Forms.RichTextBox inputAge;
-        private System.Windows.Forms.RichTextBox inputUserName;
-        private System.Windows.Forms.RichTextBox inputUserPassword;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RichTextBox iName;
+        private System.Windows.Forms.RichTextBox iAge;
+        private System.Windows.Forms.RichTextBox iUserName;
+        private System.Windows.Forms.RichTextBox iUserPassword;
+        private System.Windows.Forms.Panel pnlInfo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.Panel pnlRole;
+        private System.Windows.Forms.RadioButton rdoSaff;
+        private System.Windows.Forms.RadioButton rdoManager;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rdoOther;
+        private System.Windows.Forms.RadioButton rdoFemale;
+        private System.Windows.Forms.RadioButton rdoMale;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel pnlGender;
     }
 }
