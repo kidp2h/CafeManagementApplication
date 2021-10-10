@@ -39,10 +39,7 @@ namespace CafeManagementApplication.views
 
         private void LoadListTable()
         {
-            BsonDocument fiter = new BsonDocument();
-            Table tb = new Table();
-            dynamic doc = tb.getTable(fiter);
-            Table tb1 = new Table();
+           
             /*
             foreach(Table item in tables)
             {
@@ -88,6 +85,7 @@ namespace CafeManagementApplication.views
             fDrinksCategory f = new fDrinksCategory();
             f.ShowDialog();
         }
+
 
     }
 }

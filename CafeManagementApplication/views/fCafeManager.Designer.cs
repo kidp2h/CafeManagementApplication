@@ -38,6 +38,10 @@ namespace CafeManagementApplication.views
             // 
             // pnlModule
             // 
+            this.pnlModule.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlModule.AutoSize = true;
             this.pnlModule.BackColor = System.Drawing.Color.White;
             this.pnlModule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pnlModule.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -45,7 +49,7 @@ namespace CafeManagementApplication.views
             this.pnlModule.Location = new System.Drawing.Point(12, 95);
             this.pnlModule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlModule.Name = "pnlModule";
-            this.pnlModule.Size = new System.Drawing.Size(1398, 756);
+            this.pnlModule.Size = new System.Drawing.Size(1398, 787);
             this.pnlModule.TabIndex = 0;
             // 
             // btnSale
@@ -90,7 +94,7 @@ namespace CafeManagementApplication.views
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(1419, 863);
+            this.ClientSize = new System.Drawing.Size(1419, 893);
             this.Controls.Add(this.btnStatistics);
             this.Controls.Add(this.btnManager);
             this.Controls.Add(this.btnSale);
@@ -101,6 +105,7 @@ namespace CafeManagementApplication.views
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phần mềm quản lý quán cafe";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
