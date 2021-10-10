@@ -24,9 +24,9 @@ namespace CafeManagementApplication.controllers
 
         private LoadingListViewController() { }
 
-        public List<ListViewItem> LoadingListForListViewOf(string form)
-        {   
-            List<ListViewItem> listItem = new List<ListViewItem>();
+        public void LoadingListForListViewOf(string form, ListView lv)
+        {
+            lv.Items.Clear();
             if (form == "useManager_Tables")
             {
 
@@ -48,19 +48,18 @@ namespace CafeManagementApplication.controllers
                     lvItem.SubItems.Add(Gender);
                     string Username = user.Username;
                     lvItem.SubItems.Add(Username);
+                    lvItem.Tag = user.Id;
                     if(user.Role == 0)
                     {
                         lvItem.SubItems.Add("Nhân viên");
                     }
                     else lvItem.SubItems.Add("Quản lý");
-                    listItem.Add(lvItem);
-
+                    lv.Items.Add(lvItem);
                 }
                 
             }
-            
-
-                return listItem;
         }
+
+
     }
 }

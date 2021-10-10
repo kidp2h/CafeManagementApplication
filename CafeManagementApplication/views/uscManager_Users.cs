@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -35,12 +36,41 @@ namespace CafeManagementApplication.views
 
         private void LoadingListUsersForForm()
         {
-            List<ListViewItem> listItem = LoadingListViewController.Instance.LoadingListForListViewOf("useManager_Users");
-            lvUsers.VirtualListSize = 1000;
-            foreach(var item in listItem)
+            LoadingListViewController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AUDRController.Instance.AddData("User", pnlInfo);
+            AUDRController.Instance.ResetDataInput(pnlInfo);
+            LoadingListUsersForForm();
+            
+        }
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            AUDRController.Instance.UpdateData("User", pnlInfo, iName.Tag.ToString());
+            AUDRController.Instance.ResetDataInput(pnlInfo);
+            LoadingListUsersForForm();
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            AUDRController.Instance.DeleteData("User", iName.Tag.ToString());
+            AUDRController.Instance.ResetDataInput(pnlInfo);
+            LoadingListUsersForForm();
+        }
+        private void lvUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListView lv = sender as ListView;
+            if(lv.SelectedItems.Count>0)
             {
-                lvUsers.Items.Add(item);
+                ListViewItem item = lv.SelectedItems[0];
+                iName.Tag = item.Tag;
+                iName.Text = item.SubItems[0].Text;
+                iAge.Text = item.SubItems[1].Text;
+                iUserName.Text = item.SubItems[2].Text;
             }
         }
+
+      
     }
 }
