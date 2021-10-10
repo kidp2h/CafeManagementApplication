@@ -31,6 +31,10 @@ namespace CafeManagementApplication.views
         {
             this.lvUsers = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -53,10 +57,7 @@ namespace CafeManagementApplication.views
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -86,6 +87,26 @@ namespace CafeManagementApplication.views
             // 
             this.columnHeader1.Text = "Họ và tên";
             this.columnHeader1.Width = 316;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Tuổi";
+            this.columnHeader2.Width = 101;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Giới tính";
+            this.columnHeader3.Width = 122;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Tài Khoản";
+            this.columnHeader4.Width = 262;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Chức vụ";
+            this.columnHeader5.Width = 279;
             // 
             // btnAdd
             // 
@@ -179,6 +200,7 @@ namespace CafeManagementApplication.views
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.radioButton3);
@@ -316,25 +338,15 @@ namespace CafeManagementApplication.views
             this.label1.TabIndex = 12;
             this.label1.Text = "Họ và tên:";
             // 
-            // columnHeader2
+            // label2
             // 
-            this.columnHeader2.Text = "Tuổi";
-            this.columnHeader2.Width = 101;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Giới tính";
-            this.columnHeader3.Width = 122;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Tài Khoản";
-            this.columnHeader4.Width = 262;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Chức vụ";
-            this.columnHeader5.Width = 279;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(6, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 29);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Tuổi";
             // 
             // uscManager_Users
             // 
@@ -387,5 +399,6 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.Label label2;
     }
 }

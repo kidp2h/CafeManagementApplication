@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace CafeManagementApplication.controllers
 {
-    public class LoadingController
+    public class LoadingListViewController
     {
-        private static LoadingController instance;
-        public static LoadingController Instance
+        private static LoadingListViewController instance;
+        public static LoadingListViewController Instance
         {
             get
             {
-                if (instance == null)  instance = new LoadingController();            
+                if (instance == null)  instance = new LoadingListViewController();            
                 return instance;
             }
         }
 
-        private LoadingController() { }
+        private LoadingListViewController() { }
 
         public List<ListViewItem> LoadingListForListViewOf(string form)
         {   
@@ -37,7 +37,7 @@ namespace CafeManagementApplication.controllers
             }
             if (form == "useManager_Users")
             { 
-                dynamic usersList = InitializeModels.UserModel.getListUser();
+                dynamic usersList = UserModel.Instance.getListUser();
                 foreach (dynamic user in usersList)
                 {
                     string name = user.Fullname;
@@ -48,7 +48,11 @@ namespace CafeManagementApplication.controllers
                     lvItem.SubItems.Add(Gender);
                     string Username = user.Username;
                     lvItem.SubItems.Add(Username);
-              
+                    if(user.Role == 0)
+                    {
+                        lvItem.SubItems.Add("Nhân viên");
+                    }
+                    else lvItem.SubItems.Add("Quản lý");
                     listItem.Add(lvItem);
 
                 }

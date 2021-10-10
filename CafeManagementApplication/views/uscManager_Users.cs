@@ -35,17 +35,12 @@ namespace CafeManagementApplication.views
 
         private void LoadingListUsersForForm()
         {
-            List<ListViewItem> listItem = LoadingController.Instance.LoadingListForListViewOf("useManager_Users");
+            List<ListViewItem> listItem = LoadingListViewController.Instance.LoadingListForListViewOf("useManager_Users");
             lvUsers.VirtualListSize = 1000;
             foreach(var item in listItem)
             {
                 lvUsers.Items.Add(item);
             }
-        }
-
-        public ListView getListView()
-        {
-            return lvUsers;
         }
     }
 }
