@@ -39,7 +39,7 @@ namespace CafeManagementApplication.models
             return collection;
         }
 
-        public IAggregateFluent<dynamic> lookupDepthTable()
+        private IAggregateFluent<dynamic> lookupDepthTable()
         {
             IMongoCollection<Table> collection = this.getCollection();
             dynamic table = collection.Aggregate()
