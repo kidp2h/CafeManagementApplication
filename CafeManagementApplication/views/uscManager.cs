@@ -30,6 +30,7 @@ namespace CafeManagementApplication.views
         {
             InitializeComponent();
             btnManagerTables_Click(null,null);
+           
         }
 
 
@@ -47,6 +48,7 @@ namespace CafeManagementApplication.views
 
             }
             else uscManager_Tables.Instance.BringToFront();
+
         }
 
         private void btnManagerDrinks_Click(object sender, EventArgs e)
