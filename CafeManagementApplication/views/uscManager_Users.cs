@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CafeManagementApplication.controllers;
+using CafeManagementApplication.models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +15,6 @@ namespace CafeManagementApplication.views
     public partial class uscManager_Users : UserControl
     {
         private static uscManager_Users instance;
-
         public static uscManager_Users Instance
         {
             get
@@ -28,6 +29,18 @@ namespace CafeManagementApplication.views
         private uscManager_Users()
         {
             InitializeComponent();
+            LoadingListUsersForForm();
+
+        }
+
+        private void LoadingListUsersForForm()
+        {
+            List<ListViewItem> listItem = LoadingListViewController.Instance.LoadingListForListViewOf("useManager_Users");
+            lvUsers.VirtualListSize = 1000;
+            foreach(var item in listItem)
+            {
+                lvUsers.Items.Add(item);
+            }
         }
     }
 }
