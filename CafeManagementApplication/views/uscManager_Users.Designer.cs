@@ -31,10 +31,6 @@ namespace CafeManagementApplication.views
         {
             this.lvUsers = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -57,6 +53,10 @@ namespace CafeManagementApplication.views
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -81,32 +81,11 @@ namespace CafeManagementApplication.views
             this.lvUsers.TabIndex = 0;
             this.lvUsers.UseCompatibleStateImageBehavior = false;
             this.lvUsers.View = System.Windows.Forms.View.Details;
-            this.lvUsers.VirtualMode = true;
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Họ và tên";
             this.columnHeader1.Width = 316;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Tuổi";
-            this.columnHeader2.Width = 97;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Giới tính";
-            this.columnHeader3.Width = 116;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Tài khoản";
-            this.columnHeader4.Width = 278;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Chức vụ";
-            this.columnHeader5.Width = 503;
             // 
             // btnAdd
             // 
@@ -336,6 +315,26 @@ namespace CafeManagementApplication.views
             this.label1.Size = new System.Drawing.Size(129, 29);
             this.label1.TabIndex = 12;
             this.label1.Text = "Họ và tên:";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Tuổi";
+            this.columnHeader2.Width = 101;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Giới tính";
+            this.columnHeader3.Width = 122;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Tài Khoản";
+            this.columnHeader4.Width = 262;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Chức vụ";
+            this.columnHeader5.Width = 279;
             // 
             // uscManager_Users
             // 

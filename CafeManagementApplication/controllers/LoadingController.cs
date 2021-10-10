@@ -24,17 +24,25 @@ namespace CafeManagementApplication.controllers
 
         private LoadingController() { }
 
-        public void LoadingListSomeThingForForm(string form)
+        public List<ListViewItem> LoadingListSomeThingForForm(string form)
         {
-
-            List<User> usersList = InitializeModels.UserModel.getListUser();
+            List<ListViewItem> listItem = new List<ListViewItem>();
+            dynamic usersList = InitializeModels.UserModel.getListUser();
             foreach (dynamic user in usersList)
             {
-               
-                ListViewItem lvItem = new ListViewItem(user["fullName"].Value);
-                
+                string name = user.Fullname;
+                ListViewItem lvItem = new ListViewItem(user.Fullname);
+                int Age = user.Age;
+                lvItem.SubItems.Add(Age.ToString());
+                string Gender = user.Gender;
+                lvItem.SubItems.Add(Gender);
+                string Username = user.Username;
+                lvItem.SubItems.Add(Username);
+              
+                listItem.Add(lvItem);
 
             }
+            return listItem;
 
 
         }
