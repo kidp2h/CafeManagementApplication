@@ -134,6 +134,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="config\Database.cs" />
+    <Compile Include="controllers\AUDRController.cs" />
     <Compile Include="controllers\AuthController.cs" />
     <Compile Include="controllers\LoadingListViewController.cs" />
     <Compile Include="helpers\Config.cs" />

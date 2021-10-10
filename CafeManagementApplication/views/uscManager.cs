@@ -29,7 +29,6 @@ namespace CafeManagementApplication.views
         private uscManager()
         {
             InitializeComponent();
-            btnManagerTables_Click(null,null);
            
         }
 
