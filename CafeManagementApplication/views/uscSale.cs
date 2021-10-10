@@ -39,10 +39,10 @@ namespace CafeManagementApplication.views
 
         private void LoadListTable()
         {
-            BsonDocument fiter = new BsonDocument();
+            /*BsonDocument fiter = new BsonDocument();
             Table tb = new Table();
             dynamic doc = tb.getTable(fiter);
-            Table tb1 = new Table();
+            Table tb1 = new Table();*/
             /*
             foreach(Table item in tables)
             {

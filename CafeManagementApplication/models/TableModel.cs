@@ -53,7 +53,8 @@ namespace CafeManagementApplication.models
                 .Lookup("categories", "bill.products.product.category", "_id", "bill.products.product.category")
                 .Unwind("bill.products.product.category")
                 .AppendStage<BsonDocument>("{$set : {  'bill.products.product.category': '$bill.products.product.category.name'}}")
-                .Group("{  _id: '$_id', status : { $first: '$status' }, subtotal : {$first : '$subtotal'},tableName : {$first : '$tableName'},'bill': { '$push': '$bill.products'  }}");
+                .AppendStage<BsonDocument>("{$addFields : {'subtotal': {$sum : {$multiply : ['$bill.products.product.price','$bill.products.amount']}}}}")
+                .Group("{  _id: '$_id', status : { $first: '$status' },tableName : {$first : '$tableName'},'bill': { '$push': '$bill.products'  }}");
             return table;
         }
         public BsonDocument getTableByTableName(string tableName)
