@@ -38,5 +38,10 @@ namespace CafeManagementApplication.models
             IMongoCollection<Product> collection = db.GetCollection<Product>("products");
             return collection;
         }
+        public void addProduct(Product newProduct)
+        {
+            IMongoCollection < Product > collection = this.getCollection();
+            collection.InsertOneAsync(newProduct);
+        }
     }
 }
