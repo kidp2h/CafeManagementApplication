@@ -1,5 +1,6 @@
 ﻿using CafeManagementApplication.controllers;
 using CafeManagementApplication.models;
+using CafeManagementApplication.types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,14 +48,12 @@ namespace CafeManagementApplication.views
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            AUDRController.Instance.UpdateData("User", pnlInfo, iName.Tag.ToString());
-            AUDRController.Instance.ResetDataInput(pnlInfo);
+            AUDRController.Instance.UpdateData("User", this);
             LoadingListUsersForForm();
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
             AUDRController.Instance.DeleteData("User", iName.Tag.ToString());
-            AUDRController.Instance.ResetDataInput(pnlInfo);
             LoadingListUsersForForm();
         }
         private void lvUsers_SelectedIndexChanged(object sender, EventArgs e)
@@ -105,18 +104,23 @@ namespace CafeManagementApplication.views
                 else rdoOther.Checked = true;
             }
         }
-        public int inputRole
+        public Role inputRole
         {
             get
             {
-                if (rdoManager.Checked) return 1;
-                else return 0;
+                if (rdoManager.Checked) return Role.MANAGER;
+                else return Role.STAFF;
             }
             set
             {
-                if (value == 1) rdoManager.Checked = true;
+                if (value == Role.MANAGER) rdoManager.Checked = true;
                 else rdoSaff.Checked = true;
             }
+        }
+        public string inputNameTagText
+        {
+            get { return iName.Tag.ToString();}
+            set { iName.Tag = value; }
         }
 
     }

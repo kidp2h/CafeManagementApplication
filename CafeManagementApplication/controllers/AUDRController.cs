@@ -60,7 +60,7 @@ namespace CafeManagementApplication.controllers
             }
         }
 
-        public void UpdateData(string nameData, dynamic dataInput, string dataID)
+        public void UpdateData(string nameData, dynamic view)
         {
             if (nameData == "Table")
             {
@@ -72,7 +72,7 @@ namespace CafeManagementApplication.controllers
             }
             if (nameData == "User")
             {
-                User user = NewData(nameData, dataInput);
+                User user = NewData(nameData, view);
 
                 UpdateDefinition<User> update = new BsonDocument
                 {
@@ -89,7 +89,7 @@ namespace CafeManagementApplication.controllers
                     }
                 };
 
-                UserModel.Instance.updateUserById(dataID, update);
+                UserModel.Instance.updateUserById(view.inputNameTagText, update);
             }
         }
 
@@ -113,7 +113,7 @@ namespace CafeManagementApplication.controllers
         public void ResetDataInput(dynamic view)
         {
             view.inputNameText = "";
-            view.inputAge = "";
+            view.inputAgeText = "";
             view.inputGenderText = "Nam";
             view.inputUsernameText = "";
             view.inputUserpasswordText = "";
