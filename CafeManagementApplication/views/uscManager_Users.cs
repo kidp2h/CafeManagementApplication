@@ -73,7 +73,13 @@ namespace CafeManagementApplication.views
                 iName.Tag = item.Tag;
                 iName.Text = item.SubItems[0].Text;
                 iAge.Text = item.SubItems[1].Text;
-                iUserName.Text = item.SubItems[2].Text;
+                if (item.SubItems[2].Text == "Nam") rdoMale.Checked = true;
+                else if (item.SubItems[2].Text == "Nữ") rdoFemale.Checked = true;
+                else rdoOther.Checked = true;
+                iUserName.Text = item.SubItems[3].Text;
+                if (item.SubItems[4].Text == "Quản lý") rdoManager.Checked = true;
+                else rdoSaff.Checked = true;
+
                 btnDelete.Tag = lv.Items.IndexOf(item);
             }
         }
@@ -144,7 +150,14 @@ namespace CafeManagementApplication.views
                 iName.Tag = item.Tag;
                 iName.Text = item.SubItems[0].Text;
                 iAge.Text = item.SubItems[1].Text;
-                iUserName.Text = item.SubItems[2].Text;
+                if (item.SubItems[2].Text == "Nam") rdoMale.Checked = true;
+                else if (item.SubItems[2].Text == "Nữ") rdoFemale.Checked = true;
+                else rdoOther.Checked = true;
+
+                iUserName.Text = item.SubItems[3].Text;
+                if (item.SubItems[4].Text == "Quản lý") rdoManager.Checked = true;
+                else rdoSaff.Checked = true;
+
                 btnDelete.Tag = lv.Items.IndexOf(item);
             }
         }
