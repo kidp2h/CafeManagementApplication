@@ -52,7 +52,7 @@ namespace CafeManagementApplication.controllers
             {
                 uscProduct temp = new uscProduct();
                 temp.Tag = product["_id"].Value;
-                temp.ProductName = product["name"].Value;
+                temp.NameProduct = product["name"].Value;
                 temp.Price = product["price"].Value.ToString();
                 flp.Controls.Add(temp);
             }

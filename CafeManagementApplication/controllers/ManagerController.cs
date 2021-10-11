@@ -5,14 +5,15 @@ using System.Windows.Forms;
 
 namespace CafeManagementApplication.controllers
 {
-    class AUDRController
+    class ManagerController
     {
-        private static AUDRController instance;
-        public static AUDRController Instance
+        private static ManagerController instance;
+
+        public static ManagerController Instance
         {
             get
             {
-                if (instance == null) instance = new AUDRController();
+                if (instance == null) instance = new ManagerController();
                 return instance;
             }
         }
@@ -110,7 +111,6 @@ namespace CafeManagementApplication.controllers
                 ResetDataInput(view);
             }
         }
-
 
         public void ResetDataInput(dynamic view)
         {

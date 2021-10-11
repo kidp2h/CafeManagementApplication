@@ -37,18 +37,18 @@ namespace CafeManagementApplication.views
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AUDRController.Instance.AddData("User", this);
+            ManagerController.Instance.AddData("User", this);
             LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
 
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            AUDRController.Instance.UpdateData("User", this);
+            ManagerController.Instance.UpdateData("User", this);
             LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            AUDRController.Instance.DeleteData("User", this);
+            ManagerController.Instance.DeleteData("User", this);
             LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
         } 
         private void btnReset_Click(object sender, EventArgs e)

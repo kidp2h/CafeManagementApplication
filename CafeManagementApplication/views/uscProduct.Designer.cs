@@ -29,6 +29,7 @@ namespace CafeManagementApplication.views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uscProduct));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblName = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
@@ -39,11 +40,11 @@ namespace CafeManagementApplication.views
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.SandyBrown;
-            this.pictureBox1.Image = global::CafeManagementApplication.Properties.Resources.cupCaffe3;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(199, 163);
+            this.pictureBox1.Size = new System.Drawing.Size(199, 168);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;

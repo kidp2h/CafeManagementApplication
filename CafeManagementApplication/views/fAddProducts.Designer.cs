@@ -42,7 +42,7 @@ namespace CafeManagementApplication.views
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAddProduct = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.flpListProducts = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlInfo.SuspendLayout();
@@ -82,7 +82,6 @@ namespace CafeManagementApplication.views
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(202, 39);
             this.lblPrice.TabIndex = 4;
-            this.lblPrice.Text = "32000";
             this.lblPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblName
@@ -93,7 +92,6 @@ namespace CafeManagementApplication.views
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(315, 46);
             this.lblName.TabIndex = 3;
-            this.lblName.Text = "Capuchino";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
@@ -169,16 +167,17 @@ namespace CafeManagementApplication.views
             this.textBox2.Size = new System.Drawing.Size(221, 22);
             this.textBox2.TabIndex = 10;
             // 
-            // button3
+            // btnAddProduct
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.Red;
-            this.button3.Location = new System.Drawing.Point(729, 630);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(323, 81);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "THÊM MÓN";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProduct.ForeColor = System.Drawing.Color.Red;
+            this.btnAddProduct.Location = new System.Drawing.Point(729, 630);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(323, 81);
+            this.btnAddProduct.TabIndex = 12;
+            this.btnAddProduct.Text = "THÊM MÓN";
+            this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // button4
             // 
@@ -213,7 +212,7 @@ namespace CafeManagementApplication.views
             this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(1095, 743);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label4);
@@ -249,7 +248,7 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Label lblName;

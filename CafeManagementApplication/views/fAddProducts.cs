@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace CafeManagementApplication.views
 {
     public partial class fAddProducts : Form
-    { 
+    {
         public fAddProducts()
         {
             InitializeComponent();
@@ -20,6 +20,8 @@ namespace CafeManagementApplication.views
             LoadPanelController.Instance.setView(this);
         }
 
+        public string BillID { get; set; }
+  
         public string LblNameText
         {
             get { return lblName.Text; }
@@ -32,7 +34,15 @@ namespace CafeManagementApplication.views
             set { lblPrice.Text = value; }
         }
 
+        public string LblNameTag
+        {
+            get { return lblName.Tag.ToString(); }
+            set { lblName.Tag = value; }
+        }
 
-
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            BillController.Instance.AddProductToBill( this.BillID, this.LblNameTag);
+        }
     }
 }

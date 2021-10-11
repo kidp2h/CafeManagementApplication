@@ -16,7 +16,7 @@ namespace CafeManagementApplication.views
         private string productName;
         private string price;
 
-        public string ProductName
+        public string NameProduct
         {
             get { return productName; }
             set { productName = value; lblName.Text = value; }
@@ -35,12 +35,12 @@ namespace CafeManagementApplication.views
 
         private void uscProduct_Click(object sender, EventArgs e)
         {
-            LoadPanelController.Instance.LoadingInfoPanel(this.productName, this.price);
+            LoadPanelController.Instance.LoadingInfoProduct(this.productName, this.price, this.Tag.ToString());
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            LoadPanelController.Instance.LoadingInfoPanel(this.productName, this.price);
+            LoadPanelController.Instance.LoadingInfoProduct(this.productName, this.price, this.Tag.ToString());
         }
     }
 }

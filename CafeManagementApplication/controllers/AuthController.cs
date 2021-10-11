@@ -26,7 +26,6 @@ namespace CafeManagementApplication.controllers
             }
         }
 
-
         public void handleLogin(fLogin view)
         {
             
