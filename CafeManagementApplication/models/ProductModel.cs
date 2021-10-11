@@ -43,5 +43,17 @@ namespace CafeManagementApplication.models
             IMongoCollection < Product > collection = this.getCollection();
             collection.InsertOneAsync(newProduct);
         }
+        public void removeProductById(string productId)
+        {
+            FilterDefinition<Product> filter = new BsonDocument("_id", new ObjectId(productId));
+            IMongoCollection<Product> collection = this.getCollection();
+            collection.DeleteOneAsync(filter);
+        }
+        public void updateProductById(string productId, UpdateDefinition<Product> update)
+        {
+            FilterDefinition<Product> filter = new BsonDocument("_id", new ObjectId(productId));
+            IMongoCollection<Product> collection = this.getCollection();
+            collection.UpdateOneAsync(filter, update);
+        }
     }
 }

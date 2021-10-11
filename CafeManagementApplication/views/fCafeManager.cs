@@ -18,7 +18,8 @@ namespace CafeManagementApplication.views
     {
         public fCafeManager()
         {
-            
+            TableModel.Instance.getBillFromIdTable("615ebc8515dd66d62ee953b3");
+            //BillModel.Instance.addProductToBill("616028b2d76cf098b584633e", "615eef9df8a6f5d3953719d7");
             InitializeComponent();
             btnManager_Click(null, null);
             btnSale_Click(null, null);
@@ -38,7 +39,7 @@ namespace CafeManagementApplication.views
 
         private void btnManager_Click(object sender, EventArgs e)
         {
-            UserModel.Instance.getListUser();
+            
             if (!pnlModule.Controls.Contains(uscManager.Instance))
             {
                 pnlModule.Controls.Add(uscManager.Instance);

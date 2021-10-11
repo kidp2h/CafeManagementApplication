@@ -13,7 +13,10 @@ using System.Diagnostics;
 
 namespace CafeManagementApplication.models
 {
+    class TableAggregate : Table
+    {
 
+    }
     class Table
     {
         [BsonElement("_id")]

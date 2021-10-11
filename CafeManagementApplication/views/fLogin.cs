@@ -27,8 +27,7 @@ namespace CafeManagementApplication
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            AuthController controller = new AuthController(this);
-            controller.handleLogin();
+            AuthController.Instance.handleLogin(this);
         }
 
         private void fLogin_FormClosing(object sender, FormClosingEventArgs e)
