@@ -71,7 +71,7 @@ namespace CafeManagementApplication.controllers
             dynamic table = TableModel.Instance.getBillFromIdTable(tableID);
             if(table != null)
             {
-                uscSale.Instance.BtnAddTag = table["billID"].Value;
+                uscSale.Instance.BtnAddTag = table["billId"].Value.ToString();
                 foreach (dynamic product in table["bill"])
                 {
 
