@@ -17,7 +17,7 @@ namespace CafeManagementApplication.controllers
         {
             get
             {
-                if (instance == null)  instance = new LoadingListViewController();            
+                if (instance == null) instance = new LoadingListViewController();
                 return instance;
             }
         }
@@ -36,7 +36,7 @@ namespace CafeManagementApplication.controllers
 
             }
             if (form == "useManager_Users")
-            { 
+            {
                 dynamic usersList = UserModel.Instance.getListUser();
                 foreach (dynamic user in usersList)
                 {
@@ -49,16 +49,46 @@ namespace CafeManagementApplication.controllers
                     string Username = user.Username;
                     lvItem.SubItems.Add(Username);
                     lvItem.Tag = user.Id;
-                    if(user.Role == 0)
+                    if (user.Role == 0)
                     {
                         lvItem.SubItems.Add("Nhân viên");
                     }
                     else lvItem.SubItems.Add("Quản lý");
+                    
                     lv.Items.Add(lvItem);
                 }
-                
+
             }
         }
+
+        public void LoadingBillForListViewFormTableID(string tableID)
+        {
+
+            uscSale.Instance.getLvBillforOneTable().Items.Clear();
+            
+            dynamic table = TableModel.Instance.getBillFromIdTable(tableID);
+            foreach(dynamic product in table["bill"])
+            {
+                
+                ListViewItem lvItem = new ListViewItem(product["product"]["name"].Value);
+
+                int price = product["product"]["price"].Value;
+                lvItem.SubItems.Add(price.ToString());
+
+                int amount = product["amount"].Value;
+                lvItem.SubItems.Add(amount.ToString() + "đ");
+
+                int totalPriceProduct = price*amount;
+                lvItem.SubItems.Add(totalPriceProduct.ToString() + "đ");
+
+                uscSale.Instance.getLvBillforOneTable().Items.Add(lvItem);
+            }
+            uscSale.Instance.getITotalPriceProducts().Text = table["subtotal"].Value.ToString() + "đ";
+            
+            
+
+        }
+
 
 
     }

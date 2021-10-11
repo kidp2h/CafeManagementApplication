@@ -13,7 +13,10 @@ using System.Diagnostics;
 
 namespace CafeManagementApplication.models
 {
+    class TableAggregate : Table
+    {
 
+    }
     class Table
     {
         [BsonElement("_id")]
@@ -78,7 +81,7 @@ namespace CafeManagementApplication.models
         {
             FilterDefinition<BsonDocument> _id = new BsonDocument("_id", new ObjectId(idTable));
             dynamic table = this.lookupDepthTables().Match(_id).ToList();
-            return table[0]["bill"];
+            return table[0];
             
         }
         public List<BsonDocument> getListTable()

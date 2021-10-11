@@ -12,13 +12,18 @@ using System.Diagnostics;
 
 namespace CafeManagementApplication.models
 {
+    class ListItemOrder : BsonArray
+    {
+        public BsonObjectId product { get; set; }
+        public int amount { get; set; }
+    }
 
     class Bill
     {
         [BsonElement("_id")]
         public BsonObjectId Id { get; set; }
         [BsonElement("products")]
-        public List<IOderItems> ProductsOrdered { get; set; }
+        public ListItemOrder ProductsOrdered { get; set; }
         [BsonElement("subtotal")]
         public int Subtotal { get; set; }
         [BsonElement("table")]
@@ -66,13 +71,14 @@ namespace CafeManagementApplication.models
         }
         public BsonDocument getBillById(string idBill)
         {
-            dynamic bill = this.lookupDepthBills().Match(new BsonDocument("_id", new ObjectId(idBill))).ToList();
+            FilterDefinition<BsonDocument> _idBill = new BsonDocument("_id", new ObjectId(idBill));
+            dynamic bill = this.lookupDepthBills().Match(_idBill).ToList();
             return bill[0];
         }
         public BsonDocument getTableFromIdBill(string idBill)
         {
-            /*FilterDefinition<dynamic> _idBill = new BsonDocument("_id", new ObjectId(idBill));*/
-            dynamic bill = this.lookupDepthBills().Match(new BsonDocument("_id", new ObjectId(idBill))).ToList();
+            FilterDefinition<BsonDocument> _idBill = new BsonDocument("_id", new ObjectId(idBill));
+            dynamic bill = this.lookupDepthBills().Match(_idBill).ToList();
             return bill[0]["table"];
         }
         public void addProductToBill(string idBill, string idProduct)

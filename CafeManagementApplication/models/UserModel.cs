@@ -76,7 +76,7 @@ namespace CafeManagementApplication.models
         {
             newUser.Password = Hash.hashPassword(newUser.Password);
             IMongoCollection<User> collection = this.getCollection();
-            collection.InsertOne(newUser);
+            collection.InsertOneAsync(newUser);
         }
 
         public void deleteUserById(string id)

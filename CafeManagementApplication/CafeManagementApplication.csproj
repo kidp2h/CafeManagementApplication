@@ -137,6 +137,7 @@
     <Compile Include="controllers\AUDRController.cs" />
     <Compile Include="controllers\AuthController.cs" />
     <Compile Include="controllers\LoadingListViewController.cs" />
+    <Compile Include="controllers\LoadTable.cs" />
     <Compile Include="helpers\Config.cs" />
     <Compile Include="helpers\Hash.cs" />
     <Compile Include="helpers\SaveUser.cs" />
@@ -153,7 +154,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="types\enums.cs" />
-    <Compile Include="types\interfaces.cs" />
     <Compile Include="views\fCafeManager.cs">
       <SubType>Form</SubType>
     </Compile>
