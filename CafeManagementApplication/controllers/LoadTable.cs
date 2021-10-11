@@ -28,13 +28,13 @@ namespace CafeManagementApplication.controllers
         public void LoadingTableList (FlowLayoutPanel a)
         {
             dynamic tables = TableModel.Instance.getListTable();
-            foreach(dynamic table in tables)
+            foreach(Table table in tables)
             {
                 uscSale_Table temp = new uscSale_Table();
-                temp.Tag = table["_id"].Value;
-                temp.TableName = table["tableName"].Value;
+                temp.Tag = table.Id;
+                temp.TableName = table.TableName;
 
-                if (table["status"].Value == 1)
+                if (table.Status == types.sTable.FULL)
                 {
                     temp.Status = "Có người";                 
                 }
