@@ -18,8 +18,6 @@ namespace CafeManagementApplication.views
     {
         public fCafeManager()
         {
-            TableModel.Instance.getBillFromIdTable("615ebc8515dd66d62ee953b3");
-            //BillModel.Instance.addProductToBill("616028b2d76cf098b584633e", "615eef9df8a6f5d3953719d7");
             InitializeComponent();
             btnManager_Click(null, null);
             btnSale_Click(null, null);

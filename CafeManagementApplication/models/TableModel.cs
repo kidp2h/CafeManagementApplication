@@ -55,7 +55,7 @@ namespace CafeManagementApplication.models
 
         private AggregateFluentBase<BsonDocument> lookupDepthTables()
         {
-            IMongoCollection<Table> collection = this.getCollection();
+            IMongoCollection<Table> collection = getCollection();
             dynamic table = collection.Aggregate()
                 .Lookup("bills", "bill", "_id", "bill")
                 .Unwind("bill")
@@ -70,30 +70,39 @@ namespace CafeManagementApplication.models
                 .Sort(new BsonDocument("tableName", 1));
             return table;
         }
-        public BsonDocument getTableByTableName(string tableName)
+        public dynamic getTableByTableName(string tableName)
         {
             FilterDefinition<BsonDocument> TableName = new BsonDocument("tableName", tableName);
-            dynamic table = this.lookupDepthTables().Match(TableName).ToList();
+            dynamic table = lookupDepthTables().Match(TableName).ToList();
             return table[0];
         }
 
-        public BsonDocument getBillFromIdTable(string idTable)
+        public dynamic getBillFromIdTable(string idTable)
         {
             FilterDefinition<BsonDocument> _id = new BsonDocument("_id", new ObjectId(idTable));
-            dynamic table = this.lookupDepthTables().Match(_id).ToList();
-            return table[0];
-            
+            dynamic table = lookupDepthTables().Match(_id).ToList();
+            if(table.Count != 0) return table[0];
+            return null;
+
+
         }
-        public List<BsonDocument> getListTable()
+        public List<Table> getListTable()
         {
-            IMongoCollection<Table> collection = this.getCollection();
-            dynamic table = this.lookupDepthTables().ToList();
+            IMongoCollection<Table> collection = getCollection();
+            dynamic table = collection.Find(new BsonDocument()).ToList();
             return table;
         }
         public void addTable(Table newTable)
         {
-            IMongoCollection<Table> collection = this.getCollection();
-            collection.InsertOneAsync(newTable);
+            Table table = new Table
+            {
+                TableName = newTable.TableName,
+                Status = sTable.EMPTY,
+                Bill = new ObjectId()
+                
+            };
+            IMongoCollection<Table> collection = getCollection();
+            collection.InsertOneAsync(table);
         }
     }
 }
