@@ -12,27 +12,27 @@ using System.Windows.Forms;
 namespace CafeManagementApplication.views
 {
     public partial class fAddProducts : Form
-    {
-        private fAddProducts instance;
-        public fAddProducts Instance
-        {
-            get
-            {
-                if (instance == null) instance = new fAddProducts();
-                return instance;
-            }
-        }
-        public Panel getPnlInfo()
-        {
-            return pnlInfo;
-        }
-
+    { 
         public fAddProducts()
         {
             InitializeComponent();
-            uscManager.Instance.Show();
             LoadItemController.Instance.LoadingItemProduct(flpListProducts);
+            LoadPanelController.Instance.setView(this);
         }
+
+        public string LblNameText
+        {
+            get { return lblName.Text; }
+            set { lblName.Text = value; }
+        }
+
+        public string LblPriceText
+        {
+            get { return lblPrice.Text; }
+            set { lblPrice.Text = value; }
+        }
+
+
 
     }
 }

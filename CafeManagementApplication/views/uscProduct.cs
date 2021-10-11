@@ -13,13 +13,13 @@ namespace CafeManagementApplication.views
 {
     public partial class uscProduct : UserControl
     {
-        private string productname;
+        private string productName;
         private string price;
 
         public string ProductName
         {
-            get { return productname; }
-            set { productname = value; lblName.Text = value; }
+            get { return productName; }
+            set { productName = value; lblName.Text = value; }
         }
 
         public string Price
@@ -35,13 +35,12 @@ namespace CafeManagementApplication.views
 
         private void uscProduct_Click(object sender, EventArgs e)
         {
-            
+            LoadPanelController.Instance.LoadingInfoPanel(this.productName, this.price);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            LoadPanelController ld = new LoadPanelController();
-            ld.LoadingInfoPanel();
+            LoadPanelController.Instance.LoadingInfoPanel(this.productName, this.price);
         }
     }
 }
