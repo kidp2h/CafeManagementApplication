@@ -32,7 +32,6 @@ namespace CafeManagementApplication.views
         {
             InitializeComponent();
             LoadingListUsersForForm();
-
         }
 
         private void LoadingListUsersForForm()

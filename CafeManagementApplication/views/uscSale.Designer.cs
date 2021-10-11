@@ -159,17 +159,22 @@ namespace CafeManagementApplication.views
             this.iTotalPriceProducts.Location = new System.Drawing.Point(206, 18);
             this.iTotalPriceProducts.Multiline = true;
             this.iTotalPriceProducts.Name = "iTotalPriceProducts";
+            this.iTotalPriceProducts.ReadOnly = true;
             this.iTotalPriceProducts.Size = new System.Drawing.Size(248, 28);
             this.iTotalPriceProducts.TabIndex = 18;
+            this.iTotalPriceProducts.Text = "0";
             this.iTotalPriceProducts.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // iTotalPriceBill
             // 
+            this.iTotalPriceBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iTotalPriceBill.Location = new System.Drawing.Point(206, 92);
             this.iTotalPriceBill.Multiline = true;
             this.iTotalPriceBill.Name = "iTotalPriceBill";
+            this.iTotalPriceBill.ReadOnly = true;
             this.iTotalPriceBill.Size = new System.Drawing.Size(248, 28);
             this.iTotalPriceBill.TabIndex = 17;
+            this.iTotalPriceBill.Text = "0";
             this.iTotalPriceBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // pictureBox2

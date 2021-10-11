@@ -197,6 +197,12 @@
     <Compile Include="views\uscManager_Users.Designer.cs">
       <DependentUpon>uscManager_Users.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\uscProducts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="views\uscProducts.Designer.cs">
+      <DependentUpon>uscProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\uscSale.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -241,6 +247,9 @@
     <EmbeddedResource Include="views\uscManager_Users.resx">
       <DependentUpon>uscManager_Users.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\uscProducts.resx">
+      <DependentUpon>uscProducts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\uscSale.resx">
       <DependentUpon>uscSale.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +284,9 @@
     <Content Include="Core\Compression\Snappy\lib\win\snappy64.dll" />
     <Content Include="Core\Compression\Zstandard\lib\win\libzstd.dll" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\cupCaffe3.png" />
+    <None Include="Resources\cupCaffe.gif" />
+    <None Include="Resources\cupCaffe.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

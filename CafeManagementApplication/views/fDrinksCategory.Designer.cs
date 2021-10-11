@@ -44,7 +44,7 @@ namespace CafeManagementApplication.views
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpListProducts = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -177,6 +177,7 @@ namespace CafeManagementApplication.views
             this.button3.TabIndex = 12;
             this.button3.Text = "THÊM MÓN";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -189,19 +190,20 @@ namespace CafeManagementApplication.views
             this.button4.Text = "TÌM";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanel1
+            // flpListProducts
             // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.flpListProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.flowLayoutPanel1.BackgroundImage = global::CafeManagementApplication.Properties.Resources.logoCaffe;
-            this.flowLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 55);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(655, 684);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.flpListProducts.AutoScroll = true;
+            this.flpListProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.flpListProducts.BackgroundImage = global::CafeManagementApplication.Properties.Resources.logoCaffe;
+            this.flpListProducts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.flpListProducts.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.flpListProducts.Location = new System.Drawing.Point(12, 55);
+            this.flpListProducts.Name = "flpListProducts";
+            this.flpListProducts.Size = new System.Drawing.Size(655, 684);
+            this.flpListProducts.TabIndex = 0;
             // 
             // fDrinksCategory
             // 
@@ -221,7 +223,7 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.flowLayoutPanel2);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flpListProducts);
             this.Name = "fDrinksCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "fDrinksCategory";
@@ -234,7 +236,7 @@ namespace CafeManagementApplication.views
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flpListProducts;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel1;

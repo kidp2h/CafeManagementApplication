@@ -60,8 +60,8 @@ namespace CafeManagementApplication.views
             this.BackgroundImage = global::CafeManagementApplication.Properties.Resources.imgTable;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.lbTableName);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.lbTableName);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.Coral;
             this.Name = "uscSale_Table";

@@ -10,17 +10,12 @@ using System.Windows.Forms;
 
 namespace CafeManagementApplication.views
 {
-    public partial class fDrinksCategory : Form
+    public partial class uscProducts : UserControl
     {
-        public fDrinksCategory()
+        public uscProducts()
         {
             InitializeComponent();
-        }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            uscProducts usc = new uscProducts();
-            flpListProducts.Controls.Add(usc);
         }
     }
 }
