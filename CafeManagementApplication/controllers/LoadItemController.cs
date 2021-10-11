@@ -11,21 +11,21 @@ using System.Windows.Forms;
 
 namespace CafeManagementApplication.controllers
 {
-    public class LoadTable
+    public class LoadItemController
     {
-        private static LoadTable instance;
-        public static LoadTable Instance
+        private static LoadItemController instance;
+        public static LoadItemController Instance
         {
             get
             {
-                if (instance == null) instance = new LoadTable();
+                if (instance == null) instance = new LoadItemController();
                 return instance;
             }
         }
 
-        private LoadTable() { }
+        private LoadItemController() { }
 
-        public void LoadingTableList (FlowLayoutPanel a)
+        public void LoadingItemTable (FlowLayoutPanel flp)
         {
             dynamic tables = TableModel.Instance.getListTable();
             foreach(dynamic table in tables)
@@ -42,7 +42,19 @@ namespace CafeManagementApplication.controllers
                 {
                     temp.Status = "Bàn trống";                  
                 }
-                a.Controls.Add(temp);
+                flp.Controls.Add(temp);
+            }
+        }
+        public void LoadingItemProduct(FlowLayoutPanel flp)
+        {
+            dynamic products = ProductModel.Instance.getListProduct();
+            foreach (dynamic product in products)
+            {
+                uscProduct temp = new uscProduct();
+                temp.Tag = product["_id"].Value;
+                temp.Name = product["name"].Value;
+                temp.Price = product["price"].Value.ToString();
+                flp.Controls.Add(temp);
             }
         }
     }

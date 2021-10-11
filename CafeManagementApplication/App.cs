@@ -16,10 +16,11 @@ namespace CafeManagementApplication
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Database _ = new Database();
-            Application.Run(new fDrinksCategory());
+            Application.Run(new fCafeManager());
         }
     }
 }

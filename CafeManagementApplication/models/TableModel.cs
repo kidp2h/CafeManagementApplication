@@ -84,7 +84,7 @@ namespace CafeManagementApplication.models
             return table[0];
             
         }
-        public List<BsonDocument> getListTable()
+        public List<Table> getListTable()
         {
             IMongoCollection<Table> collection = this.getCollection();
             dynamic table = collection.Find(new BsonDocument()).ToList();

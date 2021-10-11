@@ -136,8 +136,9 @@
     <Compile Include="config\Database.cs" />
     <Compile Include="controllers\AUDRController.cs" />
     <Compile Include="controllers\AuthController.cs" />
-    <Compile Include="controllers\LoadingListViewController.cs" />
-    <Compile Include="controllers\LoadTable.cs" />
+    <Compile Include="controllers\LoadListController.cs" />
+    <Compile Include="controllers\LoadPanelController.cs" />
+    <Compile Include="controllers\LoadItemController.cs" />
     <Compile Include="helpers\Config.cs" />
     <Compile Include="helpers\Hash.cs" />
     <Compile Include="helpers\SaveUser.cs" />
@@ -160,11 +161,11 @@
     <Compile Include="views\fCafeManager.Designer.cs">
       <DependentUpon>fCafeManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\fDrinksCategory.cs">
+    <Compile Include="views\fAddProducts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\fDrinksCategory.Designer.cs">
-      <DependentUpon>fDrinksCategory.cs</DependentUpon>
+    <Compile Include="views\fAddProducts.Designer.cs">
+      <DependentUpon>fAddProducts.cs</DependentUpon>
     </Compile>
     <Compile Include="views\fLogin.cs">
       <SubType>Form</SubType>
@@ -196,11 +197,11 @@
     <Compile Include="views\uscManager_Users.Designer.cs">
       <DependentUpon>uscManager_Users.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\uscProducts.cs">
+    <Compile Include="views\uscProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="views\uscProducts.Designer.cs">
-      <DependentUpon>uscProducts.cs</DependentUpon>
+    <Compile Include="views\uscProduct.Designer.cs">
+      <DependentUpon>uscProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="views\uscSale.cs">
       <SubType>UserControl</SubType>
@@ -228,8 +229,8 @@
     <EmbeddedResource Include="views\fCafeManager.resx">
       <DependentUpon>fCafeManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\fDrinksCategory.resx">
-      <DependentUpon>fDrinksCategory.cs</DependentUpon>
+    <EmbeddedResource Include="views\fAddProducts.resx">
+      <DependentUpon>fAddProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\fLogin.resx">
       <DependentUpon>fLogin.cs</DependentUpon>
@@ -246,8 +247,8 @@
     <EmbeddedResource Include="views\uscManager_Users.resx">
       <DependentUpon>uscManager_Users.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\uscProducts.resx">
-      <DependentUpon>uscProducts.cs</DependentUpon>
+    <EmbeddedResource Include="views\uscProduct.resx">
+      <DependentUpon>uscProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\uscSale.resx">
       <DependentUpon>uscSale.cs</DependentUpon>

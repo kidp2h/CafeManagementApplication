@@ -39,7 +39,7 @@ namespace CafeManagementApplication.models
             return collection;
         }
 
-        public BsonDocument getListProduct()
+        public List<BsonDocument> getListProduct()
         {
             IMongoCollection<Product> collection = this.getCollection();
             dynamic listProduct = collection.Aggregate()

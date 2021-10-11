@@ -17,7 +17,7 @@ namespace CafeManagementApplication.controllers
             }
         }
 
-        public dynamic NewData(string nameData, dynamic dataInput)
+        public dynamic NewData(string nameData, dynamic view)
         {
             if (nameData == "Table")
             {
@@ -30,39 +30,19 @@ namespace CafeManagementApplication.controllers
             if (nameData == "User")
             {
                 User user = new User();
-                foreach (dynamic item in dataInput.Controls)
-                {
-                    if (item.GetType() == typeof(TextBox))
-                    {
-                        if (item.Name == "iName") user.Fullname = item.Text;
-                        if (item.Name == "iAge") user.Age = int.Parse(item.Text);
-                        if (item.Name == "iUserName") user.Username = item.Text;
-                        if (item.Name == "iUserPassword") user.Password = item.Text;
-                    }
-                    if (item.GetType() == typeof(Panel))
-                    {
-                        if (item.Name == "pnlGender") foreach (dynamic radio in item.Controls)
-                        {
-                                if (radio.Checked) user.Gender = radio.Text;
-                        }
-                        if (item.Name == "pnlRole") foreach (dynamic radio in item.Controls)
-                        {
-                                if (radio.Checked) if (radio.Text == "Quản lý") user.Role = types.Role.MANAGER;
-                                    else user.Role = types.Role.STAFF;
-                        }
-                    }
-
-                }
-
-
-
-
+                user.Fullname = view.inputNameText;
+                user.Age = int.Parse(view.inputAgeText);
+                user.Gender = view.inputGenderText;
+                user.Username = view.inputUsernameText;
+                user.Password = view.inputUserpasswordText;
+                user.Role = view.inputRole;
                 return user;
+                
             }
             return null;
         }
 
-        public void AddData(string nameData, dynamic dataInput)
+        public void AddData(string nameData, dynamic view)
         {
             if(nameData == "Table")
             {
@@ -74,8 +54,9 @@ namespace CafeManagementApplication.controllers
             }    
             if (nameData == "User")
             {
-                User user = NewData(nameData, dataInput);
+                User user = NewData(nameData, view);
                 UserModel.Instance.addUser(user);
+                ResetDataInput(view);
             }
         }
 
@@ -129,19 +110,14 @@ namespace CafeManagementApplication.controllers
         }
 
 
-        public void ResetDataInput(dynamic dataInput)
+        public void ResetDataInput(dynamic view)
         {
-            foreach (dynamic item in dataInput.Controls)
-            {
-                if (item.GetType() == typeof(TextBox))
-                {
-                    item.Text = "";           
-                }
-                if (item.GetType() == typeof(Panel))
-                {
-                    item.Controls[0].Checked = true;     
-                }
-            }
+            view.inputNameText = "";
+            view.inputAge = "";
+            view.inputGenderText = "Nam";
+            view.inputUsernameText = "";
+            view.inputUserpasswordText = "";
+            view.inputRole = 0;
         }
     }
 }

@@ -36,13 +36,12 @@ namespace CafeManagementApplication.views
 
         private void LoadingListUsersForForm()
         {
-            LoadingListViewController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
+            LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AUDRController.Instance.AddData("User", pnlInfo);
-            AUDRController.Instance.ResetDataInput(pnlInfo);
+            AUDRController.Instance.AddData("User", this);
             LoadingListUsersForForm();
             
         }
@@ -71,6 +70,54 @@ namespace CafeManagementApplication.views
             }
         }
 
-      
+        public string inputNameText
+        {
+            get { return iName.Text; }
+            set { iName.Text = value;  }
+        }
+        public string inputAgeText
+        {
+            get { return iAge.Text; }
+            set { iAge.Text = value; }
+        }
+        public string inputUsernameText
+        {
+            get { return iUserName.Text; }
+            set { iUserName.Text = value; }
+        }
+        public string inputUserpasswordText
+        {
+            get { return iUserPassword.Text; }
+            set { iUserPassword.Text = value; }
+        }
+        public string inputGenderText
+        {
+            get
+            {
+                if (rdoMale.Checked) return "Nam";
+                else if (rdoFemale.Checked) return "Nữ";
+                else return "Khác";
+            }
+            set
+            {
+                if (value == "Nam") rdoMale.Checked = true;
+                else if (value == "Nữ") rdoFemale.Checked = true;
+                else rdoOther.Checked = true;
+            }
+        }
+        public int inputRole
+        {
+            get
+            {
+                if (rdoManager.Checked) return 1;
+                else return 0;
+            }
+            set
+            {
+                if (value == 1) rdoManager.Checked = true;
+                else rdoSaff.Checked = true;
+            }
+        }
+
     }
 }

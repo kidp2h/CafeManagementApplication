@@ -1,7 +1,7 @@
 ﻿
 namespace CafeManagementApplication.views
 {
-    partial class fDrinksCategory
+    partial class fAddProducts
     {
         /// <summary>
         /// Required designer variable.
@@ -31,9 +31,9 @@ namespace CafeManagementApplication.views
         {
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.pnlInfo = new System.Windows.Forms.Panel();
+            this.lblPrice = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -45,7 +45,7 @@ namespace CafeManagementApplication.views
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.flpListProducts = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1.SuspendLayout();
+            this.pnlInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel2
@@ -63,36 +63,38 @@ namespace CafeManagementApplication.views
             this.textBox1.Size = new System.Drawing.Size(221, 22);
             this.textBox1.TabIndex = 2;
             // 
-            // panel1
+            // pnlInfo
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(729, 344);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(323, 147);
-            this.panel1.TabIndex = 3;
+            this.pnlInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlInfo.Controls.Add(this.lblPrice);
+            this.pnlInfo.Controls.Add(this.lblName);
+            this.pnlInfo.Controls.Add(this.label1);
+            this.pnlInfo.Location = new System.Drawing.Point(729, 344);
+            this.pnlInfo.Name = "pnlInfo";
+            this.pnlInfo.Size = new System.Drawing.Size(323, 147);
+            this.pnlInfo.TabIndex = 3;
             // 
-            // label3
+            // lblPrice
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(130, 76);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 25);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "120000";
+            this.lblPrice.Font = new System.Drawing.Font("Cooper Black", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrice.ForeColor = System.Drawing.Color.Black;
+            this.lblPrice.Location = new System.Drawing.Point(70, 74);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(202, 39);
+            this.lblPrice.TabIndex = 4;
+            this.lblPrice.Text = "32000";
+            this.lblPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // lblName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(95, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 25);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Cafe Đâm Mê";
+            this.lblName.Font = new System.Drawing.Font("Cooper Black", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblName.Location = new System.Drawing.Point(3, 28);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(315, 46);
+            this.lblName.TabIndex = 3;
+            this.lblName.Text = "Capuchino";
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
@@ -177,7 +179,6 @@ namespace CafeManagementApplication.views
             this.button3.TabIndex = 12;
             this.button3.Text = "THÊM MÓN";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -205,7 +206,7 @@ namespace CafeManagementApplication.views
             this.flpListProducts.Size = new System.Drawing.Size(655, 684);
             this.flpListProducts.TabIndex = 0;
             // 
-            // fDrinksCategory
+            // fAddProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -220,15 +221,15 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flpListProducts);
-            this.Name = "fDrinksCategory";
+            this.Name = "fAddProducts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "fDrinksCategory";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlInfo.ResumeLayout(false);
+            this.pnlInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,9 +240,7 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.FlowLayoutPanel flpListProducts;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel pnlInfo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RichTextBox richTextBox1;
@@ -252,5 +251,7 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label lblPrice;
+        private System.Windows.Forms.Label lblName;
     }
 }
