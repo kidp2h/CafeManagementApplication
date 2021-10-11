@@ -46,7 +46,10 @@ namespace CafeManagementApplication.views
         {
             return iTotalPriceProducts;
         }
-
+        public string LblTableName
+        {
+            set { lblTableName.Text = value; }
+        }
         public string BtnAddTag
         {
             get { return btnAdd.Tag.ToString(); }

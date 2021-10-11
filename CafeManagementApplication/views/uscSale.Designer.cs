@@ -49,6 +49,7 @@ namespace CafeManagementApplication.views
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.flpTableList = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblTableName = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -63,7 +64,7 @@ namespace CafeManagementApplication.views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(210, 16);
+            this.label2.Location = new System.Drawing.Point(116, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(281, 29);
             this.label2.TabIndex = 1;
@@ -74,6 +75,7 @@ namespace CafeManagementApplication.views
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoSize = true;
+            this.panel2.Controls.Add(this.lblTableName);
             this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Controls.Add(this.lvBillforOneTable);
             this.panel2.Controls.Add(this.panel1);
@@ -278,6 +280,19 @@ namespace CafeManagementApplication.views
             this.flpTableList.Size = new System.Drawing.Size(715, 720);
             this.flpTableList.TabIndex = 0;
             // 
+            // lblTableName
+            // 
+            this.lblTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTableName.AutoSize = true;
+            this.lblTableName.Font = new System.Drawing.Font("Magneto", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTableName.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblTableName.Location = new System.Drawing.Point(403, 9);
+            this.lblTableName.Name = "lblTableName";
+            this.lblTableName.Size = new System.Drawing.Size(0, 41);
+            this.lblTableName.TabIndex = 16;
+            // 
             // uscSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -323,5 +338,6 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.TextBox iTotalPriceProducts;
         private System.Windows.Forms.TextBox iTotalPriceBill;
+        private System.Windows.Forms.Label lblTableName;
     }
 }
