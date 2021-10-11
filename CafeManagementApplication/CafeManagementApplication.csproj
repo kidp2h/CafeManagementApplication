@@ -153,7 +153,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="types\enums.cs" />
-    <Compile Include="types\interfaces.cs" />
     <Compile Include="views\fCafeManager.cs">
       <SubType>Form</SubType>
     </Compile>

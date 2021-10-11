@@ -30,7 +30,7 @@ namespace CafeManagementApplication
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fLogin));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlLogin = new System.Windows.Forms.Panel();
             this.lblUserPassWord = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
@@ -38,22 +38,22 @@ namespace CafeManagementApplication
             this.inputPassword = new System.Windows.Forms.TextBox();
             this.inputUsername = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1.SuspendLayout();
+            this.pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnlLogin
             // 
-            this.panel1.Controls.Add(this.lblUserPassWord);
-            this.panel1.Controls.Add(this.lblUserName);
-            this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Controls.Add(this.btnLogin);
-            this.panel1.Controls.Add(this.inputPassword);
-            this.panel1.Controls.Add(this.inputUsername);
-            this.panel1.Location = new System.Drawing.Point(304, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(268, 297);
-            this.panel1.TabIndex = 0;
+            this.pnlLogin.Controls.Add(this.lblUserPassWord);
+            this.pnlLogin.Controls.Add(this.lblUserName);
+            this.pnlLogin.Controls.Add(this.btnExit);
+            this.pnlLogin.Controls.Add(this.btnLogin);
+            this.pnlLogin.Controls.Add(this.inputPassword);
+            this.pnlLogin.Controls.Add(this.inputUsername);
+            this.pnlLogin.Location = new System.Drawing.Point(304, 12);
+            this.pnlLogin.Name = "pnlLogin";
+            this.pnlLogin.Size = new System.Drawing.Size(268, 297);
+            this.pnlLogin.TabIndex = 0;
             // 
             // lblUserPassWord
             // 
@@ -125,15 +125,15 @@ namespace CafeManagementApplication
             this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(577, 321);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlLogin);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fLogin_FormClosing);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlLogin.ResumeLayout(false);
+            this.pnlLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -141,7 +141,7 @@ namespace CafeManagementApplication
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlLogin;
         private System.Windows.Forms.Label lblUserPassWord;
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.Button btnExit;
