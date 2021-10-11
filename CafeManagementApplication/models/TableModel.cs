@@ -87,7 +87,7 @@ namespace CafeManagementApplication.models
         public List<BsonDocument> getListTable()
         {
             IMongoCollection<Table> collection = this.getCollection();
-            dynamic table = this.lookupDepthTables().ToList();
+            dynamic table = collection.Find(new BsonDocument()).ToList();
             return table;
         }
         public void addTable(Table newTable)

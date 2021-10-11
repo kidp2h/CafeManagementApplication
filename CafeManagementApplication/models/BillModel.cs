@@ -84,7 +84,6 @@ namespace CafeManagementApplication.models
         public void addProductToBill(string idBill, string idProduct)
         {
             BsonDocument _idBill = new BsonDocument("_id", new ObjectId(idBill));
-            BsonDocument _idProduct = new BsonDocument("_id", new ObjectId(idProduct));
             IMongoCollection<Bill> collection = this.getCollection();
             BsonDocument filter = new BsonDocument{
                 {"_id",new ObjectId(idBill) },
@@ -117,6 +116,27 @@ namespace CafeManagementApplication.models
                     };
                 collection.UpdateOne(filter, "{$inc :{'products.$.amount' : 1}}");
             }
+        }
+
+        public void removeProductFromBill(string idBill, string idProduct)
+        {
+            BsonDocument _idBill = new BsonDocument("_id", new ObjectId(idBill));
+            IMongoCollection<Bill> collection = this.getCollection();
+            BsonDocument filter = new BsonDocument{
+                {"_id",new ObjectId(idBill) },
+                {"products.product", new ObjectId(idProduct) }
+            };
+            List<Bill> listProduct = collection.Find(filter).ToList();
+            UpdateDefinition<Bill> update = new BsonDocument
+                    {
+                        {"$pull", new BsonDocument{
+                            {"products", new BsonDocument{
+                                {"product", new ObjectId(idProduct)}
+                            }
+                            }}
+                        }
+                    };
+            collection.UpdateOne(_idBill, update);
         }
     }
 }
