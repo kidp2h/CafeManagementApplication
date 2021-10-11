@@ -1,12 +1,6 @@
 ﻿using CafeManagementApplication.models;
-using CafeManagementApplication.views;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CafeManagementApplication.controllers
@@ -38,7 +32,7 @@ namespace CafeManagementApplication.controllers
                 User user = new User();
                 foreach (dynamic item in dataInput.Controls)
                 {
-                    if (item.GetType() == typeof(RichTextBox))
+                    if (item.GetType() == typeof(TextBox))
                     {
                         if (item.Name == "iName") user.Fullname = item.Text;
                         if (item.Name == "iAge") user.Age = int.Parse(item.Text);
@@ -48,14 +42,14 @@ namespace CafeManagementApplication.controllers
                     if (item.GetType() == typeof(Panel))
                     {
                         if (item.Name == "pnlGender") foreach (dynamic radio in item.Controls)
-                            {
+                        {
                                 if (radio.Checked) user.Gender = radio.Text;
-                            }
+                        }
                         if (item.Name == "pnlRole") foreach (dynamic radio in item.Controls)
-                            {
+                        {
                                 if (radio.Checked) if (radio.Text == "Quản lý") user.Role = types.Role.MANAGER;
                                     else user.Role = types.Role.STAFF;
-                            }
+                        }
                     }
 
                 }
@@ -139,7 +133,7 @@ namespace CafeManagementApplication.controllers
         {
             foreach (dynamic item in dataInput.Controls)
             {
-                if (item.GetType() == typeof(RichTextBox))
+                if (item.GetType() == typeof(TextBox))
                 {
                     item.Text = "";           
                 }
@@ -147,7 +141,6 @@ namespace CafeManagementApplication.controllers
                 {
                     item.Controls[0].Checked = true;     
                 }
-
             }
         }
     }

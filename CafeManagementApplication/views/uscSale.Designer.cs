@@ -29,43 +29,32 @@ namespace CafeManagementApplication.views
         /// </summary>
         private void InitializeComponent()
         {
-            this.flpTableList = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.lvBillforOneTable = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.iTotalPriceProducts = new System.Windows.Forms.TextBox();
+            this.iTotalPriceBill = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.flpTableList = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // flpTableList
-            // 
-            this.flpTableList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flpTableList.AutoScroll = true;
-            this.flpTableList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.flpTableList.BackgroundImage = global::CafeManagementApplication.Properties.Resources.logoCaffe;
-            this.flpTableList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.flpTableList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flpTableList.Location = new System.Drawing.Point(3, 51);
-            this.flpTableList.Name = "flpTableList";
-            this.flpTableList.Size = new System.Drawing.Size(729, 706);
-            this.flpTableList.TabIndex = 0;
             // 
             // label2
             // 
@@ -90,16 +79,16 @@ namespace CafeManagementApplication.views
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(738, 3);
+            this.panel2.Location = new System.Drawing.Point(720, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(657, 771);
+            this.panel2.Size = new System.Drawing.Size(675, 774);
             this.panel2.TabIndex = 2;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(92, 633);
+            this.button1.Location = new System.Drawing.Point(92, 636);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(226, 64);
             this.button1.TabIndex = 15;
@@ -108,32 +97,80 @@ namespace CafeManagementApplication.views
             // 
             // lvBillforOneTable
             // 
-            this.lvBillforOneTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvBillforOneTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.lvBillforOneTable.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.lvBillforOneTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvBillforOneTable.GridLines = true;
             this.lvBillforOneTable.HideSelection = false;
-            this.lvBillforOneTable.Location = new System.Drawing.Point(24, 48);
+            this.lvBillforOneTable.Location = new System.Drawing.Point(4, 51);
             this.lvBillforOneTable.Name = "lvBillforOneTable";
-            this.lvBillforOneTable.Size = new System.Drawing.Size(613, 388);
+            this.lvBillforOneTable.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lvBillforOneTable.Size = new System.Drawing.Size(668, 388);
             this.lvBillforOneTable.TabIndex = 0;
             this.lvBillforOneTable.UseCompatibleStateImageBehavior = false;
+            this.lvBillforOneTable.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Tên sản phẩm";
+            this.columnHeader1.Width = 185;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Giá sản phẩm";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader2.Width = 185;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Số lượng";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 121;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Thành tiền";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader4.Width = 173;
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.iTotalPriceProducts);
+            this.panel1.Controls.Add(this.iTotalPriceBill);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.numericUpDown1);
-            this.panel1.Controls.Add(this.richTextBox4);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.richTextBox1);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(24, 442);
+            this.panel1.Location = new System.Drawing.Point(24, 445);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(630, 149);
+            this.panel1.Size = new System.Drawing.Size(648, 149);
             this.panel1.TabIndex = 12;
+            // 
+            // iTotalPriceProducts
+            // 
+            this.iTotalPriceProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iTotalPriceProducts.Location = new System.Drawing.Point(206, 18);
+            this.iTotalPriceProducts.Multiline = true;
+            this.iTotalPriceProducts.Name = "iTotalPriceProducts";
+            this.iTotalPriceProducts.Size = new System.Drawing.Size(248, 28);
+            this.iTotalPriceProducts.TabIndex = 18;
+            this.iTotalPriceProducts.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // iTotalPriceBill
+            // 
+            this.iTotalPriceBill.Location = new System.Drawing.Point(206, 92);
+            this.iTotalPriceBill.Multiline = true;
+            this.iTotalPriceBill.Name = "iTotalPriceBill";
+            this.iTotalPriceBill.Size = new System.Drawing.Size(248, 28);
+            this.iTotalPriceBill.TabIndex = 17;
+            this.iTotalPriceBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // pictureBox2
             // 
@@ -141,7 +178,7 @@ namespace CafeManagementApplication.views
             this.pictureBox2.Image = global::CafeManagementApplication.Properties.Resources.logoCaffe;
             this.pictureBox2.Location = new System.Drawing.Point(472, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(158, 149);
+            this.pictureBox2.Size = new System.Drawing.Size(176, 149);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 16;
             this.pictureBox2.TabStop = false;
@@ -155,49 +192,33 @@ namespace CafeManagementApplication.views
             this.numericUpDown1.TabIndex = 15;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // richTextBox4
-            // 
-            this.richTextBox4.Location = new System.Drawing.Point(206, 91);
-            this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(248, 30);
-            this.richTextBox4.TabIndex = 14;
-            this.richTextBox4.Text = "";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(17, 104);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(17, 92);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(120, 20);
+            this.label5.Size = new System.Drawing.Size(155, 29);
             this.label5.TabIndex = 12;
-            this.label5.Text = "THÀNH TIỀN";
+            this.label5.Text = "TỔNG TIỀN";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 65);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(17, 56);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 20);
+            this.label3.Size = new System.Drawing.Size(125, 29);
             this.label3.TabIndex = 11;
             this.label3.Text = "GIẢM GIÁ";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(206, 17);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(248, 30);
-            this.richTextBox1.TabIndex = 10;
-            this.richTextBox1.Text = "";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(16, 27);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(17, 18);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 20);
+            this.label4.Size = new System.Drawing.Size(140, 29);
             this.label4.TabIndex = 8;
             this.label4.Text = "TIỀN MÓN";
             // 
@@ -205,7 +226,7 @@ namespace CafeManagementApplication.views
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(371, 633);
+            this.button2.Location = new System.Drawing.Point(371, 636);
             this.button2.Margin = new System.Windows.Forms.Padding(10);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(226, 64);
@@ -218,7 +239,7 @@ namespace CafeManagementApplication.views
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(265, 19);
+            this.label1.Location = new System.Drawing.Point(258, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(226, 29);
             this.label1.TabIndex = 3;
@@ -233,8 +254,23 @@ namespace CafeManagementApplication.views
             this.panel3.Controls.Add(this.flpTableList);
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(732, 774);
+            this.panel3.Size = new System.Drawing.Size(718, 774);
             this.panel3.TabIndex = 4;
+            // 
+            // flpTableList
+            // 
+            this.flpTableList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flpTableList.AutoScroll = true;
+            this.flpTableList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.flpTableList.BackgroundImage = global::CafeManagementApplication.Properties.Resources.logoCaffe;
+            this.flpTableList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.flpTableList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.flpTableList.Location = new System.Drawing.Point(3, 51);
+            this.flpTableList.Name = "flpTableList";
+            this.flpTableList.Size = new System.Drawing.Size(715, 720);
+            this.flpTableList.TabIndex = 0;
             // 
             // uscSale
             // 
@@ -271,11 +307,15 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.RichTextBox richTextBox4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.TextBox iTotalPriceProducts;
+        private System.Windows.Forms.TextBox iTotalPriceBill;
     }
 }

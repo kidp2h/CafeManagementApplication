@@ -28,45 +28,22 @@ namespace CafeManagementApplication.controllers
         public void LoadingTableList (FlowLayoutPanel a)
         {
             dynamic tables = TableModel.Instance.getListTable();
-            for (int i = 0; i < tables.Count; i++)
+            foreach(dynamic table in tables)
             {
                 uscSale_Table temp = new uscSale_Table();
-                temp.TableName = tables[i]["tableName"].Value;
+                temp.Tag = table["_id"].Value;
+                temp.TableName = table["tableName"].Value;
 
-                if (tables[i]["status"].Value == 1)
+                if (table["status"].Value == 1)
                 {
-                    temp.Status = "Có người";
-                    temp.BackColor = Color.FromArgb(255, 192, 192);
+                    temp.Status = "Có người";                 
                 }
                 else
                 {
-                    temp.Status = "Bàn trống";
-                    temp.BackColor = Color.FromArgb(255, 128, 0);
+                    temp.Status = "Bàn trống";                  
                 }
-
                 a.Controls.Add(temp);
             }
         }
-
-        /*
-           for (int i = doc.Count - 1; i >= 0; i--)
-           {
-               uscSale_Table temp = new uscSale_Table();
-               temp.TableName = doc[i]["tableName"].Value;
-
-               if (doc[i]["status"].Value == 1)
-               {
-                   temp.Status = "Có người";
-                   temp.BackColor = Color.FromArgb(255, 192, 192);
-               }
-               else
-               {
-                   temp.Status = "Bàn trống";
-                   temp.BackColor = Color.FromArgb(255, 128, 0);
-               }
-
-               flpTableList.Controls.Add(temp);
-           }
-   */
     }
 }

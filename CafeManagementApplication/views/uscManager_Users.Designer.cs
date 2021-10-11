@@ -39,12 +39,7 @@ namespace CafeManagementApplication.views
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button4 = new System.Windows.Forms.Button();
-            this.iName = new System.Windows.Forms.RichTextBox();
-            this.iAge = new System.Windows.Forms.RichTextBox();
-            this.iUserName = new System.Windows.Forms.RichTextBox();
-            this.iUserPassword = new System.Windows.Forms.RichTextBox();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.pnlGender = new System.Windows.Forms.Panel();
             this.rdoMale = new System.Windows.Forms.RadioButton();
@@ -59,12 +54,28 @@ namespace CafeManagementApplication.views
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.iName = new System.Windows.Forms.TextBox();
+            this.iAge = new System.Windows.Forms.TextBox();
+            this.iUserName = new System.Windows.Forms.TextBox();
+            this.iUserPassword = new System.Windows.Forms.TextBox();
+            btnAdd = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlInfo.SuspendLayout();
             this.pnlGender.SuspendLayout();
             this.pnlRole.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btnAdd
+            // 
+            btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnAdd.Location = new System.Drawing.Point(0, 0);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new System.Drawing.Size(262, 85);
+            btnAdd.TabIndex = 4;
+            btnAdd.Text = "Thêm";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lvUsers
             // 
@@ -115,7 +126,7 @@ namespace CafeManagementApplication.views
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnAdd);
+            this.panel1.Controls.Add(btnAdd);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Location = new System.Drawing.Point(758, 459);
@@ -145,72 +156,28 @@ namespace CafeManagementApplication.views
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(149, 19);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(691, 33);
-            this.richTextBox1.TabIndex = 5;
-            this.richTextBox1.Text = "";
-            // 
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(846, 19);
+            this.button4.Location = new System.Drawing.Point(796, 19);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(123, 33);
             this.button4.TabIndex = 6;
             this.button4.Text = "Tìm kiếm";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // iName
-            // 
-            this.iName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iName.Location = new System.Drawing.Point(141, 3);
-            this.iName.Name = "iName";
-            this.iName.Size = new System.Drawing.Size(445, 33);
-            this.iName.TabIndex = 7;
-            this.iName.Text = "";
-            // 
-            // iAge
-            // 
-            this.iAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iAge.Location = new System.Drawing.Point(141, 52);
-            this.iAge.Name = "iAge";
-            this.iAge.Size = new System.Drawing.Size(445, 33);
-            this.iAge.TabIndex = 8;
-            this.iAge.Text = "";
-            // 
-            // iUserName
-            // 
-            this.iUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iUserName.Location = new System.Drawing.Point(141, 160);
-            this.iUserName.Name = "iUserName";
-            this.iUserName.Size = new System.Drawing.Size(445, 33);
-            this.iUserName.TabIndex = 10;
-            this.iUserName.Text = "";
-            // 
-            // iUserPassword
-            // 
-            this.iUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iUserPassword.Location = new System.Drawing.Point(141, 212);
-            this.iUserPassword.Name = "iUserPassword";
-            this.iUserPassword.Size = new System.Drawing.Size(445, 33);
-            this.iUserPassword.TabIndex = 11;
-            this.iUserPassword.Text = "";
-            // 
             // pnlInfo
             // 
+            this.pnlInfo.Controls.Add(this.iUserPassword);
+            this.pnlInfo.Controls.Add(this.iUserName);
+            this.pnlInfo.Controls.Add(this.iAge);
+            this.pnlInfo.Controls.Add(this.iName);
             this.pnlInfo.Controls.Add(this.pnlGender);
             this.pnlInfo.Controls.Add(this.label6);
             this.pnlInfo.Controls.Add(this.label2);
             this.pnlInfo.Controls.Add(this.pnlRole);
             this.pnlInfo.Controls.Add(this.label5);
-            this.pnlInfo.Controls.Add(this.iUserPassword);
-            this.pnlInfo.Controls.Add(this.iName);
             this.pnlInfo.Controls.Add(this.label4);
-            this.pnlInfo.Controls.Add(this.iUserName);
-            this.pnlInfo.Controls.Add(this.iAge);
             this.pnlInfo.Controls.Add(this.label3);
             this.pnlInfo.Controls.Add(this.label1);
             this.pnlInfo.Location = new System.Drawing.Point(99, 462);
@@ -358,30 +325,62 @@ namespace CafeManagementApplication.views
             this.label1.TabIndex = 12;
             this.label1.Text = "Họ và tên:";
             // 
-            // btnAdd
+            // textBox1
             // 
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(0, 0);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(262, 85);
-            this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "Thêm";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.textBox1.Location = new System.Drawing.Point(162, 19);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(628, 33);
+            this.textBox1.TabIndex = 13;
+            // 
+            // iName
+            // 
+            this.iName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iName.Location = new System.Drawing.Point(138, 7);
+            this.iName.Multiline = true;
+            this.iName.Name = "iName";
+            this.iName.Size = new System.Drawing.Size(441, 33);
+            this.iName.TabIndex = 14;
+            // 
+            // iAge
+            // 
+            this.iAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iAge.Location = new System.Drawing.Point(138, 56);
+            this.iAge.Multiline = true;
+            this.iAge.Name = "iAge";
+            this.iAge.Size = new System.Drawing.Size(441, 33);
+            this.iAge.TabIndex = 25;
+            // 
+            // iUserName
+            // 
+            this.iUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iUserName.Location = new System.Drawing.Point(138, 164);
+            this.iUserName.Multiline = true;
+            this.iUserName.Name = "iUserName";
+            this.iUserName.Size = new System.Drawing.Size(441, 33);
+            this.iUserName.TabIndex = 26;
+            // 
+            // iUserPassword
+            // 
+            this.iUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iUserPassword.Location = new System.Drawing.Point(138, 216);
+            this.iUserPassword.Multiline = true;
+            this.iUserPassword.Name = "iUserPassword";
+            this.iUserPassword.Size = new System.Drawing.Size(441, 33);
+            this.iUserPassword.TabIndex = 27;
             // 
             // uscManager_Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lvUsers);
             this.Name = "uscManager_Users";
             this.Size = new System.Drawing.Size(1115, 777);
-           
             this.panel1.ResumeLayout(false);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
@@ -390,6 +389,7 @@ namespace CafeManagementApplication.views
             this.pnlRole.ResumeLayout(false);
             this.pnlRole.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -397,12 +397,7 @@ namespace CafeManagementApplication.views
 
         private System.Windows.Forms.ListView lvUsers;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.RichTextBox iName;
-        private System.Windows.Forms.RichTextBox iAge;
-        private System.Windows.Forms.RichTextBox iUserName;
-        private System.Windows.Forms.RichTextBox iUserPassword;
         private System.Windows.Forms.Panel pnlInfo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -424,6 +419,10 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnlGender;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TextBox iUserPassword;
+        private System.Windows.Forms.TextBox iUserName;
+        private System.Windows.Forms.TextBox iAge;
+        private System.Windows.Forms.TextBox iName;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
