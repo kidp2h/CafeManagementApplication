@@ -71,13 +71,15 @@ namespace CafeManagementApplication.controllers
             dynamic table = TableModel.Instance.getBillFromIdTable(tableID);
             if(table != null)
             {
+                uscSale.Instance.BtnAddTag = table["billId"].Value.ToString();
                 foreach (dynamic product in table["bill"])
                 {
 
                     ListViewItem lvItem = new ListViewItem(product["product"]["name"].Value);
+                   
 
                     int price = product["product"]["price"].Value;
-                    lvItem.SubItems.Add(price.ToString());
+                    lvItem.SubItems.Add(price.ToString()+ "đ");
 
                     int amount = product["amount"].Value;
                     lvItem.SubItems.Add(amount.ToString());

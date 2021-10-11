@@ -18,16 +18,6 @@ namespace CafeManagementApplication.views
     public partial class uscSale : UserControl
     {
         private static uscSale instance;
-        public ListView getLvBillforOneTable()
-        {
-            return lvBillforOneTable;
-        }
-
-        public TextBox getITotalPriceProducts()
-        {
-            return iTotalPriceProducts;
-        }
-
         public static uscSale Instance
         {
             get
@@ -47,11 +37,35 @@ namespace CafeManagementApplication.views
 
         }
 
+        public ListView getLvBillforOneTable()
+        {
+            return lvBillforOneTable;
+        }
+
+        public TextBox getITotalPriceProducts()
+        {
+            return iTotalPriceProducts;
+        }
+
+        public string BtnAddTag
+        {
+            get { return btnAdd.Tag.ToString(); }
+            set { btnAdd.Tag = value; }
+        }
+
         private void LoadListTableForForm()
         {
             LoadItemController.Instance.LoadingItemTable(flpTableList);
         }
 
-   
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            fAddProducts f = new fAddProducts();
+            f.Show();
+            f.BillID = btnAdd.Tag.ToString();
+           
+        }
+
+        
     }
 }

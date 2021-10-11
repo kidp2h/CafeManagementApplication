@@ -21,13 +21,14 @@ namespace CafeManagementApplication.controllers
         }
 
         private dynamic view;
-        public void setView(fAddProducts view)
+        public void setView(dynamic view)
         {
             this.view = view;
         }
-        public void LoadingInfoPanel(string name, string price)
+        public void LoadingInfoProduct(string name, string price, string tag)
         {
             this.view.LblNameText= name;
+            this.view.LblNameTag = tag;
             this.view.LblPriceText = price;
         }
     }

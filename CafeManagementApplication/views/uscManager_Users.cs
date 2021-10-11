@@ -37,19 +37,27 @@ namespace CafeManagementApplication.views
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AUDRController.Instance.AddData("User", this);
-            LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
+            User user = ManagerController.Instance.NewData("User", this);
+            ListViewItem item = new ListViewItem(user.Fullname);
+            item.SubItems.Add(user.Age.ToString());
+            item.SubItems.Add(user.Gender);
+            item.SubItems.Add(user.Username);
+            item.SubItems.Add(user.Role == Role.MANAGER ? "Quản lý" : "Nhân viên");
+            lvUsers.Items.Add(item);
+            ManagerController.Instance.AddData("User", user, this);
 
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            AUDRController.Instance.UpdateData("User", this);
+            ManagerController.Instance.UpdateData("User", this);
             LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            AUDRController.Instance.DeleteData("User", this);
-            LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
+            lvUsers.Items.RemoveAt(int.Parse(btnDelete.Tag.ToString()));
+
+            ManagerController.Instance.DeleteData("User", this);
+            
         } 
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -58,6 +66,7 @@ namespace CafeManagementApplication.views
         private void lvUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListView lv = sender as ListView;
+            
             if(lv.SelectedItems.Count>0)
             {
                 ListViewItem item = lv.SelectedItems[0];
@@ -65,6 +74,7 @@ namespace CafeManagementApplication.views
                 iName.Text = item.SubItems[0].Text;
                 iAge.Text = item.SubItems[1].Text;
                 iUserName.Text = item.SubItems[2].Text;
+                btnDelete.Tag = lv.Items.IndexOf(item);
             }
         }
 
@@ -124,5 +134,19 @@ namespace CafeManagementApplication.views
         }
         #endregion
 
+        private void lvUsers_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            ListView lv = sender as ListView;
+
+            if (lv.SelectedItems.Count > 0)
+            {
+                ListViewItem item = lv.SelectedItems[0];
+                iName.Tag = item.Tag;
+                iName.Text = item.SubItems[0].Text;
+                iAge.Text = item.SubItems[1].Text;
+                iUserName.Text = item.SubItems[2].Text;
+                btnDelete.Tag = lv.Items.IndexOf(item);
+            }
+        }
     }
 }
