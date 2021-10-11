@@ -69,23 +69,28 @@ namespace CafeManagementApplication.controllers
             uscSale.Instance.getLvBillforOneTable().Items.Clear();
             
             dynamic table = TableModel.Instance.getBillFromIdTable(tableID);
-            foreach(dynamic product in table["bill"])
+            if(table != null)
             {
-                
-                ListViewItem lvItem = new ListViewItem(product["product"]["name"].Value);
+                foreach (dynamic product in table["bill"])
+                {
 
-                int price = product["product"]["price"].Value;
-                lvItem.SubItems.Add(price.ToString());
+                    ListViewItem lvItem = new ListViewItem(product["product"]["name"].Value);
 
-                int amount = product["amount"].Value;
-                lvItem.SubItems.Add(amount.ToString() + "đ");
+                    int price = product["product"]["price"].Value;
+                    lvItem.SubItems.Add(price.ToString());
 
-                int totalPriceProduct = price*amount;
-                lvItem.SubItems.Add(totalPriceProduct.ToString() + "đ");
+                    int amount = product["amount"].Value;
+                    lvItem.SubItems.Add(amount.ToString());
 
-                uscSale.Instance.getLvBillforOneTable().Items.Add(lvItem);
+                    int totalPriceProduct = price * amount;
+                    lvItem.SubItems.Add(totalPriceProduct.ToString() + "đ");
+
+                    uscSale.Instance.getLvBillforOneTable().Items.Add(lvItem);
+                }
+                uscSale.Instance.getITotalPriceProducts().Text = table["subtotal"].Value.ToString() + "đ";
             }
-            uscSale.Instance.getITotalPriceProducts().Text = table["subtotal"].Value.ToString() + "đ";
+            
+            
             
             
 
