@@ -13,29 +13,39 @@ namespace CafeManagementApplication.controllers
 {
     class AuthController
     {
-        private fLogin _view;
-        public AuthController(fLogin view)
+        private static AuthController instance;
+        public static AuthController Instance
         {
-            _view = view;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new AuthController();
+                }
+                return instance;
+            }
         }
 
-        public void handleLogin()
+
+        public void handleLogin(fLogin view)
         {
+            
             fCafeManager f = new fCafeManager();
-            string username = this._view.inputUsernameText;
-            string password = this._view.inputPasswordText;
+            string username = view.inputUsernameText;
+            string password = view.inputPasswordText;
             bool result = UserModel.Instance.checkAccount(username, password);
             if (result)
             {
                 MessageBox.Show("Dang nhap thanh cong");
-                this._view.Hide();
+                view.Hide();
                 f.ShowDialog();
-                this._view.Show();
+                view.Show();
             }
             else
             {
                 MessageBox.Show("Dang nhap that bai");
             }
+
         }
     }
 }
