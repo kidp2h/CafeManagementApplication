@@ -66,7 +66,7 @@ namespace CafeManagementApplication.models
                 .Unwind("bill.products.product.category")
                 .AppendStage<BsonDocument>("{$set : {  'bill.products.product.category': '$bill.products.product.category.name'}}")
                 .AppendStage<BsonDocument>("{$addFields : {'total': {$sum : {$multiply : ['$bill.products.product.price','$bill.products.amount']}}}}")
-                .Group("{  _id: '$_id', status : { $first: '$status' },tableName : {$first : '$tableName'},'bill': { '$push': '$bill.products'  },'subtotal' : {$sum : '$total'}}")
+                .Group("{  _id: '$_id', status : { $first: '$status' },tableName : {$first : '$tableName'}, 'billId' : {'$first': '$bill._id'},'bill': { '$push': '$bill.products'  },'subtotal' : {$sum : '$total'}}")
                 .Sort(new BsonDocument("tableName", 1));
             return table;
         }
@@ -111,10 +111,23 @@ namespace CafeManagementApplication.models
             IMongoCollection<Table> collection = getCollection();
             collection.DeleteOneAsync(_idTable);
         }
-        public void updateTable(string idTable, UpdateDefinition<Table> update )
+        public void setStatusForTable(string idTable, UpdateDefinition<Table> update )
         {
             FilterDefinition<Table> _idTable = new BsonDocument("_id", new ObjectId(idTable));
             IMongoCollection<Table> collection = getCollection();
+            collection.UpdateOneAsync(_idTable, update);
+        }
+        public void setBillForTable(string idTable, string idBill)
+        {
+            FilterDefinition<Table> _idTable = new BsonDocument("_id", new ObjectId(idTable));
+            IMongoCollection<Table> collection = getCollection();
+            UpdateDefinition<Table> update = new BsonDocument
+            {
+                {"$set", new BsonDocument
+                {
+                    {"bill", new ObjectId(idBill)}
+                } }
+            };
             collection.UpdateOneAsync(_idTable, update);
         }
     }
