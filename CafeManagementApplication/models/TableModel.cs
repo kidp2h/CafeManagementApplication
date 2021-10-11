@@ -105,5 +105,17 @@ namespace CafeManagementApplication.models
             IMongoCollection<Table> collection = getCollection();
             collection.InsertOneAsync(table);
         }
+        public void removeTable(string idTable)
+        {
+            FilterDefinition<Table> _idTable = new BsonDocument("_id", new ObjectId(idTable));
+            IMongoCollection<Table> collection = getCollection();
+            collection.DeleteOneAsync(_idTable);
+        }
+        public void updateTable(string idTable, UpdateDefinition<Table> update )
+        {
+            FilterDefinition<Table> _idTable = new BsonDocument("_id", new ObjectId(idTable));
+            IMongoCollection<Table> collection = getCollection();
+            collection.UpdateOneAsync(_idTable, update);
+        }
     }
 }
