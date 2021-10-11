@@ -72,6 +72,14 @@ namespace CafeManagementApplication.models
             }
         }
 
+        public bool checkExist(string username)
+        {
+            IMongoCollection<User> collection = this.getCollection();
+            BsonDocument filter = new BsonDocument("username", username);
+            List<User> documents = collection.Find(filter).ToList();
+            if (documents.Count != 0) return false;
+            return true;
+        }
         public void addUser(User newUser)
         {
             newUser.Password = Hash.hashPassword(newUser.Password);
