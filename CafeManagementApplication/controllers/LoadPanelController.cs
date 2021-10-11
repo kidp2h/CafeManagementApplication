@@ -10,14 +10,25 @@ namespace CafeManagementApplication.controllers
 {
     class LoadPanelController
     {
-        public void LoadingInfoPanel()
+        private static LoadPanelController instance;
+        public static LoadPanelController Instance
         {
-            fAddProducts f = new fAddProducts();
-            Panel temp = f.getPnlInfo();
-            foreach(dynamic control in temp.Controls)
+            get
             {
-                if (control.Name == "lblName") control.Text = "hello";
+                if (instance == null) instance = new LoadPanelController();
+                return instance;
             }
+        }
+
+        private dynamic view;
+        public void setView(fAddProducts view)
+        {
+            this.view = view;
+        }
+        public void LoadingInfoPanel(string name, string price)
+        {
+            this.view.LblNameText= name;
+            this.view.LblPriceText = price;
         }
     }
 }
