@@ -74,7 +74,8 @@ namespace CafeManagementApplication.models
         {
             FilterDefinition<BsonDocument> TableName = new BsonDocument("tableName", tableName);
             dynamic table = lookupDepthTables().Match(TableName).ToList();
-            return table[0];
+            if (table.Count != 0) return table[0];
+            return null;
         }
 
         public dynamic getBillFromIdTable(string idTable)
