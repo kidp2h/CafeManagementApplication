@@ -1,5 +1,6 @@
 ﻿using CafeManagementApplication.controllers;
 using CafeManagementApplication.models;
+using CafeManagementApplication.types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,33 +32,28 @@ namespace CafeManagementApplication.views
         public uscManager_Users()
         {
             InitializeComponent();
-            LoadingListUsersForForm();
-
-        }
-
-        private void LoadingListUsersForForm()
-        {
-            LoadingListViewController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
+            LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AUDRController.Instance.AddData("User", pnlInfo);
-            AUDRController.Instance.ResetDataInput(pnlInfo);
-            LoadingListUsersForForm();
-            
+            AUDRController.Instance.AddData("User", this);
+            LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
+
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            AUDRController.Instance.UpdateData("User", pnlInfo, iName.Tag.ToString());
-            AUDRController.Instance.ResetDataInput(pnlInfo);
-            LoadingListUsersForForm();
+            AUDRController.Instance.UpdateData("User", this);
+            LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            AUDRController.Instance.DeleteData("User", iName.Tag.ToString());
-            AUDRController.Instance.ResetDataInput(pnlInfo);
-            LoadingListUsersForForm();
+            AUDRController.Instance.DeleteData("User", this);
+            LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
+        } 
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
         }
         private void lvUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -72,6 +68,61 @@ namespace CafeManagementApplication.views
             }
         }
 
-      
+        #region Public Input View
+        public string inputNameText
+        {
+            get { return iName.Text; }
+            set { iName.Text = value;  }
+        }
+        public string inputAgeText
+        {
+            get { return iAge.Text; }
+            set { iAge.Text = value; }
+        }
+        public string inputUsernameText
+        {
+            get { return iUserName.Text; }
+            set { iUserName.Text = value; }
+        }
+        public string inputUserpasswordText
+        {
+            get { return iUserPassword.Text; }
+            set { iUserPassword.Text = value; }
+        }
+        public string inputGenderText
+        {
+            get
+            {
+                if (rdoMale.Checked) return "Nam";
+                else if (rdoFemale.Checked) return "Nữ";
+                else return "Khác";
+            }
+            set
+            {
+                if (value == "Nam") rdoMale.Checked = true;
+                else if (value == "Nữ") rdoFemale.Checked = true;
+                else rdoOther.Checked = true;
+            }
+        }
+        public Role inputRole
+        {
+            get
+            {
+                if (rdoManager.Checked) return Role.MANAGER;
+                else return Role.STAFF;
+            }
+            set
+            {
+                if (value == Role.MANAGER) rdoManager.Checked = true;
+                else rdoSaff.Checked = true;
+            }
+        }
+        public string inputNameTagText
+        {
+            get { return iName.Tag.ToString();}
+            set { iName.Tag = value; }
+        }
+        #endregion
+
     }
 }

@@ -10,19 +10,21 @@ using System.Windows.Forms;
 
 namespace CafeManagementApplication.controllers
 {
-    public class LoadingListViewController
+    public class LoadListController
     {
-        private static LoadingListViewController instance;
-        public static LoadingListViewController Instance
+        private static LoadListController instance;
+        public static LoadListController Instance
         {
             get
             {
-                if (instance == null) instance = new LoadingListViewController();
+                if (instance == null) instance = new LoadListController();
                 return instance;
             }
         }
 
-        private LoadingListViewController() { }
+
+
+        private LoadListController() { }
 
         public void LoadingListForListViewOf(string form, ListView lv)
         {

@@ -49,7 +49,7 @@ namespace CafeManagementApplication.views
 
         private void LoadListTableForForm()
         {
-            LoadTable.Instance.LoadingTableList(flpTableList);
+            LoadItemController.Instance.LoadingItemTable(flpTableList);
         }
 
    
