@@ -32,29 +32,28 @@ namespace CafeManagementApplication.views
         public uscManager_Users()
         {
             InitializeComponent();
-            LoadingListUsersForForm();
-        }
-
-        private void LoadingListUsersForForm()
-        {
             LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AUDRController.Instance.AddData("User", this);
-            LoadingListUsersForForm();
-            
+            LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
+
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             AUDRController.Instance.UpdateData("User", this);
-            LoadingListUsersForForm();
+            LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            AUDRController.Instance.DeleteData("User", iName.Tag.ToString());
-            LoadingListUsersForForm();
+            AUDRController.Instance.DeleteData("User", this);
+            LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
+        } 
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
         }
         private void lvUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -69,6 +68,7 @@ namespace CafeManagementApplication.views
             }
         }
 
+        #region Public Input View
         public string inputNameText
         {
             get { return iName.Text; }
@@ -122,6 +122,7 @@ namespace CafeManagementApplication.views
             get { return iName.Tag.ToString();}
             set { iName.Tag = value; }
         }
+        #endregion
 
     }
 }

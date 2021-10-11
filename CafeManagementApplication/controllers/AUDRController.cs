@@ -90,10 +90,11 @@ namespace CafeManagementApplication.controllers
                 };
 
                 UserModel.Instance.updateUserById(view.inputNameTagText, update);
+                ResetDataInput(view);
             }
         }
 
-        public void DeleteData(string nameData, string dataID)
+        public void DeleteData(string nameData, dynamic view)
         {
             if (nameData == "Table")
             {
@@ -105,7 +106,8 @@ namespace CafeManagementApplication.controllers
             }
             if (nameData == "User")
             {
-                UserModel.Instance.deleteUserById(dataID);
+                UserModel.Instance.deleteUserById(view.inputNameTagText);
+                ResetDataInput(view);
             }
         }
 
