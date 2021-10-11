@@ -70,6 +70,7 @@ namespace CafeManagementApplication.views
         private void uscSale_Table_Click(object sender, EventArgs e)
         {
             LoadListController.Instance.LoadingBillForListViewFormTableID(this.Tag.ToString());
+            uscSale.Instance.LblTableName = this.TableName;
         }
     }
 }
