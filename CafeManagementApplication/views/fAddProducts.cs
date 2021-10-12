@@ -39,10 +39,46 @@ namespace CafeManagementApplication.views
             get { return lblName.Tag.ToString(); }
             set { lblName.Tag = value; }
         }
+        public string txtAmount
+        {
+            get { return txtBoxAmount.Text; }
+        }
+        public TextBox tbAmount
+        {
+            get { return txtBoxAmount; }
+        }
+        public string tbSubtotal
+        {
+            set { textBox2.Text = value; }
+        }
+
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            BillController.Instance.AddProductToBill( this.BillID, this.LblNameTag);
+            if(this.BillID != null)
+            {
+                BillController.Instance.AddProductToBill(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
+            }
+            else
+            {
+                //BillController.Instance.addBillToTable(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
+            }
+            
+        }
+
+        private void tbAmount_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string amount = this.txtAmount;
+                string price = this.LblPriceText;
+                this.tbSubtotal = (Int32.Parse(amount) * Int32.Parse(price)).ToString();
+            }
+            catch
+            {
+
+            }
+            
         }
     }
 }

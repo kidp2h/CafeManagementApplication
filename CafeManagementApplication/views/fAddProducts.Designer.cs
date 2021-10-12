@@ -30,7 +30,7 @@ namespace CafeManagementApplication.views
         private void InitializeComponent()
         {
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxAmount = new System.Windows.Forms.TextBox();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.lblPrice = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
@@ -58,10 +58,11 @@ namespace CafeManagementApplication.views
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(831, 527);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(221, 22);
-            this.textBox1.TabIndex = 2;
+            this.txtBoxAmount.Location = new System.Drawing.Point(831, 527);
+            this.txtBoxAmount.Name = "txtBoxAmount";
+            this.txtBoxAmount.Size = new System.Drawing.Size(221, 22);
+            this.txtBoxAmount.TabIndex = 2;
+            this.txtBoxAmount.TextChanged += new System.EventHandler(this.tbAmount_TextChanged);
             // 
             // pnlInfo
             // 
@@ -221,7 +222,7 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlInfo);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBoxAmount);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flpListProducts);
             this.Name = "fAddProducts";
@@ -238,7 +239,7 @@ namespace CafeManagementApplication.views
 
         private System.Windows.Forms.FlowLayoutPanel flpListProducts;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBoxAmount;
         private System.Windows.Forms.Panel pnlInfo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;

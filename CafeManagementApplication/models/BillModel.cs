@@ -24,8 +24,6 @@ namespace CafeManagementApplication.models
         public BsonObjectId Id { get; set; }
         [BsonElement("products")]
         public ListItemOrder ProductsOrdered { get; set; }
-        [BsonElement("subtotal")]
-        public int Subtotal { get; set; }
         [BsonElement("table")]
         public BsonObjectId TableId { get; set; }
     }
@@ -64,10 +62,18 @@ namespace CafeManagementApplication.models
                 .Group("{_id: '$_id',table : {$first : '$table'},'products': {$push: '$products'},subtotal : {$sum : {$multiply : ['$products.product.price','$products.amount']}}}");
             return bill;
         }
-        public void addBill(Bill bill)
+        public void addBill(Bill bill, string idTable)
         {
+            Bill newBill = new Bill
+            {
+                ProductsOrdered = new ListItemOrder(),
+                TableId = new ObjectId(idTable)
+            };
             IMongoCollection<Bill> collection = this.getCollection();
-            collection.InsertOneAsync(bill);
+            collection.InsertOne(newBill);
+            FilterDefinition<Bill> filter = new BsonDocument("table", new ObjectId(idTable));
+            dynamic _bill = getBillByFilter(filter);
+            TableModel.Instance.setBillForTable(idTable,_bill["table"].Value);
         }
         public BsonDocument getBillById(string idBill)
         {
@@ -75,13 +81,20 @@ namespace CafeManagementApplication.models
             dynamic bill = this.lookupDepthBills().Match(_idBill).ToList();
             return bill[0];
         }
+        public Bill getBillByFilter(FilterDefinition<Bill> filter)
+        {
+            List<Bill> bill =  getCollection().Find(filter).ToList();
+            if (bill.Count != 0) return bill[0];
+            return null;
+
+        }
         public BsonDocument getTableFromIdBill(string idBill)
         {
             FilterDefinition<BsonDocument> _idBill = new BsonDocument("_id", new ObjectId(idBill));
             dynamic bill = this.lookupDepthBills().Match(_idBill).ToList();
             return bill[0]["table"];
         }
-        public void addProductToBill(string idBill, string idProduct)
+        public void addProductToBill(string idBill, string idProduct,int amount)
         {
             BsonDocument _idBill = new BsonDocument("_id", new ObjectId(idBill));
             IMongoCollection<Bill> collection = this.getCollection();
@@ -98,7 +111,7 @@ namespace CafeManagementApplication.models
                         {"$push", new BsonDocument{
                             {"products", new BsonDocument{
                                 {"product", new ObjectId(idProduct)},
-                                {"amount",1 }
+                                {"amount",amount }
                             }
                             }}
                         }
@@ -111,10 +124,10 @@ namespace CafeManagementApplication.models
                     {
                         {"$inc", new BsonDocument
                         {
-                            {"products.$.amount" ,1}
+                            {"products.$.amount" ,amount}
                         } }
                     };
-                collection.UpdateOne(filter, "{$inc :{'products.$.amount' : 1}}");
+                collection.UpdateOne(filter, update);
             }
         }
 
