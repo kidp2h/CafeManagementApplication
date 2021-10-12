@@ -76,15 +76,12 @@ namespace CafeManagementApplication.models
             return null;
         }
 
-
         public dynamic getBillFromIdTable(string idTable)
         {
             FilterDefinition<BsonDocument> _id = new BsonDocument("_id", new ObjectId(idTable));
             dynamic table = lookupDepthTables().Match(_id).ToList();
             if(table.Count != 0) return table[0];
             return null;
-
-
         }
         public List<Table> getListTable()
         {
@@ -148,6 +145,14 @@ namespace CafeManagementApplication.models
             FilterDefinition<Table> _idTable = new BsonDocument("_id", new ObjectId(idTable));
             IMongoCollection<Table> collection = getCollection();
             collection.UpdateOneAsync(_idTable, update);
+        }
+
+        public void resetTable(string idTable)
+        {
+            FilterDefinition<Table> filter = new BsonDocument("_id", idTable);
+            BsonObjectId _idTable = new BsonObjectId(idTable);
+            BillModel.Instance.addBill(_idTable, ObjectId.GenerateNewId());
+            setStatusForTable(filter, sTable.EMPTY);
         }
     }
 }
