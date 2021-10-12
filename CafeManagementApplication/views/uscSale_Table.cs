@@ -1,12 +1,6 @@
 ﻿using CafeManagementApplication.controllers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CafeManagementApplication.views
@@ -23,6 +17,7 @@ namespace CafeManagementApplication.views
         #region Getter & Setter Table Name & Status
         private string tableName;
         private string status;
+        private string tableId;
 
         public string TableName
         {
@@ -64,6 +59,15 @@ namespace CafeManagementApplication.views
             this.BackColor = this.backgroundColorCurrent;
         }
 
+        private void lbTableName_MouseEnter(object sender, EventArgs e)
+        {
+            uscSale_Table_MouseEnter(null, null);
+        }
+
+        private void lbTableName_MouseLeave(object sender, EventArgs e)
+        {
+            uscSale_Table_MouseLeave(null, null);
+        }
 
         #endregion
 
@@ -72,5 +76,11 @@ namespace CafeManagementApplication.views
             LoadListController.Instance.LoadingBillForListViewFormTableID(this.Tag.ToString());
             uscSale.Instance.LblTableName = this.TableName;
         }
+
+        private void lbTableName_Click(object sender, EventArgs e)
+        {
+            uscSale_Table_Click(null, null);
+        }
+
     }
 }

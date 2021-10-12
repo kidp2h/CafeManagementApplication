@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CafeManagementApplication.config;
 using CafeManagementApplication.views;
-using MongoDB.Driver;
+
 namespace CafeManagementApplication
 {
     static class App

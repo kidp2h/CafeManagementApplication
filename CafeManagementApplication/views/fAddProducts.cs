@@ -1,12 +1,5 @@
 ﻿using CafeManagementApplication.controllers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CafeManagementApplication.views
@@ -15,10 +8,15 @@ namespace CafeManagementApplication.views
     {
         public fAddProducts()
         {
+            
             InitializeComponent();
             LoadItemController.Instance.LoadingItemProduct(flpListProducts);
             LoadPanelController.Instance.setView(this);
+
+            this.CheckAdd = false;
         }
+
+        public Boolean CheckAdd { get; set; }
 
         public string BillID { get; set; }
   
@@ -39,10 +37,42 @@ namespace CafeManagementApplication.views
             get { return lblName.Tag.ToString(); }
             set { lblName.Tag = value; }
         }
+        public string txtAmount
+        {
+            get { return txtBoxAmount.Text; }
+            set { txtBoxAmount.Text = value; }
+        }
+        public TextBox tbAmount
+        {
+            get { return txtBoxAmount; }
+        }
+        public string tbSubtotal
+        {
+            set { textBox2.Text = value; }
+        }
+        
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            BillController.Instance.AddProductToBill( this.BillID, this.LblNameTag);
+            if (this.txtAmount == "") this.txtAmount = "1";
+            BillController.Instance.AddProductToBill(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
+            this.CheckAdd = true;
+           
+        }
+
+        private void tbAmount_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string amount = this.txtAmount;
+                string price = this.LblPriceText;
+                this.tbSubtotal = (Int32.Parse(amount) * Int32.Parse(price)).ToString();
+            }
+            catch
+            {
+
+            }
+            
         }
     }
 }

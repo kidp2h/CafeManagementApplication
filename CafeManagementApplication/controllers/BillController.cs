@@ -1,9 +1,9 @@
 ﻿using CafeManagementApplication.models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CafeManagementApplication.views;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using System.Threading;
+
 
 namespace CafeManagementApplication.controllers
 {
@@ -20,10 +20,28 @@ namespace CafeManagementApplication.controllers
             }
         }
 
-        public void AddProductToBill(string billID, string productID )
+        public void AddProductToBill(string billID, string productID, int amount)
         {
-            BillModel.Instance.addProductToBill(billID, productID);
-        } 
+            BillModel.Instance.addProductToBill(billID, productID, amount);
+            Thread status = new Thread(() => {
+                FilterDefinition<Table> filter = new BsonDocument("bill", new ObjectId(billID));
+                TableModel.Instance.setStatusForTable(filter, types.sTable.FULL);
+            });
+          
+            
+            
+            status.IsBackground = true;
+            status.Start();
+        }
+        public void AddProductToBill(string billID)
+        {
+           /* Bill newBill = new Bill
+            {
+                ProductsOrdered = new ListItemOrder(),
+                TableId = new ObjectId(idTable)
+            };
+            BillModel.Instance.addBill(newBill);*/
+        }
 
     }
 }

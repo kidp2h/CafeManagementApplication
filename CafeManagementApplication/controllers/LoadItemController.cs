@@ -1,12 +1,5 @@
 ﻿using CafeManagementApplication.models;
 using CafeManagementApplication.views;
-using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CafeManagementApplication.controllers
@@ -20,6 +13,7 @@ namespace CafeManagementApplication.controllers
             {
                 if (instance == null) instance = new LoadItemController();
                 return instance;
+
             }
         }
 
@@ -27,8 +21,10 @@ namespace CafeManagementApplication.controllers
 
         public void LoadingItemTable (FlowLayoutPanel flp)
         {
+            flp.Controls.Clear();
             dynamic tables = TableModel.Instance.getListTable();
-            foreach(Table table in tables)
+            Control.CheckForIllegalCrossThreadCalls = false;
+            foreach (Table table in tables)
             {
                 uscSale_Table temp = new uscSale_Table();
                 temp.Tag = table.Id;
@@ -42,6 +38,7 @@ namespace CafeManagementApplication.controllers
                 {
                     temp.Status = "Bàn trống";                  
                 }
+
                 flp.Controls.Add(temp);
             }
         }
