@@ -1,14 +1,9 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Bson;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MongoDB.Bson.Serialization.Attributes;
-using CafeManagementApplication.types;
 using CafeManagementApplication.config;
-using System.Diagnostics;
 
 namespace CafeManagementApplication.models
 {
@@ -62,18 +57,16 @@ namespace CafeManagementApplication.models
                 .Group("{_id: '$_id',table : {$first : '$table'},'products': {$push: '$products'},subtotal : {$sum : {$multiply : ['$products.product.price','$products.amount']}}}");
             return bill;
         }
-        public void addBill(Bill bill, string idTable)
+        public void addBill(BsonObjectId table, BsonObjectId bill)
         {
+            IMongoCollection<Bill> collection = this.getCollection();
             Bill newBill = new Bill
             {
+                Id = bill,
                 ProductsOrdered = new ListItemOrder(),
-                TableId = new ObjectId(idTable)
+                TableId = table
             };
-            IMongoCollection<Bill> collection = this.getCollection();
             collection.InsertOne(newBill);
-            FilterDefinition<Bill> filter = new BsonDocument("table", new ObjectId(idTable));
-            dynamic _bill = getBillByFilter(filter);
-            TableModel.Instance.setBillForTable(idTable,_bill["table"].Value);
         }
         public BsonDocument getBillById(string idBill)
         {

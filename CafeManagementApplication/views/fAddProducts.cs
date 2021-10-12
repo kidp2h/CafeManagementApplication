@@ -1,12 +1,5 @@
 ﻿using CafeManagementApplication.controllers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CafeManagementApplication.views
@@ -15,6 +8,7 @@ namespace CafeManagementApplication.views
     {
         public fAddProducts()
         {
+            
             InitializeComponent();
             LoadItemController.Instance.LoadingItemProduct(flpListProducts);
             LoadPanelController.Instance.setView(this);
@@ -42,6 +36,7 @@ namespace CafeManagementApplication.views
         public string txtAmount
         {
             get { return txtBoxAmount.Text; }
+            set { txtBoxAmount.Text = value; }
         }
         public TextBox tbAmount
         {
@@ -55,15 +50,10 @@ namespace CafeManagementApplication.views
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            if(this.BillID != null)
-            {
-                BillController.Instance.AddProductToBill(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
-            }
-            else
-            {
-                //BillController.Instance.addBillToTable(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
-            }
-            
+            if (this.txtAmount == "") this.txtAmount = "1";
+
+            BillController.Instance.AddProductToBill(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
+
         }
 
         private void tbAmount_TextChanged(object sender, EventArgs e)

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using CafeManagementApplication.types;
 using MongoDB.Bson.Serialization.Attributes;
 using CafeManagementApplication.config;
-using System.Diagnostics;
 
 namespace CafeManagementApplication.models
 {
@@ -56,14 +51,18 @@ namespace CafeManagementApplication.models
         private AggregateFluentBase<BsonDocument> lookupDepthTables()
         {
             IMongoCollection<Table> collection = getCollection();
+            AggregateUnwindOptions<BsonDocument> options = new AggregateUnwindOptions<BsonDocument> {
+                PreserveNullAndEmptyArrays = true,
+            };
+
             dynamic table = collection.Aggregate()
                 .Lookup("bills", "bill", "_id", "bill")
-                .Unwind("bill")
-                .Unwind("bill.products")
+                .Unwind("bill", options)
+                .Unwind("bill.products", options)
                 .Lookup("products", "bill.products.product", "_id", "bill.products.product")
-                .Unwind("bill.products.product")
+                .Unwind("bill.products.product",options)
                 .Lookup("categories", "bill.products.product.category", "_id", "bill.products.product.category")
-                .Unwind("bill.products.product.category")
+                .Unwind("bill.products.product.category", options)
                 .AppendStage<BsonDocument>("{$set : {  'bill.products.product.category': '$bill.products.product.category.name'}}")
                 .AppendStage<BsonDocument>("{$addFields : {'total': {$sum : {$multiply : ['$bill.products.product.price','$bill.products.amount']}}}}")
                 .Group("{  _id: '$_id', status : { $first: '$status' },tableName : {$first : '$tableName'}, 'billId' : {'$first': '$bill._id'},'bill': { '$push': '$bill.products'  },'subtotal' : {$sum : '$total'}}")
@@ -97,13 +96,15 @@ namespace CafeManagementApplication.models
         {
             Table table = new Table
             {
+                Id = ObjectId.GenerateNewId(),
                 TableName = newTable.TableName,
                 Status = sTable.EMPTY,
-                Bill = new ObjectId()
+                Bill = ObjectId.GenerateNewId()
                 
             };
             IMongoCollection<Table> collection = getCollection();
             collection.InsertOneAsync(table);
+            BillModel.Instance.addBill(table.Id,table.Bill);
         }
         public void removeTable(string idTable)
         {
@@ -111,11 +112,17 @@ namespace CafeManagementApplication.models
             IMongoCollection<Table> collection = getCollection();
             collection.DeleteOneAsync(_idTable);
         }
-        public void setStatusForTable(string idTable, UpdateDefinition<Table> update )
+        public void setStatusForTable(FilterDefinition<Table> filter, sTable status )
         {
-            FilterDefinition<Table> _idTable = new BsonDocument("_id", new ObjectId(idTable));
             IMongoCollection<Table> collection = getCollection();
-            collection.UpdateOneAsync(_idTable, update);
+            UpdateDefinition<Table> update = new BsonDocument
+            {
+                {"$set", new BsonDocument
+                {
+                    {"status", status}
+                } }
+            };
+            collection.UpdateOneAsync(filter, update);
         }
         public void setBillForTable(string idTable, string idBill)
         {
