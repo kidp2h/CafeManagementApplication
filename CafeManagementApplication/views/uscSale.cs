@@ -59,18 +59,6 @@ namespace CafeManagementApplication.views
             f.BillID = btnAdd.Tag.ToString();
             
            
-           
-            if (btnAdd.Tag != null)
-            {
-                f.BillID = btnAdd.Tag.ToString();
-            }
-
- 
-
-            this.CheckAdd = f.CheckAdd;
-
-
-
         }
 
         

@@ -56,16 +56,6 @@ namespace CafeManagementApplication.views
 
             BillController.Instance.AddProductToBill(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
 
-            if(this.BillID != null)
-            {
-                BillController.Instance.AddProductToBill(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
-                this.CheckAdd = true;
-            }
-            else
-            {
-                //BillController.Instance.addBillToTable(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
-            }
-            
         }
 
         private void tbAmount_TextChanged(object sender, EventArgs e)
