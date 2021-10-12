@@ -21,7 +21,10 @@ namespace CafeManagementApplication.controllers
         {
             if (nameData == "Table")
             {
-
+                Table table = new Table();
+                table.TableName = view.inputTableNameText;
+                table.Status = view.inputStatus;
+                return table;
             }
             if (nameData == "Drink")
             {
@@ -35,7 +38,7 @@ namespace CafeManagementApplication.controllers
                 user.Gender = view.inputGenderText;
                 user.Username = view.inputUsernameText;
                 user.Password = view.inputUserpasswordText;
-                user.Role = view.inputRole;
+                user.Role = view.inputRole; 
                 return user;
                 
             }
@@ -46,7 +49,8 @@ namespace CafeManagementApplication.controllers
         {
             if(nameData == "Table")
             {
-
+                TableModel.Instance.addTable(user);
+                ResetTableDataInput(view);
             }
             if(nameData == "Drink")
             {
@@ -63,7 +67,20 @@ namespace CafeManagementApplication.controllers
         {
             if (nameData == "Table")
             {
+                Table table = NewData(nameData, view);
 
+                UpdateDefinition<Table> updateTable = new BsonDocument
+                {
+
+                    { "$set", new BsonDocument
+                        {
+                            { "tableName", table.TableName},                         
+                            { "status", table.Status },
+                        }
+                    }
+                };
+                
+                //ResetDataInput(view);
             }
             if (nameData == "Drink")
             {
@@ -98,6 +115,7 @@ namespace CafeManagementApplication.controllers
             if (nameData == "Table")
             {
 
+                TableModel.Instance.removeTable(view.inputTableNameTagText);
             }
             if (nameData == "Drink")
             {
@@ -118,6 +136,11 @@ namespace CafeManagementApplication.controllers
             view.inputUsernameText = "";
             view.inputUserpasswordText = "";
             view.inputRole = 0;
+        }
+        public void ResetTableDataInput(dynamic view)
+        {
+            view.inputTableNameText = "";
+            view.inputStatus = 0;
         }
     }
 }
