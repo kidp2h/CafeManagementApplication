@@ -16,22 +16,19 @@ namespace CafeManagementApplication.views
             this.CheckAdd = false;
         }
 
+        #region Public Data In View
         public Boolean CheckAdd { get; set; }
-
         public string BillID { get; set; }
-  
         public string LblNameText
         {
             get { return lblName.Text; }
             set { lblName.Text = value; }
         }
-
         public string LblPriceText
         {
             get { return lblPrice.Text; }
             set { lblPrice.Text = value; }
         }
-
         public string LblNameTag
         {
             get { return lblName.Tag.ToString(); }
@@ -50,15 +47,18 @@ namespace CafeManagementApplication.views
         {
             set { textBox2.Text = value; }
         }
-        
+        #endregion
 
+
+        #region Handler Event
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             if (this.txtAmount == "") this.txtAmount = "1";
             BillController.Instance.AddProductToBill(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
             this.CheckAdd = true;
-           
         }
+
+
 
         private void tbAmount_TextChanged(object sender, EventArgs e)
         {
@@ -74,5 +74,7 @@ namespace CafeManagementApplication.views
             }
             
         }
+        #endregion
+
     }
 }

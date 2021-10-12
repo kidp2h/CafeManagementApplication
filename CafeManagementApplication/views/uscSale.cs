@@ -27,6 +27,7 @@ namespace CafeManagementApplication.views
 
         }
 
+        #region Public Data In View
         public ListView getLvBillforOneTable()
         {
             return lvBillforOneTable;
@@ -45,7 +46,10 @@ namespace CafeManagementApplication.views
             get { return btnAdd.Tag.ToString(); }
             set { btnAdd.Tag = value; }
         }
-       
+        public string TableId { get; set; }
+        #endregion
+
+        #region Handler Event
         public void LoadListTableForForm()
         {
             LoadItemController.Instance.LoadingItemTable(flpTableList);
@@ -58,14 +62,18 @@ namespace CafeManagementApplication.views
             f.BillID = btnAdd.Tag.ToString();
 
             f.ShowDialog();
-            
-            if(f.CheckAdd) LoadListTableForForm();
-            
+
+            if (f.CheckAdd)
+            {
+                LoadListTableForForm();
+                LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             LoadListTableForForm();
         }
+        #endregion
     }
 }

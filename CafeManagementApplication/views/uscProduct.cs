@@ -5,7 +5,13 @@ using System.Windows.Forms;
 namespace CafeManagementApplication.views
 {
     public partial class uscProduct : UserControl
-    {
+    {   
+        public uscProduct()
+        {
+            InitializeComponent();
+        }
+
+        #region Getter & Setter 
         private string productName;
         private string price;
 
@@ -20,11 +26,8 @@ namespace CafeManagementApplication.views
             get { return price; }
             set { price = value; lblPrice.Text = value; }
         }
+        #endregion
 
-        public uscProduct()
-        {
-            InitializeComponent();
-        }
 
         private void uscProduct_Click(object sender, EventArgs e)
         {
