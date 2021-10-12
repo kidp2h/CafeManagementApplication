@@ -137,5 +137,12 @@ namespace CafeManagementApplication.models
             };
             collection.UpdateOneAsync(_idTable, update);
         }
+
+        public void updateTable(string idTable, UpdateDefinition<Table> update)
+        {
+            FilterDefinition<Table> _idTable = new BsonDocument("_id", new ObjectId(idTable));
+            IMongoCollection<Table> collection = getCollection();
+            collection.UpdateOneAsync(_idTable, update);
+        }
     }
 }
