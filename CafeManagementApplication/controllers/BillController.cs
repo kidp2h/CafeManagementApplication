@@ -27,13 +27,11 @@ namespace CafeManagementApplication.controllers
                 FilterDefinition<Table> filter = new BsonDocument("bill", new ObjectId(billID));
                 TableModel.Instance.setStatusForTable(filter, types.sTable.FULL);
             });
-            Thread loadTable = new Thread(() => {
-                
-                uscSale.Instance.LoadListTableForForm();
-            });
+          
+            
+            
             status.IsBackground = true;
             status.Start();
-            
         }
         public void AddProductToBill(string billID)
         {

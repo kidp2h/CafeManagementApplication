@@ -12,6 +12,8 @@ namespace CafeManagementApplication.views
             InitializeComponent();
             LoadItemController.Instance.LoadingItemProduct(flpListProducts);
             LoadPanelController.Instance.setView(this);
+
+            this.CheckAdd = false;
         }
 
         public Boolean CheckAdd { get; set; }
@@ -53,9 +55,9 @@ namespace CafeManagementApplication.views
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             if (this.txtAmount == "") this.txtAmount = "1";
-
             BillController.Instance.AddProductToBill(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
-
+            this.CheckAdd = true;
+           
         }
 
         private void tbAmount_TextChanged(object sender, EventArgs e)
