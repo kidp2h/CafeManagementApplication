@@ -65,7 +65,11 @@ namespace CafeManagementApplication.views
         {
             fAddProducts f = new fAddProducts();
             f.Show();
-            f.BillID = btnAdd.Tag.ToString();
+            if (btnAdd.Tag != null)
+            {
+                f.BillID = btnAdd.Tag.ToString();
+            }
+            
            
         }
 

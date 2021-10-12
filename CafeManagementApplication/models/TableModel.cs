@@ -70,13 +70,13 @@ namespace CafeManagementApplication.models
                 .Sort(new BsonDocument("tableName", 1));
             return table;
         }
-        public dynamic getTableByTableName(string tableName)
+        public dynamic getTableByFilter(FilterDefinition<BsonDocument> filter)
         {
-            FilterDefinition<BsonDocument> TableName = new BsonDocument("tableName", tableName);
-            dynamic table = lookupDepthTables().Match(TableName).ToList();
+            dynamic table = lookupDepthTables().Match(filter).ToList();
             if (table.Count != 0) return table[0];
             return null;
         }
+
 
         public dynamic getBillFromIdTable(string idTable)
         {

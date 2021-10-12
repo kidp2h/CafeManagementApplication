@@ -41,7 +41,7 @@ namespace CafeManagementApplication.models
 
         public List<BsonDocument> getListProduct()
         {
-            IMongoCollection<Product> collection = this.getCollection();
+            IMongoCollection<Product> collection = getCollection();
             dynamic listProduct = collection.Aggregate()
                 .Lookup("categories", "category", "_id", "category")
                 .Unwind("category")
@@ -51,7 +51,7 @@ namespace CafeManagementApplication.models
         }
         public void addProduct(Product newProduct)
         {
-            IMongoCollection < Product > collection = this.getCollection();
+            IMongoCollection < Product > collection = getCollection();
             collection.InsertOneAsync(newProduct);
         }
         public void removeProductById(string productId)
@@ -63,7 +63,7 @@ namespace CafeManagementApplication.models
         public void updateProductById(string productId, UpdateDefinition<Product> update)
         {
             FilterDefinition<Product> filter = new BsonDocument("_id", new ObjectId(productId));
-            IMongoCollection<Product> collection = this.getCollection();
+            IMongoCollection<Product> collection = getCollection();
             collection.UpdateOneAsync(filter, update);
         }
     }
