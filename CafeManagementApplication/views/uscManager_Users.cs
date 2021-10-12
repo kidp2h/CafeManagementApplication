@@ -28,14 +28,15 @@ namespace CafeManagementApplication.views
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            User user = ManagerController.Instance.NewData("User", this);
-            ListViewItem item = new ListViewItem(user.Fullname);
-            item.SubItems.Add(user.Age.ToString());
-            item.SubItems.Add(user.Gender);
-            item.SubItems.Add(user.Username);
-            item.SubItems.Add(user.Role == Role.MANAGER ? "Quản lý" : "Nhân viên");
-            lvUsers.Items.Add(item);
-            ManagerController.Instance.AddData("User", user, this);
+            //User user = ManagerController.Instance.NewData("User", this);
+            //ListViewItem item = new ListViewItem(user.Fullname);
+            //item.SubItems.Add(user.Age.ToString());
+            //item.SubItems.Add(user.Gender);
+            //item.SubItems.Add(user.Username);
+            //item.SubItems.Add(user.Role == Role.MANAGER ? "Quản lý" : "Nhân viên");
+            //lvUsers.Items.Add(item);
+
+            ManagerController.Instance.AddData("User", this);
 
         }
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -131,26 +132,5 @@ namespace CafeManagementApplication.views
         }
         #endregion
 
-        private void lvUsers_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-            ListView lv = sender as ListView;
-
-            if (lv.SelectedItems.Count > 0)
-            {
-                ListViewItem item = lv.SelectedItems[0];
-                iName.Tag = item.Tag;
-                iName.Text = item.SubItems[0].Text;
-                iAge.Text = item.SubItems[1].Text;
-                if (item.SubItems[2].Text == "Nam") rdoMale.Checked = true;
-                else if (item.SubItems[2].Text == "Nữ") rdoFemale.Checked = true;
-                else rdoOther.Checked = true;
-
-                iUserName.Text = item.SubItems[3].Text;
-                if (item.SubItems[4].Text == "Quản lý") rdoManager.Checked = true;
-                else rdoSaff.Checked = true;
-
-                btnDelete.Tag = lv.Items.IndexOf(item);
-            }
-        }
     }
 }

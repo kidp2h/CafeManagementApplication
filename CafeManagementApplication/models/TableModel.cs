@@ -19,7 +19,6 @@ namespace CafeManagementApplication.models
         public BsonObjectId Id { get; set; }
         [BsonElement("tableName")]
         public string TableName { get; set; }
-
         [BsonElement("status")]
         public sTable Status { get; set; }
         [BsonElement("bill")]
@@ -106,6 +105,7 @@ namespace CafeManagementApplication.models
             {
                 BillModel.Instance.addBill(table.Id, table.Bill);
             });
+            tBill.Start();
             
         }
         public void removeTable(string idTable)
