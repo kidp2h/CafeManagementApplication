@@ -2,6 +2,7 @@
 using CafeManagementApplication.models;
 using CafeManagementApplication.types;
 using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace CafeManagementApplication.views
@@ -24,7 +25,7 @@ namespace CafeManagementApplication.views
         private uscManager_Tables()
         {
             InitializeComponent();
-            LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", listViewTableInfor);
+            LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", lvTableInfor);
         }
 
 
@@ -56,19 +57,16 @@ namespace CafeManagementApplication.views
 
         private void btnAddTable_Click(object sender, EventArgs e)
         {
-            //Table table = ManagerController.Instance.NewData("Table", this);
-            //ListViewItem tableLvItem = new ListViewItem(table.TableName);
-            //tableLvItem.SubItems.Add(table.Status == sTable.EMPTY ? "Bàn trống" : "Có người"); 
-
-            //listViewTableInfor.Items.Add(tableLvItem);
-
             ManagerController.Instance.AddData("Table",this);
-            LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", listViewTableInfor);
+            Thread loadList = new Thread(() => {
+                LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", lvTableInfor);
+            });
+            loadList.Start();
         }
 
         private void btnDeleteTable_Click(object sender, EventArgs e)
         {
-            listViewTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
+            lvTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
             ManagerController.Instance.DeleteData("Table", this);
 
         }

@@ -35,7 +35,7 @@ namespace CafeManagementApplication.views
             this.btnAddTable = new System.Windows.Forms.Button();
             this.btnDeleteTable = new System.Windows.Forms.Button();
             this.btnUpdateTabe = new System.Windows.Forms.Button();
-            this.listViewTableInfor = new System.Windows.Forms.ListView();
+            this.lvTableInfor = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel2 = new System.Windows.Forms.Panel();
@@ -108,23 +108,23 @@ namespace CafeManagementApplication.views
             this.btnUpdateTabe.Text = "Sửa";
             this.btnUpdateTabe.UseVisualStyleBackColor = true;
             // 
-            // listViewTableInfor
+            // lvTableInfor
             // 
-            this.listViewTableInfor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.listViewTableInfor.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvTableInfor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lvTableInfor.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.listViewTableInfor.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listViewTableInfor.FullRowSelect = true;
-            this.listViewTableInfor.GridLines = true;
-            this.listViewTableInfor.HideSelection = false;
-            this.listViewTableInfor.Location = new System.Drawing.Point(9, 62);
-            this.listViewTableInfor.Name = "listViewTableInfor";
-            this.listViewTableInfor.Size = new System.Drawing.Size(605, 688);
-            this.listViewTableInfor.TabIndex = 7;
-            this.listViewTableInfor.UseCompatibleStateImageBehavior = false;
-            this.listViewTableInfor.View = System.Windows.Forms.View.Details;
-            this.listViewTableInfor.SelectedIndexChanged += new System.EventHandler(this.listViewTableInfor_SelectedIndexChanged);
+            this.lvTableInfor.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvTableInfor.FullRowSelect = true;
+            this.lvTableInfor.GridLines = true;
+            this.lvTableInfor.HideSelection = false;
+            this.lvTableInfor.Location = new System.Drawing.Point(9, 62);
+            this.lvTableInfor.Name = "lvTableInfor";
+            this.lvTableInfor.Size = new System.Drawing.Size(605, 688);
+            this.lvTableInfor.TabIndex = 7;
+            this.lvTableInfor.UseCompatibleStateImageBehavior = false;
+            this.lvTableInfor.View = System.Windows.Forms.View.Details;
+            this.lvTableInfor.SelectedIndexChanged += new System.EventHandler(this.listViewTableInfor_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -209,7 +209,7 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.button4);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.listViewTableInfor);
+            this.Controls.Add(this.lvTableInfor);
             this.Name = "uscManager_Tables";
             this.Size = new System.Drawing.Size(1115, 770);
             this.panel1.ResumeLayout(false);
@@ -227,7 +227,7 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.Button btnDeleteTable;
         private System.Windows.Forms.Button btnUpdateTabe;
         private System.Windows.Forms.Button btnAddTable;
-        private System.Windows.Forms.ListView listViewTableInfor;
+        private System.Windows.Forms.ListView lvTableInfor;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
