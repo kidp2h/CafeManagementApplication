@@ -23,6 +23,7 @@ namespace CafeManagementApplication.views
         #region Getter & Setter Table Name & Status
         private string tableName;
         private string status;
+        private string tableId;
 
         public string TableName
         {

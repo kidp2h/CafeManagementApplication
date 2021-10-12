@@ -20,6 +20,8 @@ namespace CafeManagementApplication.views
             LoadPanelController.Instance.setView(this);
         }
 
+        public Boolean CheckAdd { get; set; }
+
         public string BillID { get; set; }
   
         public string LblNameText
@@ -51,13 +53,14 @@ namespace CafeManagementApplication.views
         {
             set { textBox2.Text = value; }
         }
-
+        
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             if(this.BillID != null)
             {
                 BillController.Instance.AddProductToBill(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
+                this.CheckAdd = true;
             }
             else
             {

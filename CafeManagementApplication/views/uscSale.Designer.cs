@@ -31,6 +31,7 @@ namespace CafeManagementApplication.views
         {
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblTableName = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lvBillforOneTable = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,7 +50,6 @@ namespace CafeManagementApplication.views
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.flpTableList = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblTableName = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -85,6 +85,19 @@ namespace CafeManagementApplication.views
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(675, 774);
             this.panel2.TabIndex = 2;
+            // 
+            // lblTableName
+            // 
+            this.lblTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTableName.AutoSize = true;
+            this.lblTableName.Font = new System.Drawing.Font("Magneto", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTableName.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblTableName.Location = new System.Drawing.Point(403, 9);
+            this.lblTableName.Name = "lblTableName";
+            this.lblTableName.Size = new System.Drawing.Size(0, 41);
+            this.lblTableName.TabIndex = 16;
             // 
             // btnAdd
             // 
@@ -279,19 +292,6 @@ namespace CafeManagementApplication.views
             this.flpTableList.Name = "flpTableList";
             this.flpTableList.Size = new System.Drawing.Size(715, 720);
             this.flpTableList.TabIndex = 0;
-            // 
-            // lblTableName
-            // 
-            this.lblTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTableName.AutoSize = true;
-            this.lblTableName.Font = new System.Drawing.Font("Magneto", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTableName.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblTableName.Location = new System.Drawing.Point(403, 9);
-            this.lblTableName.Name = "lblTableName";
-            this.lblTableName.Size = new System.Drawing.Size(0, 41);
-            this.lblTableName.TabIndex = 16;
             // 
             // uscSale
             // 

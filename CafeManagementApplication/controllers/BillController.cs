@@ -22,6 +22,7 @@ namespace CafeManagementApplication.controllers
 
         public void AddProductToBill(string billID, string productID, int amount )
         {
+
             BillModel.Instance.addProductToBill(billID, productID,amount);
         } 
 
