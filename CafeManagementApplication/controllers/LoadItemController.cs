@@ -21,6 +21,7 @@ namespace CafeManagementApplication.controllers
 
         public void LoadingItemTable (FlowLayoutPanel flp)
         {
+            flp.Controls.Clear();
             dynamic tables = TableModel.Instance.getListTable();
             Control.CheckForIllegalCrossThreadCalls = false;
             foreach (Table table in tables)
