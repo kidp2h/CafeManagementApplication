@@ -3,6 +3,8 @@ using System;
 using CafeManagementApplication.models;
 using System.Threading;
 using System.Windows.Forms;
+using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace CafeManagementApplication.controllers
 {
@@ -28,6 +30,7 @@ namespace CafeManagementApplication.controllers
                 
                 TableModel.Instance.resetTable(TableId);
                 uscSale.Instance.LoadListTableForForm();
+                
                 f.Hide();
             }
             else

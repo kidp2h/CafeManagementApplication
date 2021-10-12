@@ -84,7 +84,6 @@ namespace CafeManagementApplication.models
             List<Bill> bill =  getCollection().Find(filter).ToList();
             if (bill.Count != 0) return bill[0];
             return null;
-
         }
         public BsonDocument getTableFromIdBill(string idBill)
         {
@@ -146,6 +145,19 @@ namespace CafeManagementApplication.models
                             }
                             }}
                         }
+                    };
+            collection.UpdateOne(_idBill, update);
+        }
+
+        public void updateTimeBill(string idBill) 
+        {
+            BsonDocument _idBill = new BsonDocument("_id", new ObjectId(idBill));
+            IMongoCollection<Bill> collection = getCollection();
+            UpdateDefinition<Bill> update = new BsonDocument
+                    {
+                        {"$set", new BsonDocument{
+                            {"created_at", DateTime.Now }
+                        }}
                     };
             collection.UpdateOne(_idBill, update);
         }

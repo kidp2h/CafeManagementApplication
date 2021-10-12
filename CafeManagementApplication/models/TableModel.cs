@@ -168,7 +168,7 @@ namespace CafeManagementApplication.models
             });
             s1.IsBackground = true;
             s1.Start();
-            Console.WriteLine("x");   
         }
+
     }
 }
