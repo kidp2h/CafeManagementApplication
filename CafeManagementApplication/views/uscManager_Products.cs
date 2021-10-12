@@ -2,26 +2,26 @@
 
 namespace CafeManagementApplication.views
 {
-    public partial class uscManager_Drinks : UserControl
+    public partial class uscManager_Products : UserControl
     {
-        private static uscManager_Drinks instance;
+        private static uscManager_Products instance;
 
-        public static uscManager_Drinks Instance
+        public static uscManager_Products Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new uscManager_Drinks();
+                    instance = new uscManager_Products();
                 }
                 return instance;
             }
         }
-        private uscManager_Drinks()
+        private uscManager_Products()
         {
             InitializeComponent();
         }
 
-
+        
     }
 }

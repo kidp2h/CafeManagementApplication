@@ -104,6 +104,12 @@ namespace CafeManagementApplication.views
             ManagerController.Instance.AddData("Table", table, this);
         }
 
+        private void btnUpdateTabe_Click(object sender, EventArgs e)
+        {
+            ManagerController.Instance.UpdateData("Table", this);
+            LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", listViewTableInfor);
+        }
+
         private void btnDeleteTable_Click(object sender, EventArgs e)
         {
             listViewTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
@@ -127,5 +133,6 @@ namespace CafeManagementApplication.views
                 btnDeleteTable.Tag = lvTable.Items.IndexOf(item);
             }
         }
+
     }
 }

@@ -36,14 +36,14 @@ namespace CafeManagementApplication.views
             this.btnDeleteTable = new System.Windows.Forms.Button();
             this.btnUpdateTabe = new System.Windows.Forms.Button();
             this.listViewTableInfor = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel2 = new System.Windows.Forms.Panel();
             this.iFullTable = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.iTableName = new System.Windows.Forms.TextBox();
             this.iEmptyTable = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -107,6 +107,7 @@ namespace CafeManagementApplication.views
             this.btnUpdateTabe.TabIndex = 2;
             this.btnUpdateTabe.Text = "Sửa";
             this.btnUpdateTabe.UseVisualStyleBackColor = true;
+            this.btnUpdateTabe.Click += new System.EventHandler(this.btnUpdateTabe_Click);
             // 
             // listViewTableInfor
             // 
@@ -123,6 +124,14 @@ namespace CafeManagementApplication.views
             this.listViewTableInfor.UseCompatibleStateImageBehavior = false;
             this.listViewTableInfor.View = System.Windows.Forms.View.Details;
             this.listViewTableInfor.SelectedIndexChanged += new System.EventHandler(this.listViewTableInfor_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Tên bàn";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Trạng thái ";
             // 
             // panel2
             // 
@@ -190,14 +199,6 @@ namespace CafeManagementApplication.views
             this.label3.TabIndex = 17;
             this.label3.Text = "Tên bàn:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Tên bàn";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Trạng thái ";
             // 
             // uscManager_Tables
             // 

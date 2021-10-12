@@ -79,8 +79,8 @@ namespace CafeManagementApplication.controllers
                         }
                     }
                 };
-                
-                //ResetDataInput(view);
+                TableModel.Instance.updateTable(view.inputTableNameTagText, updateTable);
+                ResetTableDataInput(view);
             }
             if (nameData == "Drink")
             {
