@@ -5,6 +5,7 @@ using MongoDB.Bson;
 using CafeManagementApplication.types;
 using MongoDB.Bson.Serialization.Attributes;
 using CafeManagementApplication.config;
+using System.Threading;
 
 namespace CafeManagementApplication.models
 {
@@ -104,7 +105,11 @@ namespace CafeManagementApplication.models
             };
             IMongoCollection<Table> collection = getCollection();
             collection.InsertOneAsync(table);
-            BillModel.Instance.addBill(table.Id,table.Bill);
+            Thread tBill = new Thread(() =>
+            {
+                BillModel.Instance.addBill(table.Id, table.Bill);
+            });
+            
         }
         public void removeTable(string idTable)
         {
