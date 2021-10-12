@@ -45,11 +45,9 @@ namespace CafeManagementApplication.views
             get { return btnAdd.Tag.ToString(); }
             set { btnAdd.Tag = value; }
         }
-
-        public void LoadListTableForForm()
         public Boolean CheckAdd { get; set; }
 
-        private void LoadListTableForForm()
+        public void LoadListTableForForm()
         {
             LoadItemController.Instance.LoadingItemTable(flpTableList);
         }
@@ -67,7 +65,7 @@ namespace CafeManagementApplication.views
                 f.BillID = btnAdd.Tag.ToString();
             }
 
-            f.ShowDialog();
+ 
 
             this.CheckAdd = f.CheckAdd;
 
