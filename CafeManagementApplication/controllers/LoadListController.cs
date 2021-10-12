@@ -31,7 +31,18 @@ namespace CafeManagementApplication.controllers
             lv.Items.Clear();
             if (form == "useManager_Tables")
             {
-
+                dynamic TableList = TableModel.Instance.getListTable();
+                foreach (dynamic table in TableList) {
+                    string NameOfTable = table.TableName;
+                    ListViewItem tableLvItem = new ListViewItem(table.TableName);
+                    tableLvItem.Tag = table.Id;
+                    if (table.Status == types.sTable.FULL)
+                    {
+                        tableLvItem.SubItems.Add("Có người");
+                    }
+                    else tableLvItem.SubItems.Add("Bàn trống");
+                    lv.Items.Add(tableLvItem);
+                }
             }
             if (form == "useManager_Drinks")
             {
