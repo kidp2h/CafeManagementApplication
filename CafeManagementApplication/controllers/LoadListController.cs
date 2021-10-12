@@ -1,12 +1,7 @@
 ﻿using CafeManagementApplication.models;
 using CafeManagementApplication.views;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MongoDB.Bson;
 
 namespace CafeManagementApplication.controllers
 {
@@ -74,20 +69,23 @@ namespace CafeManagementApplication.controllers
                 uscSale.Instance.BtnAddTag = table["billId"].Value.ToString();
                 foreach (dynamic product in table["bill"])
                 {
+                    if(product["product"] != new BsonDocument())
+                    {
+                        ListViewItem lvItem = new ListViewItem(product["product"]["name"].Value);
 
-                    ListViewItem lvItem = new ListViewItem(product["product"]["name"].Value);
-                   
 
-                    int price = product["product"]["price"].Value;
-                    lvItem.SubItems.Add(price.ToString()+ "đ");
+                        int price = product["product"]["price"].Value;
+                        lvItem.SubItems.Add(price.ToString() + "đ");
 
-                    int amount = product["amount"].Value;
-                    lvItem.SubItems.Add(amount.ToString());
+                        int amount = product["amount"].Value;
+                        lvItem.SubItems.Add(amount.ToString());
 
-                    int totalPriceProduct = price * amount;
-                    lvItem.SubItems.Add(totalPriceProduct.ToString() + "đ");
+                        int totalPriceProduct = price * amount;
+                        lvItem.SubItems.Add(totalPriceProduct.ToString() + "đ");
 
-                    uscSale.Instance.getLvBillforOneTable().Items.Add(lvItem);
+                        uscSale.Instance.getLvBillforOneTable().Items.Add(lvItem);
+                    }
+                    
                 }
                 uscSale.Instance.getITotalPriceProducts().Text = table["subtotal"].Value.ToString() + "đ";
             }

@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CafeManagementApplication.views;
+﻿using CafeManagementApplication.views;
 using CafeManagementApplication.models;
 using System.Windows.Forms;
-using MongoDB.Bson;
-using System.Diagnostics;
 
 namespace CafeManagementApplication.controllers
 {
