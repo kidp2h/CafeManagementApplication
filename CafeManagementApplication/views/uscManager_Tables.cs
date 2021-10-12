@@ -98,6 +98,7 @@ namespace CafeManagementApplication.views
         {
             Table table = ManagerController.Instance.NewData("Table", this);
             ListViewItem tableLvItem = new ListViewItem(table.TableName);
+            tableLvItem.Tag = table.Id;
             tableLvItem.SubItems.Add(table.Status == sTable.EMPTY ? "Bàn trống" : "Có người"); 
             listViewTableInfor.Items.Add(tableLvItem);
             ManagerController.Instance.AddData("Table", table, this);
