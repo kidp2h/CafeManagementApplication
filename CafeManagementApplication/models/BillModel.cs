@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MongoDB.Bson.Serialization.Attributes;
 using CafeManagementApplication.config;
+using System;
 
 namespace CafeManagementApplication.models
 {
@@ -21,6 +22,8 @@ namespace CafeManagementApplication.models
         public ListItemOrder ProductsOrdered { get; set; }
         [BsonElement("table")]
         public BsonObjectId TableId { get; set; }
+        [BsonElement("created_at")]
+        public BsonDateTime CreatedAt { get; set; }
     }
     class BillModel : BaseModel<Bill>
     {
@@ -54,7 +57,8 @@ namespace CafeManagementApplication.models
                 .Unwind("products.product.category")
                 .AppendStage<BsonDocument>("{$set : {  'products.product.category': '$products.product.category.name'}}")
                 .Project(new BsonDocument("table.bill", 0))
-                .Group("{_id: '$_id',table : {$first : '$table'},'products': {$push: '$products'},subtotal : {$sum : {$multiply : ['$products.product.price','$products.amount']}}}");
+                .Group("{_id: '$_id',table : {$first : '$table'},'products': {$push: '$products'},subtotal : {$sum : {$multiply : ['$products.product.price','$products.amount']}}}")
+                .Sort(new BsonDocument("created_at",-1));
             return bill;
         }
         public void addBill(BsonObjectId table, BsonObjectId bill)
@@ -64,7 +68,8 @@ namespace CafeManagementApplication.models
             {
                 Id = bill,
                 ProductsOrdered = new ListItemOrder(),
-                TableId = table
+                TableId = table,
+                CreatedAt = new BsonDateTime(DateTime.Now)
             };
             collection.InsertOne(newBill);
         }
