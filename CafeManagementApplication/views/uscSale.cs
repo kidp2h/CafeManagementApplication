@@ -54,7 +54,7 @@ namespace CafeManagementApplication.views
         {
             LoadItemController.Instance.LoadingItemTable(flpTableList);
         }
-
+ 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             fAddProducts f = new fAddProducts();
@@ -70,10 +70,19 @@ namespace CafeManagementApplication.views
             }
         }
 
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            fPay f = new fPay();
+
+            f.ShowDialog();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             LoadListTableForForm();
         }
         #endregion
+
+       
     }
 }

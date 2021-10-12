@@ -36,14 +36,14 @@ namespace CafeManagementApplication.views
             this.btnDeleteTable = new System.Windows.Forms.Button();
             this.btnUpdateTabe = new System.Windows.Forms.Button();
             this.listViewTableInfor = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel2 = new System.Windows.Forms.Panel();
             this.iFullTable = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.iTableName = new System.Windows.Forms.TextBox();
             this.iEmptyTable = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -114,6 +114,8 @@ namespace CafeManagementApplication.views
             this.listViewTableInfor.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
+            this.listViewTableInfor.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewTableInfor.FullRowSelect = true;
             this.listViewTableInfor.GridLines = true;
             this.listViewTableInfor.HideSelection = false;
             this.listViewTableInfor.Location = new System.Drawing.Point(9, 62);
@@ -123,6 +125,16 @@ namespace CafeManagementApplication.views
             this.listViewTableInfor.UseCompatibleStateImageBehavior = false;
             this.listViewTableInfor.View = System.Windows.Forms.View.Details;
             this.listViewTableInfor.SelectedIndexChanged += new System.EventHandler(this.listViewTableInfor_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Tên bàn";
+            this.columnHeader1.Width = 299;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Trạng thái ";
+            this.columnHeader2.Width = 547;
             // 
             // panel2
             // 
@@ -135,7 +147,6 @@ namespace CafeManagementApplication.views
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(430, 253);
             this.panel2.TabIndex = 15;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // iFullTable
             // 
@@ -157,7 +168,6 @@ namespace CafeManagementApplication.views
             this.label2.Size = new System.Drawing.Size(127, 29);
             this.label2.TabIndex = 16;
             this.label2.Text = "Trạng thái:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // iTableName
             // 
@@ -189,15 +199,6 @@ namespace CafeManagementApplication.views
             this.label3.Size = new System.Drawing.Size(108, 29);
             this.label3.TabIndex = 17;
             this.label3.Text = "Tên bàn:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Tên bàn";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Trạng thái ";
             // 
             // uscManager_Tables
             // 
@@ -211,7 +212,6 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.listViewTableInfor);
             this.Name = "uscManager_Tables";
             this.Size = new System.Drawing.Size(1115, 770);
-            this.Load += new System.EventHandler(this.uscManager_Tables_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

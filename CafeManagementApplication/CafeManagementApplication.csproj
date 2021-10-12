@@ -175,6 +175,12 @@
     <Compile Include="views\fLogin.Designer.cs">
       <DependentUpon>fLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\fPay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\fPay.Designer.cs">
+      <DependentUpon>fPay.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\uscManager.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -236,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\fLogin.resx">
       <DependentUpon>fLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\fPay.resx">
+      <DependentUpon>fPay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\uscManager.resx">
       <DependentUpon>uscManager.cs</DependentUpon>

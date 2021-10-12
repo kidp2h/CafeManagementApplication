@@ -45,11 +45,12 @@ namespace CafeManagementApplication.controllers
             return null;
         }
 
-        public void AddData(string nameData,dynamic user, dynamic view)
+        public void AddData(string nameData, dynamic view)
         {
             if(nameData == "Table")
             {
-                TableModel.Instance.addTable(user);
+                Table table = NewData("Table",view);
+                TableModel.Instance.addTable(table);
                 ResetTableDataInput(view);
             }
             if(nameData == "Drink")
@@ -58,6 +59,7 @@ namespace CafeManagementApplication.controllers
             }    
             if (nameData == "User")
             {
+                User user = NewData("User", view);
                 UserModel.Instance.addUser(user);
                 ResetDataInput(view);
             }
