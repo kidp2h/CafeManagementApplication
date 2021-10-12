@@ -1,5 +1,6 @@
 ﻿using CafeManagementApplication.controllers;
 using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace CafeManagementApplication.views
@@ -32,7 +33,10 @@ namespace CafeManagementApplication.views
         {
             return lvBillforOneTable;
         }
-
+        public FlowLayoutPanel getFlpTableList()
+        {
+            return flpTableList;
+        }
         public TextBox getITotalPriceProducts()
         {
             return iTotalPriceProducts;
@@ -65,8 +69,11 @@ namespace CafeManagementApplication.views
 
             if (f.CheckAdd)
             {
+                Thread status = new Thread(() => {
+                     LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
+                });
+                status.Start();
                 LoadListTableForForm();
-                LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
             }
         }
 
