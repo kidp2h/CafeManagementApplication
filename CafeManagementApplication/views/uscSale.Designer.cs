@@ -39,22 +39,22 @@ namespace CafeManagementApplication.views
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.iTotalPriceProducts = new System.Windows.Forms.TextBox();
-            this.iTotalPriceBill = new System.Windows.Forms.TextBox();
+            this.tbTotalPriceProducts = new System.Windows.Forms.TextBox();
+            this.tbTotalPriceBill = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.cbSale = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnPay = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.flpTableList = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSale)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,6 +100,8 @@ namespace CafeManagementApplication.views
             this.lblTableName.Name = "lblTableName";
             this.lblTableName.Size = new System.Drawing.Size(0, 41);
             this.lblTableName.TabIndex = 16;
+            this.lblTableName.Text = "Hãy chọn bàn";
+
             // 
             // btnAdd
             // 
@@ -164,10 +166,10 @@ namespace CafeManagementApplication.views
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.iTotalPriceProducts);
-            this.panel1.Controls.Add(this.iTotalPriceBill);
+            this.panel1.Controls.Add(this.tbTotalPriceProducts);
+            this.panel1.Controls.Add(this.tbTotalPriceBill);
             this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.numericUpDown1);
+            this.panel1.Controls.Add(this.cbSale);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
@@ -177,31 +179,32 @@ namespace CafeManagementApplication.views
             this.panel1.Size = new System.Drawing.Size(666, 150);
             this.panel1.TabIndex = 12;
             // 
-            // iTotalPriceProducts
+            // tbTotalPriceProducts
             // 
-            this.iTotalPriceProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iTotalPriceProducts.Location = new System.Drawing.Point(205, 18);
-            this.iTotalPriceProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iTotalPriceProducts.Multiline = true;
-            this.iTotalPriceProducts.Name = "iTotalPriceProducts";
-            this.iTotalPriceProducts.ReadOnly = true;
-            this.iTotalPriceProducts.Size = new System.Drawing.Size(248, 29);
-            this.iTotalPriceProducts.TabIndex = 18;
-            this.iTotalPriceProducts.Text = "0";
-            this.iTotalPriceProducts.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbTotalPriceProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTotalPriceProducts.Location = new System.Drawing.Point(205, 18);
+            this.tbTotalPriceProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbTotalPriceProducts.Multiline = true;
+            this.tbTotalPriceProducts.Name = "tbTotalPriceProducts";
+            this.tbTotalPriceProducts.ReadOnly = true;
+            this.tbTotalPriceProducts.Size = new System.Drawing.Size(248, 29);
+            this.tbTotalPriceProducts.TabIndex = 18;
+            this.tbTotalPriceProducts.Text = "0đ";
+            this.tbTotalPriceProducts.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbTotalPriceProducts.TextChanged += new System.EventHandler(this.tbTotalPriceProducts_TextChanged);
             // 
-            // iTotalPriceBill
+            // tbTotalPriceBill
             // 
-            this.iTotalPriceBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iTotalPriceBill.Location = new System.Drawing.Point(205, 92);
-            this.iTotalPriceBill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iTotalPriceBill.Multiline = true;
-            this.iTotalPriceBill.Name = "iTotalPriceBill";
-            this.iTotalPriceBill.ReadOnly = true;
-            this.iTotalPriceBill.Size = new System.Drawing.Size(248, 29);
-            this.iTotalPriceBill.TabIndex = 17;
-            this.iTotalPriceBill.Text = "0";
-            this.iTotalPriceBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbTotalPriceBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTotalPriceBill.Location = new System.Drawing.Point(205, 92);
+            this.tbTotalPriceBill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbTotalPriceBill.Multiline = true;
+            this.tbTotalPriceBill.Name = "tbTotalPriceBill";
+            this.tbTotalPriceBill.ReadOnly = true;
+            this.tbTotalPriceBill.Size = new System.Drawing.Size(248, 29);
+            this.tbTotalPriceBill.TabIndex = 17;
+            this.tbTotalPriceBill.Text = "0đ";
+            this.tbTotalPriceBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // pictureBox2
             // 
@@ -215,15 +218,16 @@ namespace CafeManagementApplication.views
             this.pictureBox2.TabIndex = 16;
             this.pictureBox2.TabStop = false;
             // 
-            // numericUpDown1
+            // cbSale
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(205, 57);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(248, 27);
-            this.numericUpDown1.TabIndex = 15;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.cbSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSale.Location = new System.Drawing.Point(205, 57);
+            this.cbSale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbSale.Name = "cbSale";
+            this.cbSale.Size = new System.Drawing.Size(248, 27);
+            this.cbSale.TabIndex = 15;
+            this.cbSale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.cbSale.ValueChanged += new System.EventHandler(this.cbSale_ValueChanged);
             // 
             // label5
             // 
@@ -293,16 +297,6 @@ namespace CafeManagementApplication.views
             this.panel3.Size = new System.Drawing.Size(717, 774);
             this.panel3.TabIndex = 4;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 11);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(32, 32);
-            this.button1.TabIndex = 4;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // flpTableList
             // 
             this.flpTableList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -318,6 +312,16 @@ namespace CafeManagementApplication.views
             this.flpTableList.Name = "flpTableList";
             this.flpTableList.Size = new System.Drawing.Size(709, 718);
             this.flpTableList.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 11);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(32, 32);
+            this.button1.TabIndex = 4;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // uscSale
             // 
@@ -335,7 +339,7 @@ namespace CafeManagementApplication.views
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSale)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -355,7 +359,7 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown cbSale;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel3;
@@ -363,8 +367,8 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.TextBox iTotalPriceProducts;
-        private System.Windows.Forms.TextBox iTotalPriceBill;
+        private System.Windows.Forms.TextBox tbTotalPriceProducts;
+        private System.Windows.Forms.TextBox tbTotalPriceBill;
         private System.Windows.Forms.Label lblTableName;
         private System.Windows.Forms.Button button1;
     }

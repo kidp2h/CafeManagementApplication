@@ -1,6 +1,7 @@
 ﻿using System;
 using CafeManagementApplication.controllers;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace CafeManagementApplication.views
 {
@@ -10,6 +11,8 @@ namespace CafeManagementApplication.views
         {
             InitializeComponent();
         }
+
+        #region Public Data View
         public string inputMoneyText
         {
             get { return this.tbMoney.Text; }
@@ -29,16 +32,29 @@ namespace CafeManagementApplication.views
         public string TableId { get; set; }
 
         public string BillId { get; set; }
+        #endregion
+
+        #region Handler Event
         private void btnPay_Click(object sender, EventArgs e)
         {
             PaymentController.Instance.payment(this, TableId,BillId);
+            Thread t1 = new Thread(() =>
+            {
+                Invoke(new Action(() =>
+                {
+                    uscSale.Instance.LoadListTableForForm();
+                }));
+            });
+            t1.IsBackground = true;
+            t1.Start();
+
+            LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
         }
 
         private void tbMoney_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                
                 string money = inputMoneyText;
                 string subtotal = inputSubtotalText;
                 inputChargeText = (Int32.Parse(money) - Int32.Parse(subtotal)).ToString();
@@ -48,5 +64,6 @@ namespace CafeManagementApplication.views
                
             }
         }
+        #endregion
     }
 }

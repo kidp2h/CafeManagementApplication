@@ -13,10 +13,9 @@ namespace CafeManagementApplication.views
             
         }
 
-        #region Getter & Setter Table Name & Status
+        #region Getter & Setter 
         private string tableName;
         private string status;
-        private string billId;
         private Color backgroundColorCurrent;
 
         public string TableName
@@ -24,7 +23,6 @@ namespace CafeManagementApplication.views
             get { return tableName; }
             set { tableName = value; lbTableName.Text = value; }
         }
-
         public string Status
         {
             get { return status; }
@@ -44,16 +42,11 @@ namespace CafeManagementApplication.views
                 this.backgroundColorCurrent = this.BackColor;
             }
         }
-        public string BillId
-        {
-            get { return billId; }
-            set { billId = value; }
-        }
-
-        public string TableId
-        {
-            get { return this.Tag.ToString(); }
-        }
+        public string BillId { get; set; }
+        public string Id { get; set; }
+        
+           
+        
         #endregion
 
         #region Hover Effect      
@@ -83,9 +76,9 @@ namespace CafeManagementApplication.views
         #region Handler Event
         private void uscSale_Table_Click(object sender, EventArgs e)
         {
-            LoadListController.Instance.LoadingBillForListViewFormTableID(this.Tag.ToString());
+            LoadListController.Instance.LoadingBillForListViewFormTableID(this.Id);
             uscSale.Instance.LblTableName = this.TableName;
-            uscSale.Instance.TableId = this.TableId;
+            uscSale.Instance.TableId = this.Id;
             uscSale.Instance.TableStatus = this.Status;
             uscSale.Instance.BillId = this.BillId;
 

@@ -175,7 +175,6 @@ namespace CafeManagementApplication.models
             });
             s2.IsBackground = true;
             s2.Start();
-            uscSale.Instance.LoadListTableForForm();
         }
 
     }

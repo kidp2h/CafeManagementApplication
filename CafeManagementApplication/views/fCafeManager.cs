@@ -1,14 +1,21 @@
-﻿using System;
+﻿using CafeManagementApplication.types;
+using System;
 using System.Windows.Forms;
 
 namespace CafeManagementApplication.views
 {
     public partial class fCafeManager : Form
     {
+        private Role UserRole = Role.MANAGER;
         public fCafeManager()
         {
             InitializeComponent();
-            btnManager_Click(null, null);
+
+            if (UserRole == Role.MANAGER) {
+                btnManager.Enabled = true;
+                btnStatistics.Enabled = true;
+                btnManager_Click(null, null);
+            }
             btnSale_Click(null, null);
         }
 
