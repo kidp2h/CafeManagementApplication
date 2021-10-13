@@ -58,7 +58,7 @@ namespace CafeManagementApplication.views
             }
         }
 
-        public string inputTableNameTagText
+        public string TableId
         {
             get { return iTableName.Tag.ToString(); }
             set { iTableName.Tag = value; }

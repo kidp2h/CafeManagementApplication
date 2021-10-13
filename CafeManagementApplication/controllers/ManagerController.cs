@@ -26,7 +26,7 @@ namespace CafeManagementApplication.controllers
                 table.Status = view.inputStatus;
                 return table;
             }
-            if (nameData == "Drink")
+            if (nameData == "Product")
             {
                 Product product = new Product();
                 product.NameProduct = view.inputProductNameText;
@@ -86,7 +86,7 @@ namespace CafeManagementApplication.controllers
                         }
                     }
                 };
-                TableModel.Instance.updateTable(view.inputTableNameTagText, updateTable);
+                TableModel.Instance.updateTable(view.TableId, updateTable);
                 ResetTableDataInput(view);
             }
             if (nameData == "Product")
@@ -122,11 +122,12 @@ namespace CafeManagementApplication.controllers
             if (nameData == "Table")
             {
 
-                TableModel.Instance.removeTable(view.inputTableNameTagText);
+                TableModel.Instance.removeTable(view.TableId);
+                ResetTableDataInput(view);
             }
             if (nameData == "Product")
             {
-
+                ProductModel.Instance.removeProductById(view.ProductId);
             }
             if (nameData == "User")
             {

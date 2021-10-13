@@ -53,8 +53,9 @@ namespace CafeManagementApplication.controllers
                 foreach(dynamic product in productList)
                 {
                     ListViewItem productLvItem = new ListViewItem(product["name"].Value);
+                    productLvItem.Tag = product["_id"];
                     string category = product["category"].Value;
-                    productLvItem.SubItems.Add(category);
+                    productLvItem.SubItems.Add(category);                  
                     int price = product["price"].Value;
                     productLvItem.SubItems.Add(price.ToString());
                     lv.Items.Add(productLvItem);

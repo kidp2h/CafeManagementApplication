@@ -36,14 +36,15 @@ namespace CafeManagementApplication.views
             this.btnUpdateProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.lvProductInfor = new System.Windows.Forms.ListView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.iTableName = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.tbProductPrice = new System.Windows.Forms.TextBox();
+            this.tbProductName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tbProductCategory = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,17 +80,18 @@ namespace CafeManagementApplication.views
             this.btnDeleteProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
             this.btnDeleteProduct.Location = new System.Drawing.Point(0, 193);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
-            this.btnDeleteProduct.Size = new System.Drawing.Size(262, 68);
+            this.btnDeleteProduct.Size = new System.Drawing.Size(267, 68);
             this.btnDeleteProduct.TabIndex = 3;
             this.btnDeleteProduct.Text = "Xóa";
             this.btnDeleteProduct.UseVisualStyleBackColor = true;
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
             // btnUpdateProduct
             // 
             this.btnUpdateProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
             this.btnUpdateProduct.Location = new System.Drawing.Point(0, 97);
             this.btnUpdateProduct.Name = "btnUpdateProduct";
-            this.btnUpdateProduct.Size = new System.Drawing.Size(262, 68);
+            this.btnUpdateProduct.Size = new System.Drawing.Size(267, 68);
             this.btnUpdateProduct.TabIndex = 2;
             this.btnUpdateProduct.Text = "Sửa";
             this.btnUpdateProduct.UseVisualStyleBackColor = true;
@@ -99,7 +101,7 @@ namespace CafeManagementApplication.views
             this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
             this.btnAddProduct.Location = new System.Drawing.Point(0, 0);
             this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(262, 68);
+            this.btnAddProduct.Size = new System.Drawing.Size(267, 68);
             this.btnAddProduct.TabIndex = 1;
             this.btnAddProduct.Text = "Thêm";
             this.btnAddProduct.UseVisualStyleBackColor = true;
@@ -108,55 +110,36 @@ namespace CafeManagementApplication.views
             // lvProductInfor
             // 
             this.lvProductInfor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lvProductInfor.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.lvProductInfor.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
+            this.lvProductInfor.GridLines = true;
             this.lvProductInfor.HideSelection = false;
             this.lvProductInfor.Location = new System.Drawing.Point(10, 59);
             this.lvProductInfor.Name = "lvProductInfor";
             this.lvProductInfor.Size = new System.Drawing.Size(616, 692);
             this.lvProductInfor.TabIndex = 7;
             this.lvProductInfor.UseCompatibleStateImageBehavior = false;
+            this.lvProductInfor.View = System.Windows.Forms.View.Details;
+            this.lvProductInfor.SelectedIndexChanged += new System.EventHandler(this.lvProductInfor_SelectedIndexChanged);
             // 
-            // comboBox1
+            // tbProductPrice
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Bold);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(781, 472);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(289, 47);
-            this.comboBox1.TabIndex = 11;
+            this.tbProductPrice.Location = new System.Drawing.Point(781, 559);
+            this.tbProductPrice.Multiline = true;
+            this.tbProductPrice.Name = "tbProductPrice";
+            this.tbProductPrice.Size = new System.Drawing.Size(289, 49);
+            this.tbProductPrice.TabIndex = 20;
             // 
-            // iTableName
+            // tbProductName
             // 
-            this.iTableName.Location = new System.Drawing.Point(781, 549);
-            this.iTableName.Multiline = true;
-            this.iTableName.Name = "iTableName";
-            this.iTableName.Size = new System.Drawing.Size(289, 49);
-            this.iTableName.TabIndex = 20;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(781, 392);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(289, 49);
-            this.textBox1.TabIndex = 21;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "label1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "label2";
+            this.tbProductName.Location = new System.Drawing.Point(781, 392);
+            this.tbProductName.Multiline = true;
+            this.tbProductName.Name = "tbProductName";
+            this.tbProductName.Size = new System.Drawing.Size(289, 49);
+            this.tbProductName.TabIndex = 21;
             // 
             // label3
             // 
@@ -182,25 +165,46 @@ namespace CafeManagementApplication.views
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(645, 558);
+            this.label5.Location = new System.Drawing.Point(645, 569);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(110, 29);
             this.label5.TabIndex = 26;
             this.label5.Text = "Giá tiền:";
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Tên món";
+            this.columnHeader1.Width = 190;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Loại";
+            this.columnHeader2.Width = 177;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Giá tiền";
+            this.columnHeader3.Width = 244;
+            // 
+            // tbProductCategory
+            // 
+            this.tbProductCategory.Location = new System.Drawing.Point(781, 475);
+            this.tbProductCategory.Multiline = true;
+            this.tbProductCategory.Name = "tbProductCategory";
+            this.tbProductCategory.Size = new System.Drawing.Size(289, 49);
+            this.tbProductCategory.TabIndex = 27;
             // 
             // uscManager_Products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.Controls.Add(this.iTableName);
+            this.Controls.Add(this.tbProductCategory);
+            this.Controls.Add(this.tbProductPrice);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.tbProductName);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel1);
@@ -222,13 +226,14 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.Button btnUpdateProduct;
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.ListView lvProductInfor;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox iTableName;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbProductPrice;
+        private System.Windows.Forms.TextBox tbProductName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.TextBox tbProductCategory;
     }
 }
