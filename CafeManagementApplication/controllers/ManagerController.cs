@@ -103,7 +103,7 @@ namespace CafeManagementApplication.controllers
                         }
                     }
                 };
-                ProductModel.Instance.updateProductById(view.Product, updateProduct);
+                //ProductModel.Instance.updateProductById(view.Product, updateProduct);
                 ResetTableDataInput(view);
             }
             if (nameData == "User")

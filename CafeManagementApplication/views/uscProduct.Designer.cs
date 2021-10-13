@@ -40,7 +40,7 @@ namespace CafeManagementApplication.views
             // lblName
             // 
             this.lblName.Font = new System.Drawing.Font("Cooper Black", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblName.ForeColor = System.Drawing.Color.White;
             this.lblName.Location = new System.Drawing.Point(-3, 138);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(202, 46);
@@ -51,7 +51,7 @@ namespace CafeManagementApplication.views
             // lblPrice
             // 
             this.lblPrice.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblPrice.ForeColor = System.Drawing.Color.White;
             this.lblPrice.Location = new System.Drawing.Point(-2, 184);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(202, 46);
@@ -69,10 +69,10 @@ namespace CafeManagementApplication.views
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.SandyBrown;
+            this.pictureBox1.BackColor = System.Drawing.Color.HotPink;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(199, 168);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -84,7 +84,7 @@ namespace CafeManagementApplication.views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SandyBrown;
+            this.BackColor = System.Drawing.Color.HotPink;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.panel1);

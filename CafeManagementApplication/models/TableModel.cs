@@ -170,7 +170,6 @@ namespace CafeManagementApplication.models
             s1.Start();
             Thread s2 = new Thread(() =>
             {
-
                 BillModel.Instance.setPaidBill(oldBillId, true);
             });
             s2.IsBackground = true;

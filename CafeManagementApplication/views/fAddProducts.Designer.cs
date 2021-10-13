@@ -29,7 +29,7 @@ namespace CafeManagementApplication.views
         /// </summary>
         private void InitializeComponent()
         {
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpListCategorys = new System.Windows.Forms.FlowLayoutPanel();
             this.txtBoxAmount = new System.Windows.Forms.TextBox();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.lblPrice = new System.Windows.Forms.Label();
@@ -48,15 +48,15 @@ namespace CafeManagementApplication.views
             this.pnlInfo.SuspendLayout();
             this.SuspendLayout();
             // 
-            // flowLayoutPanel2
+            // flpListCategorys
             // 
-            this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(692, 55);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(391, 283);
-            this.flowLayoutPanel2.TabIndex = 1;
+            this.flpListCategorys.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.flpListCategorys.Location = new System.Drawing.Point(692, 55);
+            this.flpListCategorys.Name = "flpListCategorys";
+            this.flpListCategorys.Size = new System.Drawing.Size(391, 283);
+            this.flpListCategorys.TabIndex = 1;
             // 
-            // textBox1
+            // txtBoxAmount
             // 
             this.txtBoxAmount.Location = new System.Drawing.Point(831, 527);
             this.txtBoxAmount.Name = "txtBoxAmount";
@@ -223,7 +223,7 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.txtBoxAmount);
-            this.Controls.Add(this.flowLayoutPanel2);
+            this.Controls.Add(this.flpListCategorys);
             this.Controls.Add(this.flpListProducts);
             this.Name = "fAddProducts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -238,7 +238,7 @@ namespace CafeManagementApplication.views
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flpListProducts;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flpListCategorys;
         private System.Windows.Forms.TextBox txtBoxAmount;
         private System.Windows.Forms.Panel pnlInfo;
         private System.Windows.Forms.Label label1;

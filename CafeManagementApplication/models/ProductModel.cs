@@ -46,6 +46,18 @@ namespace CafeManagementApplication.models
                 .ToList();
             return listProduct;
         }
+
+        public List<BsonDocument> getListProductByCategory(string idCategory)
+        {
+            IMongoCollection<Product> collection = getCollection();
+            dynamic listProduct = collection.Aggregate()
+                .Lookup("categories", "category", "_id", "category")
+                .Unwind("category")
+                .Match(new BsonDocument("category._id", new ObjectId(idCategory)))
+                .AppendStage<BsonDocument>("{$set : {'category' : '$category.name'}}")
+                .ToList();
+            return listProduct;
+        }
         public void addProduct(Product newProduct, string nameCategory)
         {
             IMongoCollection < Product > collection = getCollection();
@@ -69,11 +81,37 @@ namespace CafeManagementApplication.models
             IMongoCollection<Product> collection = this.getCollection();
             collection.DeleteOneAsync(filter);
         }
-        public void updateProductById(string productId, UpdateDefinition<Product> update)
+        public void updateProductById(string productId, string nameProduct, int price, string category)
         {
             FilterDefinition<Product> filter = new BsonDocument("_id", new ObjectId(productId));
+            FilterDefinition<Category> cfilter = new BsonDocument("name", category);
             IMongoCollection<Product> collection = getCollection();
-            collection.UpdateOneAsync(filter, update);
+            if (!CategoryModel.Instance.checkCategory(cfilter))
+            {
+                BsonObjectId id = ObjectId.GenerateNewId();
+                CategoryModel.Instance.addCategory(new Category { Id = id, NameCategory = category });
+                UpdateDefinition<Product> update = new BsonDocument
+                {
+                    {"$set", new BsonDocument{
+                        {"name", nameProduct},
+                        {"price", price },
+                        {"category",id }
+                    }}
+                };
+                collection.UpdateOneAsync(filter, update);
+            }
+            else
+            {
+                UpdateDefinition<Product> update = new BsonDocument
+                {
+                    {"$set", new BsonDocument{
+                        {"name", nameProduct},
+                        {"price", price }
+                    }}
+                };
+                collection.UpdateOneAsync(filter, update);
+            }
+
         }
     }
 }
