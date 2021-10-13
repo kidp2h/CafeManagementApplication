@@ -31,6 +31,7 @@ namespace CafeManagementApplication.controllers
         {
             
             lv.Items.Clear();
+            
             if (form == "useManager_Tables")
             {
                 dynamic tableList = TableModel.Instance.getListTable();

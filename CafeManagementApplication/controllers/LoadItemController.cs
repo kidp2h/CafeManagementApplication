@@ -26,6 +26,29 @@ namespace CafeManagementApplication.controllers
 
         private LoadItemController() { }
 
+        public void LoadingItemTable ()
+        {
+            uscSale.Instance.getFlpTableList().Controls.Clear();
+            dynamic tables = TableModel.Instance.getListTable();
+            foreach (Table table in tables)
+            {            
+                uscSale_Table temp = new uscSale_Table();
+                temp.Tag = table.Id;
+                temp.TableName = table.TableName;
+
+                if (table.Status == types.sTable.FULL)
+                {
+                    temp.Status = "Có người";                 
+                }
+                else
+                {
+                    temp.Status = "Bàn trống";                  
+                }
+
+                uscSale.Instance.getFlpTableList().Controls.Add(temp);
+            }
+        }
+
         public void LoadingItemTable(FlowLayoutPanel flp)
         {
             flp.Controls.Clear();
