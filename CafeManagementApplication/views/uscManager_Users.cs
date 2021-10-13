@@ -30,8 +30,13 @@ namespace CafeManagementApplication.views
         public void LoadListUsersForForm()
         {
             Thread loadList = new Thread(() => {
-                LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
+                ListView lv = lvUsers;
+              
+                 LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lv);
+             
+                
             });
+            loadList.IsBackground = true;
             loadList.Start();
         }
 
@@ -64,13 +69,13 @@ namespace CafeManagementApplication.views
             if(lv.SelectedItems.Count>0)
             {
                 ListViewItem item = lv.SelectedItems[0];
-                iName.Tag = item.Tag;
-                iName.Text = item.SubItems[0].Text;
-                iAge.Text = item.SubItems[1].Text;
+                tbName.Tag = item.Tag;
+                tbName.Text = item.SubItems[0].Text;
+                tbAge.Text = item.SubItems[1].Text;
                 if (item.SubItems[2].Text == "Nam") rdoMale.Checked = true;
                 else if (item.SubItems[2].Text == "Nữ") rdoFemale.Checked = true;
                 else rdoOther.Checked = true;
-                iUserName.Text = item.SubItems[3].Text;
+                tbUserName.Text = item.SubItems[3].Text;
                 if (item.SubItems[4].Text == "Quản lý") rdoManager.Checked = true;
                 else rdoSaff.Checked = true;
 
@@ -81,23 +86,23 @@ namespace CafeManagementApplication.views
         #region Public Input View
         public string inputNameText
         {
-            get { return iName.Text; }
-            set { iName.Text = value;  }
+            get { return tbName.Text; }
+            set { tbName.Text = value;  }
         }
         public string inputAgeText
         {
-            get { return iAge.Text; }
-            set { iAge.Text = value; }
+            get { return tbAge.Text; }
+            set { tbAge.Text = value; }
         }
         public string inputUsernameText
         {
-            get { return iUserName.Text; }
-            set { iUserName.Text = value; }
+            get { return tbUserName.Text; }
+            set { tbUserName.Text = value; }
         }
         public string inputUserpasswordText
         {
-            get { return iUserPassword.Text; }
-            set { iUserPassword.Text = value; }
+            get { return tbUserPassword.Text; }
+            set { tbUserPassword.Text = value; }
         }
         public string inputGenderText
         {
@@ -127,10 +132,10 @@ namespace CafeManagementApplication.views
                 else rdoSaff.Checked = true;
             }
         }
-        public string inputNameTagText
+        public string UserId
         {
-            get { return iName.Tag.ToString();}
-            set { iName.Tag = value; }
+            get { return tbName.Tag.ToString();}
+            set { tbName.Tag = value; }
         }
         #endregion
 

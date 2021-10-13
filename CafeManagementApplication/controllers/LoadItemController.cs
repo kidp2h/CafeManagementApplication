@@ -26,53 +26,27 @@ namespace CafeManagementApplication.controllers
 
         private LoadItemController() { }
 
-        public void LoadingItemTable ()
+        public void LoadingItemTable(FlowLayoutPanel flp)
         {
-            uscSale.Instance.getFlpTableList().Controls.Clear();
+            flp.Controls.Clear();
             dynamic tables = TableModel.Instance.getListTable();
-            Control.CheckForIllegalCrossThreadCalls = false;
             foreach (Table table in tables)
-            {            
+            {   
                 uscSale_Table temp = new uscSale_Table();
-                temp.Tag = table.Id;
+                temp.Id = table.Id.ToString();
                 temp.TableName = table.TableName;
                 temp.BillId = table.Bill.ToString();
 
                 if (table.Status == types.sTable.FULL)
                 {
-                    temp.Status = "Có người";                 
+                    temp.Status = "Có người";
                 }
                 else
                 {
-                    temp.Status = "Bàn trống";                  
+                    temp.Status = "Bàn trống";
                 }
 
-                uscSale.Instance.getFlpTableList().Controls.Add(temp);
-            }
-        }
-
-        public void LoadingItemTable(FlowLayoutPanel flp)
-        {
-            flp.Controls.Clear();
-            dynamic tables = TableModel.Instance.getListTable();
-            Control.CheckForIllegalCrossThreadCalls = false;
-            foreach (Table table in tables)
-            {   
-                    uscSale_Table temp = new uscSale_Table();
-                    temp.Tag = table.Id;
-                    temp.TableName = table.TableName;
-                    temp.BillId = table.Bill.ToString();
-
-                if (table.Status == types.sTable.FULL)
-                    {
-                        temp.Status = "Có người";
-                    }
-                    else
-                    {
-                        temp.Status = "Bàn trống";
-                    }
-
-                    flp.Controls.Add(temp);             
+                flp.Controls.Add(temp);             
             }
         }
 

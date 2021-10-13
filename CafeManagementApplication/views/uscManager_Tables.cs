@@ -65,7 +65,7 @@ namespace CafeManagementApplication.views
             Thread t1 = new Thread(() => {
                 Invoke(new Action(() =>
                 {
-                    LoadItemController.Instance.LoadingItemTable();
+                    uscSale.Instance.LoadListTableForForm();
                 }));
             });
             t1.Start();
@@ -80,7 +80,7 @@ namespace CafeManagementApplication.views
             Thread t1 = new Thread(() => {
                 Invoke(new Action(() =>
                 {
-                    LoadItemController.Instance.LoadingItemTable();
+                    uscSale.Instance.LoadListTableForForm();
                 }));
             });
             t1.Start();

@@ -106,7 +106,8 @@ namespace CafeManagementApplication.controllers
                     }
                     
                 }
-                uscSale.Instance.getITotalPriceProducts().Text = table["subtotal"].Value.ToString() + "đ";
+                uscSale.Instance.inputTotalPriceProducts = table["subtotal"].Value.ToString() + "đ";
+              
             }
             
             
