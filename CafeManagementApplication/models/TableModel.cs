@@ -6,6 +6,7 @@ using CafeManagementApplication.types;
 using MongoDB.Bson.Serialization.Attributes;
 using CafeManagementApplication.config;
 using System.Threading;
+using System;
 
 namespace CafeManagementApplication.models
 {
@@ -151,8 +152,23 @@ namespace CafeManagementApplication.models
         {
             FilterDefinition<Table> filter = new BsonDocument("_id", idTable);
             BsonObjectId _idTable = new BsonObjectId(idTable);
-            BillModel.Instance.addBill(_idTable, ObjectId.GenerateNewId());
-            setStatusForTable(filter, sTable.EMPTY);
+            BsonObjectId newIdBill = ObjectId.GenerateNewId();
+            BillModel.Instance.addBill(_idTable, newIdBill);
+            Thread s1 = new Thread(() =>
+            {
+                UpdateDefinition<Table> update = new BsonDocument
+                {
+                    {"$set", new BsonDocument
+                    {
+                        {"bill", newIdBill},
+                        {"status",sTable.EMPTY }
+                    } }
+                };
+                updateTable(_idTable.ToString(), update);
+            });
+            s1.IsBackground = true;
+            s1.Start();
         }
+
     }
 }

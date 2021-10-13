@@ -54,6 +54,10 @@ namespace CafeManagementApplication.views
             get { return btnAdd.Tag.ToString(); }
             set { btnAdd.Tag = value; }
         }
+        public string inputSubtotalText
+        {
+            get { return this.iTotalPriceProducts.Text; }
+        }
         public string TableId { get; set; }
         public string TableStatus { get; set; }
         #endregion
@@ -75,9 +79,16 @@ namespace CafeManagementApplication.views
 
         private void btnPay_Click(object sender, EventArgs e)
         {
-            fPay f = new fPay();
-            f.ShowDialog();
-
+            
+            if(uscSale.Instance.inputSubtotalText != "0")
+            {
+                fPay f = new fPay();
+                f.TableId = TableId;
+                f.inputSubtotalText = uscSale.Instance.inputSubtotalText.Replace("đ","");
+                f.ShowDialog();
+            }
+            
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
