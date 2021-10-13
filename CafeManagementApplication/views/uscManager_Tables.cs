@@ -55,9 +55,8 @@ namespace CafeManagementApplication.views
             set { iTableName.Tag = value; }
         }
 
-        private void btnAddTable_Click(object sender, EventArgs e)
+        public void LoadListTablesForForm()
         {
-            ManagerController.Instance.AddData("Table",this);
             Thread loadList = new Thread(() => {
                 LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", lvTableInfor);
             });
@@ -71,6 +70,17 @@ namespace CafeManagementApplication.views
             t1.Start();
             
 
+        }
+        private void btnAddTable_Click(object sender, EventArgs e)
+        {
+            ManagerController.Instance.AddData("Table",this);
+            LoadListTablesForForm();
+        }
+
+        private void btnUpdateTabe_Click(object sender, EventArgs e)
+        {
+            ManagerController.Instance.UpdateData("Table", this);
+            LoadListTablesForForm();
         }
 
         private void btnDeleteTable_Click(object sender, EventArgs e)
@@ -103,5 +113,6 @@ namespace CafeManagementApplication.views
                 btnDeleteTable.Tag = lvTable.Items.IndexOf(item);
             }
         }
+
     }
 }
