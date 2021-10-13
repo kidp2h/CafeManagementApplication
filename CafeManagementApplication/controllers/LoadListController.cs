@@ -2,6 +2,7 @@
 using CafeManagementApplication.views;
 using System.Windows.Forms;
 using MongoDB.Bson;
+using System.Threading;
 
 namespace CafeManagementApplication.controllers
 {
@@ -28,11 +29,12 @@ namespace CafeManagementApplication.controllers
 
         public void LoadingListForListViewOf(string form, ListView lv)
         {
+            
             lv.Items.Clear();
             if (form == "useManager_Tables")
             {
                 dynamic tableList = TableModel.Instance.getListTable();
-                foreach (dynamic table in tableList) 
+                foreach (dynamic table in tableList)
                 {
                     ListViewItem tableLvItem = new ListViewItem(table.TableName);
                     tableLvItem.Tag = table.Id;
@@ -62,18 +64,21 @@ namespace CafeManagementApplication.controllers
                     lvItem.SubItems.Add(Gender);
                     string Username = user.Username;
                     lvItem.SubItems.Add(Username);
-                    
+
                     if (user.Role == 0)
                     {
                         lvItem.SubItems.Add("Nhân viên");
                     }
                     else lvItem.SubItems.Add("Quản lý");
-                    
+
                     lv.Items.Add(lvItem);
                 }
                 return;
 
             }
+            
+
+
         }
 
         public void LoadingBillForListViewFormTableID(string tableID)

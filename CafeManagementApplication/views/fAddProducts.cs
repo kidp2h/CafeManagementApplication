@@ -57,21 +57,21 @@ namespace CafeManagementApplication.views
             BillController.Instance.AddProductToBill(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
             if (this.TableStatus != "Có người")
             {
-                Thread s1 = new Thread(() =>
+                Thread t1 = new Thread(() =>
                 {
                     Invoke(new Action(() =>
                     {
                         uscSale.Instance.LoadListTableForForm();
                     }));
                 });
-                s1.IsBackground = true;
-                s1.Start();
+                //t1.IsBackground = true;
+                t1.Start();
             }
-            Thread s2 = new Thread(() => {
+            Thread t2 = new Thread(() => {
                 LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
             });
-            s2.IsBackground = true;
-            s2.Start();
+           // t2.IsBackground = true;
+            t2.Start();
 
             
         }

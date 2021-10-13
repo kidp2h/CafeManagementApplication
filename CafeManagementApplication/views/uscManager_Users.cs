@@ -24,14 +24,16 @@ namespace CafeManagementApplication.views
         public uscManager_Users()
         {
             InitializeComponent();
-            
+            LoadListUsersForForm();
         }
 
         public void LoadListUsersForForm()
         {
-            Thread loadList = new Thread(() => {  
-                 LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
-             
+            Thread loadList = new Thread(() => {
+                Invoke(new Action(() =>
+                {
+                    LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
+                }));
             });
            
             loadList.Start();
@@ -57,7 +59,7 @@ namespace CafeManagementApplication.views
         } 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
+            LoadListUsersForForm();
         }
         private void lvUsers_SelectedIndexChanged(object sender, EventArgs e)
         {

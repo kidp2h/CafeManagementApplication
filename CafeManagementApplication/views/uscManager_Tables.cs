@@ -62,13 +62,13 @@ namespace CafeManagementApplication.views
                 LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", lvTableInfor);
             });
             loadList.Start();
-            Thread t1 = new Thread(() => {
+            Thread t4 = new Thread(() => {
                 Invoke(new Action(() =>
                 {
                     uscSale.Instance.LoadListTableForForm();
                 }));
             });
-            t1.Start();
+            t4.Start();
             
 
         }
@@ -77,13 +77,13 @@ namespace CafeManagementApplication.views
         {
             lvTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
             ManagerController.Instance.DeleteData("Table", this);
-            Thread t1 = new Thread(() => {
+            Thread t3 = new Thread(() => {
                 Invoke(new Action(() =>
                 {
                     uscSale.Instance.LoadListTableForForm();
                 }));
             });
-            t1.Start();
+            t3.Start();
 
         }
 
