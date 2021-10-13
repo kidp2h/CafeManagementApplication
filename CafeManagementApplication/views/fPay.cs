@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CafeManagementApplication.controllers;
 using System.Windows.Forms;
 
 namespace CafeManagementApplication.views
@@ -16,6 +10,43 @@ namespace CafeManagementApplication.views
         {
             InitializeComponent();
         }
+        public string inputMoneyText
+        {
+            get { return this.tbMoney.Text; }
+            set { this.tbMoney.Text = value; }
+        }
+        public string inputSubtotalText
+        {
+            get { return this.tbSubtotal.Text; }
+            set { this.tbSubtotal.Text = value; }
+        }
 
+        public string inputChargeText
+        {
+            get { return this.tbCharge.Text; }
+            set { this.tbCharge.Text = value; }
+        }
+        public string TableId { get; set; }
+
+        public string BillId { get; set; }
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            PaymentController.Instance.payment(this, TableId,BillId);
+        }
+
+        private void tbMoney_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                string money = inputMoneyText;
+                string subtotal = inputSubtotalText;
+                inputChargeText = (Int32.Parse(money) - Int32.Parse(subtotal)).ToString();
+            }
+            catch
+            {
+               
+            }
+        }
     }
 }

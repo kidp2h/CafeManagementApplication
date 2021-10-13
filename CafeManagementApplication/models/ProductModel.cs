@@ -11,7 +11,7 @@ namespace CafeManagementApplication.models
     {
         [BsonElement("_id")]
         public BsonObjectId Id { get; set; }
-        [BsonElement("nameProduct")]
+        [BsonElement("name")]
         public string NameProduct { get; set; }
         [BsonElement("price")]
         public int Price { get; set; }

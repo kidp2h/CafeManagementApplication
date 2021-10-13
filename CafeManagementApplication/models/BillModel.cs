@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MongoDB.Bson.Serialization.Attributes;
 using CafeManagementApplication.config;
+using System;
 
 namespace CafeManagementApplication.models
 {
@@ -21,6 +22,8 @@ namespace CafeManagementApplication.models
         public ListItemOrder ProductsOrdered { get; set; }
         [BsonElement("table")]
         public BsonObjectId TableId { get; set; }
+        [BsonElement("paid")]
+        public BsonBoolean Paid { get; set; }
     }
     class BillModel : BaseModel<Bill>
     {
@@ -54,7 +57,8 @@ namespace CafeManagementApplication.models
                 .Unwind("products.product.category")
                 .AppendStage<BsonDocument>("{$set : {  'products.product.category': '$products.product.category.name'}}")
                 .Project(new BsonDocument("table.bill", 0))
-                .Group("{_id: '$_id',table : {$first : '$table'},'products': {$push: '$products'},subtotal : {$sum : {$multiply : ['$products.product.price','$products.amount']}}}");
+                .Group("{_id: '$_id',table : {$first : '$table'},'products': {$push: '$products'},subtotal : {$sum : {$multiply : ['$products.product.price','$products.amount']}}}")
+                .Match(new BsonDocument("paid", false));
             return bill;
         }
         public void addBill(BsonObjectId table, BsonObjectId bill)
@@ -64,7 +68,8 @@ namespace CafeManagementApplication.models
             {
                 Id = bill,
                 ProductsOrdered = new ListItemOrder(),
-                TableId = table
+                TableId = table,
+                Paid = false
             };
             collection.InsertOne(newBill);
         }
@@ -79,7 +84,6 @@ namespace CafeManagementApplication.models
             List<Bill> bill =  getCollection().Find(filter).ToList();
             if (bill.Count != 0) return bill[0];
             return null;
-
         }
         public BsonDocument getTableFromIdBill(string idBill)
         {
@@ -93,7 +97,8 @@ namespace CafeManagementApplication.models
             IMongoCollection<Bill> collection = this.getCollection();
             BsonDocument filter = new BsonDocument{
                 {"_id",new ObjectId(idBill) },
-                {"products.product", new ObjectId(idProduct) }
+                {"products.product", new ObjectId(idProduct) },
+                {"paid", false }
             };
 
             List<Bill> listProduct = collection.Find(filter).ToList();
@@ -141,6 +146,19 @@ namespace CafeManagementApplication.models
                             }
                             }}
                         }
+                    };
+            collection.UpdateOne(_idBill, update);
+        }
+
+        public void setPaidBill(string idBill,bool status) 
+        {
+            BsonDocument _idBill = new BsonDocument("_id", new ObjectId(idBill));
+            IMongoCollection<Bill> collection = getCollection();
+            UpdateDefinition<Bill> update = new BsonDocument
+                    {
+                        {"$set", new BsonDocument{
+                            {"paid", status }
+                        }}
                     };
             collection.UpdateOne(_idBill, update);
         }

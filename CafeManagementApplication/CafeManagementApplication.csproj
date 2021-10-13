@@ -141,6 +141,7 @@
     <Compile Include="controllers\LoadListController.cs" />
     <Compile Include="controllers\LoadPanelController.cs" />
     <Compile Include="controllers\LoadItemController.cs" />
+    <Compile Include="controllers\PaymentController.cs" />
     <Compile Include="helpers\Config.cs" />
     <Compile Include="helpers\Hash.cs" />
     <Compile Include="helpers\SaveUser.cs" />

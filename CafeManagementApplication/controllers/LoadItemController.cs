@@ -7,11 +7,18 @@ namespace CafeManagementApplication.controllers
     public class LoadItemController
     {
         private static LoadItemController instance;
+        private static readonly object lockObject = new object();
         public static LoadItemController Instance
         {
             get
             {
-                if (instance == null) instance = new LoadItemController();
+                if (instance == null)
+                {
+                    lock (lockObject)
+                    {
+                        if (instance == null) instance = new LoadItemController();
+                    }
+                }
                 return instance;
 
             }
@@ -19,16 +26,17 @@ namespace CafeManagementApplication.controllers
 
         private LoadItemController() { }
 
-        public void LoadingItemTable (FlowLayoutPanel flp)
+        public void LoadingItemTable ()
         {
-            flp.Controls.Clear();
+            uscSale.Instance.getFlpTableList().Controls.Clear();
             dynamic tables = TableModel.Instance.getListTable();
             Control.CheckForIllegalCrossThreadCalls = false;
             foreach (Table table in tables)
-            {
+            {            
                 uscSale_Table temp = new uscSale_Table();
                 temp.Tag = table.Id;
                 temp.TableName = table.TableName;
+                temp.BillId = table.Bill.ToString();
 
                 if (table.Status == types.sTable.FULL)
                 {
@@ -39,9 +47,36 @@ namespace CafeManagementApplication.controllers
                     temp.Status = "Bàn trống";                  
                 }
 
-                flp.Controls.Add(temp);
+                uscSale.Instance.getFlpTableList().Controls.Add(temp);
             }
         }
+
+        public void LoadingItemTable(FlowLayoutPanel flp)
+        {
+            flp.Controls.Clear();
+            dynamic tables = TableModel.Instance.getListTable();
+            Control.CheckForIllegalCrossThreadCalls = false;
+            foreach (Table table in tables)
+            {   
+                    uscSale_Table temp = new uscSale_Table();
+                    temp.Tag = table.Id;
+                    temp.TableName = table.TableName;
+                    temp.BillId = table.Bill.ToString();
+
+                if (table.Status == types.sTable.FULL)
+                    {
+                        temp.Status = "Có người";
+                    }
+                    else
+                    {
+                        temp.Status = "Bàn trống";
+                    }
+
+                    flp.Controls.Add(temp);             
+            }
+        }
+
+
         public void LoadingItemProduct(FlowLayoutPanel flp)
         {
             dynamic products = ProductModel.Instance.getListProduct();
