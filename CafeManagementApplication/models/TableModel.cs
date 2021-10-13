@@ -115,6 +115,13 @@ namespace CafeManagementApplication.models
             IMongoCollection<Table> collection = getCollection();
             collection.DeleteOneAsync(_idTable);
         }
+
+        public void removeTableByTableName(string tableName)
+        {
+            FilterDefinition<Table> _tableName = new BsonDocument("tableName", tableName);
+            IMongoCollection<Table> collection = getCollection();
+            collection.DeleteOneAsync(_tableName);
+        }
         public void setStatusForTable(FilterDefinition<Table> filter, sTable status )
         {
             IMongoCollection<Table> collection = getCollection();
@@ -141,11 +148,11 @@ namespace CafeManagementApplication.models
             collection.UpdateOneAsync(_idTable, update);
         }
 
-        public void updateTable(string idTable, UpdateDefinition<Table> update)
+        public void updateTableByNameTable(string nameTable, UpdateDefinition<Table> update)
         {
-            FilterDefinition<Table> _idTable = new BsonDocument("_id", new ObjectId(idTable));
+            FilterDefinition<Table> _nameTable = new BsonDocument("tableName", nameTable);
             IMongoCollection<Table> collection = getCollection();
-            collection.UpdateOneAsync(_idTable, update);
+            collection.UpdateOneAsync(_nameTable, update);
         }
 
         public void resetTable(string idTable, string oldBillId)
