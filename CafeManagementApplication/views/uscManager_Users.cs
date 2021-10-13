@@ -91,14 +91,28 @@ namespace CafeManagementApplication.views
             get { return tbName.Tag.ToString();}
             set { tbName.Tag = value; }
         }
+
+        public string Username
+        {
+            get { return tbUserName.Text; }
+            set { tbUserName.Text = value; }
+        }
         #endregion
 
         #region Handler Event
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            ManagerController.Instance.AddData("User", this);
-            LoadListUsersForForm();
+            User user = ManagerController.Instance.NewData("User", this);
+            ListViewItem item = new ListViewItem(user.Fullname);
+            item.SubItems.Add(user.Age.ToString());
+            item.SubItems.Add(user.Gender.ToString());
+            item.SubItems.Add(user.Username);
+            item.SubItems.Add(user.Role.ToString());
+            lvUsers.Items.Add(item);
+
+            ManagerController.Instance.AddData("User", user, this);
+            
 
         }
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -130,7 +144,9 @@ namespace CafeManagementApplication.views
                 if (item.SubItems[2].Text == "Nam") rdoMale.Checked = true;
                 else if (item.SubItems[2].Text == "Nữ") rdoFemale.Checked = true;
                 else rdoOther.Checked = true;
+
                 tbUserName.Text = item.SubItems[3].Text;
+               
                 if (item.SubItems[4].Text == "Quản lý") rdoManager.Checked = true;
                 else rdoSaff.Checked = true;
 

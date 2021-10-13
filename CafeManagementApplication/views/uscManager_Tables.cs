@@ -69,7 +69,7 @@ namespace CafeManagementApplication.views
  
         private void btnAddTable_Click(object sender, EventArgs e)
         {
-            ManagerController.Instance.AddData("Table",this);
+           //ManagerController.Instance.AddData("Table",this);
             LoadListTablesForForm();
 
             Thread t1 = new Thread(() => {

@@ -35,7 +35,6 @@ namespace CafeManagementApplication.models
             IMongoCollection<Product> collection = db.GetCollection<Product>("products");
             return collection;
         }
-
         public List<BsonDocument> getListProduct()
         {
             IMongoCollection<Product> collection = getCollection();
@@ -46,7 +45,6 @@ namespace CafeManagementApplication.models
                 .ToList();
             return listProduct;
         }
-
         public List<BsonDocument> getListProductByCategory(string idCategory)
         {
             IMongoCollection<Product> collection = getCollection();

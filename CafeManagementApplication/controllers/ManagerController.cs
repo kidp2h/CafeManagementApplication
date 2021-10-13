@@ -48,7 +48,7 @@ namespace CafeManagementApplication.controllers
             return null;
         }
 
-        public void AddData(string nameData, dynamic view)
+        public void AddData(string nameData, dynamic data, dynamic view)
         {
             if(nameData == "Table")
             {
@@ -64,8 +64,7 @@ namespace CafeManagementApplication.controllers
             }    
             if (nameData == "User")
             {
-                User user = NewData("User", view);
-                UserModel.Instance.addUser(user);
+                UserModel.Instance.addUser(data);
                 ResetDataInput(view);
             }
         }
@@ -145,7 +144,7 @@ namespace CafeManagementApplication.controllers
             }
             if (nameData == "User")
             {
-                //UserModel.Instance.deleteUserByUsername(view.u);
+                UserModel.Instance.deleteUserByUsername(view.Username);
                 ResetDataInput(view);
             }
         }
