@@ -35,7 +35,7 @@ namespace CafeManagementApplication.views
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.btnUpdateProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lvProductInfor = new System.Windows.Forms.ListView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.iTableName = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -49,7 +49,7 @@ namespace CafeManagementApplication.views
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(554, 20);
+            this.button4.Location = new System.Drawing.Point(544, 20);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(82, 33);
             this.button4.TabIndex = 10;
@@ -60,7 +60,7 @@ namespace CafeManagementApplication.views
             // 
             this.richTextBox1.Location = new System.Drawing.Point(11, 20);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(537, 33);
+            this.richTextBox1.Size = new System.Drawing.Size(527, 33);
             this.richTextBox1.TabIndex = 9;
             this.richTextBox1.Text = "";
             // 
@@ -103,28 +103,30 @@ namespace CafeManagementApplication.views
             this.btnAddProduct.TabIndex = 1;
             this.btnAddProduct.Text = "Thêm";
             this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
-            // listView1
+            // lvProductInfor
             // 
-            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(10, 59);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(626, 692);
-            this.listView1.TabIndex = 7;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lvProductInfor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lvProductInfor.HideSelection = false;
+            this.lvProductInfor.Location = new System.Drawing.Point(10, 59);
+            this.lvProductInfor.Name = "lvProductInfor";
+            this.lvProductInfor.Size = new System.Drawing.Size(616, 692);
+            this.lvProductInfor.TabIndex = 7;
+            this.lvProductInfor.UseCompatibleStateImageBehavior = false;
             // 
             // comboBox1
             // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Bold);
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(858, 491);
+            this.comboBox1.Location = new System.Drawing.Point(781, 472);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(212, 24);
+            this.comboBox1.Size = new System.Drawing.Size(289, 47);
             this.comboBox1.TabIndex = 11;
             // 
             // iTableName
             // 
-            this.iTableName.Location = new System.Drawing.Point(781, 576);
+            this.iTableName.Location = new System.Drawing.Point(781, 549);
             this.iTableName.Multiline = true;
             this.iTableName.Name = "iTableName";
             this.iTableName.Size = new System.Drawing.Size(289, 49);
@@ -160,7 +162,7 @@ namespace CafeManagementApplication.views
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(642, 412);
+            this.label3.Location = new System.Drawing.Point(645, 401);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 29);
             this.label3.TabIndex = 24;
@@ -169,38 +171,40 @@ namespace CafeManagementApplication.views
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(676, 491);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(645, 484);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.Size = new System.Drawing.Size(70, 29);
             this.label4.TabIndex = 25;
-            this.label4.Text = "label4";
+            this.label4.Text = "Loại:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(676, 579);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(645, 558);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 17);
+            this.label5.Size = new System.Drawing.Size(110, 29);
             this.label5.TabIndex = 26;
-            this.label5.Text = "label5";
+            this.label5.Text = "Giá tiền:";
             // 
             // uscManager_Products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.Controls.Add(this.iTableName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.iTableName);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lvProductInfor);
             this.Name = "uscManager_Products";
             this.Size = new System.Drawing.Size(1115, 770);
             this.panel1.ResumeLayout(false);
@@ -217,7 +221,7 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.Button btnDeleteProduct;
         private System.Windows.Forms.Button btnUpdateProduct;
         private System.Windows.Forms.Button btnAddProduct;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lvProductInfor;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox iTableName;
         private System.Windows.Forms.TextBox textBox1;

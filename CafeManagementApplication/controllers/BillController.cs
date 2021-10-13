@@ -27,8 +27,6 @@ namespace CafeManagementApplication.controllers
                 FilterDefinition<Table> filter = new BsonDocument("bill", new ObjectId(billID));
                 TableModel.Instance.setStatusForTable(filter, types.sTable.FULL);
             });
-          
-            
             
             status.IsBackground = true;
             status.Start();

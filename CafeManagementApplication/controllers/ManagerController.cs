@@ -28,7 +28,11 @@ namespace CafeManagementApplication.controllers
             }
             if (nameData == "Drink")
             {
-
+                Product product = new Product();
+                product.NameProduct = view.inputProductNameText;
+                product.Category = view.inputCategoryText;
+                product.Price = view.inputPrice;
+                return product;
             }
             if (nameData == "User")
             {
@@ -45,19 +49,22 @@ namespace CafeManagementApplication.controllers
             return null;
         }
 
-        public void AddData(string nameData,dynamic user, dynamic view)
+        public void AddData(string nameData, dynamic view)
         {
             if(nameData == "Table")
             {
-                TableModel.Instance.addTable(user);
+                Table table = NewData("Table",view);
+                TableModel.Instance.addTable(table);
                 ResetTableDataInput(view);
             }
-            if(nameData == "Drink")
+            if(nameData == "Product")
             {
-
+                Product product = NewData("Product", view);
+                ProductModel.Instance.addProduct(product);
             }    
             if (nameData == "User")
             {
+                User user = NewData("User", view);
                 UserModel.Instance.addUser(user);
                 ResetDataInput(view);
             }
@@ -82,7 +89,7 @@ namespace CafeManagementApplication.controllers
                 TableModel.Instance.updateTable(view.inputTableNameTagText, updateTable);
                 ResetTableDataInput(view);
             }
-            if (nameData == "Drink")
+            if (nameData == "Product")
             {
 
             }
@@ -117,7 +124,7 @@ namespace CafeManagementApplication.controllers
 
                 TableModel.Instance.removeTable(view.inputTableNameTagText);
             }
-            if (nameData == "Drink")
+            if (nameData == "Product")
             {
 
             }

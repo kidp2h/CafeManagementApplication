@@ -46,7 +46,7 @@ namespace CafeManagementApplication.views
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnPay = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -80,7 +80,7 @@ namespace CafeManagementApplication.views
             this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Controls.Add(this.lvBillforOneTable);
             this.panel2.Controls.Add(this.panel1);
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.btnPay);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(716, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -255,17 +255,18 @@ namespace CafeManagementApplication.views
             this.label4.TabIndex = 8;
             this.label4.Text = "TIỀN MÓN";
             // 
-            // button2
+            // btnPay
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(371, 638);
-            this.button2.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(227, 64);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "THANH TOÁN";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnPay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPay.Location = new System.Drawing.Point(371, 638);
+            this.btnPay.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Size = new System.Drawing.Size(227, 64);
+            this.btnPay.TabIndex = 5;
+            this.btnPay.Text = "THANH TOÁN";
+            this.btnPay.UseVisualStyleBackColor = true;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // label1
             // 
@@ -348,7 +349,7 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPay;
         private System.Windows.Forms.ListView lvBillforOneTable;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;

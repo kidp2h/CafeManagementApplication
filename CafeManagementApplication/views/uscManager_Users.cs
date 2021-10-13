@@ -2,6 +2,7 @@
 using CafeManagementApplication.models;
 using CafeManagementApplication.types;
 using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace CafeManagementApplication.views
@@ -26,27 +27,29 @@ namespace CafeManagementApplication.views
             LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
         }
 
+        public void LoadListUsersForForm()
+        {
+            Thread loadList = new Thread(() => {
+                LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
+            });
+            loadList.Start();
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            User user = ManagerController.Instance.NewData("User", this);
-            ListViewItem item = new ListViewItem(user.Fullname);
-            item.SubItems.Add(user.Age.ToString());
-            item.SubItems.Add(user.Gender);
-            item.SubItems.Add(user.Username);
-            item.SubItems.Add(user.Role == Role.MANAGER ? "Quản lý" : "Nhân viên");
-            lvUsers.Items.Add(item);
-            ManagerController.Instance.AddData("User", user, this);
+            ManagerController.Instance.AddData("User", this);
+            LoadListUsersForForm();
 
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             ManagerController.Instance.UpdateData("User", this);
-            LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
+            LoadListUsersForForm();
+
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
             lvUsers.Items.RemoveAt(int.Parse(btnDelete.Tag.ToString()));
-
             ManagerController.Instance.DeleteData("User", this);
             
         } 
@@ -131,26 +134,5 @@ namespace CafeManagementApplication.views
         }
         #endregion
 
-        private void lvUsers_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-            ListView lv = sender as ListView;
-
-            if (lv.SelectedItems.Count > 0)
-            {
-                ListViewItem item = lv.SelectedItems[0];
-                iName.Tag = item.Tag;
-                iName.Text = item.SubItems[0].Text;
-                iAge.Text = item.SubItems[1].Text;
-                if (item.SubItems[2].Text == "Nam") rdoMale.Checked = true;
-                else if (item.SubItems[2].Text == "Nữ") rdoFemale.Checked = true;
-                else rdoOther.Checked = true;
-
-                iUserName.Text = item.SubItems[3].Text;
-                if (item.SubItems[4].Text == "Quản lý") rdoManager.Checked = true;
-                else rdoSaff.Checked = true;
-
-                btnDelete.Tag = lv.Items.IndexOf(item);
-            }
-        }
     }
 }

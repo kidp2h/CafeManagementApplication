@@ -2,6 +2,7 @@
 using CafeManagementApplication.models;
 using CafeManagementApplication.types;
 using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace CafeManagementApplication.views
@@ -24,47 +25,7 @@ namespace CafeManagementApplication.views
         private uscManager_Tables()
         {
             InitializeComponent();
-            LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", listViewTableInfor);
-        }
-
-        private void richTextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void inputName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void uscManager_Tables_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
+            LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", lvTableInfor);
         }
 
 
@@ -94,25 +55,28 @@ namespace CafeManagementApplication.views
             set { iTableName.Tag = value; }
         }
 
+        public void LoadListTablesForForm()
+        {
+            Thread loadList = new Thread(() => {
+                LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", lvTableInfor);
+            });
+            loadList.Start();
+        }
         private void btnAddTable_Click(object sender, EventArgs e)
         {
-            Table table = ManagerController.Instance.NewData("Table", this);
-            ListViewItem tableLvItem = new ListViewItem(table.TableName);
-            tableLvItem.Tag = table.Id;
-            tableLvItem.SubItems.Add(table.Status == sTable.EMPTY ? "Bàn trống" : "Có người"); 
-            listViewTableInfor.Items.Add(tableLvItem);
-            ManagerController.Instance.AddData("Table", table, this);
+            ManagerController.Instance.AddData("Table",this);
+            LoadListTablesForForm();
         }
 
         private void btnUpdateTabe_Click(object sender, EventArgs e)
         {
             ManagerController.Instance.UpdateData("Table", this);
-            LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", listViewTableInfor);
+            LoadListTablesForForm();
         }
 
         private void btnDeleteTable_Click(object sender, EventArgs e)
         {
-            listViewTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
+            lvTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
             ManagerController.Instance.DeleteData("Table", this);
 
         }

@@ -68,6 +68,7 @@ namespace CafeManagementApplication.views
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.Coral;
             this.Name = "uscSale_Table";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Size = new System.Drawing.Size(130, 135);
             this.Click += new System.EventHandler(this.uscSale_Table_Click);
             this.MouseEnter += new System.EventHandler(this.uscSale_Table_MouseEnter);
