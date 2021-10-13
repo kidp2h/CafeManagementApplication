@@ -29,6 +29,7 @@ namespace CafeManagementApplication.controllers
         public void LoadingListForListViewOf(string form, ListView lv)
         {
             lv.Items.Clear();
+            
             if (form == "useManager_Tables")
             {
                 dynamic tableList = TableModel.Instance.getListTable();

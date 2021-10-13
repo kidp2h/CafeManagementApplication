@@ -30,7 +30,6 @@ namespace CafeManagementApplication.controllers
         {
             uscSale.Instance.getFlpTableList().Controls.Clear();
             dynamic tables = TableModel.Instance.getListTable();
-            Control.CheckForIllegalCrossThreadCalls = false;
             foreach (Table table in tables)
             {            
                 uscSale_Table temp = new uscSale_Table();
@@ -54,7 +53,6 @@ namespace CafeManagementApplication.controllers
         {
             flp.Controls.Clear();
             dynamic tables = TableModel.Instance.getListTable();
-            Control.CheckForIllegalCrossThreadCalls = false;
             foreach (Table table in tables)
             {   
                     uscSale_Table temp = new uscSale_Table();

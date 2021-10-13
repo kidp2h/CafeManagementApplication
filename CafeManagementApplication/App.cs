@@ -16,6 +16,7 @@ namespace CafeManagementApplication
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Control.CheckForIllegalCrossThreadCalls = false;
             Database _ = new Database();
             Application.Run(new fCafeManager());
         }
