@@ -1,4 +1,5 @@
-﻿using CafeManagementApplication.types;
+﻿using CafeManagementApplication.helpers;
+using CafeManagementApplication.types;
 using System;
 using System.Windows.Forms;
 
@@ -17,6 +18,10 @@ namespace CafeManagementApplication.views
                 btnManager_Click(null, null);
             }
             btnSale_Click(null, null);
+
+            ClockThread time = new ClockThread();
+            time.setLbl(lblTime);
+            time.Time();
         }
 
         private void btnSale_Click(object sender, EventArgs e)

@@ -89,6 +89,7 @@ namespace CafeManagementApplication.controllers
 
         public void LoadingItemProductByCategoryId(FlowLayoutPanel flp, string categoryId)
         {
+            flp.Controls.Clear();
             dynamic products = ProductModel.Instance.getListProductByCategory(categoryId);
             foreach (dynamic product in products)
             {
@@ -102,12 +103,13 @@ namespace CafeManagementApplication.controllers
 
         public void LoadingItemCategory(FlowLayoutPanel flp)
         {
-            dynamic products = ProductModel.Instance.getListProduct();
-            foreach (dynamic product in products)
+            flp.Controls.Clear();
+            dynamic categorys = CategoryModel.Instance.getListCategory();
+            foreach (dynamic category in categorys)
             {
                 uscCategory temp = new uscCategory();
-                temp.CategoryId = product["_id"].Value.ToString();
-                temp.CategoryName = product["name"].Value.ToString();
+                temp.CategoryId = category.Id.ToString();
+                temp.CategoryName = category.NameCategory.ToString();
                 
                 flp.Controls.Add(temp);
             }

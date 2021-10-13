@@ -20,11 +20,12 @@ namespace CafeManagementApplication.controllers
             }
         }
 
-        public void AddProductToBill(string billId, string productId, int amount)
+        public void AddProductToBill(fAddProducts f,string billId, string productId, int amount)
         {
             BillModel.Instance.addProductToBill(billId, productId, amount);    
             FilterDefinition<Table> filter = new BsonDocument("bill", new ObjectId(billId));
-            TableModel.Instance.setStatusForTable(filter, types.sTable.FULL);
+            TableModel.Instance.updateStatusForTable(filter, types.sTable.FULL);
+            f.Hide();
         }
         public void AddProductToBill(string billID)
         {
