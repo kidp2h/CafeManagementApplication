@@ -95,6 +95,7 @@ namespace CafeManagementApplication.views
             this.btnUpdateProduct.TabIndex = 2;
             this.btnUpdateProduct.Text = "Sửa";
             this.btnUpdateProduct.UseVisualStyleBackColor = true;
+            this.btnUpdateProduct.Click += new System.EventHandler(this.btnUpdateProduct_Click);
             // 
             // btnAddProduct
             // 
@@ -115,6 +116,7 @@ namespace CafeManagementApplication.views
             this.columnHeader2,
             this.columnHeader3});
             this.lvProductInfor.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
+            this.lvProductInfor.FullRowSelect = true;
             this.lvProductInfor.GridLines = true;
             this.lvProductInfor.HideSelection = false;
             this.lvProductInfor.Location = new System.Drawing.Point(10, 59);
@@ -199,8 +201,8 @@ namespace CafeManagementApplication.views
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.Controls.Add(this.tbProductCategory);
             this.Controls.Add(this.tbProductPrice);
+            this.Controls.Add(this.tbProductCategory);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);

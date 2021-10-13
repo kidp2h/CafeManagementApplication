@@ -1,4 +1,5 @@
 ﻿using CafeManagementApplication.controllers;
+using System;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -58,20 +59,28 @@ namespace CafeManagementApplication.views
             loadList.Start();
         }
 
-        private void btnAddProduct_Click(object sender, System.EventArgs e)
+        private void btnAddProduct_Click(object sender, EventArgs e)
         {
             ManagerController.Instance.AddData("Product", this);
             LoadListProductsForForm();
         }
 
-        private void btnDeleteProduct_Click(object sender, System.EventArgs e)
+        private void btnUpdateProduct_Click(object sender, EventArgs e)
+        {
+            /*
+            ManagerController.Instance.UpdateData("Product", this);
+            LoadListProductsForForm();
+            */
+        }
+
+        private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
             lvProductInfor.Items.RemoveAt(int.Parse(btnDeleteProduct.Tag.ToString()));
             ManagerController.Instance.DeleteData("Product", this);
             LoadListProductsForForm();
         }
 
-        private void lvProductInfor_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void lvProductInfor_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListView lvProduct = sender as ListView;
 
@@ -80,9 +89,11 @@ namespace CafeManagementApplication.views
                 ListViewItem item = lvProduct.SelectedItems[0];
                 tbProductName.Tag = item.Tag;
                 tbProductName.Text = item.SubItems[0].Text;
-
+                tbProductCategory.Text = item.SubItems[1].Text;
+                tbProductPrice.Text = item.SubItems[2].Text;
                 btnDeleteProduct.Tag = lvProduct.Items.IndexOf(item);
             }
         }
+
     }
 }

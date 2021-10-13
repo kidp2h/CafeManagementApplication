@@ -18,7 +18,7 @@ namespace CafeManagementApplication
             Application.SetCompatibleTextRenderingDefault(false);
             Control.CheckForIllegalCrossThreadCalls = false;
             Database _ = new Database();
-            Application.Run(new fLogin());
+            Application.Run(new fCafeManager(types.Role.MANAGER));
         }
     }
 }

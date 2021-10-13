@@ -29,9 +29,8 @@ namespace CafeManagementApplication.controllers
             if (nameData == "Product")
             {
                 Product product = new Product();
-                product.NameProduct = view.inputProductNameText;
-                product.Category = view.inputCategoryText;
-                product.Price = view.inputPrice;
+                product.NameProduct = view.inputProductNameText;               
+                product.Price = int.Parse(view.inputPrice);
                 return product;
             }
             if (nameData == "User")
@@ -60,7 +59,8 @@ namespace CafeManagementApplication.controllers
             if(nameData == "Product")
             {
                 Product product = NewData("Product", view);
-                ProductModel.Instance.addProduct(product);
+                ProductModel.Instance.addProduct(product, view.inputCategoryText);
+                ResetProductDataInput(view);
             }    
             if (nameData == "User")
             {
@@ -91,7 +91,20 @@ namespace CafeManagementApplication.controllers
             }
             if (nameData == "Product")
             {
+                Product product = NewData(nameData, view);
+                UpdateDefinition<Product> updateProduct = new BsonDocument
+                {
 
+                    { "$set", new BsonDocument
+                        {
+                            { "name", product.NameProduct },
+                            //{ "category", product. },
+                            { "price", product.Price },
+                        }
+                    }
+                };
+                ProductModel.Instance.updateProductById(view.Product, updateProduct);
+                ResetTableDataInput(view);
             }
             if (nameData == "User")
             {
@@ -128,6 +141,7 @@ namespace CafeManagementApplication.controllers
             if (nameData == "Product")
             {
                 ProductModel.Instance.removeProductById(view.ProductId);
+                ResetProductDataInput(view);
             }
             if (nameData == "User")
             {
@@ -149,6 +163,13 @@ namespace CafeManagementApplication.controllers
         {
             view.inputTableNameText = "";
             view.inputStatus = 0;
+        }
+
+        public void ResetProductDataInput(dynamic view)
+        {
+            view.inputProductNameText = "";
+            view.inputPrice = "";
+            view.inputCategoryText = "";
         }
     }
 }
