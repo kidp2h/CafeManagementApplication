@@ -10,10 +10,6 @@ using CafeManagementApplication.views;
 
 namespace CafeManagementApplication.models
 {
-    class TableAggregate : Table
-    {
-
-    }
     class Table
     {
         [BsonElement("_id")]
@@ -70,26 +66,8 @@ namespace CafeManagementApplication.models
                 .Sort(new BsonDocument("tableName", 1));
             return table;
         }
-        public dynamic getTableByFilter(FilterDefinition<BsonDocument> filter)
-        {
-            dynamic table = lookupDepthTables().Match(filter).ToList();
-            if (table.Count != 0) return table[0];
-            return null;
-        }
 
-        public dynamic getBillFromIdTable(string idTable)
-        {
-            FilterDefinition<BsonDocument> _id = new BsonDocument("_id", new ObjectId(idTable));
-            dynamic table = lookupDepthTables().Match(_id).ToList();
-            if(table.Count != 0) return table[0];
-            return null;
-        }
-        public List<Table> getListTable()
-        {
-            IMongoCollection<Table> collection = getCollection();
-            dynamic table = collection.Find(new BsonDocument()).ToList();
-            return table;
-        }
+        #region Add Document
         public void addTable(Table newTable)
         {
             Table table = new Table
@@ -98,7 +76,7 @@ namespace CafeManagementApplication.models
                 TableName = newTable.TableName,
                 Status = sTable.EMPTY,
                 Bill = ObjectId.GenerateNewId()
-                
+
             };
             IMongoCollection<Table> collection = getCollection();
             collection.InsertOneAsync(table);
@@ -107,22 +85,12 @@ namespace CafeManagementApplication.models
                 BillModel.Instance.addBill(table.Id, table.Bill);
             });
             tBill.Start();
-            
-        }
-        public void removeTable(string idTable)
-        {
-            FilterDefinition<Table> _idTable = new BsonDocument("_id", new ObjectId(idTable));
-            IMongoCollection<Table> collection = getCollection();
-            collection.DeleteOneAsync(_idTable);
-        }
 
-        public void removeTableByTableName(string tableName)
-        {
-            FilterDefinition<Table> _tableName = new BsonDocument("tableName", tableName);
-            IMongoCollection<Table> collection = getCollection();
-            collection.DeleteOneAsync(_tableName);
         }
-        public void setStatusForTable(FilterDefinition<Table> filter, sTable status )
+        #endregion
+
+        #region Update Document
+        public void updateStatusForTable(FilterDefinition<Table> filter, sTable status)
         {
             IMongoCollection<Table> collection = getCollection();
             UpdateDefinition<Table> update = new BsonDocument
@@ -134,7 +102,7 @@ namespace CafeManagementApplication.models
             };
             collection.UpdateOneAsync(filter, update);
         }
-        public void setBillForTable(string idTable, string idBill)
+        public void updateBillForTable(string idTable, string idBill)
         {
             FilterDefinition<Table> _idTable = new BsonDocument("_id", new ObjectId(idTable));
             IMongoCollection<Table> collection = getCollection();
@@ -155,7 +123,7 @@ namespace CafeManagementApplication.models
             collection.UpdateOneAsync(_nameTable, update);
         }
 
-        public void resetTable(string idTable, string oldBillId)
+        public void updateTable(string idTable, string oldBillId)
         {
             FilterDefinition<Table> filter = new BsonDocument("_id", idTable);
             BsonObjectId _idTable = new BsonObjectId(idTable);
@@ -171,17 +139,55 @@ namespace CafeManagementApplication.models
                         {"status",sTable.EMPTY }
                     } }
                 };
-                updateTable(_idTable.ToString(), update);
+                //updateTable(_idTable.ToString(), update);
             });
             s1.IsBackground = true;
             s1.Start();
             Thread s2 = new Thread(() =>
             {
-                BillModel.Instance.setPaidBill(oldBillId, true);
+                BillModel.Instance.updatePaidBill(oldBillId, true);
             });
             s2.IsBackground = true;
             s2.Start();
         }
+        #endregion
 
+        #region Get Document
+        public dynamic getTableByFilter(FilterDefinition<BsonDocument> filter)
+        {
+            dynamic table = lookupDepthTables().Match(filter).ToList();
+            if (table.Count != 0) return table[0];
+            return null;
+        }
+
+        public dynamic getBillFromIdTable(string idTable)
+        {
+            FilterDefinition<BsonDocument> _id = new BsonDocument("_id", new ObjectId(idTable));
+            dynamic table = lookupDepthTables().Match(_id).ToList();
+            if (table.Count != 0) return table[0];
+            return null;
+        }
+        public List<Table> getListTable()
+        {
+            IMongoCollection<Table> collection = getCollection();
+            dynamic table = collection.Find(new BsonDocument()).ToList();
+            return table;
+        }
+        #endregion
+
+        #region Delete Document
+        public void deleteTable(string idTable)
+        {
+            FilterDefinition<Table> _idTable = new BsonDocument("_id", new ObjectId(idTable));
+            IMongoCollection<Table> collection = getCollection();
+            collection.DeleteOneAsync(_idTable);
+        }
+        public void deleteTableByTableName(string tableName)
+        {
+            FilterDefinition<Table> _tableName = new BsonDocument("tableName", tableName);
+            IMongoCollection<Table> collection = getCollection();
+            collection.DeleteOneAsync(_tableName);
+        }
+        #endregion
     }
 }
