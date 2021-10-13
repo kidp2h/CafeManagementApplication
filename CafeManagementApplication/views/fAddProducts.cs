@@ -10,9 +10,9 @@ namespace CafeManagementApplication.views
         public fAddProducts()
         {  
             InitializeComponent();
-            LoadItemController.Instance.LoadingItemProduct(flpListProducts);
+            LoadPanelController.Instance.View = this;
             LoadItemController.Instance.LoadingItemCategory(flpListCategorys);
-            LoadPanelController.Instance.setView(this);
+            
         }
 
         #region Public Data In View
@@ -44,6 +44,13 @@ namespace CafeManagementApplication.views
         {
             get { return txtBoxAmount; }
         }
+
+        public FlowLayoutPanel FlpListProducts
+        {
+            get { return flpListProducts; }
+        }
+
+
         public string tbSubtotal
         {
             set { textBox2.Text = value; }
@@ -55,7 +62,7 @@ namespace CafeManagementApplication.views
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             if (this.txtAmount == "") this.txtAmount = "1";
-            BillController.Instance.AddProductToBill(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
+            BillController.Instance.AddProductToBill(this, this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
             if (this.TableStatus != "Có người")
             {
                 Thread t1 = new Thread(() =>

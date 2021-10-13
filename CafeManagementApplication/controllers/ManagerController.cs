@@ -134,12 +134,12 @@ namespace CafeManagementApplication.controllers
             if (nameData == "Table")
             {
 
-                TableModel.Instance.removeTable(view.TableId);
+                TableModel.Instance.deleteTable(view.TableId);
                 ResetTableDataInput(view);
             }
             if (nameData == "Product")
             {
-                ProductModel.Instance.removeProductById(view.ProductId);
+                ProductModel.Instance.deleteProductById(view.ProductId);
                 ResetProductDataInput(view);
             }
             if (nameData == "User")

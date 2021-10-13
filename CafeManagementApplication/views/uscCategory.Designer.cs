@@ -44,6 +44,7 @@ namespace CafeManagementApplication.views
             this.lblCategoryName.TabIndex = 1;
             this.lblCategoryName.Text = "CAFFEE";
             this.lblCategoryName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCategoryName.Click += new System.EventHandler(this.lblCategoryName_Click);
             // 
             // pictureBox1
             // 

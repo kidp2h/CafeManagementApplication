@@ -15,9 +15,10 @@ namespace CafeManagementApplication.controllers
         }
 
         private dynamic view;
-        public void setView(dynamic view)
+        public dynamic View
         {
-            this.view = view;
+            get { return view; }
+            set { view = value; }
         }
         public void LoadingInfoProduct(string name, string price, string tag)
         {

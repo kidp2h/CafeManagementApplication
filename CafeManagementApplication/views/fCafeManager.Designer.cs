@@ -34,6 +34,7 @@ namespace CafeManagementApplication.views
             this.btnManager = new System.Windows.Forms.Button();
             this.btnStatistics = new System.Windows.Forms.Button();
             this.pnlModule = new System.Windows.Forms.Panel();
+            this.lblTime = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSale
@@ -78,10 +79,22 @@ namespace CafeManagementApplication.views
             // pnlModule
             // 
             this.pnlModule.Location = new System.Drawing.Point(17, 76);
-            this.pnlModule.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlModule.Margin = new System.Windows.Forms.Padding(4);
             this.pnlModule.Name = "pnlModule";
             this.pnlModule.Size = new System.Drawing.Size(1397, 777);
             this.pnlModule.TabIndex = 4;
+            // 
+            // lblTime
+            // 
+            this.lblTime.AllowDrop = true;
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.ForeColor = System.Drawing.Color.Gold;
+            this.lblTime.Location = new System.Drawing.Point(1137, 3);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(180, 69);
+            this.lblTime.TabIndex = 5;
+            this.lblTime.Text = "12:52 PM";
+            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // fCafeManager
             // 
@@ -89,6 +102,7 @@ namespace CafeManagementApplication.views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Brown;
             this.ClientSize = new System.Drawing.Size(1429, 864);
+            this.Controls.Add(this.lblTime);
             this.Controls.Add(this.pnlModule);
             this.Controls.Add(this.btnStatistics);
             this.Controls.Add(this.btnManager);
@@ -108,5 +122,6 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.Button btnManager;
         private System.Windows.Forms.Button btnStatistics;
         private System.Windows.Forms.Panel pnlModule;
+        private System.Windows.Forms.Label lblTime;
     }
 }

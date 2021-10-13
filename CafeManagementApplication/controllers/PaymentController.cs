@@ -27,7 +27,7 @@ namespace CafeManagementApplication.controllers
         {
             if(Int32.Parse(f.inputChargeText) >= 0)
             {
-                TableModel.Instance.resetTable(TableId,BillId);
+                TableModel.Instance.updateBillForTable(TableId,BillId);
                 f.Hide();
             }
             else
