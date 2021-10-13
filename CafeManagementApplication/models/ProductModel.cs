@@ -46,6 +46,18 @@ namespace CafeManagementApplication.models
                 .ToList();
             return listProduct;
         }
+
+        public List<BsonDocument> getListProductByCategory(string idCategory)
+        {
+            IMongoCollection<Product> collection = getCollection();
+            dynamic listProduct = collection.Aggregate()
+                .Lookup("categories", "category", "_id", "category")
+                .Unwind("category")
+                .Match(new BsonDocument("category._id", new ObjectId(idCategory)))
+                .AppendStage<BsonDocument>("{$set : {'category' : '$category.name'}}")
+                .ToList();
+            return listProduct;
+        }
         public void addProduct(Product newProduct, string nameCategory)
         {
             IMongoCollection < Product > collection = getCollection();

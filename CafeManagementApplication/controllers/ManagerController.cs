@@ -60,7 +60,7 @@ namespace CafeManagementApplication.controllers
             if(nameData == "Product")
             {
                 Product product = NewData("Product", view);
-                ProductModel.Instance.addProduct(product);
+                //ProductModel.Instance.addProduct(product);
             }    
             if (nameData == "User")
             {
