@@ -28,7 +28,7 @@ namespace CafeManagementApplication.views
             LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", lvTableInfor);
         }
 
-        public void LoadListTable()
+        public void LoadListTablesForForm()
         {
             Thread loadList = new Thread(() => {
                 LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", lvTableInfor);
@@ -66,16 +66,10 @@ namespace CafeManagementApplication.views
         #endregion
 
         #region Handler Event
-        public void LoadListTablesForForm()
-        {
-            Thread loadList = new Thread(() => {
-                LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", lvTableInfor);
-            });
-            loadList.Start();
-        }
+ 
         private void btnAddTable_Click(object sender, EventArgs e)
         {
-            ManagerController.Instance.AddData("Table",this);
+           //ManagerController.Instance.AddData("Table",this);
             LoadListTablesForForm();
 
             Thread t1 = new Thread(() => {

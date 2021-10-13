@@ -50,6 +50,7 @@ namespace CafeManagementApplication.views
             // 
             // flpListCategorys
             // 
+            this.flpListCategorys.AutoScroll = true;
             this.flpListCategorys.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flpListCategorys.Location = new System.Drawing.Point(692, 55);
             this.flpListCategorys.Name = "flpListCategorys";

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using CafeManagementApplication.config;
+using CafeManagementApplication.types;
 using CafeManagementApplication.views;
 
 namespace CafeManagementApplication

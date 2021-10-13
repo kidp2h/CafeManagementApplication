@@ -92,9 +92,9 @@ namespace CafeManagementApplication.views
             this.lvUsers.GridLines = true;
             this.lvUsers.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvUsers.HideSelection = false;
-            this.lvUsers.Location = new System.Drawing.Point(7, 58);
+            this.lvUsers.Location = new System.Drawing.Point(3, 58);
             this.lvUsers.Name = "lvUsers";
-            this.lvUsers.Size = new System.Drawing.Size(1108, 395);
+            this.lvUsers.Size = new System.Drawing.Size(1109, 395);
             this.lvUsers.TabIndex = 0;
             this.lvUsers.UseCompatibleStateImageBehavior = false;
             this.lvUsers.View = System.Windows.Forms.View.Details;

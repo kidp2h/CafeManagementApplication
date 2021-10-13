@@ -61,7 +61,7 @@ namespace CafeManagementApplication.views
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            ManagerController.Instance.AddData("Product", this);
+            //ManagerController.Instance.AddData("Product", this);
             LoadListProductsForForm();
         }
 
@@ -76,8 +76,7 @@ namespace CafeManagementApplication.views
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
             lvProductInfor.Items.RemoveAt(int.Parse(btnDeleteProduct.Tag.ToString()));
-            ManagerController.Instance.DeleteData("Product", this);
-            LoadListProductsForForm();
+            ManagerController.Instance.DeleteData("Product", this);          
         }
 
         private void lvProductInfor_SelectedIndexChanged(object sender, EventArgs e)
