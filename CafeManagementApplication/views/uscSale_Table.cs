@@ -80,6 +80,8 @@ namespace CafeManagementApplication.views
             LoadListController.Instance.LoadingBillForListViewFormTableID(this.Tag.ToString());
             uscSale.Instance.LblTableName = this.TableName;
             uscSale.Instance.TableId = this.TableId;
+            uscSale.Instance.TableStatus = this.Status;
+
         }
 
         private void lbTableName_Click(object sender, EventArgs e)

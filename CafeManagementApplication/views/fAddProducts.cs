@@ -1,5 +1,6 @@
 ﻿using CafeManagementApplication.controllers;
 using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace CafeManagementApplication.views
@@ -13,12 +14,14 @@ namespace CafeManagementApplication.views
             LoadItemController.Instance.LoadingItemProduct(flpListProducts);
             LoadPanelController.Instance.setView(this);
 
-            this.CheckAdd = false;
+        
         }
 
         #region Public Data In View
-        public Boolean CheckAdd { get; set; }
+      
         public string BillID { get; set; }
+        public string TableId { get; set; }
+        public string TableStatus { get; set; }
         public string LblNameText
         {
             get { return lblName.Text; }
@@ -55,7 +58,20 @@ namespace CafeManagementApplication.views
         {
             if (this.txtAmount == "") this.txtAmount = "1";
             BillController.Instance.AddProductToBill(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
-            this.CheckAdd = true;
+            if (this.TableStatus != "Có người")
+            {
+                Thread t1 = new Thread(() => {
+                    Invoke(new Action(() =>
+                    {
+                        LoadItemController.Instance.LoadingItemTable();
+                    }));
+                });
+                t1.Start();
+            }
+            Thread t2 = new Thread(() => {
+                LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
+            });
+            t2.Start();
         }
 
 
