@@ -44,6 +44,33 @@ namespace CafeManagementApplication.models
             IMongoCollection<User> collection = db.GetCollection<User>("users");
             return collection;
         }
+
+        #region Add Document
+        public void addUser(User newUser)
+        {
+            newUser.Password = Hash.hashPassword(newUser.Password);
+            IMongoCollection<User> collection = this.getCollection();
+            collection.InsertOneAsync(newUser);
+        }
+        #endregion
+
+        #region Update Document
+        public void updateUserById(string id, UpdateDefinition<User> newUpdate)
+        {
+            FilterDefinition<User> _id = new BsonDocument("_id", new ObjectId(id));
+            IMongoCollection<User> collection = this.getCollection();
+            collection.UpdateOneAsync(_id, newUpdate);
+        }
+
+        public void updateUserByUsername(string username, UpdateDefinition<User> newUpdate)
+        {
+            FilterDefinition<User> _username = new BsonDocument("username", username);
+            IMongoCollection<User> collection = this.getCollection();
+            collection.UpdateOneAsync(_username, newUpdate);
+        }
+        #endregion
+
+        #region Get Document
         public User getUserById(string id)
         {
             IMongoCollection<User> collection = this.getCollection();
@@ -51,6 +78,29 @@ namespace CafeManagementApplication.models
             List<User> documents = collection.Find(filter).Limit(1).ToList();
             return documents[0];
         }
+        public List<User> getListUser()
+        {
+            IMongoCollection<User> collection = this.getCollection();
+            List<User> listUser = collection.Find(new BsonDocument()).ToList();
+            return listUser;
+        }
+
+        #endregion
+
+        #region Delete Document
+        public void deleteUserById(string id)
+        {
+            FilterDefinition<User> _id = new BsonDocument("_id", new ObjectId(id));
+            IMongoCollection<User> collection = this.getCollection();
+            collection.DeleteOneAsync(_id);
+        }
+        public void deleteUserByUsername(string username)
+        {
+            FilterDefinition<User> _username = new BsonDocument("username", username);
+            IMongoCollection<User> collection = this.getCollection();
+            collection.DeleteOneAsync(_username);
+        }
+        #endregion
 
         public List<dynamic> checkAccount(string username, string password)
         {
@@ -66,7 +116,6 @@ namespace CafeManagementApplication.models
                 return new List<dynamic> { null, Hash.verifyPassword(password, documents[0].Password) };
             }
         }
-
         public bool checkExist(string username)
         {
             IMongoCollection<User> collection = this.getCollection();
@@ -74,40 +123,6 @@ namespace CafeManagementApplication.models
             List<User> documents = collection.Find(filter).ToList();
             if (documents.Count != 0) return false;
             return true;
-        }
-        public void addUser(User newUser)
-        {
-            newUser.Password = Hash.hashPassword(newUser.Password);
-            IMongoCollection<User> collection = this.getCollection();
-            collection.InsertOneAsync(newUser);
-        }
-
-        public void deleteUserById(string id)
-        {
-            FilterDefinition<User> _id = new BsonDocument("_id", new ObjectId(id));
-            IMongoCollection<User> collection = this.getCollection();
-            collection.DeleteOneAsync(_id);
-        }
-
-        public void deleteUserByUsername(string username)
-        {
-            FilterDefinition<User> _username = new BsonDocument("username", username);
-            IMongoCollection<User> collection = this.getCollection();
-            collection.DeleteOneAsync(_username);
-        }
-
-        public void updateUserById(string id, UpdateDefinition<User> newUpdate)
-        {
-            FilterDefinition<User> _id = new BsonDocument("_id", new ObjectId(id));
-            IMongoCollection<User> collection = this.getCollection();
-            collection.UpdateOneAsync(_id, newUpdate);
-        }
-
-        public List<User> getListUser()
-        {
-            IMongoCollection<User> collection = this.getCollection();
-            List<User> listUser = collection.Find(new BsonDocument()).ToList();
-            return listUser;
         }
     }
 }

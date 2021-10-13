@@ -35,31 +35,12 @@ namespace CafeManagementApplication.models
             IMongoCollection<Product> collection = db.GetCollection<Product>("products");
             return collection;
         }
-        public List<BsonDocument> getListProduct()
-        {
-            IMongoCollection<Product> collection = getCollection();
-            dynamic listProduct = collection.Aggregate()
-                .Lookup("categories", "category", "_id", "category")
-                .Unwind("category")
-                .AppendStage<BsonDocument>("{$set : {'category' : '$category.name'}}")
-                .ToList();
-            return listProduct;
-        }
-        public List<BsonDocument> getListProductByCategory(string idCategory)
-        {
-            IMongoCollection<Product> collection = getCollection();
-            dynamic listProduct = collection.Aggregate()
-                .Lookup("categories", "category", "_id", "category")
-                .Unwind("category")
-                .Match(new BsonDocument("category._id", new ObjectId(idCategory)))
-                .AppendStage<BsonDocument>("{$set : {'category' : '$category.name'}}")
-                .ToList();
-            return listProduct;
-        }
+
+        #region Add Document
         public void addProduct(Product newProduct, string nameCategory)
         {
-            IMongoCollection < Product > collection = getCollection();
-            FilterDefinition < Category > filter = new BsonDocument("name", nameCategory);
+            IMongoCollection<Product> collection = getCollection();
+            FilterDefinition<Category> filter = new BsonDocument("name", nameCategory);
             BsonObjectId id = ObjectId.GenerateNewId();
             if (!CategoryModel.Instance.checkCategory(filter))
             {
@@ -67,18 +48,16 @@ namespace CafeManagementApplication.models
                 Product product = new Product { NameProduct = newProduct.NameProduct, Category = id, Price = newProduct.Price };
                 collection.InsertOneAsync(product);
             }
-            else {
+            else
+            {
                 Category category = CategoryModel.Instance.getCategoryByName(nameCategory);
-                Product product = new Product { NameProduct = newProduct.NameProduct, Category = category.Id , Price = newProduct.Price };
+                Product product = new Product { NameProduct = newProduct.NameProduct, Category = category.Id, Price = newProduct.Price };
                 collection.InsertOneAsync(product);
             }
         }
-        public void removeProductById(string productId)
-        {
-            FilterDefinition<Product> filter = new BsonDocument("_id", new ObjectId(productId));
-            IMongoCollection<Product> collection = this.getCollection();
-            collection.DeleteOneAsync(filter);
-        }
+        #endregion
+
+        #region Update Document
         public void updateProductById(string productId, string nameProduct, int price, string category)
         {
             FilterDefinition<Product> filter = new BsonDocument("_id", new ObjectId(productId));
@@ -111,5 +90,79 @@ namespace CafeManagementApplication.models
             }
 
         }
+
+        public void updateProductByNameProduct(string nameProduct, int price, string category)
+        {
+            FilterDefinition<Product> filter = new BsonDocument("name", nameProduct);
+            FilterDefinition<Category> cfilter = new BsonDocument("name", category);
+            IMongoCollection<Product> collection = getCollection();
+            if (!CategoryModel.Instance.checkCategory(cfilter))
+            {
+                BsonObjectId id = ObjectId.GenerateNewId();
+                CategoryModel.Instance.addCategory(new Category { Id = id, NameCategory = category });
+                UpdateDefinition<Product> update = new BsonDocument
+                {
+                    {"$set", new BsonDocument{
+                        {"name", nameProduct},
+                        {"price", price },
+                        {"category",id }
+                    }}
+                };
+                collection.UpdateOneAsync(filter, update);
+            }
+            else
+            {
+                UpdateDefinition<Product> update = new BsonDocument
+                {
+                    {"$set", new BsonDocument{
+                        {"name", nameProduct},
+                        {"price", price }
+                    }}
+                };
+                collection.UpdateOneAsync(filter, update);
+            }
+        }
+        #endregion
+
+        #region Get Document
+        public List<BsonDocument> getListProduct()
+        {
+            IMongoCollection<Product> collection = getCollection();
+            dynamic listProduct = collection.Aggregate()
+                .Lookup("categories", "category", "_id", "category")
+                .Unwind("category")
+                .AppendStage<BsonDocument>("{$set : {'category' : '$category.name'}}")
+                .ToList();
+            return listProduct;
+        }
+
+        public List<BsonDocument> getListProductByCategory(string idCategory)
+        {
+            IMongoCollection<Product> collection = getCollection();
+            dynamic listProduct = collection.Aggregate()
+                .Lookup("categories", "category", "_id", "category")
+                .Unwind("category")
+                .Match(new BsonDocument("category._id", new ObjectId(idCategory)))
+                .AppendStage<BsonDocument>("{$set : {'category' : '$category.name'}}")
+                .ToList();
+            return listProduct;
+        }
+        #endregion
+
+        #region Delete Document
+        public void deleteProductById(string productId)
+        {
+            FilterDefinition<Product> filter = new BsonDocument("_id", new ObjectId(productId));
+            IMongoCollection<Product> collection = this.getCollection();
+            collection.DeleteOneAsync(filter);
+        }
+        public void deleteProductByNameProduct(string nameProduct)
+        {
+            FilterDefinition<Product> filter = new BsonDocument("name", nameProduct);
+            IMongoCollection<Product> collection = this.getCollection();
+            collection.DeleteOneAsync(filter);
+        }
+        #endregion
+
     }
 }

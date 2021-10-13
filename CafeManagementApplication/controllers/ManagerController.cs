@@ -85,7 +85,7 @@ namespace CafeManagementApplication.controllers
                         }
                     }
                 };
-                TableModel.Instance.updateTable(view.TableId, updateTable);
+                //TableModel.Instance.updateTable(view.TableId, updateTable);
                 ResetTableDataInput(view);
             }
             if (nameData == "Product")
