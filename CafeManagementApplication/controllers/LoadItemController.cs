@@ -81,7 +81,7 @@ namespace CafeManagementApplication.controllers
             foreach (dynamic product in products)
             {
                 uscProduct temp = new uscProduct();
-                temp.Tag = product["_id"].Value;
+                temp.Id = product["_id"].Value.ToString();
                 temp.NameProduct = product["name"].Value;
                 temp.Price = product["price"].Value.ToString();
                 flp.Controls.Add(temp);

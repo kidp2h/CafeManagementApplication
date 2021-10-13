@@ -13,7 +13,7 @@ namespace CafeManagementApplication.views
             
         }
 
-        #region Getter & Setter Table Name & Status
+        #region Getter & Setter 
         private string tableName;
         private string status;
         private Color backgroundColorCurrent;
@@ -44,7 +44,7 @@ namespace CafeManagementApplication.views
             }
         }
 
-        public string TableId
+        public string Id
         {
             get { return this.Tag.ToString(); }
         }
@@ -79,7 +79,7 @@ namespace CafeManagementApplication.views
         {
             LoadListController.Instance.LoadingBillForListViewFormTableID(this.Tag.ToString());
             uscSale.Instance.LblTableName = this.TableName;
-            uscSale.Instance.TableId = this.TableId;
+            uscSale.Instance.TableId = this.Id;
             uscSale.Instance.TableStatus = this.Status;
 
         }

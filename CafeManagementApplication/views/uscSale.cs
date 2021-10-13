@@ -49,15 +49,11 @@ namespace CafeManagementApplication.views
         {
             set { lblTableName.Text = value; }
         }
-        public string BtnAddTag
-        {
-            get { return btnAdd.Tag.ToString(); }
-            set { btnAdd.Tag = value; }
-        }
         public string inputSubtotalText
         {
             get { return this.iTotalPriceProducts.Text; }
         }
+        public string BillId { get; set; }
         public string TableId { get; set; }
         public string TableStatus { get; set; }
         #endregion
@@ -71,7 +67,7 @@ namespace CafeManagementApplication.views
         private void btnAdd_Click(object sender, EventArgs e)
         {
             fAddProducts f = new fAddProducts();     
-            f.BillID = btnAdd.Tag.ToString();
+            f.BillID = this.BillId;
             f.TableId = this.TableId;
             f.TableStatus = this.TableStatus;
             f.Show();

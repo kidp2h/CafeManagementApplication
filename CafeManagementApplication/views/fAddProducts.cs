@@ -8,13 +8,10 @@ namespace CafeManagementApplication.views
     public partial class fAddProducts : Form
     {
         public fAddProducts()
-        {
-            
+        {  
             InitializeComponent();
             LoadItemController.Instance.LoadingItemProduct(flpListProducts);
             LoadPanelController.Instance.setView(this);
-
-        
         }
 
         #region Public Data In View

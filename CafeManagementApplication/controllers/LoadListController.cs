@@ -84,7 +84,8 @@ namespace CafeManagementApplication.controllers
             dynamic table = TableModel.Instance.getBillFromIdTable(tableID);
             if(table["billId"] != null)
             {
-                uscSale.Instance.BtnAddTag = table["billId"].Value.ToString();
+                uscSale.Instance.BillId = table["billId"].Value.ToString();
+
                 foreach (dynamic product in table["bill"])
                 {
                     if(product["product"] != new BsonDocument())
