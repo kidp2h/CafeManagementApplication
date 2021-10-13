@@ -145,7 +145,7 @@ namespace CafeManagementApplication.controllers
             }
             if (nameData == "User")
             {
-                UserModel.Instance.deleteUserById(view.UserId);
+                //UserModel.Instance.deleteUserByUsername(view.u);
                 ResetDataInput(view);
             }
         }
