@@ -1,6 +1,8 @@
 ﻿using CafeManagementApplication.views;
 using CafeManagementApplication.models;
 using System.Windows.Forms;
+using CafeManagementApplication.types;
+using System.Collections.Generic;
 
 namespace CafeManagementApplication.controllers
 {
@@ -21,15 +23,17 @@ namespace CafeManagementApplication.controllers
 
         public void handleLogin(fLogin view)
         {
+
             
-            fCafeManager f = new fCafeManager();
             string username = view.inputUsernameText;
             string password = view.inputPasswordText;
-            bool result = UserModel.Instance.checkAccount(username, password);
-            if (result)
+            List<dynamic> result = UserModel.Instance.checkAccount(username, password);
+            
+            if (result[0] != null)
             {
                 MessageBox.Show("Dang nhap thanh cong");
                 view.Hide();
+                fCafeManager f = new fCafeManager(result[0]);
                 f.ShowDialog();
                 view.Show();
             }
