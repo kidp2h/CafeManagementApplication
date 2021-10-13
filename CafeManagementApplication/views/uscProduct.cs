@@ -14,7 +14,9 @@ namespace CafeManagementApplication.views
         #region Getter & Setter 
         private string productName;
         private string price;
-
+        
+        public string Id { get; set; }
+       
         public string NameProduct
         {
             get { return productName; }
@@ -28,15 +30,14 @@ namespace CafeManagementApplication.views
         }
         #endregion
 
+        #region Hover Effect
+        #endregion
 
-        private void uscProduct_Click(object sender, EventArgs e)
-        {
-            LoadPanelController.Instance.LoadingInfoProduct(this.productName, this.price, this.Tag.ToString());
-        }
-
+        #region Handler Event
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            LoadPanelController.Instance.LoadingInfoProduct(this.productName, this.price, this.Tag.ToString());
+            LoadPanelController.Instance.LoadingInfoProduct(this.NameProduct, this.Price, this.Id);
         }
+        #endregion
     }
 }

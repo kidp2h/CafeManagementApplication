@@ -2,6 +2,7 @@
 using CafeManagementApplication.views;
 using System.Windows.Forms;
 using MongoDB.Bson;
+using System.Threading;
 
 namespace CafeManagementApplication.controllers
 {
@@ -28,12 +29,13 @@ namespace CafeManagementApplication.controllers
 
         public void LoadingListForListViewOf(string form, ListView lv)
         {
+            
             lv.Items.Clear();
             
             if (form == "useManager_Tables")
             {
                 dynamic tableList = TableModel.Instance.getListTable();
-                foreach (dynamic table in tableList) 
+                foreach (dynamic table in tableList)
                 {
                     ListViewItem tableLvItem = new ListViewItem(table.TableName);
                     tableLvItem.Tag = table.Id;
@@ -46,8 +48,18 @@ namespace CafeManagementApplication.controllers
                 }
                 return;
             }
-            if (form == "useManager_Drinks")
+            if (form == "useManager_Products")
             {
+                dynamic productList = ProductModel.Instance.getListProduct();
+                foreach(dynamic product in productList)
+                {
+                    ListViewItem productLvItem = new ListViewItem(product["name"].Value);
+                    string category = product["category"].Value;
+                    productLvItem.SubItems.Add(category);
+                    int price = product["price"].Value;
+                    productLvItem.SubItems.Add(price.ToString());
+                    lv.Items.Add(productLvItem);
+                }
                 return;
             }
             if (form == "useManager_Users")
@@ -63,18 +75,21 @@ namespace CafeManagementApplication.controllers
                     lvItem.SubItems.Add(Gender);
                     string Username = user.Username;
                     lvItem.SubItems.Add(Username);
-                    
+
                     if (user.Role == 0)
                     {
                         lvItem.SubItems.Add("Nhân viên");
                     }
                     else lvItem.SubItems.Add("Quản lý");
-                    
+
                     lv.Items.Add(lvItem);
                 }
                 return;
 
             }
+            
+
+
         }
 
         public void LoadingBillForListViewFormTableID(string tableID)
@@ -85,7 +100,8 @@ namespace CafeManagementApplication.controllers
             dynamic table = TableModel.Instance.getBillFromIdTable(tableID);
             if(table["billId"] != null)
             {
-                uscSale.Instance.BtnAddTag = table["billId"].Value.ToString();
+                uscSale.Instance.BillId = table["billId"].Value.ToString();
+
                 foreach (dynamic product in table["bill"])
                 {
                     if(product["product"] != new BsonDocument())
@@ -106,7 +122,8 @@ namespace CafeManagementApplication.controllers
                     }
                     
                 }
-                uscSale.Instance.getITotalPriceProducts().Text = table["subtotal"].Value.ToString() + "đ";
+                uscSale.Instance.inputTotalPriceProducts = table["subtotal"].Value.ToString() + "đ";
+              
             }
             
             

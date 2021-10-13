@@ -41,10 +41,10 @@ namespace CafeManagementApplication.views
             this.btnUpdate = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.pnlInfo = new System.Windows.Forms.Panel();
-            this.iUserPassword = new System.Windows.Forms.TextBox();
-            this.iUserName = new System.Windows.Forms.TextBox();
-            this.iAge = new System.Windows.Forms.TextBox();
-            this.iName = new System.Windows.Forms.TextBox();
+            this.tbUserPassword = new System.Windows.Forms.TextBox();
+            this.tbUserName = new System.Windows.Forms.TextBox();
+            this.tbAge = new System.Windows.Forms.TextBox();
+            this.tbName = new System.Windows.Forms.TextBox();
             this.pnlGender = new System.Windows.Forms.Panel();
             this.rdoMale = new System.Windows.Forms.RadioButton();
             this.rdoFemale = new System.Windows.Forms.RadioButton();
@@ -169,10 +169,10 @@ namespace CafeManagementApplication.views
             // 
             // pnlInfo
             // 
-            this.pnlInfo.Controls.Add(this.iUserPassword);
-            this.pnlInfo.Controls.Add(this.iUserName);
-            this.pnlInfo.Controls.Add(this.iAge);
-            this.pnlInfo.Controls.Add(this.iName);
+            this.pnlInfo.Controls.Add(this.tbUserPassword);
+            this.pnlInfo.Controls.Add(this.tbUserName);
+            this.pnlInfo.Controls.Add(this.tbAge);
+            this.pnlInfo.Controls.Add(this.tbName);
             this.pnlInfo.Controls.Add(this.pnlGender);
             this.pnlInfo.Controls.Add(this.label6);
             this.pnlInfo.Controls.Add(this.label2);
@@ -186,41 +186,41 @@ namespace CafeManagementApplication.views
             this.pnlInfo.Size = new System.Drawing.Size(599, 305);
             this.pnlInfo.TabIndex = 12;
             // 
-            // iUserPassword
+            // tbUserPassword
             // 
-            this.iUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iUserPassword.Location = new System.Drawing.Point(138, 216);
-            this.iUserPassword.Multiline = true;
-            this.iUserPassword.Name = "iUserPassword";
-            this.iUserPassword.Size = new System.Drawing.Size(441, 33);
-            this.iUserPassword.TabIndex = 27;
+            this.tbUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUserPassword.Location = new System.Drawing.Point(138, 216);
+            this.tbUserPassword.Multiline = true;
+            this.tbUserPassword.Name = "tbUserPassword";
+            this.tbUserPassword.Size = new System.Drawing.Size(441, 33);
+            this.tbUserPassword.TabIndex = 27;
             // 
-            // iUserName
+            // tbUserName
             // 
-            this.iUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iUserName.Location = new System.Drawing.Point(138, 164);
-            this.iUserName.Multiline = true;
-            this.iUserName.Name = "iUserName";
-            this.iUserName.Size = new System.Drawing.Size(441, 33);
-            this.iUserName.TabIndex = 26;
+            this.tbUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUserName.Location = new System.Drawing.Point(138, 164);
+            this.tbUserName.Multiline = true;
+            this.tbUserName.Name = "tbUserName";
+            this.tbUserName.Size = new System.Drawing.Size(441, 33);
+            this.tbUserName.TabIndex = 26;
             // 
-            // iAge
+            // tbAge
             // 
-            this.iAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iAge.Location = new System.Drawing.Point(138, 56);
-            this.iAge.Multiline = true;
-            this.iAge.Name = "iAge";
-            this.iAge.Size = new System.Drawing.Size(441, 33);
-            this.iAge.TabIndex = 25;
+            this.tbAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbAge.Location = new System.Drawing.Point(138, 56);
+            this.tbAge.Multiline = true;
+            this.tbAge.Name = "tbAge";
+            this.tbAge.Size = new System.Drawing.Size(441, 33);
+            this.tbAge.TabIndex = 25;
             // 
-            // iName
+            // tbName
             // 
-            this.iName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iName.Location = new System.Drawing.Point(138, 7);
-            this.iName.Multiline = true;
-            this.iName.Name = "iName";
-            this.iName.Size = new System.Drawing.Size(441, 33);
-            this.iName.TabIndex = 14;
+            this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbName.Location = new System.Drawing.Point(138, 7);
+            this.tbName.Multiline = true;
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(441, 33);
+            this.tbName.TabIndex = 14;
             // 
             // pnlGender
             // 
@@ -431,10 +431,10 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnlGender;
-        private System.Windows.Forms.TextBox iUserPassword;
-        private System.Windows.Forms.TextBox iUserName;
-        private System.Windows.Forms.TextBox iAge;
-        private System.Windows.Forms.TextBox iName;
+        private System.Windows.Forms.TextBox tbUserPassword;
+        private System.Windows.Forms.TextBox tbUserName;
+        private System.Windows.Forms.TextBox tbAge;
+        private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnReset;
     }

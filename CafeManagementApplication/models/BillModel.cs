@@ -22,8 +22,8 @@ namespace CafeManagementApplication.models
         public ListItemOrder ProductsOrdered { get; set; }
         [BsonElement("table")]
         public BsonObjectId TableId { get; set; }
-        [BsonElement("created_at")]
-        public BsonDateTime CreatedAt { get; set; }
+        [BsonElement("paid")]
+        public BsonBoolean Paid { get; set; }
     }
     class BillModel : BaseModel<Bill>
     {
@@ -58,7 +58,7 @@ namespace CafeManagementApplication.models
                 .AppendStage<BsonDocument>("{$set : {  'products.product.category': '$products.product.category.name'}}")
                 .Project(new BsonDocument("table.bill", 0))
                 .Group("{_id: '$_id',table : {$first : '$table'},'products': {$push: '$products'},subtotal : {$sum : {$multiply : ['$products.product.price','$products.amount']}}}")
-                .Sort(new BsonDocument("created_at",-1));
+                .Match(new BsonDocument("paid", false));
             return bill;
         }
         public void addBill(BsonObjectId table, BsonObjectId bill)
@@ -69,7 +69,7 @@ namespace CafeManagementApplication.models
                 Id = bill,
                 ProductsOrdered = new ListItemOrder(),
                 TableId = table,
-                CreatedAt = new BsonDateTime(DateTime.Now)
+                Paid = false
             };
             collection.InsertOne(newBill);
         }
@@ -97,7 +97,8 @@ namespace CafeManagementApplication.models
             IMongoCollection<Bill> collection = this.getCollection();
             BsonDocument filter = new BsonDocument{
                 {"_id",new ObjectId(idBill) },
-                {"products.product", new ObjectId(idProduct) }
+                {"products.product", new ObjectId(idProduct) },
+                {"paid", false }
             };
 
             List<Bill> listProduct = collection.Find(filter).ToList();
@@ -149,14 +150,14 @@ namespace CafeManagementApplication.models
             collection.UpdateOne(_idBill, update);
         }
 
-        public void updateTimeBill(string idBill) 
+        public void setPaidBill(string idBill,bool status) 
         {
             BsonDocument _idBill = new BsonDocument("_id", new ObjectId(idBill));
             IMongoCollection<Bill> collection = getCollection();
             UpdateDefinition<Bill> update = new BsonDocument
                     {
                         {"$set", new BsonDocument{
-                            {"created_at", DateTime.Now }
+                            {"paid", status }
                         }}
                     };
             collection.UpdateOne(_idBill, update);

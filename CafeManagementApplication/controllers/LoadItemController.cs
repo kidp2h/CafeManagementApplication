@@ -55,20 +55,21 @@ namespace CafeManagementApplication.controllers
             dynamic tables = TableModel.Instance.getListTable();
             foreach (Table table in tables)
             {   
-                    uscSale_Table temp = new uscSale_Table();
-                    temp.Tag = table.Id;
-                    temp.TableName = table.TableName;
+                uscSale_Table temp = new uscSale_Table();
+                temp.Id = table.Id.ToString();
+                temp.TableName = table.TableName;
+                temp.BillId = table.Bill.ToString();
 
-                    if (table.Status == types.sTable.FULL)
-                    {
-                        temp.Status = "Có người";
-                    }
-                    else
-                    {
-                        temp.Status = "Bàn trống";
-                    }
+                if (table.Status == types.sTable.FULL)
+                {
+                    temp.Status = "Có người";
+                }
+                else
+                {
+                    temp.Status = "Bàn trống";
+                }
 
-                    flp.Controls.Add(temp);             
+                flp.Controls.Add(temp);             
             }
         }
 
@@ -79,7 +80,7 @@ namespace CafeManagementApplication.controllers
             foreach (dynamic product in products)
             {
                 uscProduct temp = new uscProduct();
-                temp.Tag = product["_id"].Value;
+                temp.Id = product["_id"].Value.ToString();
                 temp.NameProduct = product["name"].Value;
                 temp.Price = product["price"].Value.ToString();
                 flp.Controls.Add(temp);

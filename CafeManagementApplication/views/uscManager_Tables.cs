@@ -28,6 +28,15 @@ namespace CafeManagementApplication.views
             LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", lvTableInfor);
         }
 
+        public void LoadListTable()
+        {
+            Thread loadList = new Thread(() => {
+                LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", lvTableInfor);
+            });
+            loadList.Start();
+        }
+
+        #region Public Data View
 
         public string inputTableNameText
         {
@@ -43,9 +52,9 @@ namespace CafeManagementApplication.views
                 else return sTable.FULL;
             }
             set
-            {                                     
-             if (value == sTable.EMPTY) iEmptyTable.Checked = true;
-             else iFullTable.Checked = true;                
+            {
+                if (value == sTable.EMPTY) iEmptyTable.Checked = true;
+                else iFullTable.Checked = true;
             }
         }
 
@@ -54,36 +63,56 @@ namespace CafeManagementApplication.views
             get { return iTableName.Tag.ToString(); }
             set { iTableName.Tag = value; }
         }
+        #endregion
 
-        private void btnAddTable_Click(object sender, EventArgs e)
+        #region Handler Event
+        public void LoadListTablesForForm()
         {
-            ManagerController.Instance.AddData("Table",this);
             Thread loadList = new Thread(() => {
                 LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", lvTableInfor);
             });
             loadList.Start();
+        }
+        private void btnAddTable_Click(object sender, EventArgs e)
+        {
+            ManagerController.Instance.AddData("Table",this);
+            LoadListTablesForForm();
+
             Thread t1 = new Thread(() => {
                 Invoke(new Action(() =>
                 {
-                    LoadItemController.Instance.LoadingItemTable();
+                    uscSale.Instance.LoadListTableForForm();
                 }));
             });
             t1.Start();
-            
+        }
 
+        private void btnUpdateTabe_Click(object sender, EventArgs e)
+        {
+            ManagerController.Instance.UpdateData("Table", this);
+            LoadListTablesForForm();
+
+            Thread t2 = new Thread(() => {
+                Invoke(new Action(() =>
+                {
+                    uscSale.Instance.LoadListTableForForm();
+                }));
+            });
+            t2.Start();
         }
 
         private void btnDeleteTable_Click(object sender, EventArgs e)
         {
             lvTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
             ManagerController.Instance.DeleteData("Table", this);
-            Thread t1 = new Thread(() => {
+
+            Thread t3 = new Thread(() => {
                 Invoke(new Action(() =>
                 {
-                    LoadItemController.Instance.LoadingItemTable();
+                    uscSale.Instance.LoadListTableForForm();
                 }));
             });
-            t1.Start();
+            t3.Start();
 
         }
 
@@ -103,5 +132,7 @@ namespace CafeManagementApplication.views
                 btnDeleteTable.Tag = lvTable.Items.IndexOf(item);
             }
         }
+        #endregion
+
     }
 }

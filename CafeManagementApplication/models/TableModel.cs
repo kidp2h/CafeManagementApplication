@@ -6,7 +6,7 @@ using CafeManagementApplication.types;
 using MongoDB.Bson.Serialization.Attributes;
 using CafeManagementApplication.config;
 using System.Threading;
-using System;
+using CafeManagementApplication.views;
 
 namespace CafeManagementApplication.models
 {
@@ -148,7 +148,7 @@ namespace CafeManagementApplication.models
             collection.UpdateOneAsync(_idTable, update);
         }
 
-        public void resetTable(string idTable)
+        public void resetTable(string idTable, string oldBillId)
         {
             FilterDefinition<Table> filter = new BsonDocument("_id", idTable);
             BsonObjectId _idTable = new BsonObjectId(idTable);
@@ -168,6 +168,13 @@ namespace CafeManagementApplication.models
             });
             s1.IsBackground = true;
             s1.Start();
+            Thread s2 = new Thread(() =>
+            {
+
+                BillModel.Instance.setPaidBill(oldBillId, true);
+            });
+            s2.IsBackground = true;
+            s2.Start();
         }
 
     }

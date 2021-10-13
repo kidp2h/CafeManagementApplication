@@ -23,14 +23,11 @@ namespace CafeManagementApplication.controllers
             }
         }
 
-        public void payment(fPay f, string TableId)
+        public void payment(fPay f, string TableId, string BillId)
         {
             if(Int32.Parse(f.inputChargeText) >= 0)
             {
-                
-                TableModel.Instance.resetTable(TableId);
-                uscSale.Instance.LoadListTableForForm();
-                
+                TableModel.Instance.resetTable(TableId,BillId);
                 f.Hide();
             }
             else

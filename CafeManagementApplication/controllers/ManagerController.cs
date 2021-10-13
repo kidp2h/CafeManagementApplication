@@ -28,7 +28,11 @@ namespace CafeManagementApplication.controllers
             }
             if (nameData == "Drink")
             {
-
+                Product product = new Product();
+                product.NameProduct = view.inputProductNameText;
+                product.Category = view.inputCategoryText;
+                product.Price = view.inputPrice;
+                return product;
             }
             if (nameData == "User")
             {
@@ -53,9 +57,10 @@ namespace CafeManagementApplication.controllers
                 TableModel.Instance.addTable(table);
                 ResetTableDataInput(view);
             }
-            if(nameData == "Drink")
+            if(nameData == "Product")
             {
-
+                Product product = NewData("Product", view);
+                ProductModel.Instance.addProduct(product);
             }    
             if (nameData == "User")
             {
@@ -81,10 +86,10 @@ namespace CafeManagementApplication.controllers
                         }
                     }
                 };
-                
-                //ResetDataInput(view);
+                TableModel.Instance.updateTable(view.inputTableNameTagText, updateTable);
+                ResetTableDataInput(view);
             }
-            if (nameData == "Drink")
+            if (nameData == "Product")
             {
 
             }
@@ -107,7 +112,7 @@ namespace CafeManagementApplication.controllers
                     }
                 };
 
-                UserModel.Instance.updateUserById(view.inputNameTagText, update);
+                UserModel.Instance.updateUserById(view.UserId, update);
                 ResetDataInput(view);
             }
         }
@@ -119,13 +124,13 @@ namespace CafeManagementApplication.controllers
 
                 TableModel.Instance.removeTable(view.inputTableNameTagText);
             }
-            if (nameData == "Drink")
+            if (nameData == "Product")
             {
 
             }
             if (nameData == "User")
             {
-                UserModel.Instance.deleteUserById(view.inputNameTagText);
+                UserModel.Instance.deleteUserById(view.UserId);
                 ResetDataInput(view);
             }
         }

@@ -25,11 +25,14 @@ namespace CafeManagementApplication.views
         }
 
         private uscSale()
-        {
-            
+        {          
             InitializeComponent();
             LoadListTableForForm();
+        }
 
+        public void LoadListTableForForm()
+        {
+            LoadItemController.Instance.LoadingItemTable(flpTableList);
         }
 
         #region Public Data In View
@@ -41,62 +44,84 @@ namespace CafeManagementApplication.views
         {
             return flpTableList;
         }
-        public TextBox getITotalPriceProducts()
+
+        public string inputTotalPriceProducts
         {
-            return iTotalPriceProducts;
+            get 
+            { 
+                return tbTotalPriceProducts.Text;
+            }
+            set
+            {
+                tbTotalPriceProducts.Text = value;
+            }
+        }
+        public string inputToTalPriceBill
+        {
+            get
+            {
+                return tbTotalPriceBill.Text;
+            }
+            set
+            {
+                tbTotalPriceBill.Text = value;
+            }
         }
         public string LblTableName
         {
             set { lblTableName.Text = value; }
         }
-        public string BtnAddTag
-        {
-            get { return btnAdd.Tag.ToString(); }
-            set { btnAdd.Tag = value; }
-        }
-        public string inputSubtotalText
-        {
-            get { return this.iTotalPriceProducts.Text; }
-        }
+      
+        public string BillId { get; set; }
         public string TableId { get; set; }
         public string TableStatus { get; set; }
         #endregion
 
+
         #region Handler Event
-        public void LoadListTableForForm()
-        {
-            LoadItemController.Instance.LoadingItemTable(flpTableList);
-        }
- 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             fAddProducts f = new fAddProducts();     
-            f.BillID = btnAdd.Tag.ToString();
+            f.BillID = this.BillId;
             f.TableId = this.TableId;
             f.TableStatus = this.TableStatus;
             f.Show();
         }
 
         private void btnPay_Click(object sender, EventArgs e)
-        {
-            
-            if(uscSale.Instance.inputSubtotalText != "0")
+        {        
+            if(tbTotalPriceBill.Text != "0đ")
             {
                 fPay f = new fPay();
                 f.TableId = TableId;
-                f.inputSubtotalText = uscSale.Instance.inputSubtotalText.Replace("đ","");
-                f.ShowDialog();
-            }
-            
-            
+                f.BillId = BillId; 
+                f.inputSubtotalText = uscSale.Instance.inputToTalPriceBill.Replace("đ","");
+                f.Show();
+            } 
+            else
+            {
+                MessageBox.Show("Bàn Chưa Có Người");
+            }       
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             LoadListTableForForm();
         }
+
+        private void tbTotalPriceProducts_TextChanged(object sender, EventArgs e)
+        {
+            int a = Int32.Parse(tbTotalPriceProducts.Text.Replace("đ", ""));
+            int b = Int32.Parse(cbSale.Value.ToString());
+            int total = a - (a * b) / 100;
+            tbTotalPriceBill.Text = total.ToString() + "đ";
+        }
+
+        private void cbSale_ValueChanged(object sender, EventArgs e)
+        {
+            tbTotalPriceProducts_TextChanged(null, null);
+        }
         #endregion
 
-       
     }
 }

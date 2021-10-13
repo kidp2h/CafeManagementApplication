@@ -8,13 +8,10 @@ namespace CafeManagementApplication.views
     public partial class fAddProducts : Form
     {
         public fAddProducts()
-        {
-            
+        {  
             InitializeComponent();
             LoadItemController.Instance.LoadingItemProduct(flpListProducts);
             LoadPanelController.Instance.setView(this);
-
-        
         }
 
         #region Public Data In View
@@ -60,18 +57,17 @@ namespace CafeManagementApplication.views
             BillController.Instance.AddProductToBill(this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
             if (this.TableStatus != "Có người")
             {
-                Thread t1 = new Thread(() => {
+                Thread t1 = new Thread(() =>
+                {
                     Invoke(new Action(() =>
                     {
-                        LoadItemController.Instance.LoadingItemTable();
+                        uscSale.Instance.LoadListTableForForm();
                     }));
                 });
+                t1.IsBackground = true;
                 t1.Start();
             }
-            Thread t2 = new Thread(() => {
-                LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
-            });
-            t2.Start();
+            LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
         }
 
 

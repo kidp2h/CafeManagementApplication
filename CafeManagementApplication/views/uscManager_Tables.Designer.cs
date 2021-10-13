@@ -107,6 +107,7 @@ namespace CafeManagementApplication.views
             this.btnUpdateTabe.TabIndex = 2;
             this.btnUpdateTabe.Text = "Sửa";
             this.btnUpdateTabe.UseVisualStyleBackColor = true;
+            this.btnUpdateTabe.Click += new System.EventHandler(this.btnUpdateTabe_Click);
             // 
             // lvTableInfor
             // 
@@ -135,6 +136,14 @@ namespace CafeManagementApplication.views
             // 
             this.columnHeader2.Text = "Trạng thái ";
             this.columnHeader2.Width = 547;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Tên bàn";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Trạng thái ";
             // 
             // panel2
             // 
