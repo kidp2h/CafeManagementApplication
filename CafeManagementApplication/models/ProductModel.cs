@@ -81,11 +81,37 @@ namespace CafeManagementApplication.models
             IMongoCollection<Product> collection = this.getCollection();
             collection.DeleteOneAsync(filter);
         }
-        public void updateProductById(string productId, UpdateDefinition<Product> update)
+        public void updateProductById(string productId, string nameProduct, int price, string category)
         {
             FilterDefinition<Product> filter = new BsonDocument("_id", new ObjectId(productId));
+            FilterDefinition<Category> cfilter = new BsonDocument("name", category);
             IMongoCollection<Product> collection = getCollection();
-            collection.UpdateOneAsync(filter, update);
+            if (!CategoryModel.Instance.checkCategory(cfilter))
+            {
+                BsonObjectId id = ObjectId.GenerateNewId();
+                CategoryModel.Instance.addCategory(new Category { Id = id, NameCategory = category });
+                UpdateDefinition<Product> update = new BsonDocument
+                {
+                    {"$set", new BsonDocument{
+                        {"name", nameProduct},
+                        {"price", price },
+                        {"category",id }
+                    }}
+                };
+                collection.UpdateOneAsync(filter, update);
+            }
+            else
+            {
+                UpdateDefinition<Product> update = new BsonDocument
+                {
+                    {"$set", new BsonDocument{
+                        {"name", nameProduct},
+                        {"price", price }
+                    }}
+                };
+                collection.UpdateOneAsync(filter, update);
+            }
+
         }
     }
 }
