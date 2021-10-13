@@ -89,6 +89,13 @@ namespace CafeManagementApplication.models
             collection.DeleteOneAsync(_id);
         }
 
+        public void deleteUserByUsername(string username)
+        {
+            FilterDefinition<User> _username = new BsonDocument("username", username);
+            IMongoCollection<User> collection = this.getCollection();
+            collection.DeleteOneAsync(_username);
+        }
+
         public void updateUserById(string id, UpdateDefinition<User> newUpdate)
         {
             FilterDefinition<User> _id = new BsonDocument("_id", new ObjectId(id));
