@@ -66,36 +66,39 @@ namespace CafeManagementApplication.views
         #endregion
 
         #region Handler Event
-        private void btnAddTable_Click(object sender, EventArgs e)
         public void LoadListTablesForForm()
         {
-            ManagerController.Instance.AddData("Table",this);
-            LoadListTable();
-            Thread t4 = new Thread(() => {
             Thread loadList = new Thread(() => {
                 LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", lvTableInfor);
             });
             loadList.Start();
+        }
+        private void btnAddTable_Click(object sender, EventArgs e)
+        {
+            ManagerController.Instance.AddData("Table",this);
+            LoadListTablesForForm();
+
             Thread t1 = new Thread(() => {
                 Invoke(new Action(() =>
                 {
                     uscSale.Instance.LoadListTableForForm();
                 }));
             });
-            t4.Start();
-            
-
-        }
-        private void btnAddTable_Click(object sender, EventArgs e)
-        {
-            ManagerController.Instance.AddData("Table",this);
-            LoadListTablesForForm();
+            t1.Start();
         }
 
         private void btnUpdateTabe_Click(object sender, EventArgs e)
         {
             ManagerController.Instance.UpdateData("Table", this);
             LoadListTablesForForm();
+
+            Thread t2 = new Thread(() => {
+                Invoke(new Action(() =>
+                {
+                    uscSale.Instance.LoadListTableForForm();
+                }));
+            });
+            t2.Start();
         }
 
         private void btnDeleteTable_Click(object sender, EventArgs e)
