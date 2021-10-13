@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using CafeManagementApplication.controllers;
+using CafeManagementApplication.types;
 
 namespace CafeManagementApplication
 {
@@ -10,7 +11,7 @@ namespace CafeManagementApplication
         {
             InitializeComponent();
         }
-
+        private Role _role;
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();

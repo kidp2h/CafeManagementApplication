@@ -52,18 +52,18 @@ namespace CafeManagementApplication.models
             return documents[0];
         }
 
-        public bool checkAccount(string username, string password)
+        public List<dynamic> checkAccount(string username, string password)
         {
             IMongoCollection<User> collection = this.getCollection();
             BsonDocument filter = new BsonDocument ("username", username);
             List<User> documents = collection.Find(filter).ToList();
             if(documents.Count != 0)
             {
-                return Hash.verifyPassword(password, documents[0].Password);
+                return new List<dynamic> { documents[0].Role, Hash.verifyPassword(password, documents[0].Password) };
             }
             else
             {
-                return false;
+                return new List<dynamic> { null, Hash.verifyPassword(password, documents[0].Password) };
             }
         }
 

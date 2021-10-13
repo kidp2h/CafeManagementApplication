@@ -6,12 +6,12 @@ namespace CafeManagementApplication.views
 {
     public partial class fCafeManager : Form
     {
-        private Role UserRole = Role.MANAGER;
-        public fCafeManager()
+
+        public fCafeManager(Role role)
         {
             InitializeComponent();
 
-            if (UserRole == Role.MANAGER) {
+            if (role == Role.MANAGER) {
                 btnManager.Enabled = true;
                 btnStatistics.Enabled = true;
                 btnManager_Click(null, null);
