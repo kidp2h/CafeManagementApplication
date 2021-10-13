@@ -2,7 +2,7 @@
 using CafeManagementApplication.config;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-
+using System.Collections.Generic;
 
 namespace CafeManagementApplication.models
 {
@@ -35,6 +35,19 @@ namespace CafeManagementApplication.models
         {
             IMongoCollection<Category> collection = this.getCollection();
             collection.InsertOneAsync(newCategory);
+        }
+        public bool checkCategory(FilterDefinition<Category> category)
+        {
+            IMongoCollection<Category> collection = this.getCollection();
+            List<Category> result =  collection.Find(category).ToList();
+            if (result.Count != 0) return true;
+            return false;
+        }
+        public Category getCategoryByName(string nameCategory)
+        {
+            IMongoCollection<Category> collection = this.getCollection();
+            List<Category> category = collection.Find(new BsonDocument("name",nameCategory)).ToList();
+            return category[0];
         }
         public void removeCategory(string idCategory)
         {

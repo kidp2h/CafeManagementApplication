@@ -46,10 +46,22 @@ namespace CafeManagementApplication.models
                 .ToList();
             return listProduct;
         }
-        public void addProduct(Product newProduct)
+        public void addProduct(Product newProduct, string nameCategory)
         {
             IMongoCollection < Product > collection = getCollection();
-            collection.InsertOneAsync(newProduct);
+            FilterDefinition < Category > filter = new BsonDocument("name", nameCategory);
+            BsonObjectId id = ObjectId.GenerateNewId();
+            if (!CategoryModel.Instance.checkCategory(filter))
+            {
+                CategoryModel.Instance.addCategory(new Category { Id = id, NameCategory = nameCategory });
+                Product product = new Product { NameProduct = newProduct.NameProduct, Category = id, Price = newProduct.Price };
+                collection.InsertOneAsync(product);
+            }
+            else {
+                Category category = CategoryModel.Instance.getCategoryByName(nameCategory);
+                Product product = new Product { NameProduct = newProduct.NameProduct, Category = category.Id , Price = newProduct.Price };
+                collection.InsertOneAsync(product);
+            }
         }
         public void removeProductById(string productId)
         {
