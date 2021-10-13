@@ -27,15 +27,18 @@ namespace CafeManagementApplication.views
             set { this.tbCharge.Text = value; }
         }
         public string TableId { get; set; }
+
+        public string BillId { get; set; }
         private void btnPay_Click(object sender, EventArgs e)
         {
-            PaymentController.Instance.payment(this, TableId);
+            PaymentController.Instance.payment(this, TableId,BillId);
         }
 
         private void tbMoney_TextChanged(object sender, EventArgs e)
         {
             try
             {
+                
                 string money = inputMoneyText;
                 string subtotal = inputSubtotalText;
                 inputChargeText = (Int32.Parse(money) - Int32.Parse(subtotal)).ToString();
