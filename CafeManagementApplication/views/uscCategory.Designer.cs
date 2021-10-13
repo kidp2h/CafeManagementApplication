@@ -38,9 +38,9 @@ namespace CafeManagementApplication.views
             // 
             this.lblCategoryName.Font = new System.Drawing.Font("Cooper Black", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCategoryName.ForeColor = System.Drawing.Color.Maroon;
-            this.lblCategoryName.Location = new System.Drawing.Point(129, 17);
+            this.lblCategoryName.Location = new System.Drawing.Point(111, 17);
             this.lblCategoryName.Name = "lblCategoryName";
-            this.lblCategoryName.Size = new System.Drawing.Size(248, 60);
+            this.lblCategoryName.Size = new System.Drawing.Size(240, 60);
             this.lblCategoryName.TabIndex = 1;
             this.lblCategoryName.Text = "CAFFEE";
             this.lblCategoryName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -51,7 +51,7 @@ namespace CafeManagementApplication.views
             this.pictureBox1.Image = global::CafeManagementApplication.Properties.Resources.cupCaffe3;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(123, 94);
+            this.pictureBox1.Size = new System.Drawing.Size(109, 94);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -65,7 +65,7 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblCategoryName);
             this.Name = "uscCategory";
-            this.Size = new System.Drawing.Size(378, 92);
+            this.Size = new System.Drawing.Size(354, 92);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
