@@ -47,8 +47,18 @@ namespace CafeManagementApplication.controllers
                 }
                 return;
             }
-            if (form == "useManager_Drinks")
+            if (form == "useManager_Products")
             {
+                dynamic productList = ProductModel.Instance.getListProduct();
+                foreach(dynamic product in productList)
+                {
+                    ListViewItem productLvItem = new ListViewItem(product["name"].Value);
+                    string category = product["category"].Value;
+                    productLvItem.SubItems.Add(category);
+                    int price = product["price"].Value;
+                    productLvItem.SubItems.Add(price.ToString());
+                    lv.Items.Add(productLvItem);
+                }
                 return;
             }
             if (form == "useManager_Users")

@@ -188,11 +188,11 @@
     <Compile Include="views\uscManager.Designer.cs">
       <DependentUpon>uscManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\uscManager_Drinks.cs">
+    <Compile Include="views\uscManager_Products.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="views\uscManager_Drinks.Designer.cs">
-      <DependentUpon>uscManager_Drinks.cs</DependentUpon>
+    <Compile Include="views\uscManager_Products.Designer.cs">
+      <DependentUpon>uscManager_Products.cs</DependentUpon>
     </Compile>
     <Compile Include="views\uscManager_Tables.cs">
       <SubType>UserControl</SubType>
@@ -250,8 +250,8 @@
     <EmbeddedResource Include="views\uscManager.resx">
       <DependentUpon>uscManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\uscManager_Drinks.resx">
-      <DependentUpon>uscManager_Drinks.cs</DependentUpon>
+    <EmbeddedResource Include="views\uscManager_Products.resx">
+      <DependentUpon>uscManager_Products.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\uscManager_Tables.resx">
       <DependentUpon>uscManager_Tables.cs</DependentUpon>

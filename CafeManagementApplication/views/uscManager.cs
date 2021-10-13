@@ -45,14 +45,14 @@ namespace CafeManagementApplication.views
 
         private void btnManagerDrinks_Click(object sender, EventArgs e)
         {
-            if (!pnlModule.Controls.Contains(uscManager_Drinks.Instance))
+            if (!pnlModule.Controls.Contains(uscManager_Products.Instance))
             {
-                pnlModule.Controls.Add(uscManager_Drinks.Instance);
-                uscManager_Drinks.Instance.Dock = DockStyle.Fill;
-                uscManager_Drinks.Instance.BringToFront();
+                pnlModule.Controls.Add(uscManager_Products.Instance);
+                uscManager_Products.Instance.Dock = DockStyle.Fill;
+                uscManager_Products.Instance.BringToFront();
 
             }
-            else uscManager_Drinks.Instance.BringToFront();
+            else uscManager_Products.Instance.BringToFront();
         }
 
         private void btnManagerUsers_Click(object sender, EventArgs e)
