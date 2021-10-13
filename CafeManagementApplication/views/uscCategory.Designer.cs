@@ -66,6 +66,7 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.lblCategoryName);
             this.Name = "uscCategory";
             this.Size = new System.Drawing.Size(354, 92);
+            this.Click += new System.EventHandler(this.uscCategory_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

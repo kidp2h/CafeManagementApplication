@@ -106,7 +106,8 @@ namespace CafeManagementApplication.controllers
             foreach (dynamic product in products)
             {
                 uscCategory temp = new uscCategory();
-                temp.CategoryName = product["category"].Value.ToString();
+                temp.CategoryId = product["_id"].Value.ToString();
+                temp.CategoryName = product["name"].Value.ToString();
                 
                 flp.Controls.Add(temp);
             }
