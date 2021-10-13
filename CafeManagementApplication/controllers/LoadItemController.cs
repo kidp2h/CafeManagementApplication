@@ -86,5 +86,17 @@ namespace CafeManagementApplication.controllers
                 flp.Controls.Add(temp);
             }
         }
+
+        public void LoadingItemCategory(FlowLayoutPanel flp)
+        {
+            dynamic products = ProductModel.Instance.getListProduct();
+            foreach (dynamic product in products)
+            {
+                uscCategory temp = new uscCategory();
+                temp.CategoryName = product["category"].Value.ToString();
+                
+                flp.Controls.Add(temp);
+            }
+        }
     }
 }

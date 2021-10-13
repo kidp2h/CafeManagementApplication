@@ -230,6 +230,12 @@
     <Compile Include="views\uscSale_Table.Designer.cs">
       <DependentUpon>uscSale_Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\uscCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="views\uscCategory.Designer.cs">
+      <DependentUpon>uscCategory.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -270,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\uscSale_Table.resx">
       <DependentUpon>uscSale_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\uscCategory.resx">
+      <DependentUpon>uscCategory.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="config\App.config" />

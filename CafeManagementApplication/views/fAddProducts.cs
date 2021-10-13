@@ -11,6 +11,7 @@ namespace CafeManagementApplication.views
         {  
             InitializeComponent();
             LoadItemController.Instance.LoadingItemProduct(flpListProducts);
+            LoadItemController.Instance.LoadingItemCategory(flpListCategorys);
             LoadPanelController.Instance.setView(this);
         }
 
@@ -66,6 +67,7 @@ namespace CafeManagementApplication.views
                 });
                 t1.IsBackground = true;
                 t1.Start();
+                this.TableStatus = "Có người";
             }
             LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
         }
