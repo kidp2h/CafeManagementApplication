@@ -123,5 +123,18 @@ namespace CafeManagementApplication.views
         }
         #endregion
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Thread myThrd = new Thread(() =>
+            {
+                Invoke(new Action(() =>
+                {
+                    uscSale.Instance.LoadListTableForForm();
+                    //LoadListController.Instance.LoadingListForListViewOf("useManager_Products",)
+                }));
+            });
+            myThrd.IsBackground = true;
+            //myThrd.Start();
+        }
     }
 }

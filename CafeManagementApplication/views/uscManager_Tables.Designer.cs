@@ -137,14 +137,6 @@ namespace CafeManagementApplication.views
             this.columnHeader2.Text = "Trạng thái ";
             this.columnHeader2.Width = 547;
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Tên bàn";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Trạng thái ";
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.iFullTable);
