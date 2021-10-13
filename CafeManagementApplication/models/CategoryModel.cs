@@ -55,5 +55,17 @@ namespace CafeManagementApplication.models
             FilterDefinition<Category> filter = new BsonDocument { { "_id", new ObjectId(idCategory) } };
             collection.DeleteOneAsync(filter);
         }
+        public void removeCategoryByName(string nameCategory)
+        {
+            IMongoCollection<Category> collection = this.getCollection();
+            FilterDefinition<Category> filter = new BsonDocument { { "name", nameCategory } };
+            collection.DeleteOneAsync(filter);
+        }
+        public void updateCategoryByName(string nameCategory, UpdateDefinition<Category> update)
+        {
+            IMongoCollection<Category> collection = this.getCollection();
+            FilterDefinition<Category> filter = new BsonDocument { { "name", nameCategory } };
+            collection.UpdateOneAsync(filter,update);
+        }
     }
 }

@@ -81,6 +81,12 @@ namespace CafeManagementApplication.models
             IMongoCollection<Product> collection = this.getCollection();
             collection.DeleteOneAsync(filter);
         }
+        public void removeProductByNameProduct(string nameProduct)
+        {
+            FilterDefinition<Product> filter = new BsonDocument("name", nameProduct );
+            IMongoCollection<Product> collection = this.getCollection();
+            collection.DeleteOneAsync(filter);
+        }
         public void updateProductById(string productId, string nameProduct, int price, string category)
         {
             FilterDefinition<Product> filter = new BsonDocument("_id", new ObjectId(productId));
@@ -112,6 +118,38 @@ namespace CafeManagementApplication.models
                 collection.UpdateOneAsync(filter, update);
             }
 
+        }
+
+        public void updateProductByNameProduct(string nameProduct, int price, string category)
+        {
+            FilterDefinition<Product> filter = new BsonDocument("name", nameProduct);
+            FilterDefinition<Category> cfilter = new BsonDocument("name", category);
+            IMongoCollection<Product> collection = getCollection();
+            if (!CategoryModel.Instance.checkCategory(cfilter))
+            {
+                BsonObjectId id = ObjectId.GenerateNewId();
+                CategoryModel.Instance.addCategory(new Category { Id = id, NameCategory = category });
+                UpdateDefinition<Product> update = new BsonDocument
+                {
+                    {"$set", new BsonDocument{
+                        {"name", nameProduct},
+                        {"price", price },
+                        {"category",id }
+                    }}
+                };
+                collection.UpdateOneAsync(filter, update);
+            }
+            else
+            {
+                UpdateDefinition<Product> update = new BsonDocument
+                {
+                    {"$set", new BsonDocument{
+                        {"name", nameProduct},
+                        {"price", price }
+                    }}
+                };
+                collection.UpdateOneAsync(filter, update);
+            }
         }
     }
 }

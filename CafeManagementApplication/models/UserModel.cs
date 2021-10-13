@@ -103,6 +103,13 @@ namespace CafeManagementApplication.models
             collection.UpdateOneAsync(_id, newUpdate);
         }
 
+        public void updateUserByUsername(string username , UpdateDefinition<User> newUpdate)
+        {
+            FilterDefinition<User> _username = new BsonDocument("username", username);
+            IMongoCollection<User> collection = this.getCollection();
+            collection.UpdateOneAsync(_username, newUpdate);
+        }
+
         public List<User> getListUser()
         {
             IMongoCollection<User> collection = this.getCollection();
