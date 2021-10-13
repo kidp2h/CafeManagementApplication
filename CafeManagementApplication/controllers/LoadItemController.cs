@@ -36,6 +36,7 @@ namespace CafeManagementApplication.controllers
                 uscSale_Table temp = new uscSale_Table();
                 temp.Tag = table.Id;
                 temp.TableName = table.TableName;
+                temp.BillId = table.Bill.ToString();
 
                 if (table.Status == types.sTable.FULL)
                 {
@@ -60,8 +61,9 @@ namespace CafeManagementApplication.controllers
                     uscSale_Table temp = new uscSale_Table();
                     temp.Tag = table.Id;
                     temp.TableName = table.TableName;
+                    temp.BillId = table.Bill.ToString();
 
-                    if (table.Status == types.sTable.FULL)
+                if (table.Status == types.sTable.FULL)
                     {
                         temp.Status = "Có người";
                     }

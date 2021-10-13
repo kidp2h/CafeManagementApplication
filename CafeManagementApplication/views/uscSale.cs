@@ -56,6 +56,7 @@ namespace CafeManagementApplication.views
         public string BillId { get; set; }
         public string TableId { get; set; }
         public string TableStatus { get; set; }
+        public string BillId { get; set; }
         #endregion
 
         #region Handler Event
@@ -80,6 +81,7 @@ namespace CafeManagementApplication.views
             {
                 fPay f = new fPay();
                 f.TableId = TableId;
+                f.BillId = BillId; 
                 f.inputSubtotalText = uscSale.Instance.inputSubtotalText.Replace("đ","");
                 f.ShowDialog();
             }

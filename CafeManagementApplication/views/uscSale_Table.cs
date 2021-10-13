@@ -16,6 +16,7 @@ namespace CafeManagementApplication.views
         #region Getter & Setter 
         private string tableName;
         private string status;
+        private string billId;
         private Color backgroundColorCurrent;
 
         public string TableName
@@ -27,8 +28,8 @@ namespace CafeManagementApplication.views
         public string Status
         {
             get { return status; }
-            set 
-            { 
+            set
+            {
                 status = value;
                 if (status == "Có người")
                 {
@@ -42,6 +43,11 @@ namespace CafeManagementApplication.views
                 }
                 this.backgroundColorCurrent = this.BackColor;
             }
+        }
+        public string BillId
+        {
+            get { return billId; }
+            set { billId = value; }
         }
 
         public string Id
@@ -81,6 +87,7 @@ namespace CafeManagementApplication.views
             uscSale.Instance.LblTableName = this.TableName;
             uscSale.Instance.TableId = this.Id;
             uscSale.Instance.TableStatus = this.Status;
+            uscSale.Instance.BillId = this.BillId;
 
         }
 
