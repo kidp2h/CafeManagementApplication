@@ -284,9 +284,9 @@ namespace CafeManagementApplication.views
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.flpTableList);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.flpTableList);
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";

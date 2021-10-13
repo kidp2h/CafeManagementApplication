@@ -8,13 +8,17 @@ namespace CafeManagementApplication.views
     public partial class uscSale : UserControl
     {
         private static uscSale instance;
+        private static readonly object lockObject = new object();
         public static uscSale Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new uscSale();
+                    lock(lockObject)
+                    {
+                        if (instance == null) instance = new uscSale();
+                    }    
                 }
                 return instance;
             }
@@ -55,6 +59,7 @@ namespace CafeManagementApplication.views
             get { return this.iTotalPriceProducts.Text; }
         }
         public string TableId { get; set; }
+        public string TableStatus { get; set; }
         #endregion
 
         #region Handler Event
@@ -65,20 +70,11 @@ namespace CafeManagementApplication.views
  
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            fAddProducts f = new fAddProducts();
-            
+            fAddProducts f = new fAddProducts();     
             f.BillID = btnAdd.Tag.ToString();
-
-            f.ShowDialog();
-
-            if (f.CheckAdd)
-            {
-                Thread status = new Thread(() => {
-                     LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
-                });
-                status.Start();
-                LoadListTableForForm();
-            }
+            f.TableId = this.TableId;
+            f.TableStatus = this.TableStatus;
+            f.Show();
         }
 
         private void btnPay_Click(object sender, EventArgs e)

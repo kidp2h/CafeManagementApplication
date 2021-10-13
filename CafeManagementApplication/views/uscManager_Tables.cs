@@ -62,12 +62,28 @@ namespace CafeManagementApplication.views
                 LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", lvTableInfor);
             });
             loadList.Start();
+            Thread t1 = new Thread(() => {
+                Invoke(new Action(() =>
+                {
+                    LoadItemController.Instance.LoadingItemTable();
+                }));
+            });
+            t1.Start();
+            
+
         }
 
         private void btnDeleteTable_Click(object sender, EventArgs e)
         {
             lvTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
             ManagerController.Instance.DeleteData("Table", this);
+            Thread t1 = new Thread(() => {
+                Invoke(new Action(() =>
+                {
+                    LoadItemController.Instance.LoadingItemTable();
+                }));
+            });
+            t1.Start();
 
         }
 
