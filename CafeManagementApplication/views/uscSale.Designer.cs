@@ -100,6 +100,8 @@ namespace CafeManagementApplication.views
             this.lblTableName.Name = "lblTableName";
             this.lblTableName.Size = new System.Drawing.Size(0, 41);
             this.lblTableName.TabIndex = 16;
+            this.lblTableName.Text = "Hãy chọn bàn";
+
             // 
             // btnAdd
             // 
