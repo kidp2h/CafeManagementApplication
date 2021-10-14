@@ -92,9 +92,9 @@ namespace CafeManagementApplication.views
             this.lvUsers.GridLines = true;
             this.lvUsers.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvUsers.HideSelection = false;
-            this.lvUsers.Location = new System.Drawing.Point(7, 58);
+            this.lvUsers.Location = new System.Drawing.Point(3, 58);
             this.lvUsers.Name = "lvUsers";
-            this.lvUsers.Size = new System.Drawing.Size(1108, 395);
+            this.lvUsers.Size = new System.Drawing.Size(1109, 395);
             this.lvUsers.TabIndex = 0;
             this.lvUsers.UseCompatibleStateImageBehavior = false;
             this.lvUsers.View = System.Windows.Forms.View.Details;
@@ -385,12 +385,12 @@ namespace CafeManagementApplication.views
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Controls.Add(this.lvUsers);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.lvUsers);
             this.Name = "uscManager_Users";
             this.Size = new System.Drawing.Size(1115, 777);
             this.panel1.ResumeLayout(false);

@@ -36,7 +36,6 @@ namespace CafeManagementApplication.models
                 return instance;
             }
         }
-
         public override IMongoCollection<Bill> getCollection()
         {
             IMongoDatabase db = Database.getDatabase();
@@ -44,23 +43,7 @@ namespace CafeManagementApplication.models
             return collection;
         }
 
-        private AggregateFluentBase<BsonDocument> lookupDepthBills()
-        {
-            IMongoCollection<Bill> collection = this.getCollection();
-            dynamic bill = collection.Aggregate()
-                .Unwind("products")
-                .Lookup("tables", "table", "_id", "table")
-                .Unwind("table")
-                .Lookup("products", "products.product", "_id", "products.product")
-                .Unwind("products.product")
-                .Lookup("categories", "products.product.category", "_id", "products.product.category")
-                .Unwind("products.product.category")
-                .AppendStage<BsonDocument>("{$set : {  'products.product.category': '$products.product.category.name'}}")
-                .Project(new BsonDocument("table.bill", 0))
-                .Group("{_id: '$_id',table : {$first : '$table'},'products': {$push: '$products'},subtotal : {$sum : {$multiply : ['$products.product.price','$products.amount']}}}")
-                .Match(new BsonDocument("paid", false));
-            return bill;
-        }
+        #region Add Document
         public void addBill(BsonObjectId table, BsonObjectId bill)
         {
             IMongoCollection<Bill> collection = this.getCollection();
@@ -73,25 +56,8 @@ namespace CafeManagementApplication.models
             };
             collection.InsertOne(newBill);
         }
-        public BsonDocument getBillById(string idBill)
-        {
-            FilterDefinition<BsonDocument> _idBill = new BsonDocument("_id", new ObjectId(idBill));
-            dynamic bill = this.lookupDepthBills().Match(_idBill).ToList();
-            return bill[0];
-        }
-        public Bill getBillByFilter(FilterDefinition<Bill> filter)
-        {
-            List<Bill> bill =  getCollection().Find(filter).ToList();
-            if (bill.Count != 0) return bill[0];
-            return null;
-        }
-        public BsonDocument getTableFromIdBill(string idBill)
-        {
-            FilterDefinition<BsonDocument> _idBill = new BsonDocument("_id", new ObjectId(idBill));
-            dynamic bill = this.lookupDepthBills().Match(_idBill).ToList();
-            return bill[0]["table"];
-        }
-        public void addProductToBill(string idBill, string idProduct,int amount)
+
+        public void addProductToBill(string idBill, string idProduct, int amount)
         {
             BsonDocument _idBill = new BsonDocument("_id", new ObjectId(idBill));
             IMongoCollection<Bill> collection = this.getCollection();
@@ -102,7 +68,7 @@ namespace CafeManagementApplication.models
             };
 
             List<Bill> listProduct = collection.Find(filter).ToList();
-            if(listProduct.Count == 0)
+            if (listProduct.Count == 0)
             {
                 UpdateDefinition<Bill> update = new BsonDocument
                     {
@@ -129,7 +95,64 @@ namespace CafeManagementApplication.models
             }
         }
 
-        public void removeProductFromBill(string idBill, string idProduct)
+        #endregion
+
+        #region Update Document
+        public void updatePaidBill(string idBill, bool status)
+        {
+            BsonDocument _idBill = new BsonDocument("_id", new ObjectId(idBill));
+            IMongoCollection<Bill> collection = getCollection();
+            UpdateDefinition<Bill> update = new BsonDocument
+                    {
+                        {"$set", new BsonDocument{
+                            {"paid", status }
+                        }}
+                    };
+            collection.UpdateOne(_idBill, update);
+        }
+        #endregion
+
+        #region Get document
+        private AggregateFluentBase<BsonDocument> lookupDepthBills()
+        {
+            IMongoCollection<Bill> collection = this.getCollection();
+            dynamic bill = collection.Aggregate()
+                .Unwind("products")
+                .Lookup("tables", "table", "_id", "table")
+                .Unwind("table")
+                .Lookup("products", "products.product", "_id", "products.product")
+                .Unwind("products.product")
+                .Lookup("categories", "products.product.category", "_id", "products.product.category")
+                .Unwind("products.product.category")
+                .AppendStage<BsonDocument>("{$set : {  'products.product.category': '$products.product.category.name'}}")
+                .Project(new BsonDocument("table.bill", 0))
+                .Group("{_id: '$_id',table : {$first : '$table'},'products': {$push: '$products'},subtotal : {$sum : {$multiply : ['$products.product.price','$products.amount']}}}")
+                .Match(new BsonDocument("paid", false));
+            return bill;
+        }
+
+        public BsonDocument getBillById(string idBill)
+        {
+            FilterDefinition<BsonDocument> _idBill = new BsonDocument("_id", new ObjectId(idBill));
+            dynamic bill = this.lookupDepthBills().Match(_idBill).ToList();
+            return bill[0];
+        }
+        public Bill getBillByFilter(FilterDefinition<Bill> filter)
+        {
+            List<Bill> bill = getCollection().Find(filter).ToList();
+            if (bill.Count != 0) return bill[0];
+            return null;
+        }
+        public BsonDocument getTableFromIdBill(string idBill)
+        {
+            FilterDefinition<BsonDocument> _idBill = new BsonDocument("_id", new ObjectId(idBill));
+            dynamic bill = this.lookupDepthBills().Match(_idBill).ToList();
+            return bill[0]["table"];
+        }
+        #endregion
+
+        #region Delete Document
+        public void deleteProductFromBill(string idBill, string idProduct)
         {
             BsonDocument _idBill = new BsonDocument("_id", new ObjectId(idBill));
             IMongoCollection<Bill> collection = this.getCollection();
@@ -149,18 +172,7 @@ namespace CafeManagementApplication.models
                     };
             collection.UpdateOne(_idBill, update);
         }
+        #endregion
 
-        public void setPaidBill(string idBill,bool status) 
-        {
-            BsonDocument _idBill = new BsonDocument("_id", new ObjectId(idBill));
-            IMongoCollection<Bill> collection = getCollection();
-            UpdateDefinition<Bill> update = new BsonDocument
-                    {
-                        {"$set", new BsonDocument{
-                            {"paid", status }
-                        }}
-                    };
-            collection.UpdateOne(_idBill, update);
-        }
     }
 }

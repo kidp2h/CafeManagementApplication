@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using CafeManagementApplication.config;
+using CafeManagementApplication.types;
 using CafeManagementApplication.views;
 
 namespace CafeManagementApplication
@@ -18,7 +19,7 @@ namespace CafeManagementApplication
             Application.SetCompatibleTextRenderingDefault(false);
             Control.CheckForIllegalCrossThreadCalls = false;
             Database _ = new Database();
-            Application.Run(new fCafeManager(types.Role.MANAGER));
+            Application.Run(new fCafeManager(Role.MANAGER));
         }
     }
 }
