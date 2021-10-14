@@ -17,6 +17,7 @@ namespace CafeManagementApplication.models
         public int Price { get; set; }
         [BsonElement("category")]
         public BsonObjectId Category { get; set; }
+        public string CategoryName { get; set; }
     }
     class ProductModel : BaseModel<Product>
     {

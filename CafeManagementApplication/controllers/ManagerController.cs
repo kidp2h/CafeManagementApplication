@@ -1,6 +1,7 @@
 ﻿using CafeManagementApplication.models;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System;
 
 namespace CafeManagementApplication.controllers
 {
@@ -29,7 +30,8 @@ namespace CafeManagementApplication.controllers
             if (nameData == "Product")
             {
                 Product product = new Product();
-                product.NameProduct = view.inputProductNameText;               
+                product.NameProduct = view.inputProductNameText;
+                product.CategoryName = view.inputCategoryName;
                 product.Price = int.Parse(view.inputPrice);
                 return product;
             }
@@ -52,14 +54,12 @@ namespace CafeManagementApplication.controllers
         {
             if(nameData == "Table")
             {
-                Table table = NewData("Table",view);
-                TableModel.Instance.addTable(table);
+                TableModel.Instance.addTable(data);
                 ResetTableDataInput(view);
             }
             if(nameData == "Product")
-            {
-                Product product = NewData("Product", view);
-                ProductModel.Instance.addProduct(product, view.inputCategoryText);
+            {               
+                ProductModel.Instance.addProduct(data, view.inputCategoryName);
                 ResetProductDataInput(view);
             }    
             if (nameData == "User")
@@ -73,8 +73,7 @@ namespace CafeManagementApplication.controllers
         {
             if (nameData == "Table")
             {
-                Table table = NewData(nameData, view);
-
+                Table table = NewData(nameData, view);                
                 UpdateDefinition<Table> updateTable = new BsonDocument
                 {
 
@@ -84,26 +83,15 @@ namespace CafeManagementApplication.controllers
                             { "status", table.Status },
                         }
                     }
-                };
-                //TableModel.Instance.updateTable(view.TableId, updateTable);
+                };              
+                TableModel.Instance.updateTableByNameTable(view.TableNameTag, updateTable);
                 ResetTableDataInput(view);
             }
             if (nameData == "Product")
             {
-                Product product = NewData(nameData, view);
-                UpdateDefinition<Product> updateProduct = new BsonDocument
-                {
-
-                    { "$set", new BsonDocument
-                        {
-                            { "name", product.NameProduct },
-                            //{ "category", product. },
-                            { "price", product.Price },
-                        }
-                    }
-                };
-                //ProductModel.Instance.updateProductById(view.Product, updateProduct);
-                ResetTableDataInput(view);
+                
+                ProductModel.Instance.updateProductByNameProduct(view.ProductName, Int32.Parse(view.inputPrice), view.inputCategoryName);
+                ResetProductDataInput(view);
             }
             if (nameData == "User")
             {
@@ -134,12 +122,12 @@ namespace CafeManagementApplication.controllers
             if (nameData == "Table")
             {
 
-                TableModel.Instance.deleteTable(view.TableId);
+                TableModel.Instance.deleteTableByTableName(view.inputTableNameText);
                 ResetTableDataInput(view);
             }
             if (nameData == "Product")
             {
-                ProductModel.Instance.deleteProductById(view.ProductId);
+                ProductModel.Instance.deleteProductByNameProduct(view.ProductName);
                 ResetProductDataInput(view);
             }
             if (nameData == "User")
@@ -168,7 +156,7 @@ namespace CafeManagementApplication.controllers
         {
             view.inputProductNameText = "";
             view.inputPrice = "";
-            view.inputCategoryText = "";
+            view.inputCategoryName = "";
         }
     }
 }

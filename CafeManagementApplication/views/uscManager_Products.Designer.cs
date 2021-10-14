@@ -36,15 +36,17 @@ namespace CafeManagementApplication.views
             this.btnUpdateProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.lvProductInfor = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbProductPrice = new System.Windows.Forms.TextBox();
             this.tbProductName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbProductCategory = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -127,6 +129,21 @@ namespace CafeManagementApplication.views
             this.lvProductInfor.View = System.Windows.Forms.View.Details;
             this.lvProductInfor.SelectedIndexChanged += new System.EventHandler(this.lvProductInfor_SelectedIndexChanged);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Tên món";
+            this.columnHeader1.Width = 190;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Loại";
+            this.columnHeader2.Width = 177;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Giá tiền";
+            this.columnHeader3.Width = 244;
+            // 
             // tbProductPrice
             // 
             this.tbProductPrice.Location = new System.Drawing.Point(781, 559);
@@ -173,21 +190,6 @@ namespace CafeManagementApplication.views
             this.label5.TabIndex = 26;
             this.label5.Text = "Giá tiền:";
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Tên món";
-            this.columnHeader1.Width = 190;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Loại";
-            this.columnHeader2.Width = 177;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Giá tiền";
-            this.columnHeader3.Width = 244;
-            // 
             // tbProductCategory
             // 
             this.tbProductCategory.Location = new System.Drawing.Point(781, 475);
@@ -196,11 +198,33 @@ namespace CafeManagementApplication.views
             this.tbProductCategory.Size = new System.Drawing.Size(289, 49);
             this.tbProductCategory.TabIndex = 27;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(1019, 11);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(77, 40);
+            this.button2.TabIndex = 29;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // uscManager_Products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lvProductInfor);
             this.Controls.Add(this.tbProductPrice);
             this.Controls.Add(this.tbProductCategory);
             this.Controls.Add(this.label5);
@@ -210,7 +234,6 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.button4);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.lvProductInfor);
             this.Name = "uscManager_Products";
             this.Size = new System.Drawing.Size(1115, 770);
             this.panel1.ResumeLayout(false);
@@ -237,5 +260,7 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.TextBox tbProductCategory;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
