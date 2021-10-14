@@ -99,6 +99,7 @@ namespace CafeManagementApplication
             this.inputPassword.Name = "inputPassword";
             this.inputPassword.Size = new System.Drawing.Size(238, 22);
             this.inputPassword.TabIndex = 1;
+            this.inputPassword.Text = "1";
             this.inputPassword.UseSystemPasswordChar = true;
             // 
             // inputUsername
@@ -107,6 +108,7 @@ namespace CafeManagementApplication
             this.inputUsername.Name = "inputUsername";
             this.inputUsername.Size = new System.Drawing.Size(238, 22);
             this.inputUsername.TabIndex = 0;
+            this.inputUsername.Text = "admin2";
             // 
             // pictureBox1
             // 

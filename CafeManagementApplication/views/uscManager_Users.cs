@@ -32,7 +32,7 @@ namespace CafeManagementApplication.views
             Thread loadList = new Thread(() => {              
                 LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
             });
-           
+            loadList.IsBackground = true;
             loadList.Start();
         }
 

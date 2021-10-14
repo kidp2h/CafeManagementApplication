@@ -112,6 +112,7 @@ namespace CafeManagementApplication.views
             this.Name = "fCafeManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phần mềm quản lý quán cafe";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fCafeManager_FormClosed);
             this.ResumeLayout(false);
 
         }
