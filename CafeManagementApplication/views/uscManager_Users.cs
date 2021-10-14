@@ -99,7 +99,6 @@ namespace CafeManagementApplication.views
         {
             ManagerController.Instance.AddData("User", this);
             LoadListUsersForForm();
-
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
