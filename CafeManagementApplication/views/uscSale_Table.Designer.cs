@@ -29,56 +29,50 @@ namespace CafeManagementApplication.views
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lbTableName = new System.Windows.Forms.Label();
+            this.btnTable = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // panel1
+            // btnTable
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel1.Location = new System.Drawing.Point(-7, 131);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(224, 33);
-            this.panel1.TabIndex = 2;
-            // 
-            // lbTableName
-            // 
-            this.lbTableName.Font = new System.Drawing.Font("Cooper Black", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTableName.ForeColor = System.Drawing.Color.White;
-            this.lbTableName.Location = new System.Drawing.Point(-1, 104);
-            this.lbTableName.Name = "lbTableName";
-            this.lbTableName.Size = new System.Drawing.Size(132, 31);
-            this.lbTableName.TabIndex = 3;
-            this.lbTableName.Text = "Table 1";
-            this.lbTableName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbTableName.Click += new System.EventHandler(this.lbTableName_Click);
-            this.lbTableName.MouseEnter += new System.EventHandler(this.lbTableName_MouseEnter);
-            this.lbTableName.MouseLeave += new System.EventHandler(this.lbTableName_MouseLeave);
+            this.btnTable.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnTable.BackgroundImage = global::CafeManagementApplication.Properties.Resources.imgTable;
+            this.btnTable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTable.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnTable.FlatAppearance.BorderSize = 2;
+            this.btnTable.FlatAppearance.MouseDownBackColor = System.Drawing.Color.NavajoWhite;
+            this.btnTable.Font = new System.Drawing.Font("Cooper Black", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTable.ForeColor = System.Drawing.Color.Black;
+            this.btnTable.Location = new System.Drawing.Point(0, 0);
+            this.btnTable.Name = "btnTable";
+            this.btnTable.Size = new System.Drawing.Size(130, 130);
+            this.btnTable.TabIndex = 4;
+            this.btnTable.Text = "button1";
+            this.btnTable.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnTable.UseVisualStyleBackColor = false;
+            this.btnTable.Click += new System.EventHandler(this.btnTable_Click);
+            this.btnTable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnTable_MouseDown);
+            this.btnTable.MouseEnter += new System.EventHandler(this.btnTable_MouseEnter);
+            this.btnTable.MouseLeave += new System.EventHandler(this.btnTable_MouseLeave);
+            this.btnTable.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnTable_MouseUp);
             // 
             // uscSale_Table
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.BackgroundImage = global::CafeManagementApplication.Properties.Resources.imgTable;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.lbTableName);
+            this.Controls.Add(this.btnTable);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.Coral;
             this.Name = "uscSale_Table";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Size = new System.Drawing.Size(130, 135);
-            this.Click += new System.EventHandler(this.uscSale_Table_Click);
-            this.MouseEnter += new System.EventHandler(this.uscSale_Table_MouseEnter);
-            this.MouseLeave += new System.EventHandler(this.uscSale_Table_MouseLeave);
+            this.Size = new System.Drawing.Size(130, 130);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lbTableName;
+        private System.Windows.Forms.Button btnTable;
     }
 }
