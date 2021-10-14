@@ -64,7 +64,7 @@ namespace CafeManagementApplication.views
         private void btnAddProduct_Click(object sender, EventArgs e)
         {   
             Product product = ManagerController.Instance.NewData("Product", this);
-            ListViewItem productItem = new ListViewItem(product.NameProduct);
+            ListViewItem productItem = new ListViewItem(product.NameProduct.ToString());
             productItem.SubItems.Add(product.CategoryName);
             productItem.SubItems.Add(product.Price.ToString());
             lvProductInfor.Items.Add(productItem);
