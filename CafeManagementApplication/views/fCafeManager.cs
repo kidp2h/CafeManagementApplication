@@ -1,6 +1,7 @@
 ﻿using CafeManagementApplication.helpers;
 using CafeManagementApplication.types;
 using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace CafeManagementApplication.views
@@ -19,9 +20,9 @@ namespace CafeManagementApplication.views
             }
             btnSale_Click(null, null);
 
-            ClockThread time = new ClockThread();
-            time.setLbl(lblTime);
-            time.Time();
+            ClockThread.Instance.setLbl(lblTime);
+            ClockThread.Instance.Clock();
+           
         }
 
         private void btnSale_Click(object sender, EventArgs e)
@@ -59,6 +60,11 @@ namespace CafeManagementApplication.views
                 
             }
             else uscStatistics.Instance.BringToFront();
+        }
+
+        private void fCafeManager_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
 }

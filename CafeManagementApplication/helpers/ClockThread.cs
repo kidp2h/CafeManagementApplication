@@ -8,28 +8,44 @@ using System.Windows.Forms;
 
 namespace CafeManagementApplication.helpers
 {
-    class ClockThread
+    public class ClockThread
     {
+        private static ClockThread instance;
+        public static ClockThread Instance
+        {
+            get
+            {
+                if (instance == null) instance = new ClockThread();
+                return instance;
+            }
+        }
         private Label lbl;
         public void setLbl(Label lbl)
         {
             this.lbl = lbl;
         }
 
-        public void Time()
+        public void Clock()
         {
+            
             Thread time = new Thread(() =>
             {
-                while(true) 
+                while (true)
                 {
                     DateTime aDateTime = DateTime.Now;
-                    lbl.Text = aDateTime.ToString();
+                    try
+                    {
+                        lbl.Text = aDateTime.ToString();
+                    }
+                    catch (Exception e) { }
                     Thread.Sleep(1);
                 }
             });
             time.IsBackground = true;
             time.Start();
-            
+    
         }
+
+       
     }
 }
