@@ -39,13 +39,13 @@ namespace CafeManagementApplication.views
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.iFullTable = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.iTableName = new System.Windows.Forms.TextBox();
             this.iEmptyTable = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -152,6 +152,15 @@ namespace CafeManagementApplication.views
             this.panel2.Size = new System.Drawing.Size(430, 253);
             this.panel2.TabIndex = 15;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(24, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(8, 8);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // iFullTable
             // 
             this.iFullTable.AutoSize = true;
@@ -213,15 +222,6 @@ namespace CafeManagementApplication.views
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(24, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(8, 8);
-            this.button2.TabIndex = 22;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // uscManager_Tables
             // 
