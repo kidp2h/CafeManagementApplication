@@ -72,9 +72,16 @@ namespace CafeManagementApplication.views
         }
 
         private void btnUpdateProduct_Click(object sender, EventArgs e)
-        {          
-            ManagerController.Instance.UpdateData("Product", this);
-            LoadListProductsForForm();
+        {
+            Product product = ManagerController.Instance.NewData("Product", this);
+            ListViewItem productItem = new ListViewItem(product.NameProduct.ToString());
+            productItem.SubItems.Add(product.CategoryName);
+            productItem.SubItems.Add(product.Price.ToString());
+
+            lvProductInfor.Items.RemoveAt(int.Parse(btnDeleteProduct.Tag.ToString()));
+            lvProductInfor.Items.Insert(int.Parse(btnDeleteProduct.Tag.ToString()), productItem);
+
+            ManagerController.Instance.UpdateData("Product", this);         
         }
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
