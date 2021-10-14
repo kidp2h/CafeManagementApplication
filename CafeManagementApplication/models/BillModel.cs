@@ -24,6 +24,10 @@ namespace CafeManagementApplication.models
         public BsonObjectId TableId { get; set; }
         [BsonElement("paid")]
         public BsonBoolean Paid { get; set; }
+        [BsonElement("paidTime")]
+        public BsonDateTime PaidTime { get; set; }
+        [BsonElement("sale")]
+        public BsonInt32 Sale { get; set; }
     }
     class BillModel : BaseModel<Bill>
     {
@@ -52,7 +56,9 @@ namespace CafeManagementApplication.models
                 Id = bill,
                 ProductsOrdered = new ListItemOrder(),
                 TableId = table,
-                Paid = false
+                Paid = false,
+                PaidTime = new BsonDateTime(new DateTime()),
+                Sale = 0
             };
             collection.InsertOne(newBill);
         }
@@ -98,16 +104,10 @@ namespace CafeManagementApplication.models
         #endregion
 
         #region Update Document
-        public void updatePaidBill(string idBill, bool status)
+        public void updateBill(string idBill, UpdateDefinition<Bill> update)
         {
             BsonDocument _idBill = new BsonDocument("_id", new ObjectId(idBill));
-            IMongoCollection<Bill> collection = getCollection();
-            UpdateDefinition<Bill> update = new BsonDocument
-                    {
-                        {"$set", new BsonDocument{
-                            {"paid", status }
-                        }}
-                    };
+            IMongoCollection<Bill> collection = getCollection(); 
             collection.UpdateOne(_idBill, update);
         }
         #endregion

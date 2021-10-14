@@ -11,7 +11,7 @@ namespace CafeManagementApplication.models
         [BsonElement("_id")]
         public BsonObjectId Id { get; set; }
         [BsonElement("name")]
-        public string NameCategory { get; set; }
+        public BsonString NameCategory { get; set; }
     }
     class CategoryModel : BaseModel<Category>
     {
