@@ -73,6 +73,7 @@ namespace CafeManagementApplication.views
             ListViewItem tableItem = new ListViewItem(table.TableName);
             tableItem.SubItems.Add(table.Status.ToString());
             lvTableInfor.Items.Add(tableItem);
+
             ManagerController.Instance.AddData("Table", table, this);
         }
 
@@ -92,6 +93,7 @@ namespace CafeManagementApplication.views
         private void btnDeleteTable_Click(object sender, EventArgs e)
         {
             lvTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
+
             ManagerController.Instance.DeleteData("Table", this);
         }
 
