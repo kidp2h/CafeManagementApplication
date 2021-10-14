@@ -12,11 +12,12 @@ namespace CafeManagementApplication.models
         [BsonElement("_id")]
         public BsonObjectId Id { get; set; }
         [BsonElement("name")]
-        public string NameProduct { get; set; }
+        public BsonString NameProduct { get; set; }
         [BsonElement("price")]
-        public int Price { get; set; }
+        public BsonInt32 Price { get; set; }
         [BsonElement("category")]
         public BsonObjectId Category { get; set; }
+        public string CategoryName { get; set; }
     }
     class ProductModel : BaseModel<Product>
     {

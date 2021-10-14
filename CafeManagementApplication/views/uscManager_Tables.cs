@@ -58,7 +58,7 @@ namespace CafeManagementApplication.views
             }
         }
 
-        public string TableId
+        public string TableNameTag
         {
             get { return iTableName.Tag.ToString(); }
             set { iTableName.Tag = value; }
@@ -68,46 +68,24 @@ namespace CafeManagementApplication.views
         #region Handler Event
  
         private void btnAddTable_Click(object sender, EventArgs e)
-        {
-           //ManagerController.Instance.AddData("Table",this);
-            LoadListTablesForForm();
-
-            Thread t1 = new Thread(() => {
-                Invoke(new Action(() =>
-                {
-                    uscSale.Instance.LoadListTableForForm();
-                }));
-            });
-            t1.Start();
+        {          
+            Table table = ManagerController.Instance.NewData("Table", this);
+            ListViewItem tableItem = new ListViewItem(table.TableName);
+            tableItem.SubItems.Add(table.Status.ToString());
+            lvTableInfor.Items.Add(tableItem);
+            ManagerController.Instance.AddData("Table", table, this);
         }
 
         private void btnUpdateTabe_Click(object sender, EventArgs e)
         {
             ManagerController.Instance.UpdateData("Table", this);
             LoadListTablesForForm();
-
-            Thread t2 = new Thread(() => {
-                Invoke(new Action(() =>
-                {
-                    uscSale.Instance.LoadListTableForForm();
-                }));
-            });
-            t2.Start();
         }
 
         private void btnDeleteTable_Click(object sender, EventArgs e)
         {
             lvTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
             ManagerController.Instance.DeleteData("Table", this);
-
-            Thread t3 = new Thread(() => {
-                Invoke(new Action(() =>
-                {
-                    uscSale.Instance.LoadListTableForForm();
-                }));
-            });
-            t3.Start();
-
         }
 
         private void listViewTableInfor_SelectedIndexChanged(object sender, EventArgs e)
@@ -117,7 +95,7 @@ namespace CafeManagementApplication.views
             if (lvTable.SelectedItems.Count > 0)
             {
                 ListViewItem item = lvTable.SelectedItems[0];
-                iTableName.Tag = item.Tag;
+                iTableName.Tag = item.SubItems[0].Text;
                 iTableName.Text = item.SubItems[0].Text;
               
                 if (item.SubItems[1].Text == "Bàn trống") iEmptyTable.Checked = true;
@@ -128,5 +106,9 @@ namespace CafeManagementApplication.views
         }
         #endregion
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoadListTablesForForm();
+        }
     }
 }

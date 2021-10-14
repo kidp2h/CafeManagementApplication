@@ -1,4 +1,5 @@
 ﻿using CafeManagementApplication.controllers;
+using CafeManagementApplication.models;
 using System;
 using System.Threading;
 using System.Windows.Forms;
@@ -27,11 +28,12 @@ namespace CafeManagementApplication.views
             set { tbProductName.Text = value; }
         }
 
-        public string inputCategoryText
+        public string inputCategoryName
         {
             get { return tbProductCategory.Text; }
             set { tbProductCategory.Text = value; }
         }
+
 
         public string inputPrice
         {
@@ -39,7 +41,7 @@ namespace CafeManagementApplication.views
             set { tbProductPrice.Text = value; }
         }
 
-        public string ProductId
+        public string ProductName
         {
             get { return tbProductName.Tag.ToString(); }
             set { tbProductName.Tag = value; }
@@ -60,17 +62,19 @@ namespace CafeManagementApplication.views
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
-        {
-            //ManagerController.Instance.AddData("Product", this);
-            LoadListProductsForForm();
+        {   
+            Product product = ManagerController.Instance.NewData("Product", this);
+            ListViewItem productItem = new ListViewItem(product.NameProduct);
+            productItem.SubItems.Add(product.CategoryName);
+            productItem.SubItems.Add(product.Price.ToString());
+            lvProductInfor.Items.Add(productItem);
+            ManagerController.Instance.AddData("Product",product, this);           
         }
 
         private void btnUpdateProduct_Click(object sender, EventArgs e)
-        {
-            /*
+        {          
             ManagerController.Instance.UpdateData("Product", this);
             LoadListProductsForForm();
-            */
         }
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
@@ -86,7 +90,7 @@ namespace CafeManagementApplication.views
             if (lvProduct.SelectedItems.Count > 0)
             {
                 ListViewItem item = lvProduct.SelectedItems[0];
-                tbProductName.Tag = item.Tag;
+                tbProductName.Tag = item.SubItems[0].Text;
                 tbProductName.Text = item.SubItems[0].Text;
                 tbProductCategory.Text = item.SubItems[1].Text;
                 tbProductPrice.Text = item.SubItems[2].Text;
@@ -94,5 +98,9 @@ namespace CafeManagementApplication.views
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            LoadListProductsForForm();
+        }
     }
 }

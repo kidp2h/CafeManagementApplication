@@ -385,12 +385,12 @@ namespace CafeManagementApplication.views
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Controls.Add(this.lvUsers);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.lvUsers);
             this.Name = "uscManager_Users";
             this.Size = new System.Drawing.Size(1115, 777);
             this.panel1.ResumeLayout(false);

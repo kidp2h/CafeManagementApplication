@@ -7,6 +7,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using CafeManagementApplication.config;
 using System.Threading;
 using CafeManagementApplication.views;
+using System;
 
 namespace CafeManagementApplication.models
 {
@@ -139,13 +140,19 @@ namespace CafeManagementApplication.models
                         {"status",sTable.EMPTY }
                     } }
                 };
-                //updateTable(_idTable.ToString(), update);
             });
             s1.IsBackground = true;
             s1.Start();
             Thread s2 = new Thread(() =>
             {
-                BillModel.Instance.updatePaidBill(oldBillId, true);
+                UpdateDefinition<Bill> update = new BsonDocument
+                {
+                        {"$set", new BsonDocument{
+                            {"paid", true },
+                            {"paidTime", DateTime.Now}
+                        }}
+                };
+                BillModel.Instance.updateBill(oldBillId, update);
             });
             s2.IsBackground = true;
             s2.Start();
