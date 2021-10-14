@@ -29,7 +29,6 @@ namespace CafeManagementApplication.views
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblTableName = new System.Windows.Forms.Label();
@@ -52,7 +51,6 @@ namespace CafeManagementApplication.views
             this.panel3 = new System.Windows.Forms.Panel();
             this.flpTableList = new System.Windows.Forms.FlowLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -67,10 +65,9 @@ namespace CafeManagementApplication.views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(92, 14);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(123, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(225, 24);
+            this.label2.Size = new System.Drawing.Size(281, 29);
             this.label2.TabIndex = 1;
             this.label2.Text = "THÔNG TIN HÓA ĐƠN";
             // 
@@ -85,10 +82,10 @@ namespace CafeManagementApplication.views
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.btnPay);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(515, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(687, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(531, 630);
+            this.panel2.Size = new System.Drawing.Size(708, 775);
             this.panel2.TabIndex = 2;
             // 
             // lblTableName
@@ -99,10 +96,9 @@ namespace CafeManagementApplication.views
             this.lblTableName.AutoSize = true;
             this.lblTableName.Font = new System.Drawing.Font("Magneto", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTableName.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblTableName.Location = new System.Drawing.Point(302, 7);
-            this.lblTableName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTableName.Location = new System.Drawing.Point(403, 9);
             this.lblTableName.Name = "lblTableName";
-            this.lblTableName.Size = new System.Drawing.Size(218, 32);
+            this.lblTableName.Size = new System.Drawing.Size(268, 41);
             this.lblTableName.TabIndex = 16;
             this.lblTableName.Text = "Hãy chọn bàn";
             // 
@@ -110,10 +106,10 @@ namespace CafeManagementApplication.views
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(68, 518);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdd.Location = new System.Drawing.Point(91, 638);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(170, 52);
+            this.btnAdd.Size = new System.Drawing.Size(227, 64);
             this.btnAdd.TabIndex = 15;
             this.btnAdd.Text = "THÊM MÓN";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -133,11 +129,11 @@ namespace CafeManagementApplication.views
             this.lvBillforOneTable.FullRowSelect = true;
             this.lvBillforOneTable.GridLines = true;
             this.lvBillforOneTable.HideSelection = false;
-            this.lvBillforOneTable.Location = new System.Drawing.Point(4, 43);
-            this.lvBillforOneTable.Margin = new System.Windows.Forms.Padding(2);
+            this.lvBillforOneTable.Location = new System.Drawing.Point(5, 53);
+            this.lvBillforOneTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvBillforOneTable.Name = "lvBillforOneTable";
             this.lvBillforOneTable.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lvBillforOneTable.Size = new System.Drawing.Size(504, 316);
+            this.lvBillforOneTable.Size = new System.Drawing.Size(671, 388);
             this.lvBillforOneTable.TabIndex = 0;
             this.lvBillforOneTable.UseCompatibleStateImageBehavior = false;
             this.lvBillforOneTable.View = System.Windows.Forms.View.Details;
@@ -176,21 +172,21 @@ namespace CafeManagementApplication.views
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(3, 373);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(4, 459);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(522, 122);
+            this.panel1.Size = new System.Drawing.Size(696, 150);
             this.panel1.TabIndex = 12;
             // 
             // tbTotalPriceProducts
             // 
             this.tbTotalPriceProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTotalPriceProducts.Location = new System.Drawing.Point(154, 15);
-            this.tbTotalPriceProducts.Margin = new System.Windows.Forms.Padding(2);
+            this.tbTotalPriceProducts.Location = new System.Drawing.Point(205, 18);
+            this.tbTotalPriceProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbTotalPriceProducts.Multiline = true;
             this.tbTotalPriceProducts.Name = "tbTotalPriceProducts";
             this.tbTotalPriceProducts.ReadOnly = true;
-            this.tbTotalPriceProducts.Size = new System.Drawing.Size(187, 24);
+            this.tbTotalPriceProducts.Size = new System.Drawing.Size(248, 29);
             this.tbTotalPriceProducts.TabIndex = 18;
             this.tbTotalPriceProducts.Text = "0đ";
             this.tbTotalPriceProducts.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -199,12 +195,12 @@ namespace CafeManagementApplication.views
             // tbTotalPriceBill
             // 
             this.tbTotalPriceBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTotalPriceBill.Location = new System.Drawing.Point(154, 75);
-            this.tbTotalPriceBill.Margin = new System.Windows.Forms.Padding(2);
+            this.tbTotalPriceBill.Location = new System.Drawing.Point(205, 92);
+            this.tbTotalPriceBill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbTotalPriceBill.Multiline = true;
             this.tbTotalPriceBill.Name = "tbTotalPriceBill";
             this.tbTotalPriceBill.ReadOnly = true;
-            this.tbTotalPriceBill.Size = new System.Drawing.Size(187, 24);
+            this.tbTotalPriceBill.Size = new System.Drawing.Size(248, 29);
             this.tbTotalPriceBill.TabIndex = 17;
             this.tbTotalPriceBill.Text = "0đ";
             this.tbTotalPriceBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -213,10 +209,10 @@ namespace CafeManagementApplication.views
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = global::CafeManagementApplication.Properties.Resources.logoCaffe;
-            this.pictureBox2.Location = new System.Drawing.Point(354, 1);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(472, 1);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(168, 121);
+            this.pictureBox2.Size = new System.Drawing.Size(224, 149);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 16;
             this.pictureBox2.TabStop = false;
@@ -224,10 +220,10 @@ namespace CafeManagementApplication.views
             // cbSale
             // 
             this.cbSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSale.Location = new System.Drawing.Point(154, 46);
-            this.cbSale.Margin = new System.Windows.Forms.Padding(2);
+            this.cbSale.Location = new System.Drawing.Point(205, 57);
+            this.cbSale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbSale.Name = "cbSale";
-            this.cbSale.Size = new System.Drawing.Size(186, 23);
+            this.cbSale.Size = new System.Drawing.Size(248, 27);
             this.cbSale.TabIndex = 15;
             this.cbSale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.cbSale.ValueChanged += new System.EventHandler(this.cbSale_ValueChanged);
@@ -236,10 +232,9 @@ namespace CafeManagementApplication.views
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(13, 75);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(17, 92);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 24);
+            this.label5.Size = new System.Drawing.Size(155, 29);
             this.label5.TabIndex = 12;
             this.label5.Text = "TỔNG TIỀN";
             // 
@@ -247,10 +242,9 @@ namespace CafeManagementApplication.views
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 46);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(17, 57);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 24);
+            this.label3.Size = new System.Drawing.Size(125, 29);
             this.label3.TabIndex = 11;
             this.label3.Text = "GIẢM GIÁ";
             // 
@@ -258,10 +252,9 @@ namespace CafeManagementApplication.views
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 17);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(17, 21);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(111, 24);
+            this.label4.Size = new System.Drawing.Size(140, 29);
             this.label4.TabIndex = 8;
             this.label4.Text = "TIỀN MÓN";
             // 
@@ -269,10 +262,10 @@ namespace CafeManagementApplication.views
             // 
             this.btnPay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPay.Location = new System.Drawing.Point(278, 518);
-            this.btnPay.Margin = new System.Windows.Forms.Padding(8);
+            this.btnPay.Location = new System.Drawing.Point(371, 638);
+            this.btnPay.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(170, 52);
+            this.btnPay.Size = new System.Drawing.Size(227, 64);
             this.btnPay.TabIndex = 5;
             this.btnPay.Text = "THANH TOÁN";
             this.btnPay.UseVisualStyleBackColor = true;
@@ -283,10 +276,9 @@ namespace CafeManagementApplication.views
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(186, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(248, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 24);
+            this.label1.Size = new System.Drawing.Size(226, 29);
             this.label1.TabIndex = 3;
             this.label1.Text = "DANH SÁCH BÀN ";
             // 
@@ -299,9 +291,9 @@ namespace CafeManagementApplication.views
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(538, 629);
+            this.panel3.Size = new System.Drawing.Size(717, 774);
             this.panel3.TabIndex = 4;
             // 
             // flpTableList
@@ -314,39 +306,33 @@ namespace CafeManagementApplication.views
             this.flpTableList.BackgroundImage = global::CafeManagementApplication.Properties.Resources.logoCaffe;
             this.flpTableList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.flpTableList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flpTableList.Location = new System.Drawing.Point(2, 43);
-            this.flpTableList.Margin = new System.Windows.Forms.Padding(2);
+            this.flpTableList.Location = new System.Drawing.Point(3, 53);
+            this.flpTableList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flpTableList.Name = "flpTableList";
-            this.flpTableList.Size = new System.Drawing.Size(533, 584);
+            this.flpTableList.Size = new System.Drawing.Size(709, 718);
             this.flpTableList.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(2, 9);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(3, 11);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 26);
+            this.button1.Size = new System.Drawing.Size(32, 32);
             this.button1.TabIndex = 4;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // uscSale
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "uscSale";
-            this.Size = new System.Drawing.Size(1048, 631);
+            this.Size = new System.Drawing.Size(1397, 777);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -384,6 +370,5 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.TextBox tbTotalPriceBill;
         private System.Windows.Forms.Label lblTableName;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -78,8 +78,15 @@ namespace CafeManagementApplication.views
 
         private void btnUpdateTabe_Click(object sender, EventArgs e)
         {
+            Table table = ManagerController.Instance.NewData("Table", this);
+            ListViewItem tableItem = new ListViewItem(table.TableName);
+            tableItem.SubItems.Add(table.Status.ToString());
+
+            lvTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
+            lvTableInfor.Items.Insert(int.Parse(btnDeleteTable.Tag.ToString()), tableItem);
+            
             ManagerController.Instance.UpdateData("Table", this);
-            LoadListTablesForForm();
+            
         }
 
         private void btnDeleteTable_Click(object sender, EventArgs e)

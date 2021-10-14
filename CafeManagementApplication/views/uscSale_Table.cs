@@ -6,11 +6,11 @@ using System.Windows.Forms;
 namespace CafeManagementApplication.views
 {
     public partial class uscSale_Table : UserControl
-    { 
+    {
         public uscSale_Table()
         {
             InitializeComponent();
-            
+
         }
 
         #region Getter & Setter 
@@ -21,7 +21,11 @@ namespace CafeManagementApplication.views
         public string TableName
         {
             get { return tableName; }
-            set { tableName = value; lbTableName.Text = value; }
+            set
+            {
+                tableName = value; //lbTableName.Text = value;
+                btnTable.Text = value;
+            }
         }
         public string Status
         {
@@ -31,63 +35,59 @@ namespace CafeManagementApplication.views
                 status = value;
                 if (status == "Có người")
                 {
-                    lbTableName.ForeColor = Color.White;
-                    this.BackColor = Color.Brown;
+                    btnTable.ForeColor = Color.White;
+                    btnTable.BackColor = Color.FromArgb(139, 0, 0);
                 }
                 else
                 {
-                    lbTableName.ForeColor = Color.Black;
-                    this.BackColor = Color.DarkTurquoise;
+                    btnTable.ForeColor = Color.Black;
+                    btnTable.BackColor = Color.FromArgb(30, 144, 255);
                 }
-                this.backgroundColorCurrent = this.BackColor;
+                this.backgroundColorCurrent = btnTable.BackColor;
             }
         }
         public string BillId { get; set; }
         public string Id { get; set; }
-        
-           
-        
+
+
+
         #endregion
 
         #region Hover Effect      
-        private void uscSale_Table_MouseEnter(object sender, EventArgs e)
+        private void btnTable_MouseLeave(object sender, EventArgs e)
         {
-            if(this.status == "Có người") this.BackColor = Color.Red;
-            else this.BackColor = Color.Cyan;
+            btnTable.BackColor = this.backgroundColorCurrent;
         }
 
-        private void uscSale_Table_MouseLeave(object sender, EventArgs e)
+        private void btnTable_MouseEnter(object sender, EventArgs e)
         {
-            this.BackColor = this.backgroundColorCurrent;
+            if (this.status == "Có người") btnTable.BackColor = Color.Red;
+            else btnTable.BackColor = Color.Cyan;
         }
 
-        private void lbTableName_MouseEnter(object sender, EventArgs e)
-        {
-            uscSale_Table_MouseEnter(null, null);
-        }
 
-        private void lbTableName_MouseLeave(object sender, EventArgs e)
-        {
-            uscSale_Table_MouseLeave(null, null);
-        }
 
         #endregion
 
         #region Handler Event
-        private void uscSale_Table_Click(object sender, EventArgs e)
+        private void btnTable_Click(object sender, EventArgs e)
         {
             LoadListController.Instance.LoadingBillForListViewFormTableID(this.Id);
             uscSale.Instance.LblTableName = this.TableName;
             uscSale.Instance.TableId = this.Id;
             uscSale.Instance.TableStatus = this.Status;
             uscSale.Instance.BillId = this.BillId;
-
-        }
-
-        private void lbTableName_Click(object sender, EventArgs e)
-        {
-            uscSale_Table_Click(null, null);
         }
         #endregion
+
+        private void btnTable_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnTable.BackColor = Color.NavajoWhite;
+        }
+
+        private void btnTable_MouseUp(object sender, MouseEventArgs e)
+        {
+            btnTable.BackColor = Color.Cyan;
+        }
     }
 }
