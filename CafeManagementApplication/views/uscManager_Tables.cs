@@ -71,7 +71,14 @@ namespace CafeManagementApplication.views
         {          
             Table table = ManagerController.Instance.NewData("Table", this);
             ListViewItem tableItem = new ListViewItem(table.TableName);
-            tableItem.SubItems.Add(table.Status.ToString());
+            if (table.Status == types.sTable.EMPTY)
+            {
+                tableItem.SubItems.Add("Bàn trống");
+            }
+            else
+            {
+                tableItem.SubItems.Add("Có người");
+            }
             lvTableInfor.Items.Add(tableItem);
             ManagerController.Instance.AddData("Table", table, this);
         }
@@ -80,13 +87,19 @@ namespace CafeManagementApplication.views
         {
             Table table = ManagerController.Instance.NewData("Table", this);
             ListViewItem tableItem = new ListViewItem(table.TableName);
-            tableItem.SubItems.Add(table.Status.ToString());
+            if (table.Status == types.sTable.EMPTY)
+            {
+                tableItem.SubItems.Add("Bàn trống");
+            }
+            else
+            {
+                tableItem.SubItems.Add("Có người");
+            }
 
             lvTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
             lvTableInfor.Items.Insert(int.Parse(btnDeleteTable.Tag.ToString()), tableItem);
             
-            ManagerController.Instance.UpdateData("Table", this);
-            
+            ManagerController.Instance.UpdateData("Table", this);          
         }
 
         private void btnDeleteTable_Click(object sender, EventArgs e)
