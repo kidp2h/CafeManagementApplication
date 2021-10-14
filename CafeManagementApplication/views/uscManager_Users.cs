@@ -133,25 +133,31 @@ namespace CafeManagementApplication.views
         }
         private void lvUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListView lv = sender as ListView;
+            //ListView lv = sender as ListView;
             
-            if(lv.SelectedItems.Count>0)
-            {
-                ListViewItem item = lv.SelectedItems[0];
-                tbName.Tag = item.Tag;
-                tbName.Text = item.SubItems[0].Text;
-                tbAge.Text = item.SubItems[1].Text;
-                if (item.SubItems[2].Text == "Nam") rdoMale.Checked = true;
-                else if (item.SubItems[2].Text == "Nữ") rdoFemale.Checked = true;
-                else rdoOther.Checked = true;
+            //if(lv.SelectedItems.Count>0)
+            //{
+            //    ListViewItem item = lv.SelectedItems[0];
+            //    tbName.Tag = item.Tag;
+            //    tbName.Text = item.SubItems[0].Text;
+            //    tbAge.Text = item.SubItems[1].Text;
+            //    if (item.SubItems[2].Text == "Nam") rdoMale.Checked = true;
+            //    else if (item.SubItems[2].Text == "Nữ") rdoFemale.Checked = true;
+            //    else rdoOther.Checked = true;
 
-                tbUserName.Text = item.SubItems[3].Text;
+            //    tbUserName.Text = item.SubItems[3].Text;
                
-                if (item.SubItems[4].Text == "Quản lý") rdoManager.Checked = true;
-                else rdoSaff.Checked = true;
+            //    if (item.SubItems[4].Text == "Quản lý") rdoManager.Checked = true;
+            //    else rdoSaff.Checked = true;
 
-                btnDelete.Tag = lv.Items.IndexOf(item);
-            }
+            //    btnDelete.Tag = lv.Items.IndexOf(item);
+            //}
+        }
+
+        private void setDataBinding()
+        {
+            tbName.DataBindings.Add(new Binding("Text",lvUsers, "Name"));
+         
         }
         #endregion
     }

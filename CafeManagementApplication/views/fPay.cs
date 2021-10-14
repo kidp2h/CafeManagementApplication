@@ -37,7 +37,7 @@ namespace CafeManagementApplication.views
         #region Handler Event
         private void btnPay_Click(object sender, EventArgs e)
         {
-            PaymentController.Instance.payment(this, TableId,BillId);
+            PaymentController.Instance.payment(this, TableId, BillId);
             Thread t1 = new Thread(() =>
             {
                 Invoke(new Action(() =>
