@@ -123,6 +123,12 @@ namespace CafeManagementApplication.models
             IMongoCollection<Table> collection = getCollection();
             collection.UpdateOneAsync(_nameTable, update);
         }
+        public void updateTableByIdTable(string idTable, UpdateDefinition<Table> update)
+        {
+            FilterDefinition<Table> _nameTable = new BsonDocument("_id", new ObjectId(idTable) );
+            IMongoCollection<Table> collection = getCollection();
+            collection.UpdateOneAsync(_nameTable, update);
+        }
 
         public void updateTable(string idTable, string oldBillId)
         {
@@ -140,6 +146,7 @@ namespace CafeManagementApplication.models
                         {"status",sTable.EMPTY }
                     } }
                 };
+                TableModel.Instance.updateTableByIdTable(idTable, update);
             });
             s1.IsBackground = true;
             s1.Start();

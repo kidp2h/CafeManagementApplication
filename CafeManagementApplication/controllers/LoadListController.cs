@@ -88,9 +88,6 @@ namespace CafeManagementApplication.controllers
                 return;
 
             }
-            
-
-
         }
 
         public void LoadingBillForListViewFormTableID(string tableID)
