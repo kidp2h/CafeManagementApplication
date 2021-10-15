@@ -189,6 +189,7 @@ namespace CafeManagementApplication.views
             this.tbTableName.Name = "tbTableName";
             this.tbTableName.Size = new System.Drawing.Size(289, 49);
             this.tbTableName.TabIndex = 19;
+            this.tbTableName.TextChanged += new System.EventHandler(this.tbTableName_TextChanged);
             // 
             // iEmptyTable
             // 

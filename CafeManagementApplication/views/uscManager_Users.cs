@@ -3,6 +3,7 @@ using CafeManagementApplication.helpers;
 using CafeManagementApplication.models;
 using CafeManagementApplication.types;
 using System;
+using System.Drawing;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -12,6 +13,7 @@ namespace CafeManagementApplication.views
     public partial class uscManager_Users : UserControl
     {
         private static uscManager_Users instance;
+
         public static uscManager_Users Instance
         {
             get
@@ -23,6 +25,7 @@ namespace CafeManagementApplication.views
                 return instance;
             }
         }
+
         public uscManager_Users()
         {
             InitializeComponent();
@@ -37,7 +40,6 @@ namespace CafeManagementApplication.views
             loadList.IsBackground = true;
             loadList.Start();
         }
-
 
         #region Public Data In View
         public string inputNameText
@@ -94,7 +96,7 @@ namespace CafeManagementApplication.views
             set { tbName.Tag = value; }
         }
 
-        public string Username
+        public string UserNameTag
         {
             get { return tbUserName.Text; }
             set { tbUserName.Text = value; }
@@ -119,6 +121,7 @@ namespace CafeManagementApplication.views
             }
             #endregion
 
+            #region Handler View
             User user = ManagerController.Instance.NewData("User", this);
             ListViewItem item = new ListViewItem(user.Fullname);
             item.SubItems.Add(user.Age.ToString());
@@ -126,6 +129,7 @@ namespace CafeManagementApplication.views
             item.SubItems.Add(user.Username);
             item.SubItems.Add(user.Role == Role.MANAGER? "Quản lý" : "Nhân viên" );
             lvUsers.Items.Add(item);
+            #endregion
 
             ManagerController.Instance.AddData("User", user, this);
             
@@ -144,19 +148,18 @@ namespace CafeManagementApplication.views
             }
             #endregion
 
+            #region Handler View
             User user = ManagerController.Instance.NewData("User", this);
             ListViewItem item = new ListViewItem(user.Fullname);
             item.SubItems.Add(user.Age.ToString());
             item.SubItems.Add(user.Gender.ToString());
             item.SubItems.Add(user.Username);
             item.SubItems.Add(user.Role == Role.MANAGER ? "Quản lý" : "Nhân viên");
-
             lvUsers.Items.RemoveAt(int.Parse(btnDelete.Tag.ToString()));
             lvUsers.Items.Insert(int.Parse(btnDelete.Tag.ToString()), item);
+            #endregion
 
             ManagerController.Instance.UpdateData("User", this);
-            LoadListUsersForForm();
-
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -171,7 +174,10 @@ namespace CafeManagementApplication.views
             }
             #endregion
 
+            #region Handler View
             lvUsers.Items.RemoveAt(int.Parse(btnDelete.Tag.ToString()));
+            #endregion
+
             ManagerController.Instance.DeleteData("User", this);
             
         } 
@@ -200,6 +206,32 @@ namespace CafeManagementApplication.views
 
                 btnDelete.Tag = lv.Items.IndexOf(item);
             }
+        }
+        #endregion
+
+        #region Effect
+        private void tbName_TextChanged(object sender, EventArgs e)
+        {
+            if(tbName.BackColor != Color.White)
+            tbName.BackColor = Color.White;
+        }
+
+        private void tbAge_TextChanged(object sender, EventArgs e)
+        { 
+            if(tbAge.BackColor != Color.White)
+            tbAge.BackColor = Color.White;
+        }
+
+        private void tbUserName_TextChanged(object sender, EventArgs e)
+        {
+            if(tbUserName.BackColor != Color.White)
+            tbUserName.BackColor = Color.White;
+        }
+
+        private void tbUserPassword_TextChanged(object sender, EventArgs e)
+        {
+            if(tbUserPassword.BackColor != Color.White)
+            tbUserPassword.BackColor = Color.White;
         }
         #endregion
     }

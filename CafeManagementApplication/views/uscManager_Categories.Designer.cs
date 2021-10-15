@@ -91,6 +91,7 @@ namespace CafeManagementApplication.views
             this.tbCategoryName.Name = "tbCategoryName";
             this.tbCategoryName.Size = new System.Drawing.Size(289, 49);
             this.tbCategoryName.TabIndex = 35;
+            this.tbCategoryName.TextChanged += new System.EventHandler(this.tbCategoryName_TextChanged);
             // 
             // button4
             // 

@@ -88,12 +88,12 @@ namespace CafeManagementApplication.models
             if (result.Count != 0) return true;
             return false;
         }
-        public bool checkExist(string nameCategory)
+        public bool isExist(string nameCategory)
         {
             FilterDefinition<Category> filter = new BsonDocument("name", nameCategory);
             IMongoCollection<Category> collection = getCollection();
             List<Category> categories = collection.Find(filter).ToList();
-            if (categories.Count == 0)
+            if (categories.Count != 0)
             {
                 return true;
             }

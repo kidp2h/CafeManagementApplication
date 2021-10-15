@@ -98,7 +98,7 @@ namespace CafeManagementApplication.controllers
                         }
                     }
                 };
-                CategoryModel.Instance.updateCategoryByName(view.CategoryTag, updateCategory);
+                CategoryModel.Instance.updateCategoryByName(view.CategoryNameTag, updateCategory);
                 return;
             }
             if (nameData == "Table")
@@ -120,14 +120,13 @@ namespace CafeManagementApplication.controllers
             }
             if (nameData == "Product")
             {
-                ProductModel.Instance.updateProductByNameProduct(view.ProductName, Int32.Parse(view.inputPrice), view.inputCategoryName);
+                ProductModel.Instance.updateProductByNameProduct(view.ProductNameTag, Int32.Parse(view.inputPrice), view.inputCategoryName);
                 ResetProductDataInput(view);
                 return;
             }
             if (nameData == "User")
             {
                 User user = NewData(nameData, view);
-
                 UpdateDefinition<User> update = new BsonDocument
                 {
 
@@ -142,8 +141,7 @@ namespace CafeManagementApplication.controllers
                         }
                     }
                 };
-
-                UserModel.Instance.updateUserById(view.UserId, update);
+                UserModel.Instance.updateUserByUsername(view.UserNameTag, update);
                 ResetDataInput(view);
                 return;
             }
@@ -157,19 +155,19 @@ namespace CafeManagementApplication.controllers
             }
             if (nameData == "Table")
             {
-                TableModel.Instance.deleteTableByTableName(view.inputTableNameText);
+                TableModel.Instance.deleteTableByTableName(view.TableNameTag);
                 ResetTableDataInput(view);
                 return;
             }
             if (nameData == "Product")
             {
-                ProductModel.Instance.deleteProductByNameProduct(view.ProductName);
+                ProductModel.Instance.deleteProductByNameProduct(view.ProductNameTag);
                 ResetProductDataInput(view);
                 return;
             }
             if (nameData == "User")
             {
-                UserModel.Instance.deleteUserByUsername(view.Username);
+                UserModel.Instance.deleteUserByUsername(view.UserNameTag);
                 ResetDataInput(view);
                 return;
             }

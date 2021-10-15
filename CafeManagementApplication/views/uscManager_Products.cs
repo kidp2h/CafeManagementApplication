@@ -25,6 +25,13 @@ namespace CafeManagementApplication.views
             }
         }
 
+        private uscManager_Products()
+        {
+            InitializeComponent();
+            LoadListProductsForForm();
+        }
+
+        #region Public Data View
         public string inputProductNameText
         {
             get { return tbProductName.Text; }
@@ -44,18 +51,15 @@ namespace CafeManagementApplication.views
             set { tbProductPrice.Text = value; }
         }
 
-        public string ProductName
+        public string ProductNameTag
         {
             get { return tbProductName.Tag.ToString(); }
             set { tbProductName.Tag = value; }
         }
 
-        private uscManager_Products()
-        {
-            InitializeComponent();
-            LoadListController.Instance.LoadingListForListViewOf("useManager_Products", lvProductInfor);
-        }
+        #endregion
 
+        #region Handler Event
         public void LoadListProductsForForm()
         {
             Thread loadList = new Thread(() => {
@@ -68,7 +72,7 @@ namespace CafeManagementApplication.views
         {
             #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkEmpty(tbProductName, sb, "Vui lòng nhập tên sản phẩm !");
+            ValidateForm.Instance.checkProductName(tbProductName, sb, "Vui lòng nhập tên sản phẩm !",true);
             ValidateForm.Instance.checkEmpty(tbProductCategory, sb, "Vui lòng nhập loại sản phẩm !");
             ValidateForm.Instance.checkNumber(tbProductPrice, sb, "Vui lòng nhập giá sản phẩm !", "Giá sản phẩm");
             if (sb.Length > 0)
@@ -78,48 +82,57 @@ namespace CafeManagementApplication.views
             }
             #endregion
 
+            #region Handler View
             Product product = ManagerController.Instance.NewData("Product", this);
             ListViewItem productItem = new ListViewItem(product.NameProduct.ToString());
             productItem.SubItems.Add(product.CategoryName);
             productItem.SubItems.Add(product.Price.ToString());
             lvProductInfor.Items.Add(productItem);
+            #endregion
 
             ManagerController.Instance.AddData("Product",product, this);           
         }
 
         private void btnUpdateProduct_Click(object sender, EventArgs e)
         {
-
+            #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkEmpty(tbProductName, sb, "Vui lòng nhập tên sản phẩm !");
+            ValidateForm.Instance.checkProductName(tbProductName, sb, "Vui lòng chọn sản phẩm !", false);
             if (sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            #endregion
 
+            #region Handler View
             Product product = ManagerController.Instance.NewData("Product", this);
             ListViewItem productItem = new ListViewItem(product.NameProduct.ToString());
             productItem.SubItems.Add(product.CategoryName);
             productItem.SubItems.Add(product.Price.ToString());
-
             lvProductInfor.Items.RemoveAt(int.Parse(btnDeleteProduct.Tag.ToString()));
             lvProductInfor.Items.Insert(int.Parse(btnDeleteProduct.Tag.ToString()), productItem);
+            #endregion
 
             ManagerController.Instance.UpdateData("Product", this);         
         }
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
+            #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkEmpty(tbProductName, sb, "Vui lòng chọn sản phẩm !");
+            ValidateForm.Instance.checkProductName(tbProductName, sb, "Vui lòng chọn sản phẩm !", false);
             if (sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            #endregion
 
+            #region Handler View
             lvProductInfor.Items.RemoveAt(int.Parse(btnDeleteProduct.Tag.ToString()));
+            #endregion
+
             ManagerController.Instance.DeleteData("Product", this);          
         }
 
@@ -143,19 +156,26 @@ namespace CafeManagementApplication.views
             LoadListProductsForForm();
         }
 
+        #endregion
+
+        #region Effect
         private void tbProductName_TextChanged(object sender, EventArgs e)
         {
+            if (tbProductName.BackColor != Color.White)
             tbProductName.BackColor = Color.White;
         }
 
         private void tbProductCategory_TextChanged(object sender, EventArgs e)
         {
+            if (tbProductCategory.BackColor != Color.White)
             tbProductCategory.BackColor = Color.White;
         }
 
         private void tbProductPrice_TextChanged(object sender, EventArgs e)
         {
+            if (tbProductPrice.BackColor != Color.White)
             tbProductPrice.BackColor = Color.White;
         }
+        #endregion
     }
 }
