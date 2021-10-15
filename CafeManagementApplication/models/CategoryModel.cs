@@ -79,15 +79,32 @@ namespace CafeManagementApplication.models
         }
         #endregion
 
+
+        #region Check Document 
         public bool checkCategory(FilterDefinition<Category> category)
         {
             IMongoCollection<Category> collection = this.getCollection();
-            List<Category> result =  collection.Find(category).ToList();
+            List<Category> result = collection.Find(category).ToList();
             if (result.Count != 0) return true;
             return false;
         }
-        
-        
-        
+        public bool checkExist(string nameCategory)
+        {
+            FilterDefinition<Category> filter = new BsonDocument("name", nameCategory);
+            IMongoCollection<Category> collection = getCollection();
+            List<Category> categories = collection.Find(filter).ToList();
+            if (categories.Count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
+
+
+
     }
 }
