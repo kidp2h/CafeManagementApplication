@@ -24,15 +24,16 @@ namespace CafeManagementApplication
         }
         public fLogin()
         {
-           
+            
             InitializeComponent();
+            //check();
         }
         public void actionForm(string action)
         {
             if (action == "show") this.Show();
             else this.Hide();
         }
-        public void check()
+        /*public void check()
         {
             dynamic result = SaveUser.Instance.checkSession();
             if (result != null)
@@ -40,12 +41,14 @@ namespace CafeManagementApplication
                 this.Hide();
                 if (result.Role == Role.MANAGER)
                 {
+                    Properties.Settings.Default.role = "MANAGER";
                     fCafeManager f = new fCafeManager();
                     f.ShowDialog();
                     this.Hide();
                 }
                 else
                 {
+                    Properties.Settings.Default.role = "STAFF";
                     fCafeManager f = new fCafeManager();
                     f.ShowDialog();
                     this.Hide();
@@ -56,7 +59,7 @@ namespace CafeManagementApplication
 
                 this.Show();
             }
-        }
+        }*/
         private void fLogin_Load(object sender, System.EventArgs e)
         {
             inputUsernameText = Properties.Settings.Default.username;
