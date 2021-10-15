@@ -106,6 +106,7 @@ namespace CafeManagementApplication.views
             #endregion
 
             ManagerController.Instance.UpdateData("Category", this);
+            uscManager_Products.Instance.LoadListProductsForForm();
 
         }
 
@@ -127,6 +128,7 @@ namespace CafeManagementApplication.views
 
 
             ManagerController.Instance.DeleteData("Category", this);
+            uscManager_Products.Instance.LoadListProductsForForm();
         }
 
         private void lvCategoryInfor_SelectedIndexChanged(object sender, EventArgs e)
@@ -151,5 +153,10 @@ namespace CafeManagementApplication.views
 
         }
         #endregion
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            LoadListCategorysForForm();
+        }
     }
 }
