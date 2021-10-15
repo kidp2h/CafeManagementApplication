@@ -6,9 +6,9 @@ namespace CafeManagementApplication.helpers
 {
     class Config
     {
-        public static String GetValueFromKey(String key)
+        public static string GetValueFromKey(String key)
         { 
-            String url = ConfigurationManager.AppSettings[key];
+            string url = ConfigurationManager.AppSettings[key];
             return url;
         }
     }
