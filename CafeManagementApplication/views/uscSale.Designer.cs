@@ -53,6 +53,7 @@ namespace CafeManagementApplication.views
             this.tbSale = new System.Windows.Forms.TextBox();
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -166,6 +167,7 @@ namespace CafeManagementApplication.views
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.btnPlus);
             this.panel1.Controls.Add(this.btnMinus);
             this.panel1.Controls.Add(this.tbSale);
@@ -321,11 +323,11 @@ namespace CafeManagementApplication.views
             this.tbSale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSale.Multiline = true;
             this.tbSale.Name = "tbSale";
-            this.tbSale.ReadOnly = true;
-            this.tbSale.Size = new System.Drawing.Size(130, 36);
+            this.tbSale.Size = new System.Drawing.Size(99, 36);
             this.tbSale.TabIndex = 19;
             this.tbSale.Text = "0";
             this.tbSale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbSale.TextChanged += new System.EventHandler(this.tbSale_TextChanged);
             // 
             // btnMinus
             // 
@@ -336,6 +338,7 @@ namespace CafeManagementApplication.views
             this.btnMinus.TabIndex = 20;
             this.btnMinus.Text = "-";
             this.btnMinus.UseVisualStyleBackColor = true;
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
             // 
             // btnPlus
             // 
@@ -346,6 +349,16 @@ namespace CafeManagementApplication.views
             this.btnPlus.TabIndex = 21;
             this.btnPlus.Text = "+";
             this.btnPlus.UseVisualStyleBackColor = true;
+            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(306, 62);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 29);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "%";
             // 
             // uscSale
             // 
@@ -396,5 +409,6 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.Button btnPlus;
         private System.Windows.Forms.Button btnMinus;
         private System.Windows.Forms.TextBox tbSale;
+        private System.Windows.Forms.Label label6;
     }
 }
