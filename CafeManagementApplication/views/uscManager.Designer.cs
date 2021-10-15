@@ -31,6 +31,7 @@ namespace CafeManagementApplication.views
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnManagerUsers = new System.Windows.Forms.Button();
+            this.btnManagerCategories = new System.Windows.Forms.Button();
             this.btnManagerDrinks = new System.Windows.Forms.Button();
             this.btnManagerTables = new System.Windows.Forms.Button();
             this.pnlModule = new System.Windows.Forms.Panel();
@@ -40,23 +41,35 @@ namespace CafeManagementApplication.views
             // panel1
             // 
             this.panel1.Controls.Add(this.btnManagerUsers);
+            this.panel1.Controls.Add(this.btnManagerCategories);
             this.panel1.Controls.Add(this.btnManagerDrinks);
             this.panel1.Controls.Add(this.btnManagerTables);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(270, 257);
+            this.panel1.Size = new System.Drawing.Size(270, 306);
             this.panel1.TabIndex = 0;
             // 
             // btnManagerUsers
             // 
             this.btnManagerUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManagerUsers.Location = new System.Drawing.Point(3, 151);
+            this.btnManagerUsers.Location = new System.Drawing.Point(3, 225);
             this.btnManagerUsers.Name = "btnManagerUsers";
             this.btnManagerUsers.Size = new System.Drawing.Size(263, 68);
             this.btnManagerUsers.TabIndex = 2;
             this.btnManagerUsers.Text = "Quản Lý Nhân Sự";
             this.btnManagerUsers.UseVisualStyleBackColor = true;
             this.btnManagerUsers.Click += new System.EventHandler(this.btnManagerUsers_Click);
+            // 
+            // btnManagerCategories
+            // 
+            this.btnManagerCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManagerCategories.Location = new System.Drawing.Point(3, 151);
+            this.btnManagerCategories.Name = "btnManagerCategories";
+            this.btnManagerCategories.Size = new System.Drawing.Size(263, 68);
+            this.btnManagerCategories.TabIndex = 3;
+            this.btnManagerCategories.Text = "Quản Lý Loại Món";
+            this.btnManagerCategories.UseVisualStyleBackColor = true;
+            this.btnManagerCategories.Click += new System.EventHandler(this.btnManagerCategories_Click);
             // 
             // btnManagerDrinks
             // 
@@ -111,5 +124,6 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.Button btnManagerDrinks;
         private System.Windows.Forms.Button btnManagerTables;
         private System.Windows.Forms.Panel pnlModule;
+        private System.Windows.Forms.Button btnManagerCategories;
     }
 }
