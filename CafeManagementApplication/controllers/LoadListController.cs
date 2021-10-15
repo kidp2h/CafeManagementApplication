@@ -31,12 +31,12 @@ namespace CafeManagementApplication.controllers
         {
             
             lv.Items.Clear();
-            if (form == "useManager_Categories")
+            if (form == "uscManager_Categories")
             {
                 dynamic categoryList = CategoryModel.Instance.getListCategory();
                 foreach(dynamic category in categoryList)
                 {
-                    ListViewItem categoryLvItem = new ListViewItem(category.NameCategory);
+                    ListViewItem categoryLvItem = new ListViewItem(category.NameCategory.ToString());
                     categoryLvItem.Tag = category.Id;
                     lv.Items.Add(categoryLvItem);
                 }
