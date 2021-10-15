@@ -38,46 +38,52 @@ namespace CafeManagementApplication
             this.inputPassword = new System.Windows.Forms.TextBox();
             this.inputUsername = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cbRemember = new System.Windows.Forms.CheckBox();
             this.pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlLogin
             // 
+            this.pnlLogin.Controls.Add(this.cbRemember);
             this.pnlLogin.Controls.Add(this.lblUserPassWord);
             this.pnlLogin.Controls.Add(this.lblUserName);
             this.pnlLogin.Controls.Add(this.btnExit);
             this.pnlLogin.Controls.Add(this.btnLogin);
             this.pnlLogin.Controls.Add(this.inputPassword);
             this.pnlLogin.Controls.Add(this.inputUsername);
-            this.pnlLogin.Location = new System.Drawing.Point(304, 12);
+            this.pnlLogin.Location = new System.Drawing.Point(228, 10);
+            this.pnlLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlLogin.Name = "pnlLogin";
-            this.pnlLogin.Size = new System.Drawing.Size(268, 297);
+            this.pnlLogin.Size = new System.Drawing.Size(201, 241);
             this.pnlLogin.TabIndex = 0;
             // 
             // lblUserPassWord
             // 
             this.lblUserPassWord.AutoSize = true;
-            this.lblUserPassWord.Location = new System.Drawing.Point(23, 119);
+            this.lblUserPassWord.Location = new System.Drawing.Point(17, 97);
+            this.lblUserPassWord.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUserPassWord.Name = "lblUserPassWord";
-            this.lblUserPassWord.Size = new System.Drawing.Size(68, 17);
+            this.lblUserPassWord.Size = new System.Drawing.Size(53, 13);
             this.lblUserPassWord.TabIndex = 5;
             this.lblUserPassWord.Text = "Mật Khẩu";
             // 
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
-            this.lblUserName.Location = new System.Drawing.Point(20, 50);
+            this.lblUserName.Location = new System.Drawing.Point(15, 41);
+            this.lblUserName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(109, 17);
+            this.lblUserName.Size = new System.Drawing.Size(84, 13);
             this.lblUserName.TabIndex = 4;
             this.lblUserName.Text = "Tên Đăng Nhập";
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(145, 221);
+            this.btnExit.Location = new System.Drawing.Point(109, 180);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(113, 45);
+            this.btnExit.Size = new System.Drawing.Size(85, 37);
             this.btnExit.TabIndex = 3;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -85,9 +91,10 @@ namespace CafeManagementApplication
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(20, 221);
+            this.btnLogin.Location = new System.Drawing.Point(15, 180);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(111, 45);
+            this.btnLogin.Size = new System.Drawing.Size(83, 37);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -95,41 +102,54 @@ namespace CafeManagementApplication
             // 
             // inputPassword
             // 
-            this.inputPassword.Location = new System.Drawing.Point(20, 142);
+            this.inputPassword.Location = new System.Drawing.Point(15, 115);
+            this.inputPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.inputPassword.Name = "inputPassword";
-            this.inputPassword.Size = new System.Drawing.Size(238, 22);
+            this.inputPassword.Size = new System.Drawing.Size(180, 20);
             this.inputPassword.TabIndex = 1;
             this.inputPassword.Text = "1";
             this.inputPassword.UseSystemPasswordChar = true;
             // 
             // inputUsername
             // 
-            this.inputUsername.Location = new System.Drawing.Point(20, 73);
+            this.inputUsername.Location = new System.Drawing.Point(15, 59);
+            this.inputUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.inputUsername.Name = "inputUsername";
-            this.inputUsername.Size = new System.Drawing.Size(238, 22);
+            this.inputUsername.Size = new System.Drawing.Size(180, 20);
             this.inputUsername.TabIndex = 0;
             this.inputUsername.Text = "admin2";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::CafeManagementApplication.Properties.Resources._9203;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(1, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(297, 297);
+            this.pictureBox1.Size = new System.Drawing.Size(223, 241);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // cbRemember
+            // 
+            this.cbRemember.AutoSize = true;
+            this.cbRemember.Location = new System.Drawing.Point(15, 150);
+            this.cbRemember.Name = "cbRemember";
+            this.cbRemember.Size = new System.Drawing.Size(93, 17);
+            this.cbRemember.TabIndex = 6;
+            this.cbRemember.Text = "Nho tai khoan";
+            this.cbRemember.UseVisualStyleBackColor = true;
+            this.cbRemember.CheckedChanged += new System.EventHandler(this.cbRemember_CheckedChanged);
+            // 
             // fLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
-            this.ClientSize = new System.Drawing.Size(577, 321);
+            this.ClientSize = new System.Drawing.Size(433, 261);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnlLogin);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";
@@ -151,6 +171,7 @@ namespace CafeManagementApplication
         private System.Windows.Forms.TextBox inputPassword;
         private System.Windows.Forms.TextBox inputUsername;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox cbRemember;
     }
 }
 

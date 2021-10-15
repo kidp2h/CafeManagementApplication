@@ -150,7 +150,7 @@ namespace CafeManagementApplication.models
                 UpdateDefinition<Bill> update = new BsonDocument
                 {
                         {"$set", new BsonDocument{
-                            {"paid", true },
+                            {"paid", true }, 
                             {"paidTime", DateTime.Now}
                         }}
                 };

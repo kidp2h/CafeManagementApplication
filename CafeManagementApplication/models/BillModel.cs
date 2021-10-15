@@ -126,8 +126,10 @@ namespace CafeManagementApplication.models
                 .Unwind("products.product.category")
                 .AppendStage<BsonDocument>("{$set : {  'products.product.category': '$products.product.category.name'}}")
                 .Project(new BsonDocument("table.bill", 0))
-                .Group("{_id: '$_id',table : {$first : '$table'},'products': {$push: '$products'},subtotal : {$sum : {$multiply : ['$products.product.price','$products.amount']}}}")
-                .Match(new BsonDocument("paid", false));
+                .Group("{_id: '$_id',table : {$first : '$table'},'products': {$push: '$products'},percentSale : {'$first':'$sale'},sale:{'$first':'$sale'},subtotal : {$sum : {$multiply : ['$products.product.price','$products.amount']}}}")
+                .AppendStage<BsonDocument>("{'sale': {$subtract : ['$subtotal',{$multiply : ['$subtotal',{$divide : ['$sale',100]}]}]}}")
+                .Match(new BsonDocument { { "subtotal", new BsonDocument { { "$gt", 0 } } } });
+
             return bill;
         }
 
