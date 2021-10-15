@@ -21,12 +21,6 @@ namespace CafeManagementApplication.models
         public sTable Status { get; set; }
         [BsonElement("bill")]
         public BsonObjectId Bill { get; set; }
-        public Table() { }
-        public Table(string TableName, sTable status)
-        {
-            this.TableName = TableName;
-            this.Status = status;
-        }
     }
     class TableModel : BaseModel<Table>
     {
@@ -146,10 +140,11 @@ namespace CafeManagementApplication.models
                         {"status",sTable.EMPTY }
                     } }
                 };
-                TableModel.Instance.updateTableByIdTable(idTable, update);
+                this.updateTableByIdTable(idTable, update);
             });
-            s1.IsBackground = true;
+            s1.IsBackground = true;         
             s1.Start();
+            s1.Join();
             Thread s2 = new Thread(() =>
             {
                 UpdateDefinition<Bill> update = new BsonDocument

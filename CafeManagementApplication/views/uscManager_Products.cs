@@ -1,6 +1,9 @@
 ﻿using CafeManagementApplication.controllers;
+using CafeManagementApplication.helpers;
 using CafeManagementApplication.models;
 using System;
+using System.Drawing;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -62,17 +65,39 @@ namespace CafeManagementApplication.views
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
-        {   
+        {
+            #region Validate
+            StringBuilder sb = new StringBuilder();
+            ValidateForm.Instance.checkEmpty(tbProductName, sb, "Vui lòng nhập tên sản phẩm !");
+            ValidateForm.Instance.checkEmpty(tbProductCategory, sb, "Vui lòng nhập loại sản phẩm !");
+            ValidateForm.Instance.checkNumber(tbProductPrice, sb, "Vui lòng nhập giá sản phẩm !", "Giá sản phẩm");
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            #endregion
+
             Product product = ManagerController.Instance.NewData("Product", this);
             ListViewItem productItem = new ListViewItem(product.NameProduct.ToString());
             productItem.SubItems.Add(product.CategoryName);
             productItem.SubItems.Add(product.Price.ToString());
             lvProductInfor.Items.Add(productItem);
+
             ManagerController.Instance.AddData("Product",product, this);           
         }
 
         private void btnUpdateProduct_Click(object sender, EventArgs e)
         {
+
+            StringBuilder sb = new StringBuilder();
+            ValidateForm.Instance.checkEmpty(tbProductName, sb, "Vui lòng nhập tên sản phẩm !");
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Product product = ManagerController.Instance.NewData("Product", this);
             ListViewItem productItem = new ListViewItem(product.NameProduct.ToString());
             productItem.SubItems.Add(product.CategoryName);
@@ -86,6 +111,14 @@ namespace CafeManagementApplication.views
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
+            StringBuilder sb = new StringBuilder();
+            ValidateForm.Instance.checkEmpty(tbProductName, sb, "Vui lòng chọn sản phẩm !");
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             lvProductInfor.Items.RemoveAt(int.Parse(btnDeleteProduct.Tag.ToString()));
             ManagerController.Instance.DeleteData("Product", this);          
         }
@@ -110,5 +143,19 @@ namespace CafeManagementApplication.views
             LoadListProductsForForm();
         }
 
+        private void tbProductName_TextChanged(object sender, EventArgs e)
+        {
+            tbProductName.BackColor = Color.White;
+        }
+
+        private void tbProductCategory_TextChanged(object sender, EventArgs e)
+        {
+            tbProductCategory.BackColor = Color.White;
+        }
+
+        private void tbProductPrice_TextChanged(object sender, EventArgs e)
+        {
+            tbProductPrice.BackColor = Color.White;
+        }
     }
 }

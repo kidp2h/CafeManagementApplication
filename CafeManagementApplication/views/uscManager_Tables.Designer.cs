@@ -34,7 +34,7 @@ namespace CafeManagementApplication.views
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAddTable = new System.Windows.Forms.Button();
             this.btnDeleteTable = new System.Windows.Forms.Button();
-            this.btnUpdateTabe = new System.Windows.Forms.Button();
+            this.btnUpdateTable = new System.Windows.Forms.Button();
             this.lvTableInfor = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,7 +42,7 @@ namespace CafeManagementApplication.views
             this.button2 = new System.Windows.Forms.Button();
             this.iFullTable = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.iTableName = new System.Windows.Forms.TextBox();
+            this.tbTableName = new System.Windows.Forms.TextBox();
             this.iEmptyTable = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -72,7 +72,7 @@ namespace CafeManagementApplication.views
             // 
             this.panel1.Controls.Add(this.btnAddTable);
             this.panel1.Controls.Add(this.btnDeleteTable);
-            this.panel1.Controls.Add(this.btnUpdateTabe);
+            this.panel1.Controls.Add(this.btnUpdateTable);
             this.panel1.Location = new System.Drawing.Point(667, 62);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(389, 265);
@@ -100,16 +100,16 @@ namespace CafeManagementApplication.views
             this.btnDeleteTable.UseVisualStyleBackColor = true;
             this.btnDeleteTable.Click += new System.EventHandler(this.btnDeleteTable_Click);
             // 
-            // btnUpdateTabe
+            // btnUpdateTable
             // 
-            this.btnUpdateTabe.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnUpdateTabe.Location = new System.Drawing.Point(64, 100);
-            this.btnUpdateTabe.Name = "btnUpdateTabe";
-            this.btnUpdateTabe.Size = new System.Drawing.Size(273, 68);
-            this.btnUpdateTabe.TabIndex = 2;
-            this.btnUpdateTabe.Text = "Sửa";
-            this.btnUpdateTabe.UseVisualStyleBackColor = true;
-            this.btnUpdateTabe.Click += new System.EventHandler(this.btnUpdateTabe_Click);
+            this.btnUpdateTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnUpdateTable.Location = new System.Drawing.Point(64, 100);
+            this.btnUpdateTable.Name = "btnUpdateTable";
+            this.btnUpdateTable.Size = new System.Drawing.Size(273, 68);
+            this.btnUpdateTable.TabIndex = 2;
+            this.btnUpdateTable.Text = "Sửa";
+            this.btnUpdateTable.UseVisualStyleBackColor = true;
+            this.btnUpdateTable.Click += new System.EventHandler(this.btnUpdateTabe_Click);
             // 
             // lvTableInfor
             // 
@@ -144,7 +144,7 @@ namespace CafeManagementApplication.views
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.iFullTable);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.iTableName);
+            this.panel2.Controls.Add(this.tbTableName);
             this.panel2.Controls.Add(this.iEmptyTable);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(643, 352);
@@ -182,13 +182,13 @@ namespace CafeManagementApplication.views
             this.label2.TabIndex = 16;
             this.label2.Text = "Trạng thái:";
             // 
-            // iTableName
+            // tbTableName
             // 
-            this.iTableName.Location = new System.Drawing.Point(138, 49);
-            this.iTableName.Multiline = true;
-            this.iTableName.Name = "iTableName";
-            this.iTableName.Size = new System.Drawing.Size(289, 49);
-            this.iTableName.TabIndex = 19;
+            this.tbTableName.Location = new System.Drawing.Point(138, 49);
+            this.tbTableName.Multiline = true;
+            this.tbTableName.Name = "tbTableName";
+            this.tbTableName.Size = new System.Drawing.Size(289, 49);
+            this.tbTableName.TabIndex = 19;
             // 
             // iEmptyTable
             // 
@@ -249,13 +249,13 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnDeleteTable;
-        private System.Windows.Forms.Button btnUpdateTabe;
+        private System.Windows.Forms.Button btnUpdateTable;
         private System.Windows.Forms.Button btnAddTable;
         private System.Windows.Forms.ListView lvTableInfor;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox iTableName;
+        private System.Windows.Forms.TextBox tbTableName;
         private System.Windows.Forms.RadioButton iEmptyTable;
         private System.Windows.Forms.RadioButton iFullTable;
         private System.Windows.Forms.ColumnHeader columnHeader1;

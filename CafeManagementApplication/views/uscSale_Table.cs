@@ -17,6 +17,7 @@ namespace CafeManagementApplication.views
         private string tableName;
         private string status;
         private Color backgroundColorCurrent;
+        private Color HoverColorCurrent;
 
         public string TableName
         {
@@ -37,19 +38,19 @@ namespace CafeManagementApplication.views
                 {
                     btnTable.ForeColor = Color.White;
                     btnTable.BackColor = Color.FromArgb(139, 0, 0);
+                    this.HoverColorCurrent = Color.Red;
                 }
                 else
                 {
                     btnTable.ForeColor = Color.Black;
                     btnTable.BackColor = Color.FromArgb(30, 144, 255);
+                    this.HoverColorCurrent = Color.Cyan;
                 }
                 this.backgroundColorCurrent = btnTable.BackColor;
             }
         }
         public string BillId { get; set; }
         public string Id { get; set; }
-
-
 
         #endregion
 
@@ -65,7 +66,15 @@ namespace CafeManagementApplication.views
             else btnTable.BackColor = Color.Cyan;
         }
 
+        private void btnTable_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnTable.BackColor = Color.NavajoWhite;
+        }
 
+        private void btnTable_MouseUp(object sender, MouseEventArgs e)
+        {
+            btnTable.BackColor = this.HoverColorCurrent;
+        }
 
         #endregion
 
@@ -80,14 +89,5 @@ namespace CafeManagementApplication.views
         }
         #endregion
 
-        private void btnTable_MouseDown(object sender, MouseEventArgs e)
-        {
-            btnTable.BackColor = Color.NavajoWhite;
-        }
-
-        private void btnTable_MouseUp(object sender, MouseEventArgs e)
-        {
-            btnTable.BackColor = Color.Cyan;
-        }
     }
 }
