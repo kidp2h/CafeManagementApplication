@@ -20,6 +20,12 @@ namespace CafeManagementApplication.controllers
 
         public dynamic NewData(string nameData, dynamic view)
         {
+            if (nameData == "Category")
+            {
+                Category category = new Category();
+                category.NameCategory = view.inputCategory;
+                return category;
+            }
             if (nameData == "Table")
             {
                 Table table = new Table();
@@ -52,7 +58,13 @@ namespace CafeManagementApplication.controllers
 
         public void AddData(string nameData, dynamic data, dynamic view)
         {
-            if(nameData == "Table")
+            if (nameData == "Category")
+            {
+                CategoryModel.Instance.addCategory(data);
+                ResetCategoryDataInput(view);
+
+            }
+            if (nameData == "Table")
             {
                 TableModel.Instance.addTable(data);
                 ResetTableDataInput(view);
@@ -71,6 +83,21 @@ namespace CafeManagementApplication.controllers
 
         public void UpdateData(string nameData, dynamic view)
         {
+            if (nameData == "Category")
+            {
+                Category category = NewData(nameData, view);
+                UpdateDefinition<Category> updateCategory = new BsonDocument
+                {
+
+                    { "$set", new BsonDocument
+                        {
+                            { "name", category.NameCategory},                   
+                        }
+                    }
+                };
+                CategoryModel.Instance.updateCategoryByName(view.CategoryTag, updateCategory);
+                
+            }
             if (nameData == "Table")
             {
                 Table table = NewData(nameData, view);                
@@ -119,6 +146,10 @@ namespace CafeManagementApplication.controllers
 
         public void DeleteData(string nameData, dynamic view)
         {
+            if (nameData == "Category")
+            {
+
+            }
             if (nameData == "Table")
             {
 
@@ -157,6 +188,10 @@ namespace CafeManagementApplication.controllers
             view.inputProductNameText = "";
             view.inputPrice = "";
             view.inputCategoryName = "";
+        }
+        public void ResetCategoryDataInput(dynamic view)
+        {
+            view.inputCategory = "";
         }
     }
 }
