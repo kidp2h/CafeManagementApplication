@@ -33,6 +33,7 @@ namespace CafeManagementApplication.controllers
                     SaveUser.Instance.saveUserToFile(result[2].Username);
                     MessageBox.Show("Dang nhap thanh cong");
                     Properties.Settings.Default.role = result[2].Role.ToString();
+                    Properties.Settings.Default.fullname = result[2].Fullname;
                     view.Hide();
                     fCafeManager f = new fCafeManager();
                     f.ShowDialog();
