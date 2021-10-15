@@ -39,5 +39,10 @@ namespace CafeManagementApplication
             get { return this.inputPassword.Text; }
             set { this.inputUsername.Text = value; }
         }
+
+        private void cbRemember_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

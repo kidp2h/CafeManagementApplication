@@ -1,9 +1,11 @@
 ﻿
+using System.Configuration;
+
 namespace CafeManagementApplication.helpers
 {
     class Hash
     {
-        static int salt = int.Parse(Config.GetValueFromKey("salt"));
+        static int salt = int.Parse(ConfigurationManager.AppSettings["salt"]);
 
         static public string hashPassword(string password)
         {

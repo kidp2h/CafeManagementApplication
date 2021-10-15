@@ -1,5 +1,6 @@
 ﻿using CafeManagementApplication.helpers;
 using MongoDB.Driver;
+using System.Configuration;
 
 namespace CafeManagementApplication.config
 {

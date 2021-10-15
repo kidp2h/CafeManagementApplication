@@ -45,7 +45,6 @@ namespace CafeManagementApplication.views
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tbProductCategory = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -198,15 +197,6 @@ namespace CafeManagementApplication.views
             this.tbProductCategory.Size = new System.Drawing.Size(289, 49);
             this.tbProductCategory.TabIndex = 27;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(1019, 11);
@@ -222,10 +212,9 @@ namespace CafeManagementApplication.views
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.lvProductInfor);
             this.Controls.Add(this.tbProductPrice);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.lvProductInfor);
             this.Controls.Add(this.tbProductCategory);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -260,7 +249,6 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.TextBox tbProductCategory;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
     }
 }
