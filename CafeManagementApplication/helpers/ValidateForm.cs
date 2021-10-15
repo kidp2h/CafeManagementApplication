@@ -12,6 +12,7 @@ namespace CafeManagementApplication.helpers
     public class ValidateForm
     {
         private static ValidateForm instance;
+
         public static ValidateForm Instance
         {
             get
@@ -21,7 +22,7 @@ namespace CafeManagementApplication.helpers
             }
         }
 
-        public bool checkEmpty(TextBox tb, StringBuilder sb, string msg)
+        public bool checkEmpty(dynamic tb, StringBuilder sb, string msg)
         {
             if(tb.Text.Equals(""))
             {
@@ -86,7 +87,7 @@ namespace CafeManagementApplication.helpers
             {
                 if(status)
                 {
-                    if (UserModel.Instance.checkExist(tb.Text))
+                    if (UserModel.Instance.isExist(tb.Text))
                     {
                         sb.Append("Tài khoản đã tồn tại !\n");
                         tb.BackColor = Color.Yellow;
@@ -98,7 +99,7 @@ namespace CafeManagementApplication.helpers
                 } 
                 else
                 {
-                    if (!UserModel.Instance.checkExist(tb.Text))
+                    if (!UserModel.Instance.isExist(tb.Text))
                     {
                         sb.Append("Tài khoản không tồn tại !\n");
                         sb.Append("Vui lòng chọn lại !\n");
@@ -115,17 +116,107 @@ namespace CafeManagementApplication.helpers
 
         public void checkTableName(TextBox tb, StringBuilder sb, string msg, bool status)
         {
+            if(checkEmpty(tb, sb, msg)) return;
 
+            else
+            {
+                if (status)
+                {
+                    if (TableModel.Instance.isExist(tb.Text))
+                    {
+                        sb.Append("Bàn đã tồn tại !\n");
+                        tb.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        tb.BackColor = Color.White;
+                    }
+                }
+                else
+                {
+                    if (!TableModel.Instance.isExist(tb.Text))
+                    {
+                        sb.Append("Bàn không tồn tại !\n");
+                        sb.Append("Vui lòng chọn lại !\n");
+                        tb.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        tb.BackColor = Color.White;
+                    }
+                }
+
+            }
         }
 
         public void checkProductName(TextBox tb, StringBuilder sb, string msg, bool status)
         {
+            if (checkEmpty(tb, sb, msg)) return;
 
+            else
+            {
+                if (status)
+                {
+                    if (ProductModel.Instance.isExist(tb.Text))
+                    {
+                        sb.Append("Sản phẩm đã tồn tại !\n");
+                        tb.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        tb.BackColor = Color.White;
+                    }
+                }
+                else
+                {
+                    if (!ProductModel.Instance.isExist(tb.Text))
+                    {
+                        sb.Append("Sản phẩm không tồn tại !\n");
+                        sb.Append("Vui lòng chọn lại !\n");
+                        tb.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        tb.BackColor = Color.White;
+                    }
+                }
+
+            }
         }
 
-        public void checkCatogoryName(TextBox tb, StringBuilder sb, string msg, bool status)
+        public void checkCategoryName(TextBox tb, StringBuilder sb, string msg, bool status)
         {
+            if (checkEmpty(tb, sb, msg)) return;
 
+            else
+            {
+                if (status)
+                {
+                    if (CategoryModel.Instance.isExist(tb.Text))
+                    {
+                        sb.Append("Loại sản phẩm đã tồn tại !\n");
+                        tb.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        tb.BackColor = Color.White;
+                    }
+                }
+                else
+                {
+                    if (!CategoryModel.Instance.isExist(tb.Text))
+                    {
+                        sb.Append("Loại sản phẩm không tồn tại !\n");
+                        sb.Append("Vui lòng chọn lại !\n");
+                        tb.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        tb.BackColor = Color.White;
+                    }
+                }
+
+            }
         }
     }
 }

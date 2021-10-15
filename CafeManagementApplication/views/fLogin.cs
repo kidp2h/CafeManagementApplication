@@ -5,6 +5,7 @@ using CafeManagementApplication.types;
 using CafeManagementApplication.helpers;
 using CafeManagementApplication.views;
 using System.Threading;
+using System.Text;
 
 namespace CafeManagementApplication
 {
@@ -73,25 +74,36 @@ namespace CafeManagementApplication
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            #region Validate
+            StringBuilder sb = new StringBuilder();
+            ValidateForm.Instance.checkEmpty(tbUsername, sb, "Vui lòng nhập tài khoản !");
+            ValidateForm.Instance.checkEmpty(tbPassword, sb, "Vui lòng nhập mật khẩu!");
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            #endregion
+
             AuthController.Instance.handleLogin(this);
         }
 
         private void fLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-            if (MessageBox.Show("Bạn có muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show("Bạn có muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel) != DialogResult.OK)
             {
                 e.Cancel = true;
             }
         }
 
         public string inputUsernameText { 
-            get { return this.inputUsername.Text; }
-            set { this.inputUsername.Text = value; }
+            get { return this.tbUsername.Text; }
+            set { this.tbUsername.Text = value; }
         }
         public string inputPasswordText { 
-            get { return this.inputPassword.Text; }
-            set { this.inputPassword.Text = value; }
+            get { return this.tbPassword.Text; }
+            set { this.tbUsername.Text = value; }
         }
 
         private void cbRemember_CheckedChanged(object sender, EventArgs e)

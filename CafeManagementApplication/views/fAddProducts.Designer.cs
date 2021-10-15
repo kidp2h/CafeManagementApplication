@@ -45,6 +45,8 @@ namespace CafeManagementApplication.views
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.flpListProducts = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnMinus = new System.Windows.Forms.Button();
+            this.btnPlus = new System.Windows.Forms.Button();
             this.pnlInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,14 +61,18 @@ namespace CafeManagementApplication.views
             // 
             // txtBoxAmount
             // 
-            this.txtBoxAmount.Location = new System.Drawing.Point(831, 527);
+            this.txtBoxAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxAmount.Location = new System.Drawing.Point(831, 523);
             this.txtBoxAmount.Name = "txtBoxAmount";
-            this.txtBoxAmount.Size = new System.Drawing.Size(221, 22);
+            this.txtBoxAmount.Size = new System.Drawing.Size(113, 34);
             this.txtBoxAmount.TabIndex = 2;
+            this.txtBoxAmount.Text = "1";
+            this.txtBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtBoxAmount.TextChanged += new System.EventHandler(this.tbAmount_TextChanged);
             // 
             // pnlInfo
             // 
+            this.pnlInfo.BackColor = System.Drawing.Color.White;
             this.pnlInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlInfo.Controls.Add(this.lblPrice);
             this.pnlInfo.Controls.Add(this.lblName);
@@ -78,28 +84,30 @@ namespace CafeManagementApplication.views
             // 
             // lblPrice
             // 
-            this.lblPrice.Font = new System.Drawing.Font("Cooper Black", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrice.Font = new System.Drawing.Font("Cooper Black", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrice.ForeColor = System.Drawing.Color.Black;
-            this.lblPrice.Location = new System.Drawing.Point(70, 74);
+            this.lblPrice.Location = new System.Drawing.Point(-1, 74);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(202, 39);
+            this.lblPrice.Size = new System.Drawing.Size(323, 46);
             this.lblPrice.TabIndex = 4;
             this.lblPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPrice.TextChanged += new System.EventHandler(this.lblPrice_TextChanged);
             // 
             // lblName
             // 
             this.lblName.Font = new System.Drawing.Font("Cooper Black", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblName.Location = new System.Drawing.Point(3, 28);
+            this.lblName.Location = new System.Drawing.Point(-1, 28);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(315, 46);
+            this.lblName.Size = new System.Drawing.Size(323, 46);
             this.lblName.TabIndex = 3;
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblName.TextChanged += new System.EventHandler(this.lblName_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(28, -1);
             this.label1.Name = "label1";
@@ -164,10 +172,13 @@ namespace CafeManagementApplication.views
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(831, 575);
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(831, 569);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(221, 22);
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(221, 38);
             this.textBox2.TabIndex = 10;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnAddProduct
             // 
@@ -207,12 +218,36 @@ namespace CafeManagementApplication.views
             this.flpListProducts.Size = new System.Drawing.Size(655, 684);
             this.flpListProducts.TabIndex = 0;
             // 
+            // btnMinus
+            // 
+            this.btnMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinus.Location = new System.Drawing.Point(950, 521);
+            this.btnMinus.Name = "btnMinus";
+            this.btnMinus.Size = new System.Drawing.Size(48, 36);
+            this.btnMinus.TabIndex = 14;
+            this.btnMinus.Text = "-";
+            this.btnMinus.UseVisualStyleBackColor = true;
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
+            // 
+            // btnPlus
+            // 
+            this.btnPlus.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlus.Location = new System.Drawing.Point(1004, 521);
+            this.btnPlus.Name = "btnPlus";
+            this.btnPlus.Size = new System.Drawing.Size(48, 36);
+            this.btnPlus.TabIndex = 15;
+            this.btnPlus.Text = "+";
+            this.btnPlus.UseVisualStyleBackColor = true;
+            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
+            // 
             // fAddProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(1095, 743);
+            this.Controls.Add(this.btnPlus);
+            this.Controls.Add(this.btnMinus);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.label5);
@@ -252,7 +287,9 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblPrice;
+        private System.Windows.Forms.Button btnMinus;
+        private System.Windows.Forms.Button btnPlus;
     }
 }

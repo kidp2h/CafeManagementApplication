@@ -25,7 +25,6 @@ namespace CafeManagementApplication.controllers
             BillModel.Instance.addProductToBill(billId, productId, amount);    
             FilterDefinition<Table> filter = new BsonDocument("bill", new ObjectId(billId));
             TableModel.Instance.updateStatusForTable(filter, types.sTable.FULL);
-            f.Hide();
         }
         public void AddProductToBill(string billID)
         {

@@ -31,9 +31,9 @@ namespace CafeManagementApplication.controllers
                 if (result[0] != null)
                 {
                     SaveUser.Instance.saveUserToFile(result[2].Username);
-                    MessageBox.Show("Dang nhap thanh cong");
                     Properties.Settings.Default.role = result[2].Role.ToString();
                     Properties.Settings.Default.fullname = result[2].Fullname;
+                    MessageBox.Show("Đăng nhập thành công !","Thông báo");
                     view.Hide();
                     fCafeManager f = new fCafeManager();
                     f.ShowDialog();
@@ -42,7 +42,7 @@ namespace CafeManagementApplication.controllers
                 }
                 else
                 {
-                    MessageBox.Show("Dang nhap that bai");
+                    MessageBox.Show("Sai thông tin đăng nhập !\nVui lòng xem lại1!!!","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
         }
        

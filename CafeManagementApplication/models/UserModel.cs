@@ -123,7 +123,7 @@ namespace CafeManagementApplication.models
                 return new List<dynamic> { null, false };
             }
         }
-        public bool checkExist(string username)
+        public bool isExist(string username)
         {
             IMongoCollection<User> collection = this.getCollection();
             BsonDocument filter = new BsonDocument("username", username);

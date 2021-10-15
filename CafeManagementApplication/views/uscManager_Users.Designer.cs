@@ -194,6 +194,7 @@ namespace CafeManagementApplication.views
             this.tbUserPassword.Name = "tbUserPassword";
             this.tbUserPassword.Size = new System.Drawing.Size(441, 33);
             this.tbUserPassword.TabIndex = 27;
+            this.tbUserPassword.TextChanged += new System.EventHandler(this.tbUserPassword_TextChanged);
             // 
             // tbUserName
             // 
@@ -203,6 +204,7 @@ namespace CafeManagementApplication.views
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(441, 33);
             this.tbUserName.TabIndex = 26;
+            this.tbUserName.TextChanged += new System.EventHandler(this.tbUserName_TextChanged);
             // 
             // tbAge
             // 
@@ -212,6 +214,7 @@ namespace CafeManagementApplication.views
             this.tbAge.Name = "tbAge";
             this.tbAge.Size = new System.Drawing.Size(441, 33);
             this.tbAge.TabIndex = 25;
+            this.tbAge.TextChanged += new System.EventHandler(this.tbAge_TextChanged);
             // 
             // tbName
             // 
@@ -221,6 +224,7 @@ namespace CafeManagementApplication.views
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(441, 33);
             this.tbName.TabIndex = 14;
+            this.tbName.TextChanged += new System.EventHandler(this.tbName_TextChanged);
             // 
             // pnlGender
             // 

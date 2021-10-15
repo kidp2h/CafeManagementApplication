@@ -36,8 +36,8 @@ namespace CafeManagementApplication
             this.lblUserName = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.inputPassword = new System.Windows.Forms.TextBox();
-            this.inputUsername = new System.Windows.Forms.TextBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.tbUsername = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -50,51 +50,54 @@ namespace CafeManagementApplication
             this.pnlLogin.Controls.Add(this.lblUserName);
             this.pnlLogin.Controls.Add(this.btnExit);
             this.pnlLogin.Controls.Add(this.btnLogin);
-            this.pnlLogin.Controls.Add(this.inputPassword);
-            this.pnlLogin.Controls.Add(this.inputUsername);
-            this.pnlLogin.Location = new System.Drawing.Point(228, 10);
-            this.pnlLogin.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlLogin.Controls.Add(this.tbPassword);
+            this.pnlLogin.Controls.Add(this.tbUsername);
+            this.pnlLogin.Location = new System.Drawing.Point(304, 12);
+            this.pnlLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlLogin.Name = "pnlLogin";
-            this.pnlLogin.Size = new System.Drawing.Size(201, 241);
+            this.pnlLogin.Size = new System.Drawing.Size(268, 297);
             this.pnlLogin.TabIndex = 0;
             // 
             // cbRemember
             // 
             this.cbRemember.AutoSize = true;
-            this.cbRemember.Location = new System.Drawing.Point(15, 150);
+            this.cbRemember.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbRemember.Location = new System.Drawing.Point(20, 183);
+            this.cbRemember.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbRemember.Name = "cbRemember";
-            this.cbRemember.Size = new System.Drawing.Size(93, 17);
+            this.cbRemember.Size = new System.Drawing.Size(195, 33);
             this.cbRemember.TabIndex = 6;
-            this.cbRemember.Text = "Nho tai khoan";
+            this.cbRemember.Text = "Nhớ tài khoản";
             this.cbRemember.UseVisualStyleBackColor = true;
             this.cbRemember.CheckedChanged += new System.EventHandler(this.cbRemember_CheckedChanged);
             // 
             // lblUserPassWord
             // 
             this.lblUserPassWord.AutoSize = true;
-            this.lblUserPassWord.Location = new System.Drawing.Point(17, 97);
-            this.lblUserPassWord.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUserPassWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserPassWord.Location = new System.Drawing.Point(22, 105);
             this.lblUserPassWord.Name = "lblUserPassWord";
-            this.lblUserPassWord.Size = new System.Drawing.Size(53, 13);
+            this.lblUserPassWord.Size = new System.Drawing.Size(121, 29);
             this.lblUserPassWord.TabIndex = 5;
             this.lblUserPassWord.Text = "Mật Khẩu";
             // 
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
-            this.lblUserName.Location = new System.Drawing.Point(15, 41);
-            this.lblUserName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Location = new System.Drawing.Point(19, 29);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(84, 13);
+            this.lblUserName.Size = new System.Drawing.Size(196, 29);
             this.lblUserName.TabIndex = 4;
             this.lblUserName.Text = "Tên Đăng Nhập";
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(109, 180);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(136, 223);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(85, 37);
+            this.btnExit.Size = new System.Drawing.Size(126, 56);
             this.btnExit.TabIndex = 3;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -102,52 +105,56 @@ namespace CafeManagementApplication
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(15, 180);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Location = new System.Drawing.Point(10, 223);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(83, 37);
+            this.btnLogin.Size = new System.Drawing.Size(124, 56);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // inputPassword
+            // tbPassword
             // 
-            this.inputPassword.Location = new System.Drawing.Point(15, 115);
-            this.inputPassword.Margin = new System.Windows.Forms.Padding(2);
-            this.inputPassword.Name = "inputPassword";
-            this.inputPassword.Size = new System.Drawing.Size(180, 20);
-            this.inputPassword.TabIndex = 1;
-            this.inputPassword.UseSystemPasswordChar = true;
+            this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPassword.Location = new System.Drawing.Point(19, 135);
+            this.tbPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(239, 34);
+            this.tbPassword.TabIndex = 1;
+            this.tbPassword.UseSystemPasswordChar = true;
             // 
-            // inputUsername
+            // tbUsername
             // 
-            this.inputUsername.Location = new System.Drawing.Point(15, 59);
-            this.inputUsername.Margin = new System.Windows.Forms.Padding(2);
-            this.inputUsername.Name = "inputUsername";
-            this.inputUsername.Size = new System.Drawing.Size(180, 20);
-            this.inputUsername.TabIndex = 0;
+            this.tbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUsername.Location = new System.Drawing.Point(19, 60);
+            this.tbUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(239, 34);
+            this.tbUsername.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::CafeManagementApplication.Properties.Resources._9203;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(1, 12);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(223, 241);
+            this.pictureBox1.Size = new System.Drawing.Size(297, 297);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
             // fLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
-            this.ClientSize = new System.Drawing.Size(433, 261);
+            this.ClientSize = new System.Drawing.Size(577, 321);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnlLogin);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "fLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";
@@ -167,8 +174,8 @@ namespace CafeManagementApplication
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.TextBox inputPassword;
-        private System.Windows.Forms.TextBox inputUsername;
+        private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.TextBox tbUsername;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox cbRemember;
     }

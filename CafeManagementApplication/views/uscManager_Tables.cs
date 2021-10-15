@@ -3,6 +3,7 @@ using CafeManagementApplication.helpers;
 using CafeManagementApplication.models;
 using CafeManagementApplication.types;
 using System;
+using System.Drawing;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -24,10 +25,11 @@ namespace CafeManagementApplication.views
                 return instance;
             }
         }
+
         private uscManager_Tables()
         {
             InitializeComponent();
-            LoadListController.Instance.LoadingListForListViewOf("useManager_Tables", lvTableInfor);
+            LoadListTablesForForm();
         }
 
         public void LoadListTablesForForm()
@@ -71,38 +73,64 @@ namespace CafeManagementApplication.views
  
         private void btnAddTable_Click(object sender, EventArgs e)
         {
+            #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkEmpty(tbTableName, sb, "Vui lòng nhập họ tên !");
-            if(sb.Length > 0)
+            ValidateForm.Instance.checkTableName(tbTableName, sb, "Vui lòng nhập tên bàn !", true);
+            if (sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            } 
+            }
+            #endregion
 
+            #region Handler View
             Table table = ManagerController.Instance.NewData("Table", this);
             ListViewItem tableItem = new ListViewItem(table.TableName);
             tableItem.SubItems.Add(table.Status == sTable.EMPTY ? "Bàn trống" : "Có người");
             lvTableInfor.Items.Add(tableItem);
+            #endregion
 
             ManagerController.Instance.AddData("Table", table, this);
         }
 
         private void btnUpdateTabe_Click(object sender, EventArgs e)
         {
+            #region Validate
+            StringBuilder sb = new StringBuilder();
+            ValidateForm.Instance.checkTableName(tbTableName, sb, "Vui lòng nhập tên bàn  !", false);
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            #endregion
+
+            #region Handler View
             Table table = ManagerController.Instance.NewData("Table", this);
             ListViewItem tableItem = new ListViewItem(table.TableName);
             tableItem.SubItems.Add(table.Status == sTable.EMPTY ? "Bàn trống" : "Có người");
-
             lvTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
             lvTableInfor.Items.Insert(int.Parse(btnDeleteTable.Tag.ToString()), tableItem);
-            
+            #endregion
+
             ManagerController.Instance.UpdateData("Table", this);          
         }
 
         private void btnDeleteTable_Click(object sender, EventArgs e)
         {
-            lvTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
+            #region Validate
+            StringBuilder sb = new StringBuilder();
+            ValidateForm.Instance.checkTableName(tbTableName, sb, "Vui lòng nhập tên bàn  !", false);
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            #endregion
 
+            #region Handler View
+            lvTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
+            #endregion 
             ManagerController.Instance.DeleteData("Table", this);
         }
 
@@ -122,11 +150,20 @@ namespace CafeManagementApplication.views
                 btnDeleteTable.Tag = lvTable.Items.IndexOf(item);
             }
         }
-        #endregion
-
+     
         private void button1_Click(object sender, EventArgs e)
         {
             LoadListTablesForForm();
         }
+
+        #endregion
+
+        #region Effect
+        private void tbTableName_TextChanged(object sender, EventArgs e)
+        {
+            if(tbTableName.BackColor != Color.White)
+            tbTableName.BackColor = Color.White;
+        }
+        #endregion
     }
 }

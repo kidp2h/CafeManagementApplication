@@ -111,13 +111,29 @@ namespace CafeManagementApplication.views
 
         private void tbTotalPriceProducts_TextChanged(object sender, EventArgs e)
         {
-            int a = Int32.Parse(tbTotalPriceProducts.Text.Replace("đ", ""));
-            int b = Int32.Parse(cbSale.Value.ToString());
-            int total = a - (a * b) / 100;
+            int TotalPriceProducts = Int32.Parse(tbTotalPriceProducts.Text.Replace("đ", ""));
+            if (tbSale.Text == "") tbSale.Text = "0";
+            int Sale = Int32.Parse(tbSale.Text.ToString());
+            int total = TotalPriceProducts - (TotalPriceProducts * Sale) / 100;
             tbTotalPriceBill.Text = total.ToString() + "đ";
         }
 
-        private void cbSale_ValueChanged(object sender, EventArgs e)
+        private void btnPlus_Click(object sender, EventArgs e)
+        {
+            if (tbSale.Text == "") tbSale.Text = "0";
+            int Sale = Int32.Parse(tbSale.Text.ToString());
+            tbSale.Text = "" + (Sale + 1) ;
+        }
+
+        private void btnMinus_Click(object sender, EventArgs e)
+        {
+            if (tbSale.Text == "") tbSale.Text = "0";          
+            int Sale = Int32.Parse(tbSale.Text.ToString());
+            if (Sale > 0) tbSale.Text = "" + (Sale - 1);
+
+        }
+
+        private void tbSale_TextChanged(object sender, EventArgs e)
         {
             tbTotalPriceProducts_TextChanged(null, null);
         }

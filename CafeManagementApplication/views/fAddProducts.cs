@@ -1,5 +1,8 @@
 ﻿using CafeManagementApplication.controllers;
+using CafeManagementApplication.helpers;
 using System;
+using System.Drawing;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -28,7 +31,7 @@ namespace CafeManagementApplication.views
         public string LblPriceText
         {
             get { return lblPrice.Text; }
-            set { lblPrice.Text = value; }
+            set { lblPrice.Text = value; this.tbSubtotal = Int32.Parse(value).ToString("c"); }
         }
         public string LblNameTag
         {
@@ -57,11 +60,21 @@ namespace CafeManagementApplication.views
         }
         #endregion
 
-
         #region Handler Event
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            if (this.txtAmount == "") this.txtAmount = "1";
+            #region Validate
+            StringBuilder sb = new StringBuilder();
+            ValidateForm.Instance.checkEmpty(lblName, sb, "Vui lòng chọn sản phẩm !");
+            ValidateForm.Instance.checkEmpty(lblPrice, sb, "");
+            ValidateForm.Instance.checkNumber(txtBoxAmount, sb, "Vui lòng nhập số lượng !", "Số lượng");
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            #endregion
+
             BillController.Instance.AddProductToBill(this, this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
             if (this.TableStatus != "Có người")
             {
@@ -77,25 +90,58 @@ namespace CafeManagementApplication.views
                 this.TableStatus = "Có người";
             }
             LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
+            this.Hide();
         }
-
-
 
         private void tbAmount_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                string amount = this.txtAmount;
-                string price = this.LblPriceText;
-                this.tbSubtotal = (Int32.Parse(amount) * Int32.Parse(price)).ToString();
-            }
-            catch
-            {
-
-            }
+            #region Validate
+            StringBuilder sb = new StringBuilder();
+            ValidateForm.Instance.checkEmpty(lblName, sb, "Vui lòng chọn sản phẩm !");
+            ValidateForm.Instance.checkEmpty(lblPrice, sb, "");
             
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            #endregion
+
+            if (this.txtAmount == "") return;
+            int amount = Int32.Parse(this.txtAmount);
+            int price = Int32.Parse(this.LblPriceText);
+            this.tbSubtotal = (amount * price).ToString("c");
+          
+            
+        }
+
+        private void btnPlus_Click(object sender, EventArgs e)
+        {
+            if (this.txtAmount == "") this.txtAmount = "0";
+            int amount = Int32.Parse(this.txtAmount);
+            this.txtAmount = "" + (amount + 1);
+        }
+
+        private void btnMinus_Click(object sender, EventArgs e)
+        {
+            if (this.txtAmount == "") this.txtAmount = "2";
+            int amount = Int32.Parse(this.txtAmount);
+            if(amount > 1) this.txtAmount = "" + (amount - 1);
         }
         #endregion
 
+        #region Effect
+        private void lblName_TextChanged(object sender, EventArgs e)
+        {
+            if(lblName.BackColor != Color.White)
+            lblName.BackColor = Color.White;
+        }
+
+        private void lblPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (lblPrice.BackColor != Color.White)
+            lblPrice.BackColor = Color.White;
+        }
+        #endregion
     }
 }

@@ -200,12 +200,12 @@ namespace CafeManagementApplication.models
         #endregion
 
         #region Check Document 
-        public bool checkExist(string tableName)
+        public bool isExist(string tableName)
         {
             FilterDefinition<Table> filter = new BsonDocument("tableName", tableName);
             IMongoCollection<Table> collection = getCollection();
             List<Table> tables = collection.Find(filter).ToList();
-            if(tables.Count == 0)
+            if(tables.Count != 0)
             {
                 return true;
             }

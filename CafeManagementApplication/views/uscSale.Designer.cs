@@ -42,7 +42,6 @@ namespace CafeManagementApplication.views
             this.tbTotalPriceProducts = new System.Windows.Forms.TextBox();
             this.tbTotalPriceBill = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.cbSale = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,10 +50,13 @@ namespace CafeManagementApplication.views
             this.panel3 = new System.Windows.Forms.Panel();
             this.flpTableList = new System.Windows.Forms.FlowLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
+            this.tbSale = new System.Windows.Forms.TextBox();
+            this.btnMinus = new System.Windows.Forms.Button();
+            this.btnPlus = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbSale)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,6 +83,7 @@ namespace CafeManagementApplication.views
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.btnPay);
             this.panel2.Controls.Add(this.label2);
+            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(699, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
@@ -164,10 +167,13 @@ namespace CafeManagementApplication.views
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.btnPlus);
+            this.panel1.Controls.Add(this.btnMinus);
+            this.panel1.Controls.Add(this.tbSale);
             this.panel1.Controls.Add(this.tbTotalPriceProducts);
             this.panel1.Controls.Add(this.tbTotalPriceBill);
             this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.cbSale);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
@@ -194,7 +200,7 @@ namespace CafeManagementApplication.views
             // tbTotalPriceBill
             // 
             this.tbTotalPriceBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTotalPriceBill.Location = new System.Drawing.Point(205, 91);
+            this.tbTotalPriceBill.Location = new System.Drawing.Point(205, 105);
             this.tbTotalPriceBill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbTotalPriceBill.Multiline = true;
             this.tbTotalPriceBill.Name = "tbTotalPriceBill";
@@ -216,22 +222,11 @@ namespace CafeManagementApplication.views
             this.pictureBox2.TabIndex = 16;
             this.pictureBox2.TabStop = false;
             // 
-            // cbSale
-            // 
-            this.cbSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSale.Location = new System.Drawing.Point(205, 53);
-            this.cbSale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbSale.Name = "cbSale";
-            this.cbSale.Size = new System.Drawing.Size(248, 34);
-            this.cbSale.TabIndex = 15;
-            this.cbSale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.cbSale.ValueChanged += new System.EventHandler(this.cbSale_ValueChanged);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(17, 95);
+            this.label5.Location = new System.Drawing.Point(17, 109);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(155, 29);
             this.label5.TabIndex = 12;
@@ -241,7 +236,7 @@ namespace CafeManagementApplication.views
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 58);
+            this.label3.Location = new System.Drawing.Point(17, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 29);
             this.label3.TabIndex = 11;
@@ -321,6 +316,50 @@ namespace CafeManagementApplication.views
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // tbSale
+            // 
+            this.tbSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSale.Location = new System.Drawing.Point(205, 59);
+            this.tbSale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbSale.Multiline = true;
+            this.tbSale.Name = "tbSale";
+            this.tbSale.Size = new System.Drawing.Size(99, 36);
+            this.tbSale.TabIndex = 19;
+            this.tbSale.Text = "0";
+            this.tbSale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbSale.TextChanged += new System.EventHandler(this.tbSale_TextChanged);
+            // 
+            // btnMinus
+            // 
+            this.btnMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinus.Location = new System.Drawing.Point(341, 57);
+            this.btnMinus.Name = "btnMinus";
+            this.btnMinus.Size = new System.Drawing.Size(53, 38);
+            this.btnMinus.TabIndex = 20;
+            this.btnMinus.Text = "-";
+            this.btnMinus.UseVisualStyleBackColor = true;
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
+            // 
+            // btnPlus
+            // 
+            this.btnPlus.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlus.Location = new System.Drawing.Point(400, 57);
+            this.btnPlus.Name = "btnPlus";
+            this.btnPlus.Size = new System.Drawing.Size(53, 38);
+            this.btnPlus.TabIndex = 21;
+            this.btnPlus.Text = "+";
+            this.btnPlus.UseVisualStyleBackColor = true;
+            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(306, 62);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 29);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "%";
+            // 
             // uscSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -337,7 +376,6 @@ namespace CafeManagementApplication.views
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbSale)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -357,7 +395,6 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown cbSale;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel3;
@@ -369,5 +406,9 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.TextBox tbTotalPriceBill;
         private System.Windows.Forms.Label lblTableName;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPlus;
+        private System.Windows.Forms.Button btnMinus;
+        private System.Windows.Forms.TextBox tbSale;
+        private System.Windows.Forms.Label label6;
     }
 }
