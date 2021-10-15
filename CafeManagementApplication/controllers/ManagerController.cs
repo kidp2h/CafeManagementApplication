@@ -148,7 +148,8 @@ namespace CafeManagementApplication.controllers
         {
             if (nameData == "Category")
             {
-
+                CategoryModel.Instance.deleteCategoryByName(view.CategoryTag);
+                ResetCategoryDataInput(view);
             }
             if (nameData == "Table")
             {
