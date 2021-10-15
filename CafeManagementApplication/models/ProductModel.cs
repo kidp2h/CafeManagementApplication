@@ -165,5 +165,22 @@ namespace CafeManagementApplication.models
         }
         #endregion
 
+        #region Check Document 
+        public bool checkExist(string nameProduct)
+        {
+            FilterDefinition<Product> filter = new BsonDocument("name", nameProduct);
+            IMongoCollection<Product> collection = getCollection();
+            List<Product> products = collection.Find(filter).ToList();
+            if (products.Count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
+
     }
 }

@@ -78,6 +78,13 @@ namespace CafeManagementApplication.models
             List<User> documents = collection.Find(filter).Limit(1).ToList();
             return documents[0];
         }
+        public User getUserByUsername(string username)
+        {
+            IMongoCollection<User> collection = this.getCollection();
+            BsonDocument filter = new BsonDocument("username", username);
+            List<User> documents = collection.Find(filter).Limit(1).ToList();
+            return documents[0];
+        }
         public List<User> getListUser()
         {
             IMongoCollection<User> collection = this.getCollection();
@@ -109,7 +116,7 @@ namespace CafeManagementApplication.models
             List<User> documents = collection.Find(filter).ToList();
             if(documents.Count != 0)
             {
-                return new List<dynamic> { documents[0].Role, Hash.verifyPassword(password, documents[0].Password) };
+                return new List<dynamic> { documents[0].Role, Hash.verifyPassword(password, documents[0].Password), documents[0] };
             }
             else
             {

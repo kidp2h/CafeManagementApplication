@@ -31,6 +31,7 @@ namespace CafeManagementApplication
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fLogin));
             this.pnlLogin = new System.Windows.Forms.Panel();
+            this.cbRemember = new System.Windows.Forms.CheckBox();
             this.lblUserPassWord = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
@@ -38,7 +39,6 @@ namespace CafeManagementApplication
             this.inputPassword = new System.Windows.Forms.TextBox();
             this.inputUsername = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cbRemember = new System.Windows.Forms.CheckBox();
             this.pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -53,10 +53,21 @@ namespace CafeManagementApplication
             this.pnlLogin.Controls.Add(this.inputPassword);
             this.pnlLogin.Controls.Add(this.inputUsername);
             this.pnlLogin.Location = new System.Drawing.Point(228, 10);
-            this.pnlLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlLogin.Margin = new System.Windows.Forms.Padding(2);
             this.pnlLogin.Name = "pnlLogin";
             this.pnlLogin.Size = new System.Drawing.Size(201, 241);
             this.pnlLogin.TabIndex = 0;
+            // 
+            // cbRemember
+            // 
+            this.cbRemember.AutoSize = true;
+            this.cbRemember.Location = new System.Drawing.Point(15, 150);
+            this.cbRemember.Name = "cbRemember";
+            this.cbRemember.Size = new System.Drawing.Size(93, 17);
+            this.cbRemember.TabIndex = 6;
+            this.cbRemember.Text = "Nho tai khoan";
+            this.cbRemember.UseVisualStyleBackColor = true;
+            this.cbRemember.CheckedChanged += new System.EventHandler(this.cbRemember_CheckedChanged);
             // 
             // lblUserPassWord
             // 
@@ -81,7 +92,7 @@ namespace CafeManagementApplication
             // btnExit
             // 
             this.btnExit.Location = new System.Drawing.Point(109, 180);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(85, 37);
             this.btnExit.TabIndex = 3;
@@ -92,7 +103,7 @@ namespace CafeManagementApplication
             // btnLogin
             // 
             this.btnLogin.Location = new System.Drawing.Point(15, 180);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(83, 37);
             this.btnLogin.TabIndex = 2;
@@ -103,43 +114,30 @@ namespace CafeManagementApplication
             // inputPassword
             // 
             this.inputPassword.Location = new System.Drawing.Point(15, 115);
-            this.inputPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.inputPassword.Margin = new System.Windows.Forms.Padding(2);
             this.inputPassword.Name = "inputPassword";
             this.inputPassword.Size = new System.Drawing.Size(180, 20);
             this.inputPassword.TabIndex = 1;
-            this.inputPassword.Text = "1";
             this.inputPassword.UseSystemPasswordChar = true;
             // 
             // inputUsername
             // 
             this.inputUsername.Location = new System.Drawing.Point(15, 59);
-            this.inputUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.inputUsername.Margin = new System.Windows.Forms.Padding(2);
             this.inputUsername.Name = "inputUsername";
             this.inputUsername.Size = new System.Drawing.Size(180, 20);
             this.inputUsername.TabIndex = 0;
-            this.inputUsername.Text = "admin2";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::CafeManagementApplication.Properties.Resources._9203;
             this.pictureBox1.Location = new System.Drawing.Point(1, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(223, 241);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            // 
-            // cbRemember
-            // 
-            this.cbRemember.AutoSize = true;
-            this.cbRemember.Location = new System.Drawing.Point(15, 150);
-            this.cbRemember.Name = "cbRemember";
-            this.cbRemember.Size = new System.Drawing.Size(93, 17);
-            this.cbRemember.TabIndex = 6;
-            this.cbRemember.Text = "Nho tai khoan";
-            this.cbRemember.UseVisualStyleBackColor = true;
-            this.cbRemember.CheckedChanged += new System.EventHandler(this.cbRemember_CheckedChanged);
             // 
             // fLogin
             // 
