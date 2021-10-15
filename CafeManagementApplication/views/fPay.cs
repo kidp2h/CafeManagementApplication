@@ -2,6 +2,8 @@
 using CafeManagementApplication.controllers;
 using System.Windows.Forms;
 using System.Threading;
+using System.Text;
+using CafeManagementApplication.helpers;
 
 namespace CafeManagementApplication.views
 {
@@ -37,6 +39,14 @@ namespace CafeManagementApplication.views
         #region Handler Event
         private void btnPay_Click(object sender, EventArgs e)
         {
+            StringBuilder sb = new StringBuilder();
+            ValidateForm.Instance.checkNumber(tbMoney, sb, "Vui lòng nhập tiền của khách !", "Tiền");
+            if(sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             PaymentController.Instance.payment(this, TableId, BillId);
             Thread t1 = new Thread(() =>
             {
@@ -65,5 +75,10 @@ namespace CafeManagementApplication.views
             }
         }
         #endregion
+
+        private void btnClosed_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

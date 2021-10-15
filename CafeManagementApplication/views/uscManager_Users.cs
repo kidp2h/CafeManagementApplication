@@ -109,7 +109,7 @@ namespace CafeManagementApplication.views
             StringBuilder sb = new StringBuilder();
             ValidateForm.Instance.checkEmpty(tbName, sb, "Vui lòng nhập họ tên !");
             ValidateForm.Instance.checkAge(tbAge, sb, "Vui lòng nhập tuổi !");
-            ValidateForm.Instance.checkUsername(tbUserName, sb, "Vui lòng nhập tài khoản !");
+            ValidateForm.Instance.checkUsername(tbUserName, sb, "Vui lòng nhập tài khoản !",true);
             ValidateForm.Instance.checkEmpty(tbUserPassword, sb, "Vui lòng nhập mật khẩu !");
 
             if (sb.Length > 0)
@@ -133,12 +133,44 @@ namespace CafeManagementApplication.views
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            #region Validate
+            StringBuilder sb = new StringBuilder();
+            ValidateForm.Instance.checkUsername(tbUserName, sb, "Vui lòng chọn tài khoản cần sửa !", false);
+
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            #endregion
+
+            User user = ManagerController.Instance.NewData("User", this);
+            ListViewItem item = new ListViewItem(user.Fullname);
+            item.SubItems.Add(user.Age.ToString());
+            item.SubItems.Add(user.Gender.ToString());
+            item.SubItems.Add(user.Username);
+            item.SubItems.Add(user.Role == Role.MANAGER ? "Quản lý" : "Nhân viên");
+
+            lvUsers.Items.RemoveAt(int.Parse(btnDelete.Tag.ToString()));
+            lvUsers.Items.Insert(int.Parse(btnDelete.Tag.ToString()), item);
+
             ManagerController.Instance.UpdateData("User", this);
             LoadListUsersForForm();
 
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            #region Validate
+            StringBuilder sb = new StringBuilder();
+            ValidateForm.Instance.checkUsername(tbUserName, sb, "Vui lòng chọn tài khoản cần xóa !", false);
+
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            #endregion
+
             lvUsers.Items.RemoveAt(int.Parse(btnDelete.Tag.ToString()));
             ManagerController.Instance.DeleteData("User", this);
             

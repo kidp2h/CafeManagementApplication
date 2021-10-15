@@ -150,6 +150,7 @@ namespace CafeManagementApplication.views
             this.tbProductPrice.Name = "tbProductPrice";
             this.tbProductPrice.Size = new System.Drawing.Size(289, 49);
             this.tbProductPrice.TabIndex = 20;
+            this.tbProductPrice.TextChanged += new System.EventHandler(this.tbProductPrice_TextChanged);
             // 
             // tbProductName
             // 
@@ -158,6 +159,7 @@ namespace CafeManagementApplication.views
             this.tbProductName.Name = "tbProductName";
             this.tbProductName.Size = new System.Drawing.Size(289, 49);
             this.tbProductName.TabIndex = 21;
+            this.tbProductName.TextChanged += new System.EventHandler(this.tbProductName_TextChanged);
             // 
             // label3
             // 
@@ -196,6 +198,7 @@ namespace CafeManagementApplication.views
             this.tbProductCategory.Name = "tbProductCategory";
             this.tbProductCategory.Size = new System.Drawing.Size(289, 49);
             this.tbProductCategory.TabIndex = 27;
+            this.tbProductCategory.TextChanged += new System.EventHandler(this.tbProductCategory_TextChanged);
             // 
             // button2
             // 

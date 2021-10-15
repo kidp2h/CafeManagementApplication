@@ -77,21 +77,55 @@ namespace CafeManagementApplication.helpers
 
             }
         }
-        public void checkUsername(TextBox tb, StringBuilder sb, string msg)
+
+        public void checkUsername(TextBox tb, StringBuilder sb, string msg, bool status)
         {
             if (checkEmpty(tb, sb, msg)) return;
+
             else
             {
-                if(UserModel.Instance.checkExist(tb.Text))
+                if(status)
                 {
-                    sb.Append("Tài khoản đã tồn tại !\n");
-                    tb.BackColor = Color.Yellow;
+                    if (UserModel.Instance.checkExist(tb.Text))
+                    {
+                        sb.Append("Tài khoản đã tồn tại !\n");
+                        tb.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        tb.BackColor = Color.White;
+                    }
                 } 
                 else
                 {
-                    tb.BackColor = Color.White;
+                    if (!UserModel.Instance.checkExist(tb.Text))
+                    {
+                        sb.Append("Tài khoản không tồn tại !\n");
+                        sb.Append("Vui lòng chọn lại !\n");
+                        tb.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        tb.BackColor = Color.White;
+                    }
                 }
+                
             }
+        }
+
+        public void checkTableName(TextBox tb, StringBuilder sb, string msg, bool status)
+        {
+
+        }
+
+        public void checkProductName(TextBox tb, StringBuilder sb, string msg, bool status)
+        {
+
+        }
+
+        public void checkCatogoryName(TextBox tb, StringBuilder sb, string msg, bool status)
+        {
+
         }
     }
 }

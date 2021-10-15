@@ -1,7 +1,9 @@
 ﻿using CafeManagementApplication.controllers;
+using CafeManagementApplication.helpers;
 using CafeManagementApplication.models;
 using CafeManagementApplication.types;
 using System;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -40,8 +42,8 @@ namespace CafeManagementApplication.views
 
         public string inputTableNameText
         {
-            get { return iTableName.Text; }
-            set { iTableName.Text = value; }
+            get { return tbTableName.Text; }
+            set { tbTableName.Text = value; }
         }
 
         public sTable inputStatus
@@ -60,15 +62,23 @@ namespace CafeManagementApplication.views
 
         public string TableNameTag
         {
-            get { return iTableName.Tag.ToString(); }
-            set { iTableName.Tag = value; }
+            get { return tbTableName.Tag.ToString(); }
+            set { tbTableName.Tag = value; }
         }
         #endregion
 
         #region Handler Event
  
         private void btnAddTable_Click(object sender, EventArgs e)
-        {          
+        {
+            StringBuilder sb = new StringBuilder();
+            ValidateForm.Instance.checkEmpty(tbTableName, sb, "Vui lòng nhập họ tên !");
+            if(sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            } 
+
             Table table = ManagerController.Instance.NewData("Table", this);
             ListViewItem tableItem = new ListViewItem(table.TableName);
             tableItem.SubItems.Add(table.Status == sTable.EMPTY ? "Bàn trống" : "Có người");
@@ -103,8 +113,8 @@ namespace CafeManagementApplication.views
             if (lvTable.SelectedItems.Count > 0)
             {
                 ListViewItem item = lvTable.SelectedItems[0];
-                iTableName.Tag = item.SubItems[0].Text;
-                iTableName.Text = item.SubItems[0].Text;
+                tbTableName.Tag = item.SubItems[0].Text;
+                tbTableName.Text = item.SubItems[0].Text;
               
                 if (item.SubItems[1].Text == "Bàn trống") iEmptyTable.Checked = true;
                 else iFullTable.Checked = true;

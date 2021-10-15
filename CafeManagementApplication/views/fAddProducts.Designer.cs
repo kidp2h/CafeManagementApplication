@@ -227,7 +227,7 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.flpListCategorys);
             this.Controls.Add(this.flpListProducts);
             this.Name = "fAddProducts";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fDrinksCategory";
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
