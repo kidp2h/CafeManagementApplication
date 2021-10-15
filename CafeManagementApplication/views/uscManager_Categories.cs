@@ -123,6 +123,8 @@ namespace CafeManagementApplication.views
 
             #endregion
 
+            lvCategoryInfor.Items.RemoveAt(int.Parse(btnDeleteCategory.Tag.ToString()));
+            ManagerController.Instance.DeleteData("Category", this);
         }
 
         private void lvCategoryInfor_SelectedIndexChanged(object sender, EventArgs e)

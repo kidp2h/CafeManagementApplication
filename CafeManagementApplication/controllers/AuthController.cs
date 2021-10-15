@@ -24,18 +24,16 @@ namespace CafeManagementApplication.controllers
 
         public void handleLogin(fLogin view)
         {
-
-
                 string username = view.inputUsernameText;
                 string password = view.inputPasswordText;
                 List<dynamic> result = UserModel.Instance.checkAccount(username, password);
-
+                view.inputPasswordText = "";
                 if (result[0] != null)
                 {
                     SaveUser.Instance.saveUserToFile(result[2].Username);
                     MessageBox.Show("Đăng nhập thành công !","Thông báo");
                     view.Hide();
-                    fCafeManager f = new fCafeManager(result[0]);
+                    fCafeManager f = new fCafeManager();
                     f.ShowDialog();
                     view.Show();
 
@@ -44,9 +42,7 @@ namespace CafeManagementApplication.controllers
                 {
                     MessageBox.Show("Sai thông tin đăng nhập !\nVui lòng xem lại1!!!","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-           
-            
-
         }
+       
     }
 }

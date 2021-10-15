@@ -11,16 +11,30 @@ namespace CafeManagementApplication
 {
     public partial class fLogin : Form
     {
+        private static fLogin instance;
+        
+        public static fLogin Instance{   
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new fLogin();
+                }
+                return instance;
+            }
+        }
         public fLogin()
         {
-           
-            InitializeComponent();
-            //this.WindowState = FormWindowState.Minimized;
-            //this.ShowInTaskbar = false;
-            check();
             
+            InitializeComponent();
+            //check();
         }
-        public void check()
+        public void actionForm(string action)
+        {
+            if (action == "show") this.Show();
+            else this.Hide();
+        }
+        /*public void check()
         {
             dynamic result = SaveUser.Instance.checkSession();
             if (result != null)
@@ -28,13 +42,15 @@ namespace CafeManagementApplication
                 this.Hide();
                 if (result.Role == Role.MANAGER)
                 {
-                    fCafeManager f = new fCafeManager(Role.MANAGER);
+                    Properties.Settings.Default.role = "MANAGER";
+                    fCafeManager f = new fCafeManager();
                     f.ShowDialog();
                     this.Hide();
                 }
                 else
                 {
-                    fCafeManager f = new fCafeManager(Role.STAFF);
+                    Properties.Settings.Default.role = "STAFF";
+                    fCafeManager f = new fCafeManager();
                     f.ShowDialog();
                     this.Hide();
                 }
@@ -44,6 +60,11 @@ namespace CafeManagementApplication
 
                 this.Show();
             }
+        }*/
+        private void fLogin_Load(object sender, System.EventArgs e)
+        {
+            inputUsernameText = Properties.Settings.Default.username;
+
         }
         private Role _role;
         private void btnExit_Click(object sender, EventArgs e)

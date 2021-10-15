@@ -1,19 +1,37 @@
 ﻿using CafeManagementApplication.helpers;
-using CafeManagementApplication.types;
 using System;
-using System.Threading;
+using CafeManagementApplication.controllers;
 using System.Windows.Forms;
 
 namespace CafeManagementApplication.views
 {
     public partial class fCafeManager : Form
     {
+        private static fCafeManager instance;
 
-        public fCafeManager(Role role)
+        public static fCafeManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new fCafeManager();
+                }
+                return instance;
+            }
+        }
+        public void actionForm(string action) 
+        {
+            if (action == "show") this.Show();
+            else this.Close();
+        }
+
+
+        public fCafeManager()
         {
             InitializeComponent();
 
-            if (role == Role.MANAGER) {
+            if (Properties.Settings.Default.role == "MANAGER") {
                 btnManager.Enabled = true;
                 btnStatistics.Enabled = true;
                 btnManager_Click(null, null);
@@ -62,8 +80,11 @@ namespace CafeManagementApplication.views
             else uscStatistics.Instance.BringToFront();
         }
 
-        private void fCafeManager_FormClosed(object sender, FormClosedEventArgs e)
+        private void btnLogout_Click(object sender, EventArgs e)
         {
+            
+            this.Close();
+            fLogin.Instance.inputUsernameText = Properties.Settings.Default.username;
 
         }
     }
