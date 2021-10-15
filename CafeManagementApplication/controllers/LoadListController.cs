@@ -37,7 +37,7 @@ namespace CafeManagementApplication.controllers
                 foreach(dynamic category in categoryList)
                 {
                     ListViewItem categoryLvItem = new ListViewItem(category.NameCategory.ToString());
-                    categoryLvItem.Tag = category.Id;
+                    categoryLvItem.Tag = category.NameCategory.ToString();
                     lv.Items.Add(categoryLvItem);
                 }
                 return;
@@ -48,7 +48,6 @@ namespace CafeManagementApplication.controllers
                 foreach (dynamic table in tableList)
                 {
                     ListViewItem tableLvItem = new ListViewItem(table.TableName);
-                    tableLvItem.Tag = table.Id;
                     if (table.Status == types.sTable.FULL)
                     {
                         tableLvItem.SubItems.Add("Có người");
@@ -64,7 +63,6 @@ namespace CafeManagementApplication.controllers
                 foreach(dynamic product in productList)
                 {
                     ListViewItem productLvItem = new ListViewItem(product["name"].Value);
-                    productLvItem.Tag = product["_id"].Value;
                     string category = product["category"].Value;
                     productLvItem.SubItems.Add(category);                  
                     int price = product["price"].Value;
@@ -79,7 +77,6 @@ namespace CafeManagementApplication.controllers
                 foreach (dynamic user in usersList)
                 {
                     ListViewItem lvItem = new ListViewItem(user.Fullname);
-                    lvItem.Tag = user.Id;
                     int Age = user.Age;
                     lvItem.SubItems.Add(Age.ToString());
                     string Gender = user.Gender;
