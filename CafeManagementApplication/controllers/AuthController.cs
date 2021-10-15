@@ -31,6 +31,8 @@ namespace CafeManagementApplication.controllers
                 if (result[0] != null)
                 {
                     SaveUser.Instance.saveUserToFile(result[2].Username);
+                    Properties.Settings.Default.role = result[2].Role.ToString();
+                    Properties.Settings.Default.fullname = result[2].Fullname;
                     MessageBox.Show("Đăng nhập thành công !","Thông báo");
                     view.Hide();
                     fCafeManager f = new fCafeManager();
