@@ -121,8 +121,8 @@ namespace CafeManagementApplication.models
             IMongoCollection<User> collection = this.getCollection();
             BsonDocument filter = new BsonDocument("username", username);
             List<User> documents = collection.Find(filter).ToList();
-            if (documents.Count != 0) return false;
-            return true;
+            if (documents.Count != 0) return true;
+            return false;
         }
     }
 }

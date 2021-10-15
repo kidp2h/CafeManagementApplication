@@ -1,7 +1,9 @@
 ﻿using CafeManagementApplication.controllers;
+using CafeManagementApplication.helpers;
 using CafeManagementApplication.models;
 using CafeManagementApplication.types;
 using System;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -103,12 +105,26 @@ namespace CafeManagementApplication.views
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            #region Validate
+            StringBuilder sb = new StringBuilder();
+            ValidateForm.Instance.checkEmpty(tbName, sb, "Vui lòng nhập họ tên !");
+            ValidateForm.Instance.checkAge(tbAge, sb, "Vui lòng nhập tuổi !");
+            ValidateForm.Instance.checkUsername(tbUserName, sb, "Vui lòng nhập tài khoản !");
+            ValidateForm.Instance.checkEmpty(tbUserPassword, sb, "Vui lòng nhập mật khẩu !");
+
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            #endregion
+
             User user = ManagerController.Instance.NewData("User", this);
             ListViewItem item = new ListViewItem(user.Fullname);
             item.SubItems.Add(user.Age.ToString());
             item.SubItems.Add(user.Gender.ToString());
             item.SubItems.Add(user.Username);
-            item.SubItems.Add(user.Role.ToString());
+            item.SubItems.Add(user.Role == Role.MANAGER? "Quản lý" : "Nhân viên" );
             lvUsers.Items.Add(item);
 
             ManagerController.Instance.AddData("User", user, this);
@@ -133,31 +149,25 @@ namespace CafeManagementApplication.views
         }
         private void lvUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //ListView lv = sender as ListView;
-            
-            //if(lv.SelectedItems.Count>0)
-            //{
-            //    ListViewItem item = lv.SelectedItems[0];
-            //    tbName.Tag = item.Tag;
-            //    tbName.Text = item.SubItems[0].Text;
-            //    tbAge.Text = item.SubItems[1].Text;
-            //    if (item.SubItems[2].Text == "Nam") rdoMale.Checked = true;
-            //    else if (item.SubItems[2].Text == "Nữ") rdoFemale.Checked = true;
-            //    else rdoOther.Checked = true;
+            ListView lv = sender as ListView;
 
-            //    tbUserName.Text = item.SubItems[3].Text;
-               
-            //    if (item.SubItems[4].Text == "Quản lý") rdoManager.Checked = true;
-            //    else rdoSaff.Checked = true;
+            if (lv.SelectedItems.Count > 0)
+            {
+                ListViewItem item = lv.SelectedItems[0];
+                tbName.Tag = item.Tag;
+                tbName.Text = item.SubItems[0].Text;
+                tbAge.Text = item.SubItems[1].Text;
+                if (item.SubItems[2].Text == "Nam") rdoMale.Checked = true;
+                else if (item.SubItems[2].Text == "Nữ") rdoFemale.Checked = true;
+                else rdoOther.Checked = true;
 
-            //    btnDelete.Tag = lv.Items.IndexOf(item);
-            //}
-        }
+                tbUserName.Text = item.SubItems[3].Text;
 
-        private void setDataBinding()
-        {
-            tbName.DataBindings.Add(new Binding("Text",lvUsers, "Name"));
-         
+                if (item.SubItems[4].Text == "Quản lý") rdoManager.Checked = true;
+                else rdoSaff.Checked = true;
+
+                btnDelete.Tag = lv.Items.IndexOf(item);
+            }
         }
         #endregion
     }

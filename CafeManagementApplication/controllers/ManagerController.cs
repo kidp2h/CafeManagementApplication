@@ -89,7 +89,6 @@ namespace CafeManagementApplication.controllers
             }
             if (nameData == "Product")
             {
-                
                 ProductModel.Instance.updateProductByNameProduct(view.ProductName, Int32.Parse(view.inputPrice), view.inputCategoryName);
                 ResetProductDataInput(view);
             }
