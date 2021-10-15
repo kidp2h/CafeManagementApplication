@@ -282,7 +282,7 @@
     <EmbeddedResource Include="views\uscCategory.resx">
       <DependentUpon>uscCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="config\App.config" />
     <None Include="app.manifest" />
     <None Include="libmongocrypt.dylib" />
     <None Include="libmongocrypt.so" />
