@@ -24,18 +24,17 @@ namespace CafeManagementApplication.controllers
 
         public void handleLogin(fLogin view)
         {
-
-
                 string username = view.inputUsernameText;
                 string password = view.inputPasswordText;
                 List<dynamic> result = UserModel.Instance.checkAccount(username, password);
-
+                view.inputPasswordText = "";
                 if (result[0] != null)
                 {
                     SaveUser.Instance.saveUserToFile(result[2].Username);
                     MessageBox.Show("Dang nhap thanh cong");
+                    Properties.Settings.Default.role = result[2].Role.ToString();
                     view.Hide();
-                    fCafeManager f = new fCafeManager(result[0]);
+                    fCafeManager f = new fCafeManager();
                     f.ShowDialog();
                     view.Show();
 
@@ -44,9 +43,7 @@ namespace CafeManagementApplication.controllers
                 {
                     MessageBox.Show("Dang nhap that bai");
                 }
-           
-            
-
         }
+       
     }
 }

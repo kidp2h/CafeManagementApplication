@@ -120,7 +120,7 @@ namespace CafeManagementApplication.models
             }
             else
             {
-                return new List<dynamic> { null, Hash.verifyPassword(password, documents[0].Password) };
+                return new List<dynamic> { null, false };
             }
         }
         public bool checkExist(string username)
