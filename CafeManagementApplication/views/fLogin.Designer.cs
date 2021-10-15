@@ -63,7 +63,7 @@ namespace CafeManagementApplication
             this.cbRemember.AutoSize = true;
             this.cbRemember.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbRemember.Location = new System.Drawing.Point(20, 183);
-            this.cbRemember.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbRemember.Margin = new System.Windows.Forms.Padding(4);
             this.cbRemember.Name = "cbRemember";
             this.cbRemember.Size = new System.Drawing.Size(195, 33);
             this.cbRemember.TabIndex = 6;
@@ -154,7 +154,7 @@ namespace CafeManagementApplication
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnlLogin);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";

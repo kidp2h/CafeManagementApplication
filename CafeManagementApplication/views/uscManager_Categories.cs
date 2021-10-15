@@ -39,7 +39,7 @@ namespace CafeManagementApplication.views
         public void LoadListCategorysForForm()
         {
             Thread loadList = new Thread(() => {
-                LoadListController.Instance.LoadingListForListViewOf("useManager_Products", lvCategoryInfor);
+                LoadListController.Instance.LoadingListForListViewOf("uscManager_Categories", lvCategoryInfor);
             });
             loadList.Start();
         }
@@ -69,7 +69,7 @@ namespace CafeManagementApplication.views
         {
             #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkCategoryName(tbCategoryName, sb, "Vui lòng nhập tên loại sản phẩm !", true);
+            ValidateForm.Instance.checkCategoryName(tbCategoryName, sb, "Vui nhập tên loại sản phẩm !", true);
             if (sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -90,7 +90,7 @@ namespace CafeManagementApplication.views
         {
             #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkCategoryName(tbCategoryName, sb, "Vui lòng nhập tên loại sản phẩm !", false);
+            ValidateForm.Instance.checkCategoryName(tbCategoryName, sb, "Vui lòng chọn loại sản phẩm !", false);
             if (sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -105,13 +105,15 @@ namespace CafeManagementApplication.views
             lvCategoryInfor.Items.Insert(int.Parse(btnDeleteCategory.Tag.ToString()), categoryItem);
             #endregion
 
+            ManagerController.Instance.UpdateData("Category", this);
+
         }
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)
         {
             #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkCategoryName(tbCategoryName, sb, "Vui lòng nhập tên loại sản phẩm !", false);
+            ValidateForm.Instance.checkCategoryName(tbCategoryName, sb, "Vui lòng chọn loại sản phẩm !", false);
             if (sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -120,10 +122,10 @@ namespace CafeManagementApplication.views
             #endregion
 
             #region Handler View
-
+            lvCategoryInfor.Items.RemoveAt(int.Parse(btnDeleteCategory.Tag.ToString()));
             #endregion
 
-            lvCategoryInfor.Items.RemoveAt(int.Parse(btnDeleteCategory.Tag.ToString()));
+
             ManagerController.Instance.DeleteData("Category", this);
         }
 
