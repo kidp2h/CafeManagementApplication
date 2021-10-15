@@ -58,5 +58,17 @@ namespace CafeManagementApplication.Properties {
                 this["role"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string fullname {
+            get {
+                return ((string)(this["fullname"]));
+            }
+            set {
+                this["fullname"] = value;
+            }
+        }
     }
 }
