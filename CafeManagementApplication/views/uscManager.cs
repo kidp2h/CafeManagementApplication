@@ -66,5 +66,17 @@ namespace CafeManagementApplication.views
             }
             else uscManager_Users.Instance.BringToFront();
         }
+
+        private void btnManagerCategories_Click(object sender, EventArgs e)
+        {
+            if (!pnlModule.Controls.Contains(uscManager_Categories.Instance))
+            {
+                pnlModule.Controls.Add(uscManager_Categories.Instance);
+                uscManager_Categories.Instance.Dock = DockStyle.Fill;
+                uscManager_Categories.Instance.BringToFront();
+
+            }
+            else uscManager_Categories.Instance.BringToFront();
+        }
     }
 }

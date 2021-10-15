@@ -31,7 +31,17 @@ namespace CafeManagementApplication.controllers
         {
             
             lv.Items.Clear();
-            
+            if (form == "useManager_Categories")
+            {
+                dynamic categoryList = CategoryModel.Instance.getListCategory();
+                foreach(dynamic category in categoryList)
+                {
+                    ListViewItem categoryLvItem = new ListViewItem(category.NameCategory);
+                    categoryLvItem.Tag = category.Id;
+                    lv.Items.Add(categoryLvItem);
+                }
+                return;
+            }
             if (form == "useManager_Tables")
             {
                 dynamic tableList = TableModel.Instance.getListTable();

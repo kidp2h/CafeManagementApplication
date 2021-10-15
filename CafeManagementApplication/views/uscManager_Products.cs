@@ -128,16 +128,16 @@ namespace CafeManagementApplication.views
             ListView lvProduct = sender as ListView;
 
             if (lvProduct.SelectedItems.Count > 0)
-            {
-                ListViewItem item = lvProduct.SelectedItems[0];
-                tbProductName.Tag = item.SubItems[0].Text;
-                tbProductName.Text = item.SubItems[0].Text;
-                tbProductCategory.Text = item.SubItems[1].Text;
+            {                                   
+                ListViewItem item = lvProduct.SelectedItems[0];                 
+                tbProductName.Tag = item.SubItems[0].Text;          
+                tbProductName.Text = item.SubItems[0].Text;             
+                tbProductCategory.Text = item.SubItems[1].Text;             
                 tbProductPrice.Text = item.SubItems[2].Text;
-                btnDeleteProduct.Tag = lvProduct.Items.IndexOf(item);
-            }
+                btnDeleteProduct.Tag = lvProduct.Items.IndexOf(item);               
+            }                   
         }
-
+                                    
         private void button2_Click(object sender, EventArgs e)
         {
             LoadListProductsForForm();
