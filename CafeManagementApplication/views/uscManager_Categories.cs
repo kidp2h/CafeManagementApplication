@@ -39,7 +39,7 @@ namespace CafeManagementApplication.views
         public void LoadListCategorysForForm()
         {
             Thread loadList = new Thread(() => {
-                LoadListController.Instance.LoadingListForListViewOf("useManager_Products", lvCategoryInfor);
+                LoadListController.Instance.LoadingListForListViewOf("uscManager_Categories", lvCategoryInfor);
             });
             loadList.Start();
         }
