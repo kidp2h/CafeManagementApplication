@@ -144,8 +144,13 @@ namespace CafeManagementApplication.models
         {
             DateTime d1 = new DateTime(2021, 10, day, 0, 0, 0, DateTimeKind.Utc);
             DateTime d2 = new DateTime(2021, 10, day, 23, 59, 59, DateTimeKind.Utc);
-            FilterDefinition<BsonDocument> match = new BsonDocument { { "paidTime", new BsonDocument { { "$gte", d1 }, { "$lte",d2 } } } };
+            FilterDefinition<BsonDocument> match = new BsonDocument { { "paidTime", new BsonDocument { { "$gte", d1 }, { "$lte",d2 } } },{ "paid", new BsonBoolean(true)} };
             dynamic bill = this.lookupDepthBills().Match(match).ToList();
+            return bill;
+        }
+        public List<BsonDocument> getListBill ()
+        {
+            dynamic bill = this.lookupDepthBills().Match(new BsonDocument{ { "paid", new BsonBoolean(true) } }).ToList();
             return bill;
         }
         public Bill getBillByFilter(FilterDefinition<Bill> filter)
