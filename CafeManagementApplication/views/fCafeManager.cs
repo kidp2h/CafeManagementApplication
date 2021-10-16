@@ -85,7 +85,7 @@ namespace CafeManagementApplication.views
         {
             
             this.Close();
-            fLogin.Instance.inputUsernameText = Properties.Settings.Default.username;
+            //fLogin.Instance.inputUsernameText = Properties.Settings.Default.username;
 
         }
     }
