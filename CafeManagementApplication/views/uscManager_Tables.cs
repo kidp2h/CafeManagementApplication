@@ -91,6 +91,7 @@ namespace CafeManagementApplication.views
             #endregion
 
             ManagerController.Instance.AddData("Table", table, this);
+            uscSale.Instance.LoadListTableForForm();
         }
 
         private void btnUpdateTabe_Click(object sender, EventArgs e)
@@ -113,7 +114,8 @@ namespace CafeManagementApplication.views
             lvTableInfor.Items.Insert(int.Parse(btnDeleteTable.Tag.ToString()), tableItem);
             #endregion
 
-            ManagerController.Instance.UpdateData("Table", this);          
+            ManagerController.Instance.UpdateData("Table", this);
+            uscSale.Instance.LoadListTableForForm();
         }
 
         private void btnDeleteTable_Click(object sender, EventArgs e)
@@ -132,6 +134,7 @@ namespace CafeManagementApplication.views
             lvTableInfor.Items.RemoveAt(int.Parse(btnDeleteTable.Tag.ToString()));
             #endregion 
             ManagerController.Instance.DeleteData("Table", this);
+            uscSale.Instance.LoadListTableForForm();
         }
 
         private void listViewTableInfor_SelectedIndexChanged(object sender, EventArgs e)

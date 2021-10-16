@@ -134,7 +134,7 @@ namespace CafeManagementApplication.helpers
                 }
                 else
                 {
-                    if (!TableModel.Instance.isExist(tb.Text))
+                    if (!TableModel.Instance.isExist(tb.Tag.ToString()))
                     {
                         sb.Append("Bàn không tồn tại !\n");
                         sb.Append("Vui lòng chọn lại !\n");
@@ -169,7 +169,7 @@ namespace CafeManagementApplication.helpers
                 }
                 else
                 {
-                    if (!ProductModel.Instance.isExist(tb.Text))
+                    if (!ProductModel.Instance.isExist(tb.Tag.ToString()))
                     {
                         sb.Append("Sản phẩm không tồn tại !\n");
                         sb.Append("Vui lòng chọn lại !\n");
@@ -204,7 +204,7 @@ namespace CafeManagementApplication.helpers
                 }
                 else
                 {
-                    if (!CategoryModel.Instance.isExist(tb.Text))
+                    if (!CategoryModel.Instance.isExist(tb.Tag.ToString()))
                     {
                         sb.Append("Loại sản phẩm không tồn tại !\n");
                         sb.Append("Vui lòng chọn lại !\n");
