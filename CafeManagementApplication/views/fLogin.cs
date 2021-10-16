@@ -3,8 +3,7 @@ using System.Windows.Forms;
 using CafeManagementApplication.controllers;
 using CafeManagementApplication.types;
 using CafeManagementApplication.helpers;
-using CafeManagementApplication.views;
-using System.Threading;
+using CafeManagementApplication.models;
 using System.Text;
 
 namespace CafeManagementApplication
@@ -25,7 +24,8 @@ namespace CafeManagementApplication
         }
         public fLogin()
         {
-            
+            BillModel.Instance.listBillByDateTime(14,10,2021);
+            Console.WriteLine("x");
             InitializeComponent();
             //check();
         }
@@ -103,7 +103,7 @@ namespace CafeManagementApplication
         }
         public string inputPasswordText { 
             get { return this.tbPassword.Text; }
-            set { this.tbUsername.Text = value; }
+            set { this.tbPassword.Text = value; }
         }
 
         private void cbRemember_CheckedChanged(object sender, EventArgs e)
