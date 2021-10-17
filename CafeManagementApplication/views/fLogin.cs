@@ -5,6 +5,8 @@ using CafeManagementApplication.types;
 using CafeManagementApplication.helpers;
 using CafeManagementApplication.models;
 using System.Text;
+using CafeManagementApplication.views;
+using System.Threading;
 
 namespace CafeManagementApplication
 {
@@ -27,6 +29,19 @@ namespace CafeManagementApplication
             BillModel.Instance.listBillByDateTime(14,10,2021);
             Console.WriteLine("x");
             InitializeComponent();
+            Thread loadview = new Thread(() =>
+            {
+                pnlLogin.Controls.Contains(uscSale.Instance);
+                pnlLogin.Controls.Contains(uscManager.Instance);
+                pnlLogin.Controls.Contains(uscManager_Tables.Instance);
+                pnlLogin.Controls.Contains(uscManager_Products.Instance);
+                pnlLogin.Controls.Contains(uscManager_Categories.Instance);
+                pnlLogin.Controls.Contains(uscManager_Users.Instance);
+                pnlLogin.Controls.Contains(uscStatistics.Instance);
+            });
+            loadview.Start();
+            
+
             //check();
         }
         public void actionForm(string action)
