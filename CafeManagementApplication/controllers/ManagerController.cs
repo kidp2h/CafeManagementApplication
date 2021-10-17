@@ -61,25 +61,21 @@ namespace CafeManagementApplication.controllers
             if (nameData == "Category")
             {
                 CategoryModel.Instance.addCategory(data);
-                ResetCategoryDataInput(view);
                 return;
             }
             if (nameData == "Table")
             {
                 TableModel.Instance.addTable(data);
-                ResetTableDataInput(view);
                 return;
             }
             if(nameData == "Product")
             {               
                 ProductModel.Instance.addProduct(data, view.inputCategoryName);
-                ResetProductDataInput(view);
                 return;
             }    
             if (nameData == "User")
             {
                 UserModel.Instance.addUser(data);
-                ResetDataInput(view);
                 return;
             }
         }
@@ -115,13 +111,20 @@ namespace CafeManagementApplication.controllers
                     }
                 };              
                 TableModel.Instance.updateTableByNameTable(view.TableNameTag, updateTable);
-                ResetTableDataInput(view);
+
                 return;
             }
             if (nameData == "Product")
             {
-                ProductModel.Instance.updateProductByNameProduct(view.ProductNameTag, Int32.Parse(view.inputPrice), view.inputCategoryName);
-                ResetProductDataInput(view);
+                Product product = NewData(nameData, view);
+                UpdateDefinition<Product> updateProduct = new BsonDocument
+                {
+                    {"$set", new BsonDocument{
+                        {"name", product.NameProduct},
+                        {"price", product.Price }
+                    }}
+                };
+                ProductModel.Instance.updateProductByNameProduct(view.ProductNameTag, updateProduct);
                 return;
             }
             if (nameData == "User")
@@ -142,7 +145,6 @@ namespace CafeManagementApplication.controllers
                     }
                 };
                 UserModel.Instance.updateUserByUsername(view.UserNameTag, update);
-                ResetDataInput(view);
                 return;
             }
         }
@@ -152,24 +154,22 @@ namespace CafeManagementApplication.controllers
             if (nameData == "Category")
             {
                 CategoryModel.Instance.deleteCategoryByName(view.CategoryNameTag);
-                ResetCategoryDataInput(view);
+                return;
             }
             if (nameData == "Table")
             {
                 TableModel.Instance.deleteTableByTableName(view.TableNameTag);
-                ResetTableDataInput(view);
                 return;
             }
             if (nameData == "Product")
             {
                 ProductModel.Instance.deleteProductByNameProduct(view.ProductNameTag);
-                ResetProductDataInput(view);
+
                 return;
             }
             if (nameData == "User")
             {
                 UserModel.Instance.deleteUserByUsername(view.UserNameTag);
-                ResetDataInput(view);
                 return;
             }
         }

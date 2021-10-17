@@ -2,6 +2,7 @@
 using CafeManagementApplication.helpers;
 using CafeManagementApplication.models;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Threading;
@@ -12,7 +13,9 @@ namespace CafeManagementApplication.views
     public partial class uscManager_Products : UserControl
     {
         private static uscManager_Products instance;
-
+        private DataTable dt;
+        private DataView dv;
+        private BindingSource productList = new BindingSource();
         public static uscManager_Products Instance
         {
             get
@@ -28,8 +31,9 @@ namespace CafeManagementApplication.views
         private uscManager_Products()
         {
             InitializeComponent();
-            LoadListProductsForForm();
+            Load();
         }
+
 
         #region Public Data View
         public string inputProductNameText
@@ -38,42 +42,62 @@ namespace CafeManagementApplication.views
             set { tbProductName.Text = value; }
         }
 
-        public string inputCategoryName
-        {
-            get { return tbProductCategory.Text; }
-            set { tbProductCategory.Text = value; }
-        }
-
-
         public string inputPrice
         {
             get { return tbProductPrice.Text; }
             set { tbProductPrice.Text = value; }
         }
 
+        public string inputCategoryName
+        {
+            get { return cbCategory.SelectedItem.ToString(); }
+            set { cbCategory.SelectedItem = value; }
+        }
+
         public string ProductNameTag
         {
-            get { return tbProductName.Tag.ToString(); }
-            set { tbProductName.Tag = value; }
+            get { return tbProductSelected.Text; }
+            set { tbProductSelected.Text = value; }
         }
 
         #endregion
 
-        #region Handler Event
-        public void LoadListProductsForForm()
+        private void Load()
         {
-            Thread loadList = new Thread(() => {
-                LoadListController.Instance.LoadingListForListViewOf("useManager_Products", lvProductInfor);
-            });
-            loadList.Start();
+            dtgvProducts.DataSource = productList;
+            LoadListProducts();
+           
         }
 
+       
+        public void LoadListProducts(bool status = true)
+        {
+
+            bool statusTemp = status;
+            Thread loadList = new Thread(() => {
+                dt = new DataTable();
+                LoadListController.Instance.LoadingListForDataGirdView("uscManager_Products", dt);
+                dv = new DataView(dt);
+                productList.DataSource = dv;
+
+                LoadListController.Instance.LoadListForComboBox(cbCategory);
+           
+                if (statusTemp) ProductBinding();
+            });
+            loadList.IsBackground = true;
+            loadList.Start();
+            return;
+            
+
+            
+        }
+
+        #region Handler Event
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             #region Validate
             StringBuilder sb = new StringBuilder();
             ValidateForm.Instance.checkProductName(tbProductName, sb, "Vui lòng nhập tên sản phẩm !",true);
-            ValidateForm.Instance.checkEmpty(tbProductCategory, sb, "Vui lòng nhập loại sản phẩm !");
             ValidateForm.Instance.checkNumber(tbProductPrice, sb, "Vui lòng nhập giá sản phẩm !", "Giá sản phẩm");
             if (sb.Length > 0)
             {
@@ -84,10 +108,11 @@ namespace CafeManagementApplication.views
 
             #region Handler View
             Product product = ManagerController.Instance.NewData("Product", this);
-            ListViewItem productItem = new ListViewItem(product.NameProduct.ToString());
-            productItem.SubItems.Add(product.CategoryName);
-            productItem.SubItems.Add(product.Price.ToString());
-            lvProductInfor.Items.Add(productItem);
+            string Name = product.NameProduct.ToString();
+            string Category = product.CategoryName;
+            string Price = product.Price.ToString();
+            dt.Rows.Add(Name, Category, Price);
+            dtgvProducts.CurrentCell = dtgvProducts[0, dtgvProducts.RowCount - 1];
             #endregion
 
             ManagerController.Instance.AddData("Product",product, this);           
@@ -106,12 +131,20 @@ namespace CafeManagementApplication.views
             #endregion
 
             #region Handler View
-            Product product = ManagerController.Instance.NewData("Product", this);
-            ListViewItem productItem = new ListViewItem(product.NameProduct.ToString());
-            productItem.SubItems.Add(product.CategoryName);
-            productItem.SubItems.Add(product.Price.ToString());
-            lvProductInfor.Items.RemoveAt(int.Parse(btnDeleteProduct.Tag.ToString()));
-            lvProductInfor.Items.Insert(int.Parse(btnDeleteProduct.Tag.ToString()), productItem);
+            DataRow rowNew = dt.NewRow();
+            rowNew["Tên món"] = tbProductName.Text;
+            rowNew["Tên loại"] = cbCategory.SelectedItem.ToString();
+            rowNew["Giá món"] = tbProductPrice.Text;
+            
+
+            string filter = string.Format("[Tên món] = '{0}'", tbProductSelected.Text = tbProductName.Text);
+            DataRow[] rows = dt.Select(filter);
+
+            int index = dt.Rows.IndexOf(rows[0]);
+            btnDeleteProduct.Tag = index;
+            dt.Rows.RemoveAt(index);
+            dt.Rows.InsertAt(rowNew, index);
+            dtgvProducts.CurrentCell = dtgvProducts[0, index];
             #endregion
 
             ManagerController.Instance.UpdateData("Product", this);         
@@ -130,52 +163,63 @@ namespace CafeManagementApplication.views
             #endregion
 
             #region Handler View
-            lvProductInfor.Items.RemoveAt(int.Parse(btnDeleteProduct.Tag.ToString()));
+            string filter = string.Format("[Tên món] = '{0}'", tbProductSelected.Text = tbProductName.Tag.ToString());
+            DataRow[] rows = dt.Select(filter);
+
+            int index = dt.Rows.IndexOf(rows[0]);
+            btnDeleteProduct.Tag = index;
+            dt.Rows.RemoveAt(index);
             #endregion
 
             ManagerController.Instance.DeleteData("Product", this);          
         }
-
-        private void lvProductInfor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ListView lvProduct = sender as ListView;
-
-            if (lvProduct.SelectedItems.Count > 0)
-            {                                   
-                ListViewItem item = lvProduct.SelectedItems[0];                 
-                tbProductName.Tag = item.SubItems[0].Text;          
-                tbProductName.Text = item.SubItems[0].Text;             
-                tbProductCategory.Text = item.SubItems[1].Text;             
-                tbProductPrice.Text = item.SubItems[2].Text;
-                btnDeleteProduct.Tag = lvProduct.Items.IndexOf(item);               
-            }                   
-        }
                                     
-        private void button2_Click(object sender, EventArgs e)
+        private void ProductBinding()
         {
-            LoadListProductsForForm();
+            tbProductName.DataBindings.Add(new Binding("Text", dtgvProducts.DataSource, "Tên món", true, DataSourceUpdateMode.Never));
+            tbProductName.DataBindings.Add(new Binding("Tag", dtgvProducts.DataSource, "Tên món", true, DataSourceUpdateMode.Never));
+            tbProductPrice.DataBindings.Add(new Binding("Text", dtgvProducts.DataSource, "Giá món", true, DataSourceUpdateMode.Never));
+
+            string name = (string)dtgvProducts.SelectedCells[0].OwningRow.Cells["Tên loại"].Value;
+            cbCategory.SelectedItem = name;
         }
 
-        #endregion
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            dv.RowFilter = String.Format("[Tên món] LIKE '%{0}%'", tbSearch.Text);
+        }
+
+        private void dtgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+            DataGridViewRow row = dtgvProducts.Rows[e.RowIndex];
+            cbCategory.SelectedItem = row.Cells[1].Value.ToString();
+        }
 
         #region Effect
         private void tbProductName_TextChanged(object sender, EventArgs e)
         {
             if (tbProductName.BackColor != Color.White)
-            tbProductName.BackColor = Color.White;
-        }
-
-        private void tbProductCategory_TextChanged(object sender, EventArgs e)
-        {
-            if (tbProductCategory.BackColor != Color.White)
-            tbProductCategory.BackColor = Color.White;
+                tbProductName.BackColor = Color.White;
         }
 
         private void tbProductPrice_TextChanged(object sender, EventArgs e)
         {
             if (tbProductPrice.BackColor != Color.White)
             tbProductPrice.BackColor = Color.White;
+
+
+            string name = (string)dtgvProducts.SelectedCells[0].OwningRow.Cells["Tên loại"].Value;
+            cbCategory.SelectedItem = name;
         }
+
+
         #endregion
+
+        #endregion
+
+        
+
+ 
     }
 }

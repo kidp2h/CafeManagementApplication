@@ -3,6 +3,8 @@ using CafeManagementApplication.views;
 using System.Windows.Forms;
 using MongoDB.Bson;
 using System.Threading;
+using System.Collections.Generic;
+using System.Data;
 
 namespace CafeManagementApplication.controllers
 {
@@ -128,16 +130,89 @@ namespace CafeManagementApplication.controllers
                     
                 }
                 uscSale.Instance.inputTotalPriceProducts = table["subtotal"].Value.ToString() + "đ";
-              
+             
             }
-            
-            
-            
-            
-
         }
 
+        public void LoadingListForDataGirdView(string form, DataTable dt)
+        {
+            if (form == "uscManager_Tables")
+            {
+                List<Table> tablesList = TableModel.Instance.getListTable();
+                dt.Columns.Add("Tên bàn");
+                dt.Columns.Add("Trạng thái");
 
+                foreach (Table table in tablesList)
+                {
+                    string Name = table.TableName;
+                    string Status = table.Status == types.sTable.FULL ? "Có người" : "Bàn trống";
+                    dt.Rows.Add(Name, Status);
+                }
+                return;
+            }
 
+            if (form == "uscManager_Products")
+            {
+                dynamic productsList = ProductModel.Instance.getListProduct();              
+                dt.Columns.Add("Tên món");
+                dt.Columns.Add("Tên loại");
+                dt.Columns.Add("Giá món");
+
+                foreach (dynamic product in productsList)
+                {
+                    string Name = product["name"].Value;
+                    string category = product["category"].Value;
+                    int price = product["price"].Value;
+                    dt.Rows.Add(Name, category, price);
+                }
+                return;
+            }
+            
+            if (form == "uscManager_Categories")
+            {
+                dynamic categoryList = CategoryModel.Instance.getListCategory();
+                dt.Columns.Add("Tên loại");
+
+                foreach (dynamic category in categoryList)
+                {
+                    string Name = category.NameCategory.ToString();
+                    dt.Rows.Add(Name);
+                }
+                return;
+            }
+
+            if (form == "useManager_Users")
+            {
+                List<User> usersList = UserModel.Instance.getListUser();
+                dt.Columns.Add("Họ và tên");
+                dt.Columns.Add("Tuổi");
+                dt.Columns.Add("Giới tính");
+                dt.Columns.Add("Tài khoản");
+                dt.Columns.Add("Chức vụ");
+
+                foreach (User user in usersList)
+                {
+                    string Name = user.Fullname;
+                    int Age = user.Age;
+                    string Gender = user.Gender;
+                    string Username = user.Username;
+                    string Role = user.Role == types.Role.MANAGER ? "Quản lý" : "Nhân viên";
+                    dt.Rows.Add (Name, Age.ToString(), Gender, Username, Role);
+                }
+                return;
+
+            }
+        }
+
+        public void LoadListForComboBox(ComboBox cb)
+        {
+            dynamic categorys = CategoryModel.Instance.getListCategory();
+            List<string> names = new List<string>();
+            foreach (dynamic category in categorys)
+            {
+                names.Add(category.NameCategory.ToString());
+            }
+            cb.DataSource = names;
+        }
     }
 }

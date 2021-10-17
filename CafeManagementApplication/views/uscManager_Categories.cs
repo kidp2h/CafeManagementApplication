@@ -17,7 +17,8 @@ namespace CafeManagementApplication.views
     public partial class uscManager_Categories : UserControl
     {
         private static uscManager_Categories instance;
-
+        private DataTable dt = new DataTable();
+        private DataView dv;
         public static uscManager_Categories Instance
         {
             get
@@ -38,10 +39,19 @@ namespace CafeManagementApplication.views
 
         public void LoadListCategorysForForm()
         {
+    
             Thread loadList = new Thread(() => {
-                LoadListController.Instance.LoadingListForListViewOf("uscManager_Categories", lvCategoryInfor);
+                LoadListController.Instance.LoadingListForDataGirdView("uscManager_Categories", dt);
+                dv = new DataView(dt);
+                dtgvCategories.DataSource = dv;
+
+                CategoryBinding();
+
             });
+            loadList.IsBackground = true;
             loadList.Start();
+            
+           
         }
 
         #region Public Data View
@@ -59,8 +69,8 @@ namespace CafeManagementApplication.views
 
         public string CategoryNameTag
         {
-            get { return tbCategoryName.Tag.ToString(); }
-            set { tbCategoryName.Tag = value; }
+            get { return tbCategorySelected.Text; }
+            set { tbCategorySelected.Text = value; }
         }
         #endregion
 
@@ -79,18 +89,20 @@ namespace CafeManagementApplication.views
 
             #region Handler View
             Category category = ManagerController.Instance.NewData("Category", this);
-            ListViewItem categoryItem = new ListViewItem(category.NameCategory.ToString());
-            lvCategoryInfor.Items.Add(categoryItem);
+            string Name = category.NameCategory.ToString();
+            dt.Rows.Add(Name);
+            dtgvCategories.CurrentCell = dtgvCategories[0, dtgvCategories.RowCount - 1];
             #endregion
 
             ManagerController.Instance.AddData("Category", category, this);
+            uscManager_Products.Instance.LoadListProducts(false);
         }
 
         private void btnUpdateCategory_Click(object sender, EventArgs e)
         {
             #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkCategoryName(tbCategoryName, sb, "Vui lòng chọn loại sản phẩm !", false);
+            ValidateForm.Instance.checkCategoryName(tbCategoryName, sb, "Vui lòng chọn loại sản phẩm !", true);
             if (sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -99,14 +111,22 @@ namespace CafeManagementApplication.views
             #endregion
 
             #region Handler View
-            Category category = ManagerController.Instance.NewData("Category", this);
-            ListViewItem categoryItem = new ListViewItem(category.NameCategory.ToString());
-            lvCategoryInfor.Items.RemoveAt(int.Parse(btnDeleteCategory.Tag.ToString()));
-            lvCategoryInfor.Items.Insert(int.Parse(btnDeleteCategory.Tag.ToString()), categoryItem);
+            DataRow rowNew = dt.NewRow();
+            rowNew["Tên loại"] = tbCategoryName.Text;
+          
+            string filter = string.Format("[Tên loại] = '{0}'", tbCategorySelected.Text = tbCategoryName.Tag.ToString());
+            DataRow[] rows = dt.Select(filter);
+
+            int index = dt.Rows.IndexOf(rows[0]);
+            btnDeleteCategory.Tag = index;
+            dt.Rows.RemoveAt(index);
+            dt.Rows.InsertAt(rowNew, index);
+            dtgvCategories.CurrentCell = dtgvCategories[0, index];
+ 
             #endregion
 
             ManagerController.Instance.UpdateData("Category", this);
-            uscManager_Products.Instance.LoadListProductsForForm();
+            uscManager_Products.Instance.LoadListProducts(false);
 
         }
 
@@ -123,25 +143,28 @@ namespace CafeManagementApplication.views
             #endregion
 
             #region Handler View
-            lvCategoryInfor.Items.RemoveAt(int.Parse(btnDeleteCategory.Tag.ToString()));
+            string filter = string.Format("[Tên loại] = '{0}'", tbCategorySelected.Text = tbCategoryName.Tag.ToString());
+            DataRow[] rows = dt.Select(filter);
+
+            int index = dt.Rows.IndexOf(rows[0]);
+            btnDeleteCategory.Tag = index;
+            dt.Rows.RemoveAt(index);
             #endregion
 
 
             ManagerController.Instance.DeleteData("Category", this);
-            uscManager_Products.Instance.LoadListProductsForForm();
+            uscManager_Products.Instance.LoadListProducts(false); 
         }
 
-        private void lvCategoryInfor_SelectedIndexChanged(object sender, EventArgs e)
+        private void CategoryBinding()
         {
-            ListView CategoryLv = sender as ListView;
-            if(CategoryLv.SelectedItems.Count > 0)
-            {
-                ListViewItem item = CategoryLv.SelectedItems[0];
-                tbCategoryName.Tag = item.SubItems[0].Text;
-                tbCategoryName.Text = item.SubItems[0].Text;
+            tbCategoryName.DataBindings.Add(new Binding("Text", dtgvCategories.DataSource, "Tên loại", true, DataSourceUpdateMode.Never));
+            tbCategoryName.DataBindings.Add(new Binding("Tag", dtgvCategories.DataSource, "Tên loại", true, DataSourceUpdateMode.Never));
+        }
 
-                btnDeleteCategory.Tag = CategoryLv.Items.IndexOf(item);
-            }
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            dv.RowFilter = String.Format("[Tên loại] LIKE '%{0}%'", tbSearch.Text);
         }
         #endregion
 
@@ -152,11 +175,9 @@ namespace CafeManagementApplication.views
             tbCategoryName.BackColor = Color.White;
 
         }
+
         #endregion
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            LoadListCategorysForForm();
-        }
+       
     }
 }
