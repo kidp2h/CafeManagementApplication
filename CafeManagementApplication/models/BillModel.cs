@@ -25,9 +25,9 @@ namespace CafeManagementApplication.models
         [BsonElement("paid")]
         public BsonBoolean Paid { get; set; }
         [BsonElement("paidTime")]
-        public BsonDateTime PaidTime { get; set; }
+        public DateTime PaidTime { get; set; }
         [BsonElement("sale")]
-        public BsonInt32 Sale { get; set; }
+        public int Sale { get; set; }
     }
     class BillModel : BaseModel<Bill>
     {
@@ -57,7 +57,7 @@ namespace CafeManagementApplication.models
                 ProductsOrdered = new ListItemOrder(),
                 TableId = table,
                 Paid = false,
-                PaidTime = new BsonDateTime(new DateTime()),
+                PaidTime = new DateTime(),
                 Sale = 0
             };
             collection.InsertOne(newBill);
@@ -126,8 +126,8 @@ namespace CafeManagementApplication.models
                 .Unwind("products.product.category")
                 .AppendStage<BsonDocument>("{$set : {  'products.product.category': '$products.product.category.name'}}")
                 .Project(new BsonDocument("table.bill", 0))
-                .Group("{_id: '$_id',table : {$first : '$table'},'products': {$push: '$products'},percentSale : {'$first':'$sale'},sale:{'$first':'$sale'},subtotal : {$sum : {$multiply : ['$products.product.price','$products.amount']}}}")
-                .AppendStage<BsonDocument>("{'sale': {$subtract : ['$subtotal',{$multiply : ['$subtotal',{$divide : ['$sale',100]}]}]}}")
+                .Group("{_id: '$_id',table : {$first : '$table'},'products': {$push: '$products'},paid : {$first : '$paid'},paidTime : {$first : '$paidTime'},percentSale : {'$first':'$sale'},sale:{'$first':'$sale'},subtotal : {$sum : {$multiply : ['$products.product.price','$products.amount']}}}")
+                .AppendStage<BsonDocument>("{$addFields :{'sale': {$subtract : ['$subtotal',{$multiply : ['$subtotal',{$divide : ['$sale',100]}]}]}}}")
                 .Match(new BsonDocument { { "subtotal", new BsonDocument { { "$gt", 0 } } } });
 
             return bill;
@@ -138,6 +138,20 @@ namespace CafeManagementApplication.models
             FilterDefinition<BsonDocument> _idBill = new BsonDocument("_id", new ObjectId(idBill));
             dynamic bill = this.lookupDepthBills().Match(_idBill).ToList();
             return bill[0];
+        }
+
+        public List<BsonDocument> listBillByDateTime(int day, int month, int year)
+        {
+            DateTime d1 = new DateTime(2021, 10, day, 0, 0, 0, DateTimeKind.Utc);
+            DateTime d2 = new DateTime(2021, 10, day, 23, 59, 59, DateTimeKind.Utc);
+            FilterDefinition<BsonDocument> match = new BsonDocument { { "paidTime", new BsonDocument { { "$gte", d1 }, { "$lte",d2 } } },{ "paid", new BsonBoolean(true)} };
+            dynamic bill = this.lookupDepthBills().Match(match).ToList();
+            return bill;
+        }
+        public List<BsonDocument> getListBill ()
+        {
+            dynamic bill = this.lookupDepthBills().Match(new BsonDocument{ { "paid", new BsonBoolean(true) } }).ToList();
+            return bill;
         }
         public Bill getBillByFilter(FilterDefinition<Bill> filter)
         {

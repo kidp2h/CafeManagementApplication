@@ -38,6 +38,8 @@ namespace CafeManagementApplication.views
             this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.rdoFull = new System.Windows.Forms.RadioButton();
+          
+            this.label2 = new System.Windows.Forms.Label();
             this.tbTableName = new System.Windows.Forms.TextBox();
             this.rdoEmpty = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
