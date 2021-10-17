@@ -29,43 +29,28 @@ namespace CafeManagementApplication.views
         /// </summary>
         private void InitializeComponent()
         {
-            this.button4 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAddTable = new System.Windows.Forms.Button();
             this.btnDeleteTable = new System.Windows.Forms.Button();
             this.btnUpdateTable = new System.Windows.Forms.Button();
-            this.lvTableInfor = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.iFullTable = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
+            this.rdoFull = new System.Windows.Forms.RadioButton();
             this.tbTableName = new System.Windows.Forms.TextBox();
-            this.iEmptyTable = new System.Windows.Forms.RadioButton();
+            this.rdoEmpty = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.dtgvTables = new System.Windows.Forms.DataGridView();
+            this.tbStatus = new System.Windows.Forms.TextBox();
+            this.tbTableSelected = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvTables)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.button4.Location = new System.Drawing.Point(532, 20);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(82, 33);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Tìm kiếm";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(9, 20);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(517, 33);
-            this.richTextBox1.TabIndex = 9;
-            this.richTextBox1.Text = "";
             // 
             // panel1
             // 
@@ -110,88 +95,54 @@ namespace CafeManagementApplication.views
             this.btnUpdateTable.UseVisualStyleBackColor = true;
             this.btnUpdateTable.Click += new System.EventHandler(this.btnUpdateTabe_Click);
             // 
-            // lvTableInfor
-            // 
-            this.lvTableInfor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.lvTableInfor.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.lvTableInfor.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvTableInfor.FullRowSelect = true;
-            this.lvTableInfor.GridLines = true;
-            this.lvTableInfor.HideSelection = false;
-            this.lvTableInfor.Location = new System.Drawing.Point(9, 62);
-            this.lvTableInfor.Name = "lvTableInfor";
-            this.lvTableInfor.Size = new System.Drawing.Size(605, 688);
-            this.lvTableInfor.TabIndex = 7;
-            this.lvTableInfor.UseCompatibleStateImageBehavior = false;
-            this.lvTableInfor.View = System.Windows.Forms.View.Details;
-            this.lvTableInfor.SelectedIndexChanged += new System.EventHandler(this.listViewTableInfor_SelectedIndexChanged);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Tên bàn";
-            this.columnHeader1.Width = 299;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Trạng thái ";
-            this.columnHeader2.Width = 547;
-            // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.iFullTable);
-            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.rdoEmpty);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.rdoFull);
             this.panel2.Controls.Add(this.tbTableName);
-            this.panel2.Controls.Add(this.iEmptyTable);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(643, 352);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(430, 253);
             this.panel2.TabIndex = 15;
             // 
-            // iFullTable
+            // rdoFull
             // 
-            this.iFullTable.AutoSize = true;
-            this.iFullTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iFullTable.Location = new System.Drawing.Point(276, 141);
-            this.iFullTable.Name = "iFullTable";
-            this.iFullTable.Size = new System.Drawing.Size(120, 29);
-            this.iFullTable.TabIndex = 19;
-            this.iFullTable.Text = "Có người";
-            this.iFullTable.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label2.Location = new System.Drawing.Point(3, 140);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 29);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Trạng thái:";
+            this.rdoFull.AutoSize = true;
+            this.rdoFull.Enabled = false;
+            this.rdoFull.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoFull.ForeColor = System.Drawing.Color.Maroon;
+            this.rdoFull.Location = new System.Drawing.Point(305, 141);
+            this.rdoFull.Name = "rdoFull";
+            this.rdoFull.Size = new System.Drawing.Size(120, 29);
+            this.rdoFull.TabIndex = 19;
+            this.rdoFull.Text = "Có người";
+            this.rdoFull.UseVisualStyleBackColor = true;
             // 
             // tbTableName
             // 
-            this.tbTableName.Location = new System.Drawing.Point(138, 49);
-            this.tbTableName.Multiline = true;
+            this.tbTableName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTableName.Location = new System.Drawing.Point(138, 57);
             this.tbTableName.Name = "tbTableName";
-            this.tbTableName.Size = new System.Drawing.Size(289, 49);
+            this.tbTableName.Size = new System.Drawing.Size(289, 34);
             this.tbTableName.TabIndex = 19;
             this.tbTableName.TextChanged += new System.EventHandler(this.tbTableName_TextChanged);
             // 
-            // iEmptyTable
+            // rdoEmpty
             // 
-            this.iEmptyTable.AutoSize = true;
-            this.iEmptyTable.Checked = true;
-            this.iEmptyTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iEmptyTable.Location = new System.Drawing.Point(138, 140);
-            this.iEmptyTable.Name = "iEmptyTable";
-            this.iEmptyTable.Size = new System.Drawing.Size(132, 29);
-            this.iEmptyTable.TabIndex = 20;
-            this.iEmptyTable.TabStop = true;
-            this.iEmptyTable.Text = "Bàn trống ";
-            this.iEmptyTable.UseVisualStyleBackColor = true;
+            this.rdoEmpty.AutoSize = true;
+            this.rdoEmpty.Checked = true;
+            this.rdoEmpty.Enabled = false;
+            this.rdoEmpty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoEmpty.ForeColor = System.Drawing.Color.Maroon;
+            this.rdoEmpty.Location = new System.Drawing.Point(155, 140);
+            this.rdoEmpty.Name = "rdoEmpty";
+            this.rdoEmpty.Size = new System.Drawing.Size(132, 29);
+            this.rdoEmpty.TabIndex = 20;
+            this.rdoEmpty.TabStop = true;
+            this.rdoEmpty.Text = "Bàn trống ";
+            this.rdoEmpty.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -203,53 +154,119 @@ namespace CafeManagementApplication.views
             this.label3.TabIndex = 17;
             this.label3.Text = "Tên bàn:";
             // 
-            // button1
+            // pictureBox1
             // 
-            this.button1.Location = new System.Drawing.Point(964, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 50);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BackgroundImage = global::CafeManagementApplication.Properties.Resources.Search;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(564, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(47, 33);
+            this.pictureBox1.TabIndex = 23;
+            this.pictureBox1.TabStop = false;
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearch.Location = new System.Drawing.Point(9, 18);
+            this.tbSearch.Multiline = true;
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(605, 35);
+            this.tbSearch.TabIndex = 22;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
+            // 
+            // dtgvTables
+            // 
+            this.dtgvTables.AllowUserToAddRows = false;
+            this.dtgvTables.AllowUserToDeleteRows = false;
+            this.dtgvTables.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvTables.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dtgvTables.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvTables.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgvTables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvTables.Location = new System.Drawing.Point(9, 60);
+            this.dtgvTables.Name = "dtgvTables";
+            this.dtgvTables.ReadOnly = true;
+            this.dtgvTables.RowHeadersWidth = 25;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgvTables.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgvTables.RowTemplate.Height = 24;
+            this.dtgvTables.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvTables.Size = new System.Drawing.Size(602, 707);
+            this.dtgvTables.TabIndex = 24;
+            this.dtgvTables.CurrentCellChanged += new System.EventHandler(this.dtgvTables_CurrentCellChanged);
+            // 
+            // tbStatus
+            // 
+            this.tbStatus.Location = new System.Drawing.Point(564, 19);
+            this.tbStatus.Name = "tbStatus";
+            this.tbStatus.Size = new System.Drawing.Size(10, 22);
+            this.tbStatus.TabIndex = 25;
+            // 
+            // tbTableSelected
+            // 
+            this.tbTableSelected.Location = new System.Drawing.Point(529, 28);
+            this.tbTableSelected.Name = "tbTableSelected";
+            this.tbTableSelected.Size = new System.Drawing.Size(10, 22);
+            this.tbTableSelected.TabIndex = 26;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label1.Location = new System.Drawing.Point(3, 139);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(137, 29);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Trạng Thái:";
             // 
             // uscManager_Tables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.Controls.Add(this.dtgvTables);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.lvTableInfor);
+            this.Controls.Add(this.tbStatus);
+            this.Controls.Add(this.tbTableSelected);
             this.Name = "uscManager_Tables";
             this.Size = new System.Drawing.Size(1115, 770);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvTables)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnDeleteTable;
         private System.Windows.Forms.Button btnUpdateTable;
         private System.Windows.Forms.Button btnAddTable;
-        private System.Windows.Forms.ListView lvTableInfor;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbTableName;
-        private System.Windows.Forms.RadioButton iEmptyTable;
-        private System.Windows.Forms.RadioButton iFullTable;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RadioButton rdoEmpty;
+        private System.Windows.Forms.RadioButton rdoFull;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.DataGridView dtgvTables;
+        private System.Windows.Forms.TextBox tbStatus;
+        private System.Windows.Forms.TextBox tbTableSelected;
+        private System.Windows.Forms.Label label1;
     }
 }

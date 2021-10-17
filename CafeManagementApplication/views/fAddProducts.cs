@@ -90,6 +90,8 @@ namespace CafeManagementApplication.views
                 this.TableStatus = "Có người";
             }
             LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
+            uscManager_Tables.Instance.LoadListTables(false);
+
             this.Hide();
         }
 

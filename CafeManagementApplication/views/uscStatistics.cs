@@ -51,5 +51,7 @@ namespace CafeManagementApplication.views
         {
             dv.RowFilter = String.Format("[Ngày thanh toán] LIKE '%{0}%'", "");
         }
+
+
     }
 }

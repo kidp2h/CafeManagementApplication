@@ -29,51 +29,22 @@ namespace CafeManagementApplication.views
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.lvCategoryInfor = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label3 = new System.Windows.Forms.Label();
             this.tbCategoryName = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDeleteCategory = new System.Windows.Forms.Button();
             this.btnUpdateCategory = new System.Windows.Forms.Button();
             this.btnAddCategory = new System.Windows.Forms.Button();
+            this.dtgvCategories = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.tbCategorySelected = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvCategories)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(1023, 15);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(77, 40);
-            this.button2.TabIndex = 40;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // lvCategoryInfor
-            // 
-            this.lvCategoryInfor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.lvCategoryInfor.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.lvCategoryInfor.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
-            this.lvCategoryInfor.FullRowSelect = true;
-            this.lvCategoryInfor.GridLines = true;
-            this.lvCategoryInfor.HideSelection = false;
-            this.lvCategoryInfor.Location = new System.Drawing.Point(14, 63);
-            this.lvCategoryInfor.Name = "lvCategoryInfor";
-            this.lvCategoryInfor.Size = new System.Drawing.Size(616, 692);
-            this.lvCategoryInfor.TabIndex = 30;
-            this.lvCategoryInfor.UseCompatibleStateImageBehavior = false;
-            this.lvCategoryInfor.View = System.Windows.Forms.View.Details;
-            this.lvCategoryInfor.SelectedIndexChanged += new System.EventHandler(this.lvCategoryInfor_SelectedIndexChanged);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Tên loại";
-            this.columnHeader1.Width = 272;
             // 
             // label3
             // 
@@ -87,29 +58,12 @@ namespace CafeManagementApplication.views
             // 
             // tbCategoryName
             // 
-            this.tbCategoryName.Location = new System.Drawing.Point(785, 396);
-            this.tbCategoryName.Multiline = true;
+            this.tbCategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCategoryName.Location = new System.Drawing.Point(771, 402);
             this.tbCategoryName.Name = "tbCategoryName";
-            this.tbCategoryName.Size = new System.Drawing.Size(289, 49);
+            this.tbCategoryName.Size = new System.Drawing.Size(289, 34);
             this.tbCategoryName.TabIndex = 35;
             this.tbCategoryName.TextChanged += new System.EventHandler(this.tbCategoryName_TextChanged);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(548, 24);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(82, 33);
-            this.button4.TabIndex = 33;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(15, 24);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(527, 33);
-            this.richTextBox1.TabIndex = 32;
-            this.richTextBox1.Text = "";
             // 
             // panel1
             // 
@@ -154,38 +108,95 @@ namespace CafeManagementApplication.views
             this.btnAddCategory.UseVisualStyleBackColor = true;
             this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
+            // dtgvCategories
+            // 
+            this.dtgvCategories.AllowUserToAddRows = false;
+            this.dtgvCategories.AllowUserToDeleteRows = false;
+            this.dtgvCategories.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvCategories.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dtgvCategories.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvCategories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgvCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvCategories.Location = new System.Drawing.Point(15, 62);
+            this.dtgvCategories.Name = "dtgvCategories";
+            this.dtgvCategories.ReadOnly = true;
+            this.dtgvCategories.RowHeadersWidth = 30;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgvCategories.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgvCategories.RowTemplate.Height = 24;
+            this.dtgvCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvCategories.Size = new System.Drawing.Size(602, 707);
+            this.dtgvCategories.TabIndex = 41;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BackgroundImage = global::CafeManagementApplication.Properties.Resources.Search;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(570, 23);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(47, 33);
+            this.pictureBox1.TabIndex = 43;
+            this.pictureBox1.TabStop = false;
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearch.Location = new System.Drawing.Point(15, 22);
+            this.tbSearch.Multiline = true;
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(605, 35);
+            this.tbSearch.TabIndex = 42;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
+            // 
+            // tbCategorySelected
+            // 
+            this.tbCategorySelected.Location = new System.Drawing.Point(582, 721);
+            this.tbCategorySelected.Name = "tbCategorySelected";
+            this.tbCategorySelected.Size = new System.Drawing.Size(10, 22);
+            this.tbCategorySelected.TabIndex = 44;
+            // 
             // uscManager_Categories
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.Controls.Add(this.lvCategoryInfor);
-            this.Controls.Add(this.button2);
+            this.BackColor = System.Drawing.Color.DodgerBlue;
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.tbSearch);
+            this.Controls.Add(this.dtgvCategories);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbCategoryName);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.tbCategorySelected);
             this.Name = "uscManager_Categories";
             this.Size = new System.Drawing.Size(1115, 770);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvCategories)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListView lvCategoryInfor;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbCategoryName;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnDeleteCategory;
         private System.Windows.Forms.Button btnUpdateCategory;
         private System.Windows.Forms.Button btnAddCategory;
+        private System.Windows.Forms.DataGridView dtgvCategories;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.TextBox tbCategorySelected;
     }
 }

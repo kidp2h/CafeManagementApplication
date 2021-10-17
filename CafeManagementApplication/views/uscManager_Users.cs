@@ -3,6 +3,7 @@ using CafeManagementApplication.helpers;
 using CafeManagementApplication.models;
 using CafeManagementApplication.types;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Threading;
@@ -13,6 +14,8 @@ namespace CafeManagementApplication.views
     public partial class uscManager_Users : UserControl
     {
         private static uscManager_Users instance;
+        private DataTable dt = new DataTable();
+        private DataView dv;
 
         public static uscManager_Users Instance
         {
@@ -29,19 +32,31 @@ namespace CafeManagementApplication.views
         public uscManager_Users()
         {
             InitializeComponent();
-            LoadListUsersForForm();
+            LoadListUsers();
         }
-
-        public void LoadListUsersForForm()
+        
+        public void LoadListUsers()
         {
-            Thread loadList = new Thread(() => {              
-                LoadListController.Instance.LoadingListForListViewOf("useManager_Users", lvUsers);
+            Thread loadList = new Thread(() => {
+                LoadListController.Instance.LoadingListForDataGirdView("useManager_Users", dt);
+               
+                
+                dv = new DataView(dt);
+
+                dtgvUsers.DataSource = dv;
+                dtgvUsers.Columns[0].Width = 300;
+                dtgvUsers.Columns[1].Width = 100;
+                dtgvUsers.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dtgvUsers.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                UserBinding();
             });
             loadList.IsBackground = true;
             loadList.Start();
         }
 
         #region Public Data In View
+        public DataTable Dt { get; set; }
         public string inputNameText
         {
             get { return tbName.Text; }
@@ -123,12 +138,15 @@ namespace CafeManagementApplication.views
 
             #region Handler View
             User user = ManagerController.Instance.NewData("User", this);
-            ListViewItem item = new ListViewItem(user.Fullname);
-            item.SubItems.Add(user.Age.ToString());
-            item.SubItems.Add(user.Gender.ToString());
-            item.SubItems.Add(user.Username);
-            item.SubItems.Add(user.Role == Role.MANAGER? "Quản lý" : "Nhân viên" );
-            lvUsers.Items.Add(item);
+            string Name = user.Fullname;
+            int Age = user.Age;
+            string Gender = user.Gender;
+            string Username = user.Username;
+            string Role = user.Role == types.Role.MANAGER ? "Quản lý" : "Nhân viên";
+            
+
+            dt.Rows.Add(Name, Age.ToString(), Gender, Username, Role);
+            dtgvUsers.CurrentCell = dtgvUsers[0, dtgvUsers.RowCount -1 ];
             #endregion
 
             ManagerController.Instance.AddData("User", user, this);
@@ -149,14 +167,22 @@ namespace CafeManagementApplication.views
             #endregion
 
             #region Handler View
-            User user = ManagerController.Instance.NewData("User", this);
-            ListViewItem item = new ListViewItem(user.Fullname);
-            item.SubItems.Add(user.Age.ToString());
-            item.SubItems.Add(user.Gender.ToString());
-            item.SubItems.Add(user.Username);
-            item.SubItems.Add(user.Role == Role.MANAGER ? "Quản lý" : "Nhân viên");
-            lvUsers.Items.RemoveAt(int.Parse(btnDelete.Tag.ToString()));
-            lvUsers.Items.Insert(int.Parse(btnDelete.Tag.ToString()), item);
+            DataRow rowNew = dt.NewRow();
+            rowNew["Họ và tên"] = tbName.Text;
+            rowNew["Tuổi"] = tbAge.Text;
+            if (rdoOther.Checked == true) rowNew["Giới tính"] = "Khác";
+            else rowNew["Giới tính"] = rdoMale.Checked == true ? "Nam" : "Nữ";
+            rowNew["Tài khoản"] = tbUserName.Text;
+            rowNew["Chức vụ"] = rdoManager.Checked == true ? "Quản lý" : "Nhân viên";
+
+            string filter = string.Format("[Tài khoản] = '{0}'", tbUserName.Tag.ToString());
+            DataRow[] rows = dt.Select(filter);
+
+            int index = dt.Rows.IndexOf(rows[0]);
+            btnDelete.Tag = index;
+            dt.Rows.RemoveAt(index);
+            dt.Rows.InsertAt(rowNew, index);
+            dtgvUsers.CurrentCell = dtgvUsers[0, index];
             #endregion
 
             ManagerController.Instance.UpdateData("User", this);
@@ -175,38 +201,44 @@ namespace CafeManagementApplication.views
             #endregion
 
             #region Handler View
-            lvUsers.Items.RemoveAt(int.Parse(btnDelete.Tag.ToString()));
+            string filter = String.Format("[Tài khoản] = '{0}'", tbUserName.Tag.ToString());
+            DataRow[] rows = dt.Select(filter);
+
+            int index = dt.Rows.IndexOf(rows[0]);
+            btnDelete.Tag = index;
+            dt.Rows.RemoveAt(index);
             #endregion
 
             ManagerController.Instance.DeleteData("User", this);
             
         } 
-        private void btnReset_Click(object sender, EventArgs e)
+
+        private void tbSearch_TextChanged(object sender, EventArgs e)
         {
-            LoadListUsersForForm();
+            dv.RowFilter = String.Format("[Họ và tên] LIKE '%{0}%'", tbSearch.Text);
         }
-        private void lvUsers_SelectedIndexChanged(object sender, EventArgs e)
+
+
+        private void dtgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            ListView lv = sender as ListView;
-
-            if (lv.SelectedItems.Count > 0)
-            {
-                ListViewItem item = lv.SelectedItems[0];
-                tbName.Tag = item.Tag;
-                tbName.Text = item.SubItems[0].Text;
-                tbAge.Text = item.SubItems[1].Text;
-                if (item.SubItems[2].Text == "Nam") rdoMale.Checked = true;
-                else if (item.SubItems[2].Text == "Nữ") rdoFemale.Checked = true;
-                else rdoOther.Checked = true;
-
-                tbUserName.Text = item.SubItems[3].Text;
-
-                if (item.SubItems[4].Text == "Quản lý") rdoManager.Checked = true;
-                else rdoSaff.Checked = true;
-
-                btnDelete.Tag = lv.Items.IndexOf(item);
-            }
+            if (tbGender.Text == "Nam") rdoMale.Checked = true;
+            else if (tbGender.Text == "Nữ") rdoFemale.Checked = true; else rdoOther.Checked = true;
+            if (tbRole.Text == "Quản lý") rdoManager.Checked = true; else rdoSaff.Checked = true;
         }
+
+        private void UserBinding()
+        {
+            tbName.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Họ và tên", true, DataSourceUpdateMode.Never));         
+            tbAge.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Tuổi", true, DataSourceUpdateMode.Never));
+            tbUserName.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Tài khoản", true, DataSourceUpdateMode.Never));
+            tbUserName.DataBindings.Add(new Binding("Tag", dtgvUsers.DataSource, "Tài khoản", true, DataSourceUpdateMode.Never));
+            tbGender.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Giới tính"));
+            if (tbGender.Text == "Nam") rdoMale.Checked = true;
+            else if (tbGender.Text == "Nữ") rdoFemale.Checked = true; else rdoOther.Checked = true;
+            tbRole.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Chức vụ"));
+            if (tbRole.Text == "Quản lý") rdoManager.Checked = true; else rdoSaff.Checked = true;
+        }
+
         #endregion
 
         #region Effect
@@ -233,6 +265,14 @@ namespace CafeManagementApplication.views
             if(tbUserPassword.BackColor != Color.White)
             tbUserPassword.BackColor = Color.White;
         }
+
+
+
         #endregion
+
+        private void resertToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManagerController.Instance.ResetDataInput(this);
+        }
     }
 }

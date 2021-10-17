@@ -92,36 +92,30 @@ namespace CafeManagementApplication.models
 
         }
 
-        public void updateProductByNameProduct(string nameProduct, int price, string category)
+        public void updateProductByNameProduct(string nameProduct, UpdateDefinition<Product> update)
         {
             FilterDefinition<Product> filter = new BsonDocument("name", nameProduct);
-            FilterDefinition<Category> cfilter = new BsonDocument("name", category);
+            //FilterDefinition<Category> cfilter = new BsonDocument("name", category);
             IMongoCollection<Product> collection = getCollection();
-            if (!CategoryModel.Instance.checkCategory(cfilter))
-            {
-                BsonObjectId id = ObjectId.GenerateNewId();
-                CategoryModel.Instance.addCategory(new Category { Id = id, NameCategory = category });
-                UpdateDefinition<Product> update = new BsonDocument
-                {
-                    {"$set", new BsonDocument{
-                        {"name", nameProduct},
-                        {"price", price },
-                        {"category",id }
-                    }}
-                };
+            //if (!CategoryModel.Instance.checkCategory(cfilter))
+            //{
+            //    BsonObjectId id = ObjectId.GenerateNewId();
+            //    CategoryModel.Instance.addCategory(new Category { Id = id, NameCategory = category });
+            //    UpdateDefinition<Product> update = new BsonDocument
+            //    {
+            //        {"$set", new BsonDocument{
+            //            {"name", nameProduct},
+            //            {"price", price },
+            //            {"category",id }
+            //        }}
+            //    };
+            //    collection.UpdateOneAsync(filter, update);
+            //}
+            //else
+            //{
+                
                 collection.UpdateOneAsync(filter, update);
-            }
-            else
-            {
-                UpdateDefinition<Product> update = new BsonDocument
-                {
-                    {"$set", new BsonDocument{
-                        {"name", nameProduct},
-                        {"price", price }
-                    }}
-                };
-                collection.UpdateOneAsync(filter, update);
-            }
+            //}
         }
         #endregion
 

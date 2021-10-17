@@ -29,17 +29,14 @@ namespace CafeManagementApplication.views
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Button btnAdd;
-            this.lvUsers = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.tbUserPassword = new System.Windows.Forms.TextBox();
             this.tbUserName = new System.Windows.Forms.TextBox();
@@ -58,13 +55,21 @@ namespace CafeManagementApplication.views
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnReset = new System.Windows.Forms.Button();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.dtgvUsers = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tbGender = new System.Windows.Forms.TextBox();
+            this.tbRole = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.resertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             btnAdd = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlInfo.SuspendLayout();
             this.pnlGender.SuspendLayout();
             this.pnlRole.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAdd
@@ -77,53 +82,6 @@ namespace CafeManagementApplication.views
             btnAdd.Text = "Thêm";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // lvUsers
-            // 
-            this.lvUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lvUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
-            this.lvUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvUsers.FullRowSelect = true;
-            this.lvUsers.GridLines = true;
-            this.lvUsers.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lvUsers.HideSelection = false;
-            this.lvUsers.Location = new System.Drawing.Point(3, 58);
-            this.lvUsers.Name = "lvUsers";
-            this.lvUsers.Size = new System.Drawing.Size(1109, 395);
-            this.lvUsers.TabIndex = 0;
-            this.lvUsers.UseCompatibleStateImageBehavior = false;
-            this.lvUsers.View = System.Windows.Forms.View.Details;
-            this.lvUsers.SelectedIndexChanged += new System.EventHandler(this.lvUsers_SelectedIndexChanged);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Họ và tên";
-            this.columnHeader1.Width = 316;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Tuổi";
-            this.columnHeader2.Width = 101;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Giới tính";
-            this.columnHeader3.Width = 122;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Tài Khoản";
-            this.columnHeader4.Width = 262;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Chức vụ";
-            this.columnHeader5.Width = 297;
             // 
             // panel1
             // 
@@ -156,16 +114,6 @@ namespace CafeManagementApplication.views
             this.btnUpdate.Text = "Sửa";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(796, 19);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(123, 33);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Tìm kiếm";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // pnlInfo
             // 
@@ -366,35 +314,107 @@ namespace CafeManagementApplication.views
             this.label1.TabIndex = 12;
             this.label1.Text = "Họ và tên:";
             // 
-            // textBox1
+            // tbSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(162, 19);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(628, 33);
-            this.textBox1.TabIndex = 13;
+            this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearch.Location = new System.Drawing.Point(234, 16);
+            this.tbSearch.Multiline = true;
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(648, 35);
+            this.tbSearch.TabIndex = 13;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
-            // btnReset
+            // dtgvUsers
             // 
-            this.btnReset.Location = new System.Drawing.Point(1043, 3);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(59, 49);
-            this.btnReset.TabIndex = 14;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.dtgvUsers.AllowUserToAddRows = false;
+            this.dtgvUsers.AllowUserToDeleteRows = false;
+            this.dtgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvUsers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dtgvUsers.BackgroundColor = System.Drawing.Color.LightPink;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dtgvUsers.ColumnHeadersHeight = 40;
+            this.dtgvUsers.Location = new System.Drawing.Point(3, 59);
+            this.dtgvUsers.Name = "dtgvUsers";
+            this.dtgvUsers.ReadOnly = true;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dtgvUsers.RowHeadersWidth = 40;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dtgvUsers.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.dtgvUsers.RowTemplate.Height = 24;
+            this.dtgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvUsers.Size = new System.Drawing.Size(1109, 394);
+            this.dtgvUsers.TabIndex = 15;
+            this.dtgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvUsers_CellClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BackgroundImage = global::CafeManagementApplication.Properties.Resources.Search;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(832, 17);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(47, 33);
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
+            // tbGender
+            // 
+            this.tbGender.Location = new System.Drawing.Point(795, 26);
+            this.tbGender.Name = "tbGender";
+            this.tbGender.Size = new System.Drawing.Size(29, 22);
+            this.tbGender.TabIndex = 17;
+            // 
+            // tbRole
+            // 
+            this.tbRole.Location = new System.Drawing.Point(795, 16);
+            this.tbRole.Name = "tbRole";
+            this.tbRole.Size = new System.Drawing.Size(29, 22);
+            this.tbRole.TabIndex = 18;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.resertToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(207, 28);
+            // 
+            // resertToolStripMenuItem
+            // 
+            this.resertToolStripMenuItem.Name = "resertToolStripMenuItem";
+            this.resertToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.resertToolStripMenuItem.Text = "Làm mới mẫu nhập";
+            this.resertToolStripMenuItem.Click += new System.EventHandler(this.resertToolStripMenuItem_Click);
             // 
             // uscManager_Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.Controls.Add(this.lvUsers);
-            this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.textBox1);
+            this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.dtgvUsers);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.pnlInfo);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.tbRole);
+            this.Controls.Add(this.tbGender);
             this.Name = "uscManager_Users";
             this.Size = new System.Drawing.Size(1115, 777);
             this.panel1.ResumeLayout(false);
@@ -404,16 +424,16 @@ namespace CafeManagementApplication.views
             this.pnlGender.PerformLayout();
             this.pnlRole.ResumeLayout(false);
             this.pnlRole.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView lvUsers;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel pnlInfo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -428,18 +448,18 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.RadioButton rdoOther;
         private System.Windows.Forms.RadioButton rdoFemale;
         private System.Windows.Forms.RadioButton rdoMale;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnlGender;
         private System.Windows.Forms.TextBox tbUserPassword;
         private System.Windows.Forms.TextBox tbUserName;
         private System.Windows.Forms.TextBox tbAge;
         private System.Windows.Forms.TextBox tbName;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.DataGridView dtgvUsers;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox tbGender;
+        private System.Windows.Forms.TextBox tbRole;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem resertToolStripMenuItem;
     }
 }

@@ -79,6 +79,7 @@ namespace CafeManagementApplication.helpers
             }
         }
 
+
         public void checkUsername(TextBox tb, StringBuilder sb, string msg, bool status)
         {
             if (checkEmpty(tb, sb, msg)) return;
@@ -134,7 +135,7 @@ namespace CafeManagementApplication.helpers
                 }
                 else
                 {
-                    if (!TableModel.Instance.isExist(tb.Tag.ToString()))
+                    if (!TableModel.Instance.isExist(tb.Text))
                     {
                         sb.Append("Bàn không tồn tại !\n");
                         sb.Append("Vui lòng chọn lại !\n");
@@ -159,7 +160,7 @@ namespace CafeManagementApplication.helpers
                 {
                     if (ProductModel.Instance.isExist(tb.Text))
                     {
-                        sb.Append("Sản phẩm đã tồn tại !\n");
+                        sb.Append("Món đã tồn tại !\n");
                         tb.BackColor = Color.Yellow;
                     }
                     else
@@ -169,9 +170,9 @@ namespace CafeManagementApplication.helpers
                 }
                 else
                 {
-                    if (!ProductModel.Instance.isExist(tb.Tag.ToString()))
+                    if (!ProductModel.Instance.isExist(tb.Text))
                     {
-                        sb.Append("Sản phẩm không tồn tại !\n");
+                        sb.Append("Món đó không tồn tại !\n");
                         sb.Append("Vui lòng chọn lại !\n");
                         tb.BackColor = Color.Yellow;
                     }
