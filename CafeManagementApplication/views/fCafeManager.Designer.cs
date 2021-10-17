@@ -81,7 +81,7 @@ namespace CafeManagementApplication.views
             // pnlModule
             // 
             this.pnlModule.Location = new System.Drawing.Point(28, 89);
-            this.pnlModule.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlModule.Margin = new System.Windows.Forms.Padding(4);
             this.pnlModule.Name = "pnlModule";
             this.pnlModule.Size = new System.Drawing.Size(1397, 777);
             this.pnlModule.TabIndex = 4;
@@ -102,7 +102,7 @@ namespace CafeManagementApplication.views
             // 
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.Location = new System.Drawing.Point(1136, 44);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(142, 37);
             this.btnLogout.TabIndex = 6;
@@ -135,6 +135,7 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.btnStatistics);
             this.Controls.Add(this.btnManager);
             this.Controls.Add(this.btnSale);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "fCafeManager";

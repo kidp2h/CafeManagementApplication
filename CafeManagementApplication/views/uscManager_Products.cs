@@ -180,8 +180,8 @@ namespace CafeManagementApplication.views
             tbProductName.DataBindings.Add(new Binding("Tag", dtgvProducts.DataSource, "Tên món", true, DataSourceUpdateMode.Never));
             tbProductPrice.DataBindings.Add(new Binding("Text", dtgvProducts.DataSource, "Giá món", true, DataSourceUpdateMode.Never));
 
-            string name = (string)dtgvProducts.SelectedCells[0].OwningRow.Cells["Tên loại"].Value;
-            cbCategory.SelectedItem = name;
+            //string name = (string)dtgvProducts.SelectedCells[0].OwningRow.Cells["Tên loại"].Value;
+            //cbCategory.SelectedItem = name;
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
@@ -189,37 +189,37 @@ namespace CafeManagementApplication.views
             dv.RowFilter = String.Format("[Tên món] LIKE '%{0}%'", tbSearch.Text);
         }
 
-        private void dtgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex == -1) return;
-            DataGridViewRow row = dtgvProducts.Rows[e.RowIndex];
-            cbCategory.SelectedItem = row.Cells[1].Value.ToString();
-        }
-
         #region Effect
         private void tbProductName_TextChanged(object sender, EventArgs e)
         {
             if (tbProductName.BackColor != Color.White)
                 tbProductName.BackColor = Color.White;
+            try
+            {
+                string name = (string)dtgvProducts.SelectedCells[0].OwningRow.Cells["Tên loại"].Value;
+                cbCategory.SelectedItem = name;
+            }
+            catch { }
         }
 
         private void tbProductPrice_TextChanged(object sender, EventArgs e)
         {
             if (tbProductPrice.BackColor != Color.White)
             tbProductPrice.BackColor = Color.White;
-
-
-            string name = (string)dtgvProducts.SelectedCells[0].OwningRow.Cells["Tên loại"].Value;
-            cbCategory.SelectedItem = name;
         }
 
-
         #endregion
 
         #endregion
 
-        
-
- 
+        private void dtgvProducts_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            try
+            {
+                string name = (string)dtgvProducts.SelectedCells[0].OwningRow.Cells["Tên loại"].Value;
+                cbCategory.SelectedItem = name;
+            }
+            catch { }
+        }
     }
 }

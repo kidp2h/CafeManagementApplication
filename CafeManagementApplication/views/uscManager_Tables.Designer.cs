@@ -36,10 +36,7 @@ namespace CafeManagementApplication.views
             this.btnDeleteTable = new System.Windows.Forms.Button();
             this.btnUpdateTable = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.rdoFull = new System.Windows.Forms.RadioButton();
-          
-            this.label2 = new System.Windows.Forms.Label();
             this.tbTableName = new System.Windows.Forms.TextBox();
             this.rdoEmpty = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,7 +45,7 @@ namespace CafeManagementApplication.views
             this.dtgvTables = new System.Windows.Forms.DataGridView();
             this.tbStatus = new System.Windows.Forms.TextBox();
             this.tbTableSelected = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -100,25 +97,15 @@ namespace CafeManagementApplication.views
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.rdoFull);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.tbTableName);
             this.panel2.Controls.Add(this.rdoEmpty);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.rdoFull);
+            this.panel2.Controls.Add(this.tbTableName);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(643, 352);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(430, 253);
             this.panel2.TabIndex = 15;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(24, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(8, 8);
-            this.button2.TabIndex = 22;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // rdoFull
             // 
@@ -126,7 +113,7 @@ namespace CafeManagementApplication.views
             this.rdoFull.Enabled = false;
             this.rdoFull.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoFull.ForeColor = System.Drawing.Color.Maroon;
-            this.rdoFull.Location = new System.Drawing.Point(276, 141);
+            this.rdoFull.Location = new System.Drawing.Point(305, 141);
             this.rdoFull.Name = "rdoFull";
             this.rdoFull.Size = new System.Drawing.Size(120, 29);
             this.rdoFull.TabIndex = 19;
@@ -149,7 +136,7 @@ namespace CafeManagementApplication.views
             this.rdoEmpty.Enabled = false;
             this.rdoEmpty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoEmpty.ForeColor = System.Drawing.Color.Maroon;
-            this.rdoEmpty.Location = new System.Drawing.Point(138, 140);
+            this.rdoEmpty.Location = new System.Drawing.Point(155, 140);
             this.rdoEmpty.Name = "rdoEmpty";
             this.rdoEmpty.Size = new System.Drawing.Size(132, 29);
             this.rdoEmpty.TabIndex = 20;
@@ -231,15 +218,15 @@ namespace CafeManagementApplication.views
             this.tbTableSelected.Size = new System.Drawing.Size(10, 22);
             this.tbTableSelected.TabIndex = 26;
             // 
-            // label2
+            // label1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label2.Location = new System.Drawing.Point(3, 139);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 29);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Trạng thái:";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label1.Location = new System.Drawing.Point(3, 139);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(137, 29);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Trạng Thái:";
             // 
             // uscManager_Tables
             // 
@@ -275,12 +262,11 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.TextBox tbTableName;
         private System.Windows.Forms.RadioButton rdoEmpty;
         private System.Windows.Forms.RadioButton rdoFull;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.DataGridView dtgvTables;
         private System.Windows.Forms.TextBox tbStatus;
         private System.Windows.Forms.TextBox tbTableSelected;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

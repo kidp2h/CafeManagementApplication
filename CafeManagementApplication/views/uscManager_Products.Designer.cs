@@ -182,9 +182,9 @@ namespace CafeManagementApplication.views
             this.dtgvProducts.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgvProducts.RowTemplate.Height = 24;
             this.dtgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvProducts.Size = new System.Drawing.Size(605, 697);
-            this.dtgvProducts.TabIndex = 31;
-            this.dtgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvProducts_CellClick);
+            this.dtgvProducts.Size = new System.Drawing.Size(605, 707);
+            this.dtgvProducts.TabIndex = 31;   
+            this.dtgvProducts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dtgvProducts_DataBindingComplete);
             // 
             // tbProductSelected
             // 

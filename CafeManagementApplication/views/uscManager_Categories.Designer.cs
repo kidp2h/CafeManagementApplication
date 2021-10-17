@@ -134,7 +134,7 @@ namespace CafeManagementApplication.views
             this.dtgvCategories.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgvCategories.RowTemplate.Height = 24;
             this.dtgvCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvCategories.Size = new System.Drawing.Size(605, 697);
+            this.dtgvCategories.Size = new System.Drawing.Size(602, 707);
             this.dtgvCategories.TabIndex = 41;
             // 
             // pictureBox1
