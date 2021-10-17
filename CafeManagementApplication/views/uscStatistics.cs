@@ -1,6 +1,9 @@
-﻿using CafeManagementApplication.models;
+﻿using CafeManagementApplication.controllers;
+using CafeManagementApplication.models;
 using System;
 using System.Windows.Forms;
+using System.Data;
+using System.Threading;
 
 namespace CafeManagementApplication.views
 { 
@@ -18,22 +21,35 @@ namespace CafeManagementApplication.views
                 return instance;
             }
         }
+
+        private DataTable dt = new DataTable();
+        private DataView dv;
         private uscStatistics()
         {
             InitializeComponent();
+            LoadListBillForView();
+        }
 
+        public void LoadListBillForView()
+        {
+            Thread loadList = new Thread(() =>
+            {
+                BillController.Instance.LoadBill(dt);
+                dv = new DataView(dt);
+                dtgvBill.DataSource = dv;
+            });
+            loadList.IsBackground = true;
+            loadList.Start();
         }
 
         private void button1_Click(object sender, System.EventArgs e)
         {
-            string[] time = dateTimePicker1.Text.Split('/');
-            int day = Int32.Parse(time[0]);
-            int month = Int32.Parse(time[1]);
-            int year = Int32.Parse(time[2]);
-            dynamic result =  BillModel.Instance.listBillByDateTime(day, month, year);
-            Console.WriteLine("xx");
+            dv.RowFilter = String.Format("[Ngày thanh toán] LIKE '{0}*'", dateTimePicker1.Text);       
+        }
 
-
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dv.RowFilter = String.Format("[Ngày thanh toán] LIKE '%{0}%'", "");
         }
     }
 }
