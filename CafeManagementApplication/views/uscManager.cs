@@ -22,10 +22,10 @@ namespace CafeManagementApplication.views
         private uscManager()
         {
             InitializeComponent();
-            btnManagerUsers_Click(null, null);
-            btnManagerCategories_Click(null, null);
-            btnManagerDrinks_Click(null, null);
-            btnManagerTables_Click(null, null);
+            //btnManagerUsers_Click(null, null);
+            //btnManagerCategories_Click(null, null);
+            //btnManagerDrinks_Click(null, null);
+            //btnManagerTables_Click(null, null);
 
 
         }

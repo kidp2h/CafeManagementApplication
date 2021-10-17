@@ -33,9 +33,7 @@ namespace CafeManagementApplication.views
 
             if (Properties.Settings.Default.role == "MANAGER") {
                 btnManager.Enabled = true;
-                btnStatistics.Enabled = true;
-                btnManager_Click(null, null);
-                
+                btnStatistics.Enabled = true;  
             }
             btnSale_Click(null, null);
             lblFullName.Text = Properties.Settings.Default.fullname;
