@@ -194,12 +194,7 @@ namespace CafeManagementApplication.views
         {
             if (tbProductName.BackColor != Color.White)
                 tbProductName.BackColor = Color.White;
-            try
-            {
-                string name = (string)dtgvProducts.SelectedCells[0].OwningRow.Cells["Tên loại"].Value;
-                cbCategory.SelectedItem = name;
-            }
-            catch { }
+           
         }
 
         private void tbProductPrice_TextChanged(object sender, EventArgs e)
@@ -213,6 +208,16 @@ namespace CafeManagementApplication.views
         #endregion
 
         private void dtgvProducts_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            try
+            {
+                string name = (string)dtgvProducts.SelectedCells[0].OwningRow.Cells["Tên loại"].Value;
+                cbCategory.SelectedItem = name;
+            }
+            catch { }
+        }
+
+        private void dtgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {

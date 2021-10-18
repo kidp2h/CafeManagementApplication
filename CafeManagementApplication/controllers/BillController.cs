@@ -35,9 +35,9 @@ namespace CafeManagementApplication.controllers
                 string Paid;
                 if (bill["paid"].Value)
                 {
-                    Paid = "Bàn đã thanh toán";
+                    Paid = "Đã thanh toán";
                 }
-                else Paid = "Bàn chưa thanh toán";
+                else Paid = "Chưa thanh toán";
                 string PaidTime = bill["paidTime"].Value.ToString();
                 string Sale = bill["sale"].Value.ToString();
 
