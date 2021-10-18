@@ -70,7 +70,7 @@ namespace CafeManagementApplication.controllers
             }
             if(nameData == "Product")
             {               
-                ProductModel.Instance.addProduct(data, view.inputCategoryName);
+                ProductModel.Instance.addProduct(data, data.CategoryName);
                 return;
             }    
             if (nameData == "User")
