@@ -34,6 +34,8 @@ namespace CafeManagementApplication.views
         public string TableId { get; set; }
 
         public string BillId { get; set; }
+
+        
         #endregion
 
         #region Handler Event
@@ -50,6 +52,7 @@ namespace CafeManagementApplication.views
             #endregion
 
             PaymentController.Instance.payment(this, TableId, BillId);
+
             Thread t1 = new Thread(() =>
             {
                 Invoke(new Action(() =>
