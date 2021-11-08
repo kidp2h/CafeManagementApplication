@@ -14,9 +14,11 @@ namespace CafeManagementApplication.views
     public partial class uscManager_Tables : UserControl
     {
         private static uscManager_Tables instance;
+
         private DataTable dt;
         private DataView dv;
         private BindingSource tableList = new BindingSource();
+
         public static uscManager_Tables Instance
         {
             get
@@ -32,10 +34,10 @@ namespace CafeManagementApplication.views
         private uscManager_Tables()
         {
             InitializeComponent();
-            Load();
+            LoadData();
         } 
         
-        private void Load()
+        private void LoadData()
         {
             dtgvTables.DataSource = tableList;
             LoadListTables();            
@@ -44,17 +46,21 @@ namespace CafeManagementApplication.views
         public void LoadListTables(bool status = true)
         {
             bool statusTemp = status;
-            Thread loadList = new Thread(() => {
+            //Thread loadList = new Thread(() => {
+                //tạo một đối tượng data table
                 dt = new DataTable();
-                LoadListController.Instance.LoadingListForDataGirdView("uscManager_Tables", dt);            
+                //gọi controler để lấy dữ liệu vào datable từ model
+                LoadListController.Instance.LoadingListForDataGirdView("uscManager_Tables", dt);   
+                //tạo đối tượng data view 
                 dv = new DataView (dt);
                 tableList.DataSource = dv;
+
                 if(statusTemp) TableBinding();
                 
 
-            });
-            loadList.IsBackground = true;
-            loadList.Start();
+            //});
+            //loadList.IsBackground = true;
+            //loadList.Start();
         }
 
         #region Public Data View
@@ -109,7 +115,7 @@ namespace CafeManagementApplication.views
             dtgvTables.CurrentCell = dtgvTables[0, dt.Rows.IndexOf(rowNew)];
             #endregion
 
-            ManagerController.Instance.AddData("Table", table, this);
+            ManagerController.Instance.AddData("Table", table);
             uscSale.Instance.LoadListTableForForm();
         }
 
@@ -149,7 +155,8 @@ namespace CafeManagementApplication.views
         {
             #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkTableName(tbTableName, sb, "Vui lòng nhập tên bàn  !", false);
+            ValidateForm.Instance.checkTableName(tbTableName, sb, "Vui lòng chọn bàn !", false);
+            ValidateForm.Instance.checkTableStatus(tbStatus, sb, "Bàn này đang có người không thể xóa !");
             if (sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);

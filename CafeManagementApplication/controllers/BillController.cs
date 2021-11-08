@@ -28,6 +28,7 @@ namespace CafeManagementApplication.controllers
             dt.Columns.Add("Trạng thái");
             dt.Columns.Add("Ngày thanh toán");
             dt.Columns.Add("Giảm giá");
+            dt.Columns.Add("Tổng tiền");
 
             foreach (dynamic bill in billList)
             {
@@ -40,8 +41,9 @@ namespace CafeManagementApplication.controllers
                 else Paid = "Chưa thanh toán";
                 string PaidTime = bill["paidTime"].Value.ToString();
                 string Sale = bill["sale"].Value.ToString();
+                string Subtotal = bill["subtotal"].Value.ToString();
 
-                dt.Rows.Add(Table, Paid, PaidTime, Sale);
+                dt.Rows.Add(Table, Paid, PaidTime, Sale, Subtotal);
             }
 
             return;
@@ -49,6 +51,7 @@ namespace CafeManagementApplication.controllers
 
         public void AddProductToBill(fAddProducts f,string billId, string productId, int amount)
         {
+            //gọi model để thêm product cho bill: id của bill,  tên của sản phẩm, số lượng
             BillModel.Instance.addProductToBill(billId, productId, amount);    
             FilterDefinition<Table> filter = new BsonDocument("bill", new ObjectId(billId));
             TableModel.Instance.updateStatusForTable(filter, types.sTable.FULL);

@@ -25,30 +25,32 @@ namespace CafeManagementApplication.views
         private DataTable dt;
         private DataView dv;
         private BindingSource billList = new BindingSource();
+        
 
         private uscStatistics()
         {
             InitializeComponent();
-            Load();
+            LoadData();
         }
 
-        private void Load()
+        private void LoadData()
         {
             dtgvBill.DataSource = billList;
             LoadListBillForView();
         }
 
-        public void LoadListBillForView(bool status = true)
+        public void LoadListBillForView()
         {
-            Thread loadList = new Thread(() =>
-            {
+            //Thread loadList = new Thread(() =>
+            //{
                 dt = new DataTable();
                 BillController.Instance.LoadBill(dt);
                 dv = new DataView(dt);
                 billList.DataSource = dv;
-            });
-            loadList.IsBackground = true;
-            loadList.Start();
+
+            //});
+            //loadlist.isbackground = true;
+            //loadlist.start();
         }
 
         private void button1_Click(object sender, System.EventArgs e)

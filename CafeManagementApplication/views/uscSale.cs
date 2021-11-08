@@ -81,7 +81,8 @@ namespace CafeManagementApplication.views
         #region Handler Event
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            fAddProducts f = new fAddProducts();     
+            fAddProducts f = new fAddProducts();   
+            
             f.BillID = this.BillId;
             f.TableId = this.TableId;
             f.TableStatus = this.TableStatus;
@@ -95,6 +96,7 @@ namespace CafeManagementApplication.views
                 fPay f = new fPay();
                 f.TableId = TableId;
                 f.BillId = BillId; 
+                
                 f.inputSubtotalText = uscSale.Instance.inputToTalPriceBill.Replace("đ","");
                 f.Show();
             } 

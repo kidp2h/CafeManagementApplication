@@ -29,22 +29,24 @@ namespace CafeManagementApplication.views
             }
         }
 
-        public uscManager_Users()
+        private uscManager_Users()
         {
             InitializeComponent();
             LoadListUsers();
-            ManagerController.Instance.ResetDataInput(this);
         }
         
         public void LoadListUsers()
         {
-            Thread loadList = new Thread(() => {
+            //Thread loadList = new Thread(() => {
+
                 LoadListController.Instance.LoadingListForDataGirdView("useManager_Users", dt);
                
                 
                 dv = new DataView(dt);
 
                 dtgvUsers.DataSource = dv;
+
+                //set style cho đẹp thoi thầy ạ
                 dtgvUsers.Columns[0].Width = 300;
                 dtgvUsers.Columns[1].Width = 100;
                 dtgvUsers.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -54,9 +56,9 @@ namespace CafeManagementApplication.views
         
              
 
-            });
-            loadList.IsBackground = true;
-            loadList.Start();
+            //});
+            //loadList.IsBackground = true;
+            //loadList.Start();
 
         }
 
@@ -154,7 +156,7 @@ namespace CafeManagementApplication.views
             dtgvUsers.CurrentCell = dtgvUsers[0, dtgvUsers.RowCount -1 ];
             #endregion
 
-            ManagerController.Instance.AddData("User", user, this);
+            ManagerController.Instance.AddData("User", user);
             
 
         }
@@ -227,9 +229,9 @@ namespace CafeManagementApplication.views
         private void dtgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            if (tbGender.Text == "Nam") rdoMale.Checked = true;
-            else if (tbGender.Text == "Nữ") rdoFemale.Checked = true; else rdoOther.Checked = true;
-            if (tbRole.Text == "Quản lý") rdoManager.Checked = true; else rdoSaff.Checked = true;
+            //if (tbGender.Text == "Nam") rdoMale.Checked = true;
+            //else if (tbGender.Text == "Nữ") rdoFemale.Checked = true; else rdoOther.Checked = true;
+            //if (tbRole.Text == "Quản lý") rdoManager.Checked = true; else rdoSaff.Checked = true;
 
         }
 
@@ -282,6 +284,18 @@ namespace CafeManagementApplication.views
         private void resertToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ManagerController.Instance.ResetDataInput(this);
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            ManagerController.Instance.ResetDataInput(this);
+        }
+
+        private void dtgvUsers_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (tbGender.Text == "Nam") rdoMale.Checked = true;
+            else if (tbGender.Text == "Nữ") rdoFemale.Checked = true; else rdoOther.Checked = true;
+            if (tbRole.Text == "Quản lý") rdoManager.Checked = true; else rdoSaff.Checked = true;
         }
     }
 }

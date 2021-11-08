@@ -37,7 +37,7 @@ namespace CafeManagementApplication.helpers
                     {
                         lbl.Text = aDateTime.ToString();
                     }
-                    catch (Exception e) { }
+                    catch { }
                     Thread.Sleep(1);
                 }
             });

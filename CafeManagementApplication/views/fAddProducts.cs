@@ -13,7 +13,12 @@ namespace CafeManagementApplication.views
         public fAddProducts()
         {  
             InitializeComponent();
+
+            //Gán cái form fAddProducts vào trong controler để có thể xử lý sự kiện click vào sản phẩm truyền thông tin sản phẩm qua ô TTSP
+            //và xử lý render sản phẩm khi click vào loại sản phẩm
             LoadPanelController.Instance.View = this;
+
+            //Gọi control để render các category vào trong ô chứa category của form fAddProduct
             LoadItemController.Instance.LoadingItemCategory(flpListCategorys);
             
         }
@@ -75,24 +80,31 @@ namespace CafeManagementApplication.views
             }
             #endregion
 
+            //gọi controler để thêm product vào bill có: id của bill là BillID, tên product là LblNameTag, số lượng là txtAmount
             BillController.Instance.AddProductToBill(this, this.BillID, this.LblNameTag, Int32.Parse(this.txtAmount));
+
             if (this.TableStatus != "Có người")
             {
-                Thread t1 = new Thread(() =>
-                {
-                    Invoke(new Action(() =>
-                    {
-                        uscSale.Instance.LoadListTableForForm();
-                    }));
-                });
-                t1.IsBackground = true;
-                t1.Start();
+                //nếu bàn chưa có người thì đổi lại trạng thái bàn
                 this.TableStatus = "Có người";
+                // Thread t1 = new Thread(() =>
+                // {
+                // Invoke(new Action(() => // cách chạy đa luồng cho form không lỗi
+                // {
+                //render lại item bàn vào form bán hàng 
+                uscSale.Instance.LoadListTableForForm();
+                    //}));
+                //});
+                //t1.IsBackground = true;
+                //t1.Start();
+                
             }
+
             LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
+
             uscManager_Tables.Instance.LoadListTables(false);
 
-            this.Hide();
+            
         }
 
         private void tbAmount_TextChanged(object sender, EventArgs e)
