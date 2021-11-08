@@ -32,7 +32,7 @@ namespace CafeManagementApplication.controllers
             }
             else
             {
-                MessageBox.Show("Vc khong du tien :((");
+                MessageBox.Show("Không đủ tiền !!!");
             }
             
         }
