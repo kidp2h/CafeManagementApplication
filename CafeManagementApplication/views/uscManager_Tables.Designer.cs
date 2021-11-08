@@ -29,23 +29,23 @@ namespace CafeManagementApplication.views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAddTable = new System.Windows.Forms.Button();
             this.btnDeleteTable = new System.Windows.Forms.Button();
             this.btnUpdateTable = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.rdoEmpty = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.rdoFull = new System.Windows.Forms.RadioButton();
             this.tbTableName = new System.Windows.Forms.TextBox();
-            this.rdoEmpty = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.dtgvTables = new System.Windows.Forms.DataGridView();
             this.tbStatus = new System.Windows.Forms.TextBox();
             this.tbTableSelected = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -57,17 +57,17 @@ namespace CafeManagementApplication.views
             this.panel1.Controls.Add(this.btnAddTable);
             this.panel1.Controls.Add(this.btnDeleteTable);
             this.panel1.Controls.Add(this.btnUpdateTable);
-            this.panel1.Location = new System.Drawing.Point(667, 62);
+            this.panel1.Location = new System.Drawing.Point(743, 59);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(389, 265);
+            this.panel1.Size = new System.Drawing.Size(267, 261);
             this.panel1.TabIndex = 8;
             // 
             // btnAddTable
             // 
             this.btnAddTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnAddTable.Location = new System.Drawing.Point(64, 3);
+            this.btnAddTable.Location = new System.Drawing.Point(3, 3);
             this.btnAddTable.Name = "btnAddTable";
-            this.btnAddTable.Size = new System.Drawing.Size(273, 68);
+            this.btnAddTable.Size = new System.Drawing.Size(260, 68);
             this.btnAddTable.TabIndex = 1;
             this.btnAddTable.Text = "Thêm";
             this.btnAddTable.UseVisualStyleBackColor = true;
@@ -76,9 +76,9 @@ namespace CafeManagementApplication.views
             // btnDeleteTable
             // 
             this.btnDeleteTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnDeleteTable.Location = new System.Drawing.Point(64, 197);
+            this.btnDeleteTable.Location = new System.Drawing.Point(3, 190);
             this.btnDeleteTable.Name = "btnDeleteTable";
-            this.btnDeleteTable.Size = new System.Drawing.Size(273, 68);
+            this.btnDeleteTable.Size = new System.Drawing.Size(264, 68);
             this.btnDeleteTable.TabIndex = 3;
             this.btnDeleteTable.Text = "Xóa";
             this.btnDeleteTable.UseVisualStyleBackColor = true;
@@ -87,9 +87,9 @@ namespace CafeManagementApplication.views
             // btnUpdateTable
             // 
             this.btnUpdateTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnUpdateTable.Location = new System.Drawing.Point(64, 100);
+            this.btnUpdateTable.Location = new System.Drawing.Point(3, 97);
             this.btnUpdateTable.Name = "btnUpdateTable";
-            this.btnUpdateTable.Size = new System.Drawing.Size(273, 68);
+            this.btnUpdateTable.Size = new System.Drawing.Size(264, 68);
             this.btnUpdateTable.TabIndex = 2;
             this.btnUpdateTable.Text = "Sửa";
             this.btnUpdateTable.UseVisualStyleBackColor = true;
@@ -106,6 +106,31 @@ namespace CafeManagementApplication.views
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(430, 253);
             this.panel2.TabIndex = 15;
+            // 
+            // rdoEmpty
+            // 
+            this.rdoEmpty.AutoSize = true;
+            this.rdoEmpty.Checked = true;
+            this.rdoEmpty.Enabled = false;
+            this.rdoEmpty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoEmpty.ForeColor = System.Drawing.Color.Maroon;
+            this.rdoEmpty.Location = new System.Drawing.Point(155, 140);
+            this.rdoEmpty.Name = "rdoEmpty";
+            this.rdoEmpty.Size = new System.Drawing.Size(132, 29);
+            this.rdoEmpty.TabIndex = 20;
+            this.rdoEmpty.TabStop = true;
+            this.rdoEmpty.Text = "Bàn trống ";
+            this.rdoEmpty.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label1.Location = new System.Drawing.Point(3, 139);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(137, 29);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Trạng Thái:";
             // 
             // rdoFull
             // 
@@ -128,21 +153,6 @@ namespace CafeManagementApplication.views
             this.tbTableName.Size = new System.Drawing.Size(289, 34);
             this.tbTableName.TabIndex = 19;
             this.tbTableName.TextChanged += new System.EventHandler(this.tbTableName_TextChanged);
-            // 
-            // rdoEmpty
-            // 
-            this.rdoEmpty.AutoSize = true;
-            this.rdoEmpty.Checked = true;
-            this.rdoEmpty.Enabled = false;
-            this.rdoEmpty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoEmpty.ForeColor = System.Drawing.Color.Maroon;
-            this.rdoEmpty.Location = new System.Drawing.Point(155, 140);
-            this.rdoEmpty.Name = "rdoEmpty";
-            this.rdoEmpty.Size = new System.Drawing.Size(132, 29);
-            this.rdoEmpty.TabIndex = 20;
-            this.rdoEmpty.TabStop = true;
-            this.rdoEmpty.Text = "Bàn trống ";
-            this.rdoEmpty.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -182,22 +192,24 @@ namespace CafeManagementApplication.views
             this.dtgvTables.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvTables.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtgvTables.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvTables.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvTables.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgvTables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvTables.Location = new System.Drawing.Point(9, 60);
             this.dtgvTables.Name = "dtgvTables";
             this.dtgvTables.ReadOnly = true;
+            this.dtgvTables.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dtgvTables.RowHeadersVisible = false;
             this.dtgvTables.RowHeadersWidth = 25;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgvTables.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgvTables.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dtgvTables.RowTemplate.Height = 24;
             this.dtgvTables.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvTables.Size = new System.Drawing.Size(602, 707);
@@ -217,16 +229,6 @@ namespace CafeManagementApplication.views
             this.tbTableSelected.Name = "tbTableSelected";
             this.tbTableSelected.Size = new System.Drawing.Size(10, 22);
             this.tbTableSelected.TabIndex = 26;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label1.Location = new System.Drawing.Point(3, 139);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 29);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Trạng Thái:";
             // 
             // uscManager_Tables
             // 

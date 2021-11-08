@@ -38,8 +38,7 @@ namespace CafeManagementApplication.views
         private void Load()
         {
             dtgvTables.DataSource = tableList;
-            LoadListTables();
-            
+            LoadListTables();            
         }
 
         public void LoadListTables(bool status = true)

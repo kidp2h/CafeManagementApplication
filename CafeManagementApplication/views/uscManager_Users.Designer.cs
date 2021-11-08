@@ -138,10 +138,11 @@ namespace CafeManagementApplication.views
             // 
             this.tbUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbUserPassword.Location = new System.Drawing.Point(138, 216);
-            this.tbUserPassword.Multiline = true;
             this.tbUserPassword.Name = "tbUserPassword";
-            this.tbUserPassword.Size = new System.Drawing.Size(441, 33);
+            this.tbUserPassword.PasswordChar = '*';
+            this.tbUserPassword.Size = new System.Drawing.Size(441, 34);
             this.tbUserPassword.TabIndex = 27;
+            this.tbUserPassword.UseSystemPasswordChar = true;
             this.tbUserPassword.TextChanged += new System.EventHandler(this.tbUserPassword_TextChanged);
             // 
             // tbUserName
@@ -351,6 +352,7 @@ namespace CafeManagementApplication.views
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dtgvUsers.RowHeadersVisible = false;
             this.dtgvUsers.RowHeadersWidth = 40;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -398,7 +400,7 @@ namespace CafeManagementApplication.views
             // resertToolStripMenuItem
             // 
             this.resertToolStripMenuItem.Name = "resertToolStripMenuItem";
-            this.resertToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.resertToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
             this.resertToolStripMenuItem.Text = "Làm mới mẫu nhập";
             this.resertToolStripMenuItem.Click += new System.EventHandler(this.resertToolStripMenuItem_Click);
             // 
