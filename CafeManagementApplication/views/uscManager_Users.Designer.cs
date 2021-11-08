@@ -31,9 +31,10 @@ namespace CafeManagementApplication.views
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Button btnAdd;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Button btnNew;
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -63,6 +64,7 @@ namespace CafeManagementApplication.views
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.resertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             btnAdd = new System.Windows.Forms.Button();
+            btnNew = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlInfo.SuspendLayout();
             this.pnlGender.SuspendLayout();
@@ -75,9 +77,9 @@ namespace CafeManagementApplication.views
             // btnAdd
             // 
             btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnAdd.Location = new System.Drawing.Point(0, 0);
+            btnAdd.Location = new System.Drawing.Point(0, 71);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new System.Drawing.Size(262, 85);
+            btnAdd.Size = new System.Drawing.Size(230, 65);
             btnAdd.TabIndex = 4;
             btnAdd.Text = "Thêm";
             btnAdd.UseVisualStyleBackColor = true;
@@ -85,12 +87,13 @@ namespace CafeManagementApplication.views
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(btnNew);
             this.panel1.Controls.Add(btnAdd);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnUpdate);
-            this.panel1.Location = new System.Drawing.Point(758, 459);
+            this.panel1.Location = new System.Drawing.Point(748, 462);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(273, 301);
+            this.panel1.Size = new System.Drawing.Size(244, 294);
             this.panel1.TabIndex = 4;
             // 
             // btnDelete
@@ -98,7 +101,7 @@ namespace CafeManagementApplication.views
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Location = new System.Drawing.Point(0, 213);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(262, 85);
+            this.btnDelete.Size = new System.Drawing.Size(230, 65);
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -107,9 +110,9 @@ namespace CafeManagementApplication.views
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(0, 107);
+            this.btnUpdate.Location = new System.Drawing.Point(0, 142);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(262, 85);
+            this.btnUpdate.Size = new System.Drawing.Size(230, 65);
             this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "Sửa";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -332,37 +335,38 @@ namespace CafeManagementApplication.views
             this.dtgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvUsers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtgvUsers.BackgroundColor = System.Drawing.Color.LightPink;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgvUsers.ColumnHeadersHeight = 40;
             this.dtgvUsers.Location = new System.Drawing.Point(3, 59);
             this.dtgvUsers.Name = "dtgvUsers";
             this.dtgvUsers.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgvUsers.RowHeadersVisible = false;
             this.dtgvUsers.RowHeadersWidth = 40;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dtgvUsers.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dtgvUsers.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgvUsers.RowTemplate.Height = 24;
             this.dtgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvUsers.Size = new System.Drawing.Size(1109, 394);
             this.dtgvUsers.TabIndex = 15;
             this.dtgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvUsers_CellClick);
+            this.dtgvUsers.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dtgvUsers_DataBindingComplete);
             // 
             // pictureBox1
             // 
@@ -403,6 +407,17 @@ namespace CafeManagementApplication.views
             this.resertToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
             this.resertToolStripMenuItem.Text = "Làm mới mẫu nhập";
             this.resertToolStripMenuItem.Click += new System.EventHandler(this.resertToolStripMenuItem_Click);
+            // 
+            // btnNew
+            // 
+            btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnNew.Location = new System.Drawing.Point(0, 0);
+            btnNew.Name = "btnNew";
+            btnNew.Size = new System.Drawing.Size(230, 65);
+            btnNew.TabIndex = 5;
+            btnNew.Text = "Mới";
+            btnNew.UseVisualStyleBackColor = true;
+            btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // uscManager_Users
             // 

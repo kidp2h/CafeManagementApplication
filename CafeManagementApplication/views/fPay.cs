@@ -62,7 +62,7 @@ namespace CafeManagementApplication.views
 
             LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
             uscManager_Tables.Instance.LoadListTables(false);
-            uscStatistics.Instance.LoadListBillForView(false);
+            uscStatistics.Instance.LoadListBillForView();
         }
 
         private void tbMoney_TextChanged(object sender, EventArgs e)

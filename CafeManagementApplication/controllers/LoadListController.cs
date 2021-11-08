@@ -29,75 +29,75 @@ namespace CafeManagementApplication.controllers
 
         private LoadListController() { }
 
-        public void LoadingListForListViewOf(string form, ListView lv)
-        {
+        //public void LoadingListForListViewOf(string form, ListView lv)
+        //{
             
-            lv.Items.Clear();
-            if (form == "uscManager_Categories")
-            {
-                dynamic categoryList = CategoryModel.Instance.getListCategory();
-                foreach(dynamic category in categoryList)
-                {
-                    ListViewItem categoryLvItem = new ListViewItem(category.NameCategory.ToString());
-                    categoryLvItem.Tag = category.NameCategory.ToString();
-                    lv.Items.Add(categoryLvItem);
-                }
-                return;
-            }
-            if (form == "useManager_Tables")
-            {
-                dynamic tableList = TableModel.Instance.getListTable();
-                foreach (dynamic table in tableList)
-                {
-                    ListViewItem tableLvItem = new ListViewItem(table.TableName);
-                    if (table.Status == types.sTable.FULL)
-                    {
-                        tableLvItem.SubItems.Add("Có người");
-                    }
-                    else tableLvItem.SubItems.Add("Bàn trống");
-                    lv.Items.Add(tableLvItem);
-                }
-                return;
-            }
-            if (form == "useManager_Products")
-            {
-                dynamic productList = ProductModel.Instance.getListProduct();
-                foreach(dynamic product in productList)
-                {
-                    ListViewItem productLvItem = new ListViewItem(product["name"].Value);
-                    string category = product["category"].Value;
-                    productLvItem.SubItems.Add(category);                  
-                    int price = product["price"].Value;
-                    productLvItem.SubItems.Add(price.ToString());
-                    lv.Items.Add(productLvItem);
-                }
-                return;
-            }
-            if (form == "useManager_Users")
-            {
-                dynamic usersList = UserModel.Instance.getListUser();
-                foreach (dynamic user in usersList)
-                {
-                    ListViewItem lvItem = new ListViewItem(user.Fullname);
-                    int Age = user.Age;
-                    lvItem.SubItems.Add(Age.ToString());
-                    string Gender = user.Gender;
-                    lvItem.SubItems.Add(Gender);
-                    string Username = user.Username;
-                    lvItem.SubItems.Add(Username);
+        //    lv.Items.Clear();
+        //    if (form == "uscManager_Categories")
+        //    {
+        //        dynamic categoryList = CategoryModel.Instance.getListCategory();
+        //        foreach(dynamic category in categoryList)
+        //        {
+        //            ListViewItem categoryLvItem = new ListViewItem(category.NameCategory.ToString());
+        //            categoryLvItem.Tag = category.NameCategory.ToString();
+        //            lv.Items.Add(categoryLvItem);
+        //        }
+        //        return;
+        //    }
+        //    if (form == "useManager_Tables")
+        //    {
+        //        dynamic tableList = TableModel.Instance.getListTable();
+        //        foreach (dynamic table in tableList)
+        //        {
+        //            ListViewItem tableLvItem = new ListViewItem(table.TableName);
+        //            if (table.Status == types.sTable.FULL)
+        //            {
+        //                tableLvItem.SubItems.Add("Có người");
+        //            }
+        //            else tableLvItem.SubItems.Add("Bàn trống");
+        //            lv.Items.Add(tableLvItem);
+        //        }
+        //        return;
+        //    }
+        //    if (form == "useManager_Products")
+        //    {
+        //        dynamic productList = ProductModel.Instance.getListProduct();
+        //        foreach(dynamic product in productList)
+        //        {
+        //            ListViewItem productLvItem = new ListViewItem(product["name"].Value);
+        //            string category = product["category"].Value;
+        //            productLvItem.SubItems.Add(category);                  
+        //            int price = product["price"].Value;
+        //            productLvItem.SubItems.Add(price.ToString());
+        //            lv.Items.Add(productLvItem);
+        //        }
+        //        return;
+        //    }
+        //    if (form == "useManager_Users")
+        //    {
+        //        dynamic usersList = UserModel.Instance.getListUser();
+        //        foreach (dynamic user in usersList)
+        //        {
+        //            ListViewItem lvItem = new ListViewItem(user.Fullname);
+        //            int Age = user.Age;
+        //            lvItem.SubItems.Add(Age.ToString());
+        //            string Gender = user.Gender;
+        //            lvItem.SubItems.Add(Gender);
+        //            string Username = user.Username;
+        //            lvItem.SubItems.Add(Username);
 
-                    if (user.Role == 0)
-                    {
-                        lvItem.SubItems.Add("Nhân viên");
-                    }
-                    else lvItem.SubItems.Add("Quản lý");
+        //            if (user.Role == 0)
+        //            {
+        //                lvItem.SubItems.Add("Nhân viên");
+        //            }
+        //            else lvItem.SubItems.Add("Quản lý");
 
-                    lv.Items.Add(lvItem);
-                }
-                return;
+        //            lv.Items.Add(lvItem);
+        //        }
+        //        return;
 
-            }
-        }
+        //    }
+        //}
 
         public void LoadingBillForListViewFormTableID(string tableID)
         {
@@ -134,20 +134,33 @@ namespace CafeManagementApplication.controllers
             }
         }
 
+
+        //tải dữ liệu lên cái gridview -- gridview là một cái bảng chứa dữ liệu ở view
         public void LoadingListForDataGirdView(string form, DataTable dt)
         {
+            //
             if (form == "uscManager_Tables")
             {
+                //gọi model để lấy dữ liệu vào list có kiểu dữ liệu là table
                 List<Table> tablesList = TableModel.Instance.getListTable();
+
+                //thêm 2 cột vào đối tượng data table
                 dt.Columns.Add("Tên bàn");
                 dt.Columns.Add("Trạng thái");
 
+
+                //lặp qua cái list<table> để lấy từng table
                 foreach (Table table in tablesList)
                 {
+                    //gán giá trị 
                     string Name = table.TableName;
                     string Status = table.Status == types.sTable.FULL ? "Có người" : "Bàn trống";
+
+                    //thêm dữ liệu của từng table vào hàng của data table
                     dt.Rows.Add(Name, Status);
                 }
+
+                //kết thúc hàm
                 return;
             }
 
@@ -183,6 +196,7 @@ namespace CafeManagementApplication.controllers
 
             if (form == "useManager_Users")
             {
+                //
                 List<User> usersList = UserModel.Instance.getListUser();
                 dt.Columns.Add("Họ và tên");
                 dt.Columns.Add("Tuổi");

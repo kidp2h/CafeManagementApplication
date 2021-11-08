@@ -32,6 +32,7 @@ namespace CafeManagementApplication.views
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnNew = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.btnUpdateProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
@@ -52,22 +53,35 @@ namespace CafeManagementApplication.views
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnNew);
             this.panel1.Controls.Add(this.btnDeleteProduct);
             this.panel1.Controls.Add(this.btnUpdateProduct);
             this.panel1.Controls.Add(this.btnAddProduct);
-            this.panel1.Location = new System.Drawing.Point(743, 59);
+            this.panel1.Location = new System.Drawing.Point(789, 20);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(267, 261);
+            this.panel1.Size = new System.Drawing.Size(267, 363);
             this.panel1.TabIndex = 8;
+            // 
+            // btnNew
+            // 
+            this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnNew.Location = new System.Drawing.Point(0, 2);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(252, 68);
+            this.btnNew.TabIndex = 4;
+            this.btnNew.Text = "Mới";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnDeleteProduct
             // 
             this.btnDeleteProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnDeleteProduct.Location = new System.Drawing.Point(0, 193);
+            this.btnDeleteProduct.Location = new System.Drawing.Point(0, 287);
             this.btnDeleteProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
-            this.btnDeleteProduct.Size = new System.Drawing.Size(267, 68);
+            this.btnDeleteProduct.Size = new System.Drawing.Size(252, 68);
             this.btnDeleteProduct.TabIndex = 3;
             this.btnDeleteProduct.Text = "Xóa";
             this.btnDeleteProduct.UseVisualStyleBackColor = true;
@@ -76,10 +90,10 @@ namespace CafeManagementApplication.views
             // btnUpdateProduct
             // 
             this.btnUpdateProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnUpdateProduct.Location = new System.Drawing.Point(0, 97);
+            this.btnUpdateProduct.Location = new System.Drawing.Point(0, 191);
             this.btnUpdateProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpdateProduct.Name = "btnUpdateProduct";
-            this.btnUpdateProduct.Size = new System.Drawing.Size(267, 68);
+            this.btnUpdateProduct.Size = new System.Drawing.Size(252, 68);
             this.btnUpdateProduct.TabIndex = 2;
             this.btnUpdateProduct.Text = "Sửa";
             this.btnUpdateProduct.UseVisualStyleBackColor = true;
@@ -88,10 +102,10 @@ namespace CafeManagementApplication.views
             // btnAddProduct
             // 
             this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnAddProduct.Location = new System.Drawing.Point(0, 0);
+            this.btnAddProduct.Location = new System.Drawing.Point(0, 94);
             this.btnAddProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(267, 68);
+            this.btnAddProduct.Size = new System.Drawing.Size(252, 68);
             this.btnAddProduct.TabIndex = 1;
             this.btnAddProduct.Text = "Thêm";
             this.btnAddProduct.UseVisualStyleBackColor = true;
@@ -100,7 +114,7 @@ namespace CafeManagementApplication.views
             // tbProductPrice
             // 
             this.tbProductPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProductPrice.Location = new System.Drawing.Point(789, 564);
+            this.tbProductPrice.Location = new System.Drawing.Point(789, 600);
             this.tbProductPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbProductPrice.Name = "tbProductPrice";
             this.tbProductPrice.Size = new System.Drawing.Size(289, 34);
@@ -110,7 +124,7 @@ namespace CafeManagementApplication.views
             // tbProductName
             // 
             this.tbProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProductName.Location = new System.Drawing.Point(789, 398);
+            this.tbProductName.Location = new System.Drawing.Point(789, 434);
             this.tbProductName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbProductName.Name = "tbProductName";
             this.tbProductName.Size = new System.Drawing.Size(289, 34);
@@ -121,7 +135,7 @@ namespace CafeManagementApplication.views
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(645, 401);
+            this.label3.Location = new System.Drawing.Point(645, 437);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 29);
             this.label3.TabIndex = 24;
@@ -131,7 +145,7 @@ namespace CafeManagementApplication.views
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(645, 484);
+            this.label4.Location = new System.Drawing.Point(645, 520);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 29);
             this.label4.TabIndex = 25;
@@ -141,7 +155,7 @@ namespace CafeManagementApplication.views
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(645, 569);
+            this.label5.Location = new System.Drawing.Point(645, 605);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(110, 29);
             this.label5.TabIndex = 26;
@@ -151,7 +165,7 @@ namespace CafeManagementApplication.views
             // 
             this.cbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(789, 481);
+            this.cbCategory.Location = new System.Drawing.Point(789, 517);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(289, 37);
             this.cbCategory.TabIndex = 30;
@@ -175,6 +189,7 @@ namespace CafeManagementApplication.views
             this.dtgvProducts.Location = new System.Drawing.Point(11, 60);
             this.dtgvProducts.Name = "dtgvProducts";
             this.dtgvProducts.ReadOnly = true;
+            this.dtgvProducts.RowHeadersVisible = false;
             this.dtgvProducts.RowHeadersWidth = 30;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -184,7 +199,6 @@ namespace CafeManagementApplication.views
             this.dtgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvProducts.Size = new System.Drawing.Size(605, 707);
             this.dtgvProducts.TabIndex = 31;
-            this.dtgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvProducts_CellClick);
             this.dtgvProducts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dtgvProducts_DataBindingComplete);
             // 
             // tbProductSelected
@@ -257,5 +271,6 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.TextBox tbProductSelected;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.Button btnNew;
     }
 }

@@ -65,9 +65,9 @@ namespace CafeManagementApplication.views
             // btnAddTable
             // 
             this.btnAddTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnAddTable.Location = new System.Drawing.Point(3, 3);
+            this.btnAddTable.Location = new System.Drawing.Point(0, 0);
             this.btnAddTable.Name = "btnAddTable";
-            this.btnAddTable.Size = new System.Drawing.Size(260, 68);
+            this.btnAddTable.Size = new System.Drawing.Size(267, 68);
             this.btnAddTable.TabIndex = 1;
             this.btnAddTable.Text = "Thêm";
             this.btnAddTable.UseVisualStyleBackColor = true;
@@ -76,9 +76,9 @@ namespace CafeManagementApplication.views
             // btnDeleteTable
             // 
             this.btnDeleteTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnDeleteTable.Location = new System.Drawing.Point(3, 190);
+            this.btnDeleteTable.Location = new System.Drawing.Point(0, 190);
             this.btnDeleteTable.Name = "btnDeleteTable";
-            this.btnDeleteTable.Size = new System.Drawing.Size(264, 68);
+            this.btnDeleteTable.Size = new System.Drawing.Size(267, 68);
             this.btnDeleteTable.TabIndex = 3;
             this.btnDeleteTable.Text = "Xóa";
             this.btnDeleteTable.UseVisualStyleBackColor = true;
@@ -87,9 +87,9 @@ namespace CafeManagementApplication.views
             // btnUpdateTable
             // 
             this.btnUpdateTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnUpdateTable.Location = new System.Drawing.Point(3, 97);
+            this.btnUpdateTable.Location = new System.Drawing.Point(0, 97);
             this.btnUpdateTable.Name = "btnUpdateTable";
-            this.btnUpdateTable.Size = new System.Drawing.Size(264, 68);
+            this.btnUpdateTable.Size = new System.Drawing.Size(267, 68);
             this.btnUpdateTable.TabIndex = 2;
             this.btnUpdateTable.Text = "Sửa";
             this.btnUpdateTable.UseVisualStyleBackColor = true;

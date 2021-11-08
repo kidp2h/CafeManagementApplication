@@ -17,8 +17,7 @@ namespace CafeManagementApplication.views
     public partial class uscManager_Categories : UserControl
     {
         private static uscManager_Categories instance;
-        private DataTable dt = new DataTable();
-        private DataView dv;
+
         public static uscManager_Categories Instance
         {
             get
@@ -37,21 +36,22 @@ namespace CafeManagementApplication.views
             LoadListCategorysForForm();
         }
 
+        private DataTable dt = new DataTable();
+        private DataView dv;
+
         public void LoadListCategorysForForm()
         {
-    
-            Thread loadList = new Thread(() => {
+            //Thread loadList = new Thread(() => {
                 LoadListController.Instance.LoadingListForDataGirdView("uscManager_Categories", dt);
                 dv = new DataView(dt);
                 dtgvCategories.DataSource = dv;
 
                 CategoryBinding();
 
-            });
-            loadList.IsBackground = true;
-            loadList.Start();
+            //});
+            //loadList.IsBackground = true;
+            //loadList.Start();
             
-           
         }
 
         #region Public Data View
@@ -94,7 +94,8 @@ namespace CafeManagementApplication.views
             dtgvCategories.CurrentCell = dtgvCategories[0, dtgvCategories.RowCount - 1];
             #endregion
 
-            ManagerController.Instance.AddData("Category", category, this);
+            ManagerController.Instance.AddData("Category", category);
+
             uscManager_Products.Instance.LoadListProducts(false);
         }
 
@@ -102,7 +103,7 @@ namespace CafeManagementApplication.views
         {
             #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkCategoryName(tbCategoryName, sb, "Vui lòng chọn loại sản phẩm !", true);
+            ValidateForm.Instance.checkCategoryName(tbCategoryName, sb, "Vui lòng nhập loại sản phẩm !", true);
             if (sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -47,7 +47,7 @@ namespace CafeManagementApplication.helpers
                     int Number = Int32.Parse(tb.Text);
                     tb.BackColor = Color.White;
                 }
-                catch(Exception e)
+                catch
                 {
                     sb.Append( type + " phải là số !\n");
                     tb.BackColor = Color.Yellow;
@@ -148,6 +148,14 @@ namespace CafeManagementApplication.helpers
                 }
 
             }
+        }
+
+        public void checkTableStatus(TextBox tb, StringBuilder sb, string msg)
+        {
+           if(tb.Text == "Có người")
+           {
+                sb.Append(msg);
+           }
         }
 
         public void checkProductName(TextBox tb, StringBuilder sb, string msg, bool status)
