@@ -124,7 +124,7 @@ namespace CafeManagementApplication.models
             collection.UpdateOneAsync(_nameTable, update);
         }
 
-        public void updateTable(string idTable, string oldBillId)
+        public void updateTable(string idTable, string oldBillId,int sale)
         {
             FilterDefinition<Table> filter = new BsonDocument("_id", idTable);
             BsonObjectId _idTable = new BsonObjectId(idTable);
@@ -151,7 +151,8 @@ namespace CafeManagementApplication.models
                 {
                         {"$set", new BsonDocument{
                             {"paid", true }, 
-                            {"paidTime", DateTime.Now}
+                            {"paidTime", DateTime.Now},
+                            {"sale",sale }
                         }}
                 };
                 BillModel.Instance.updateBill(oldBillId, update);
