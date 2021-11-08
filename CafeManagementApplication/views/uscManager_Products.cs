@@ -187,6 +187,7 @@ namespace CafeManagementApplication.views
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
             dv.RowFilter = String.Format("[Tên món] LIKE '%{0}%'", tbSearch.Text);
+
         }
 
         #region Effect
@@ -216,6 +217,7 @@ namespace CafeManagementApplication.views
             }
             catch { }
         }
+
 
         private void dtgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {

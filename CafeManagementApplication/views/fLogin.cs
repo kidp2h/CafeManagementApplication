@@ -12,76 +12,25 @@ namespace CafeManagementApplication
 {
     public partial class fLogin : Form
     {
-        private static fLogin instance;
-        
-        public static fLogin Instance{   
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new fLogin();
-                }
-                return instance;
-            }
-        }
         public fLogin()
         {
             BillModel.Instance.listBillByDateTime(14,10,2021);
-            Console.WriteLine("x");
             InitializeComponent();
-            Thread loadview = new Thread(() =>
-            {
-                pnlLogin.Controls.Contains(uscSale.Instance);
-                pnlLogin.Controls.Contains(uscManager.Instance);
-                pnlLogin.Controls.Contains(uscManager_Tables.Instance);
-                pnlLogin.Controls.Contains(uscManager_Products.Instance);
-                pnlLogin.Controls.Contains(uscManager_Categories.Instance);
-                pnlLogin.Controls.Contains(uscManager_Users.Instance);
-                pnlLogin.Controls.Contains(uscStatistics.Instance);
-            });
-            loadview.Start();
-            
-
-            //check();
         }
         public void actionForm(string action)
         {
             if (action == "show") this.Show();
             else this.Hide();
         }
-        /*public void check()
-        {
-            dynamic result = SaveUser.Instance.checkSession();
-            if (result != null)
-            {
-                this.Hide();
-                if (result.Role == Role.MANAGER)
-                {
-                    Properties.Settings.Default.role = "MANAGER";
-                    fCafeManager f = new fCafeManager();
-                    f.ShowDialog();
-                    this.Hide();
-                }
-                else
-                {
-                    Properties.Settings.Default.role = "STAFF";
-                    fCafeManager f = new fCafeManager();
-                    f.ShowDialog();
-                    this.Hide();
-                }
-            }
-            else
-            {
-
-                this.Show();
-            }
-        }*/
+      
         private void fLogin_Load(object sender, System.EventArgs e)
         {
             inputUsernameText = Properties.Settings.Default.username;
 
         }
+
         private Role _role;
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();

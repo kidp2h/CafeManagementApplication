@@ -61,6 +61,7 @@ namespace CafeManagementApplication.controllers
             if (nameData == "Category")
             {
                 CategoryModel.Instance.addCategory(data);
+             
                 return;
             }
             if (nameData == "Table")
@@ -76,6 +77,7 @@ namespace CafeManagementApplication.controllers
             if (nameData == "User")
             {
                 UserModel.Instance.addUser(data);
+                this.ResetDataInput(view);
                 return;
             }
         }

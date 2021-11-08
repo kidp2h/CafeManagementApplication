@@ -33,6 +33,7 @@ namespace CafeManagementApplication.views
         {
             InitializeComponent();
             LoadListUsers();
+            ManagerController.Instance.ResetDataInput(this);
         }
         
         public void LoadListUsers()
@@ -50,9 +51,13 @@ namespace CafeManagementApplication.views
                 dtgvUsers.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 UserBinding();
+        
+             
+
             });
             loadList.IsBackground = true;
             loadList.Start();
+
         }
 
         #region Public Data In View
@@ -221,18 +226,22 @@ namespace CafeManagementApplication.views
 
         private void dtgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             if (tbGender.Text == "Nam") rdoMale.Checked = true;
             else if (tbGender.Text == "Nữ") rdoFemale.Checked = true; else rdoOther.Checked = true;
             if (tbRole.Text == "Quản lý") rdoManager.Checked = true; else rdoSaff.Checked = true;
+
         }
 
         private void UserBinding()
         {
             tbName.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Họ và tên", true, DataSourceUpdateMode.Never));         
             tbAge.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Tuổi", true, DataSourceUpdateMode.Never));
+
             tbUserName.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Tài khoản", true, DataSourceUpdateMode.Never));
             tbUserName.DataBindings.Add(new Binding("Tag", dtgvUsers.DataSource, "Tài khoản", true, DataSourceUpdateMode.Never));
             tbGender.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Giới tính"));
+
             if (tbGender.Text == "Nam") rdoMale.Checked = true;
             else if (tbGender.Text == "Nữ") rdoFemale.Checked = true; else rdoOther.Checked = true;
             tbRole.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Chức vụ"));
