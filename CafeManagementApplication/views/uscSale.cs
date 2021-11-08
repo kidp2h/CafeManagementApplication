@@ -67,6 +67,11 @@ namespace CafeManagementApplication.views
                 tbTotalPriceBill.Text = value;
             }
         }
+        public string inputSale
+        {
+            get { return this.tbSale.Text; }
+            set { this.tbSale.Text = value; }
+        }
         public string LblTableName
         {
             set { lblTableName.Text = value; }
@@ -95,7 +100,8 @@ namespace CafeManagementApplication.views
             {
                 fPay f = new fPay();
                 f.TableId = TableId;
-                f.BillId = BillId; 
+                f.BillId = BillId;
+                f.sale = inputSale;
                 
                 f.inputSubtotalText = uscSale.Instance.inputToTalPriceBill.Replace("đ","");
                 f.Show();
