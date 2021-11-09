@@ -23,16 +23,16 @@ namespace CafeManagementApplication.controllers
             }
         }
 
-        public void payment(fPay f, string TableId, string BillId)
+        public void payment(fPay f, string TableId, string BillId, int sale)
         {
             if(Int32.Parse(f.inputChargeText) >= 0)
             {
-                TableModel.Instance.updateTable(TableId,BillId);
+                TableModel.Instance.updateTable(TableId,BillId, sale);
                 f.Hide();
             }
             else
             {
-                MessageBox.Show("Vc khong du tien :((");
+                MessageBox.Show("Không đủ tiền !!!");
             }
             
         }

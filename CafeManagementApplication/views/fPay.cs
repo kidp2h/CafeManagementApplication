@@ -31,11 +31,12 @@ namespace CafeManagementApplication.views
             get { return this.tbCharge.Text; }
             set { this.tbCharge.Text = value; }
         }
+
         public string TableId { get; set; }
 
         public string BillId { get; set; }
+        public string sale { get; set; }
 
-        
         #endregion
 
         #region Handler Event
@@ -51,8 +52,7 @@ namespace CafeManagementApplication.views
             }
             #endregion
 
-            PaymentController.Instance.payment(this, TableId, BillId);
-
+            PaymentController.Instance.payment(this, TableId, BillId, Int32.Parse(sale));
             Thread t1 = new Thread(() =>
             {
                 Invoke(new Action(() =>
