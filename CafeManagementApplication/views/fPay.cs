@@ -45,6 +45,7 @@ namespace CafeManagementApplication.views
             #region Validate
             StringBuilder sb = new StringBuilder();
             ValidateForm.Instance.checkNumber(tbMoney, sb, "Vui lòng nhập tiền của khách !", "Tiền");
+            ValidateForm.Instance.checkCharge(tbCharge, sb, "Tiền không đủ để thanh toán");
             if(sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -52,7 +53,7 @@ namespace CafeManagementApplication.views
             }
             #endregion
 
-            PaymentController.Instance.payment(this, TableId, BillId, Int32.Parse(sale));
+            PaymentController.Instance.payment(TableId, BillId, Int32.Parse(sale));
             Thread t1 = new Thread(() =>
             {
                 Invoke(new Action(() =>
@@ -60,12 +61,15 @@ namespace CafeManagementApplication.views
                     uscSale.Instance.LoadListTableForForm();
                 }));
             });
-            t1.IsBackground = true;
             t1.Start();
 
             LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
             uscManager_Tables.Instance.LoadListTables(false);
             uscStatistics.Instance.LoadListBillForView();
+
+
+            this.Hide();
+            
         }
 
         private void tbMoney_TextChanged(object sender, EventArgs e)

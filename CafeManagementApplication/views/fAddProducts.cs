@@ -87,16 +87,16 @@ namespace CafeManagementApplication.views
             {
                 //nếu bàn chưa có người thì đổi lại trạng thái bàn
                 this.TableStatus = "Có người";
-                // Thread t1 = new Thread(() =>
-                // {
-                // Invoke(new Action(() => // cách chạy đa luồng cho form không lỗi
-                // {
-                //render lại item bàn vào form bán hàng 
-                uscSale.Instance.LoadListTableForForm();
-                    //}));
-                //});
-                //t1.IsBackground = true;
-                //t1.Start();
+                Thread t1 = new Thread(() =>
+                {
+                    Invoke(new Action(() => // cách chạy đa luồng cho form không lỗi
+                    {
+                        //render lại item bàn vào form bán hàng 
+                        uscSale.Instance.LoadListTableForForm();
+                    }));
+                });
+                t1.IsBackground = true;
+                t1.Start();
                 
             }
 

@@ -227,5 +227,11 @@ namespace CafeManagementApplication.helpers
 
             }
         }
+
+
+        public void checkCharge(TextBox tb, StringBuilder sb, string msg)
+        {
+            if (Int32.Parse(tb.Text) < 0) sb.Append(msg);
+        }
     }
 }
