@@ -134,22 +134,38 @@ namespace CafeManagementApplication.views
 
             #region Handler View
             DataRow rowNew = dt.NewRow();
-            rowNew["Tên món"] = tbProductName.Text;
+            rowNew["Tên món"] = tbProductName.Text; // tbProductName.Text -- là tên mới của product cần update
             rowNew["Tên loại"] = cbCategory.SelectedItem.ToString();
             rowNew["Giá món"] = tbProductPrice.Text;
-            
 
-            string filter = string.Format("[Tên món] = '{0}'", tbProductSelected.Text = tbProductName.Tag.ToString());
+            //trước khi xử lý ở view
+            tbProductSelected.Text = tbProductName.Tag.ToString(); // tbProductName.Tag -- là tên cũ của product cần update
+            // gán vào tbProductSelected.Text để giữ lại cái tên cũ, để update
+            // vì sau khi xử lý thì cái tbProductName.Tag bị binding ở dòng dtgvProducts.CurrentCell về cái tên mới và cái tên cũ bị mất đi
+
+
+            string filter = "[Tên món] = '" + tbProductSelected.Text + "'";
+            // filter = "[Tên món] = 'ABC'";
+
+            //trả về cái dòng có "cột [Tên món] có tên là ABC"
             DataRow[] rows = dt.Select(filter);
+            //do tên món là duy nhất nên trong rows chỉ có một thằng duy nhất: rows[0]
+
 
             int index = dt.Rows.IndexOf(rows[0]);
 
-            btnDeleteProduct.Tag = index;
+
             dt.Rows.RemoveAt(index);
             dt.Rows.InsertAt(rowNew, index);
+
+            //dòng này chọn lại cái 'phần tử mới update', làm cho dữ liệu binding qua các ô input tương ứng( ô tsp, ô category, ô giá)
             dtgvProducts.CurrentCell = dtgvProducts[0, index];
             #endregion
 
+            //sau khi xử lý ở view xong
+            // gọi hàm update và có sẳn tên cũ được lưu ở tbProductSelected.Text 
+            // và dữ liệu mới của product nẳm ở những ô input trên view ( ô tsp, ô category, ô giá)
+            // this là view
             ManagerController.Instance.UpdateData("Product", this);         
         }
 
@@ -179,13 +195,19 @@ namespace CafeManagementApplication.views
                                     
         private void ProductBinding()
         {
-            tbProductName.DataBindings.Add(new Binding("Text", dtgvProducts.DataSource, "Tên món", true, DataSourceUpdateMode.Never));
-            tbProductName.DataBindings.Add(new Binding("Tag", dtgvProducts.DataSource, "Tên món", true, DataSourceUpdateMode.Never));
-            tbProductPrice.DataBindings.Add(new Binding("Text", dtgvProducts.DataSource, "Giá món", true, DataSourceUpdateMode.Never));
+            // bind dữ liệu của cột"Tên món" trong dtgvProducts.DataSource, vào TextBox: tbProductName qua thuộc tính Text 
+            // true là tự động ép kiểu về một kiểu 
+            // DataSourceUpdateMode.Never là binding một đường từ DataSource qua TextBox
+            tbProductName.DataBindings.Add("Text", dtgvProducts.DataSource, "Tên món", true, DataSourceUpdateMode.Never);
+            
+
+            tbProductName.DataBindings.Add("Tag", dtgvProducts.DataSource, "Tên món", true, DataSourceUpdateMode.Never);
+            tbProductPrice.DataBindings.Add("Text", dtgvProducts.DataSource, "Giá món", true, DataSourceUpdateMode.Never);
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
+            //format sẽ thay thế {0} thành cái tbSearch.Text. ví dụ [Tên món] LIKE '%Cafe%'
             dv.RowFilter = String.Format("[Tên món] LIKE '%{0}%'", tbSearch.Text);
         }
 

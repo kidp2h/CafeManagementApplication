@@ -31,10 +31,10 @@ namespace CafeManagementApplication.views
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Button btnAdd;
+            System.Windows.Forms.Button btnNew;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.Button btnNew;
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -84,6 +84,17 @@ namespace CafeManagementApplication.views
             btnAdd.Text = "Thêm";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnNew
+            // 
+            btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnNew.Location = new System.Drawing.Point(0, 0);
+            btnNew.Name = "btnNew";
+            btnNew.Size = new System.Drawing.Size(230, 65);
+            btnNew.TabIndex = 5;
+            btnNew.Text = "Mới";
+            btnNew.UseVisualStyleBackColor = true;
+            btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // panel1
             // 
@@ -363,7 +374,7 @@ namespace CafeManagementApplication.views
             this.dtgvUsers.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgvUsers.RowTemplate.Height = 24;
             this.dtgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvUsers.Size = new System.Drawing.Size(1109, 394);
+            this.dtgvUsers.Size = new System.Drawing.Size(1109, 397);
             this.dtgvUsers.TabIndex = 15;
             this.dtgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvUsers_CellClick);
             this.dtgvUsers.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dtgvUsers_DataBindingComplete);
@@ -407,17 +418,6 @@ namespace CafeManagementApplication.views
             this.resertToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
             this.resertToolStripMenuItem.Text = "Làm mới mẫu nhập";
             this.resertToolStripMenuItem.Click += new System.EventHandler(this.resertToolStripMenuItem_Click);
-            // 
-            // btnNew
-            // 
-            btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnNew.Location = new System.Drawing.Point(0, 0);
-            btnNew.Name = "btnNew";
-            btnNew.Size = new System.Drawing.Size(230, 65);
-            btnNew.TabIndex = 5;
-            btnNew.Text = "Mới";
-            btnNew.UseVisualStyleBackColor = true;
-            btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // uscManager_Users
             // 
