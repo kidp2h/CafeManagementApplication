@@ -56,6 +56,7 @@ namespace CafeManagementApplication.models
         {
             // lấy collection
             IMongoCollection<Bill> collection = this.getCollection();
+           
             // Tạo document bill mới
             Bill newBill = new Bill
             {
@@ -74,12 +75,14 @@ namespace CafeManagementApplication.models
             // Tạo một đối tượng BsonDocument với trường _id có kiểu là ObjectId
             BsonDocument _idBill = new BsonDocument("_id", new ObjectId(idBill));
             IMongoCollection<Bill> collection = this.getCollection();
+
             // tạo một đối tượng BsonDocument làm điều kiện lọc
             BsonDocument filter = new BsonDocument{
                 {"_id",new ObjectId(idBill) },
                 {"products.product", new ObjectId(idProduct) },
                 {"paid", false }
             };
+
             // Tìm product theo điều kiện lọc
             List<Bill> listProduct = collection.Find(filter).ToList();
             // nếu không tồn tại thì push product vào mảng products trong collection bills
@@ -156,11 +159,11 @@ namespace CafeManagementApplication.models
             return bill;
         }
 
-        public BsonDocument getBillById(string idBill)
+        public List<BsonDocument> getBillById(string idBill)
         {
             FilterDefinition<BsonDocument> _idBill = new BsonDocument("_id", new ObjectId(idBill));
             dynamic bill = this.lookupDepthBills().Match(_idBill).ToList();
-            return bill[0];
+            return bill;
         }
 
         public List<BsonDocument> listBillByDateTime(int day, int month, int year)
@@ -191,6 +194,28 @@ namespace CafeManagementApplication.models
         #endregion
 
         #region Delete Document
+        public void deleteBillById(string billId)
+        {
+            FilterDefinition<Bill> filter = new BsonDocument("_id", new ObjectId(billId));
+            IMongoCollection<Bill> collection = this.getCollection();
+            collection.DeleteOneAsync(filter);
+        }
+
+
+        public void deleteProductFromBillByName(string idBill, string nameProduct)
+        {
+            BsonObjectId id = ProductModel.Instance.getIdProductByName(nameProduct);
+            deleteProductFromBill(idBill, id.Value.ToString());
+            List<BsonDocument> bill = this.getBillById(idBill);
+            if(bill.Count == 0)
+            {
+                FilterDefinition<Table> filter = new BsonDocument("bill", new ObjectId(idBill));
+                TableModel.Instance.updateStatusForTable(filter, types.sTable.EMPTY);
+            }
+            
+        }
+
+
         public void deleteProductFromBill(string idBill, string idProduct)
         {
             BsonDocument _idBill = new BsonDocument("_id", new ObjectId(idBill));

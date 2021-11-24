@@ -2,14 +2,14 @@
 
 namespace CafeManagementApplication.controllers
 {
-    class LoadPanelController
+    class LoadInfoController
     {
-        private static LoadPanelController instance;
-        public static LoadPanelController Instance
+        private static LoadInfoController instance;
+        public static LoadInfoController Instance
         {
             get
             {
-                if (instance == null) instance = new LoadPanelController();
+                if (instance == null) instance = new LoadInfoController();
                 return instance;
             }
         }

@@ -16,7 +16,7 @@ namespace CafeManagementApplication.views
 
             //Gán cái form fAddProducts vào trong controler để có thể xử lý sự kiện click vào sản phẩm truyền thông tin sản phẩm qua ô TTSP
             //và xử lý render sản phẩm khi click vào loại sản phẩm
-            LoadPanelController.Instance.View = this;
+            LoadInfoController.Instance.View = this;
 
             //Gọi control để render các category vào trong ô chứa category của form fAddProduct
             LoadItemController.Instance.LoadingItemCategory(flpListCategorys);
@@ -26,13 +26,17 @@ namespace CafeManagementApplication.views
         #region Public Data In View
       
         public string BillID { get; set; }
+
         public string TableId { get; set; }
+
         public string TableStatus { get; set; }
+
         public string LblNameText
         {
             get { return lblName.Text; }
             set { lblName.Text = value; }
         }
+
         public string LblPriceText
         {
             get { return lblPrice.Text; }
@@ -87,25 +91,25 @@ namespace CafeManagementApplication.views
             {
                 //nếu bàn chưa có người thì đổi lại trạng thái bàn
                 this.TableStatus = "Có người";
-                Thread t1 = new Thread(() =>
-                {
-                    Invoke(new Action(() => // cách chạy đa luồng cho form không lỗi
-                    {
+                //Thread t1 = new Thread(() =>
+               // {
+                    //Invoke(new Action(() => // cách chạy đa luồng cho form không lỗi
+                    //{
                         //render lại item bàn vào form bán hàng 
                         uscSale.Instance.LoadListTableForForm();
-                    }));
-                });
-                t1.IsBackground = true;
-                t1.Start();
+                //    }));
+                //});
+                //t1.IsBackground = true;
+                //t1.Start();
                 
             }
 
-            LoadListController.Instance.LoadingBillForListViewFormTableID(this.TableId);
+            LoadDataController.Instance.LoadBillOfTableByIdForViewSale(this.TableId);
 
             uscManager_Tables.Instance.LoadListTables(false);
 
-            
-        }
+            MessageBox.Show("ĐÃ THÊM MÓN !!!!", "Thông báo", MessageBoxButtons.OK ,MessageBoxIcon.Information);
+        } 
 
         private void tbAmount_TextChanged(object sender, EventArgs e)
         {

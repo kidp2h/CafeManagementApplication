@@ -1,12 +1,5 @@
 ﻿using CafeManagementApplication.controllers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CafeManagementApplication.views
@@ -36,7 +29,7 @@ namespace CafeManagementApplication.views
         #region Handler Event 
         private void uscCategory_Click(object sender, EventArgs e)
         {
-            LoadItemController.Instance.LoadingItemProductByCategoryId(LoadPanelController.Instance.View.FlpListProducts, this.CategoryId);
+            LoadItemController.Instance.LoadingItemProductByCategoryId(LoadInfoController.Instance.View.FlpListProducts, this.CategoryId);
         }
         #endregion
 

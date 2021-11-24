@@ -130,35 +130,48 @@ namespace CafeManagementApplication.models
             BsonObjectId _idTable = new BsonObjectId(idTable);
             BsonObjectId newIdBill = ObjectId.GenerateNewId();
             BillModel.Instance.addBill(_idTable, newIdBill);
-            Thread s1 = new Thread(() =>
+            //Thread s1 = new Thread(() =>
+            //{
+            UpdateDefinition<Table> update1 = new BsonDocument
             {
-                UpdateDefinition<Table> update = new BsonDocument
+                {"$set", new BsonDocument
                 {
-                    {"$set", new BsonDocument
-                    {
-                        {"bill", newIdBill},
-                        {"status",sTable.EMPTY }
-                    } }
-                };
-                this.updateTableByIdTable(idTable, update);
-            });
-            s1.IsBackground = true;         
-            s1.Start();
-            s1.Join();
-            Thread s2 = new Thread(() =>
+                    {"bill", newIdBill},
+                    {"status",sTable.EMPTY }
+                } }
+            };
+            this.updateTableByIdTable(idTable, update1);
+            //});
+            //s1.IsBackground = true;         
+            //s1.Start();
+            //s1.Join();
+            //Thread s2 = new Thread(() =>
+            //{
+            UpdateDefinition<Bill> update2 = new BsonDocument
             {
-                UpdateDefinition<Bill> update = new BsonDocument
-                {
-                        {"$set", new BsonDocument{
-                            {"paid", true }, 
-                            {"paidTime", DateTime.Now},
-                            {"sale",sale }
-                        }}
-                };
-                BillModel.Instance.updateBill(oldBillId, update);
-            });
-            s2.IsBackground = true;
-            s2.Start();
+                    {"$set", new BsonDocument{
+                        {"paid", true }, 
+                        {"paidTime", DateTime.Now},
+                        {"sale",sale }
+                    }}
+            };
+            BillModel.Instance.updateBill(oldBillId, update2);
+
+            dynamic bill = BillModel.Instance.getBillById(oldBillId)[0];
+            BillsPaid newBillsPaid = new BillsPaid
+            {
+                TableName = bill["table"]["tableName"].Value,
+                PaidTime = DateTime.Now,
+                Sale = Int32.Parse( bill["sale"].Value.ToString() ),
+                Subtotal = Int32.Parse( bill["subtotal"].Value.ToString() )
+
+            };
+            BillsPaidModel.Instance.addBillPaid(newBillsPaid);
+
+            BillModel.Instance.deleteBillById(oldBillId);
+            //});
+            //s2.IsBackground = true;
+            //s2.Start();
         }
         #endregion
 

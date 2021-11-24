@@ -37,6 +37,7 @@ namespace CafeManagementApplication.views
         {
             dtgvBill.DataSource = billList;
             LoadListBillForView();
+            lbSubtotalBills.Text = BillController.Instance.SubtotalBills().ToString();
         }
 
         public void LoadListBillForView()
@@ -47,6 +48,7 @@ namespace CafeManagementApplication.views
                 BillController.Instance.LoadBill(dt);
                 dv = new DataView(dt);
                 billList.DataSource = dv;
+               
 
             //});
             //loadlist.isbackground = true;
@@ -63,6 +65,7 @@ namespace CafeManagementApplication.views
             dv.RowFilter = String.Format("[Ngày thanh toán] LIKE '%{0}%'", "");
         }
 
-
+     
     }
+    
 }

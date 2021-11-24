@@ -127,6 +127,8 @@ namespace CafeManagementApplication.views
             this.lvBillforOneTable.TabIndex = 0;
             this.lvBillforOneTable.UseCompatibleStateImageBehavior = false;
             this.lvBillforOneTable.View = System.Windows.Forms.View.Details;
+            this.lvBillforOneTable.Click += new System.EventHandler(this.lvBillforOneTable_Click);
+            this.lvBillforOneTable.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvBillforOneTable_MouseDoubleClick);
             // 
             // columnHeader1
             // 

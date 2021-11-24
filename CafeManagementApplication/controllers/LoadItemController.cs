@@ -52,19 +52,6 @@ namespace CafeManagementApplication.controllers
         }
 
 
-        public void LoadingItemProduct(FlowLayoutPanel flp)
-        {
-            dynamic products = ProductModel.Instance.getListProduct();
-            foreach (dynamic product in products)
-            {
-                uscProduct temp = new uscProduct();
-                temp.Id = product["_id"].Value.ToString();
-                temp.NameProduct = product["name"].Value;
-                temp.Price = product["price"].Value.ToString();
-                flp.Controls.Add(temp);
-            }
-        }
-
         public void LoadingItemProductByCategoryId(FlowLayoutPanel flp, string categoryId)
         {
             flp.Controls.Clear();
