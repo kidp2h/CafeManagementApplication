@@ -140,8 +140,8 @@
     <Compile Include="controllers\BillController.cs" />
     <Compile Include="controllers\ManagerController.cs" />
     <Compile Include="controllers\AuthController.cs" />
-    <Compile Include="controllers\LoadListController.cs" />
-    <Compile Include="controllers\LoadPanelController.cs" />
+    <Compile Include="controllers\LoadDataController.cs" />
+    <Compile Include="controllers\LoadInfoController.cs" />
     <Compile Include="controllers\LoadItemController.cs" />
     <Compile Include="controllers\PaymentController.cs" />
     <Compile Include="helpers\ClockThread.cs" />
@@ -151,6 +151,7 @@
     <Compile Include="helpers\ValidateForm.cs" />
     <Compile Include="models\BaseModel.cs" />
     <Compile Include="models\BillModel.cs" />
+    <Compile Include="models\BillsPaidModel.cs" />
     <Compile Include="models\CategoryModel.cs" />
     <Compile Include="models\ProductModel.cs" />
     <Compile Include="models\TableModel.cs" />

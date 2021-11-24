@@ -42,7 +42,7 @@ namespace CafeManagementApplication.views
         public void LoadListCategorysForForm()
         {
             //Thread loadList = new Thread(() => {
-                LoadListController.Instance.LoadingListForDataGirdView("uscManager_Categories", dt);
+                LoadDataController.Instance.LoadDataTable("uscManager_Categories", dt);
                 dv = new DataView(dt);
                 dtgvCategories.DataSource = dv;
 

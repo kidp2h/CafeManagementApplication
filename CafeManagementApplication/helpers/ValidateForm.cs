@@ -61,6 +61,7 @@ namespace CafeManagementApplication.helpers
         public void checkAge(TextBox tb, StringBuilder sb, string msg)
         {
             if (checkEmpty(tb, sb, msg)) return;
+
             else if(checkNumber(tb, sb, msg, "Tuổi")) return;
             else
             {

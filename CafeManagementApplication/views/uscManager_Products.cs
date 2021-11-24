@@ -80,11 +80,11 @@ namespace CafeManagementApplication.views
             //Thread loadList = new Thread(() => {
 
                 dt = new DataTable();
-                LoadListController.Instance.LoadingListForDataGirdView("uscManager_Products", dt);
+                LoadDataController.Instance.LoadDataTable("uscManager_Products", dt);
                 dv = new DataView(dt);
                 productList.DataSource = dv;
 
-                LoadListController.Instance.LoadListForComboBox(cbCategory);
+                LoadDataController.Instance.LoadDataForComboBox(cbCategory);
            
                 if (statusTemp) ProductBinding();
 

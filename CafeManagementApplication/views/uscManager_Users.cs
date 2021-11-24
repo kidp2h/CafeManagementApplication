@@ -37,29 +37,19 @@ namespace CafeManagementApplication.views
         
         public void LoadListUsers()
         {
-            //Thread loadList = new Thread(() => {
-
-                LoadListController.Instance.LoadingListForDataGirdView("useManager_Users", dt);
+                LoadDataController.Instance.LoadDataTable("useManager_Users", dt);
                
-                
                 dv = new DataView(dt);
 
                 dtgvUsers.DataSource = dv;
 
-                //set style cho đẹp thoi thầy ạ
+                //set style cho đẹp 
                 dtgvUsers.Columns[0].Width = 300;
                 dtgvUsers.Columns[1].Width = 100;
                 dtgvUsers.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dtgvUsers.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 UserBinding();
-        
-             
-
-            //});
-            //loadList.IsBackground = true;
-            //loadList.Start();
-
         }
 
         #region Public Data In View
@@ -138,6 +128,7 @@ namespace CafeManagementApplication.views
 
             if (sb.Length > 0)
             {
+                //
                 MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -186,7 +177,7 @@ namespace CafeManagementApplication.views
             DataRow[] rows = dt.Select(filter);
 
             int index = dt.Rows.IndexOf(rows[0]);
-            btnDelete.Tag = index;
+            //btnDelete.Tag = index;
             dt.Rows.RemoveAt(index);
             dt.Rows.InsertAt(rowNew, index);
             dtgvUsers.CurrentCell = dtgvUsers[0, index];
@@ -212,7 +203,7 @@ namespace CafeManagementApplication.views
             DataRow[] rows = dt.Select(filter);
 
             int index = dt.Rows.IndexOf(rows[0]);
-            btnDelete.Tag = index;
+            //btnDelete.Tag = index;
             dt.Rows.RemoveAt(index);
             #endregion
 
