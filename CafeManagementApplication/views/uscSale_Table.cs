@@ -81,7 +81,7 @@ namespace CafeManagementApplication.views
         #region Handler Event
         private void btnTable_Click(object sender, EventArgs e)
         {
-            LoadListController.Instance.LoadingBillForListViewFormTableID(this.Id);
+            LoadDataController.Instance.LoadBillOfTableByIdForViewSale(this.Id);
             uscSale.Instance.LblTableName = this.TableName;
             uscSale.Instance.TableId = this.Id;
             uscSale.Instance.TableStatus = this.Status;

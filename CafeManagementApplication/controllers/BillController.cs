@@ -5,6 +5,7 @@ using MongoDB.Driver;
 using System.Threading;
 using System.Data;
 using System.Collections.Generic;
+using System;
 
 namespace CafeManagementApplication.controllers
 {
@@ -23,30 +24,40 @@ namespace CafeManagementApplication.controllers
 
         public void LoadBill(DataTable dt)
         {
-            dynamic billList = BillModel.Instance.getListBill();
+            dynamic billList = BillsPaidModel.Instance.getListBillsPaid();
             dt.Columns.Add("Tên bàn");
             dt.Columns.Add("Trạng thái");
             dt.Columns.Add("Ngày thanh toán");
-            dt.Columns.Add("Giảm giá");
             dt.Columns.Add("Tổng tiền");
+            dt.Columns.Add("Thành tiền");
 
             foreach (dynamic bill in billList)
             {
-                string Table = bill["table"]["tableName"].Value;
-                string Paid;
-                if (bill["paid"].Value)
-                {
-                    Paid = "Đã thanh toán";
-                }
-                else Paid = "Chưa thanh toán";
-                string PaidTime = bill["paidTime"].Value.ToString();
-                string Sale = bill["sale"].Value.ToString();
-                string Subtotal = bill["subtotal"].Value.ToString();
+                string Table = bill.TableName.Value;
+                string Paid = "Đã thanh toán";
+                string PaidTime = bill.PaidTime.ToString();
+                PaidTime = PaidTime.Split(' ')[0];
+                string Sale = bill.Sale.Value.ToString();
+                string Subtotal = bill.Subtotal.Value.ToString();
 
-                dt.Rows.Add(Table, Paid, PaidTime, Sale, Subtotal);
+                dt.Rows.Add(Table, Paid, PaidTime, Subtotal, Sale);
             }
 
             return;
+        }
+
+        public int SubtotalBills()
+        {
+            dynamic billList = BillsPaidModel.Instance.getListBillsPaid();
+            int subtotalBills = 0;
+            foreach (dynamic bill in billList)
+            {
+                
+                subtotalBills += Int32.Parse(bill.Sale.Value.ToString());
+
+            }
+
+            return subtotalBills;
         }
 
         public void AddProductToBill(fAddProducts f,string billId, string productId, int amount)

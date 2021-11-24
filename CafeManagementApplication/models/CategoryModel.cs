@@ -56,12 +56,14 @@ namespace CafeManagementApplication.models
             List<Category> category = collection.Find(new BsonDocument("name", nameCategory)).ToList();
             return category[0];
         }
+
         public List<Category> getListCategory()
         {
             IMongoCollection<Category> collection = this.getCollection();
             List<Category> category = collection.Find(new BsonDocument()).ToList();
             return category;
         }
+
         #endregion
 
         #region Delete Document
@@ -71,6 +73,7 @@ namespace CafeManagementApplication.models
             FilterDefinition<Category> filter = new BsonDocument { { "_id", new ObjectId(idCategory) } };
             collection.DeleteOneAsync(filter);
         }
+
         public void deleteCategoryByName(string nameCategory)
         {
             IMongoCollection<Category> collection = this.getCollection();

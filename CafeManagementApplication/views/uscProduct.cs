@@ -36,7 +36,7 @@ namespace CafeManagementApplication.views
         #region Handler Event
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            LoadPanelController.Instance.LoadingInfoProduct(this.NameProduct, this.Price, this.Id);
+            LoadInfoController.Instance.LoadingInfoProduct(this.NameProduct, this.Price, this.Id);
         }
         #endregion
     }

@@ -95,27 +95,8 @@ namespace CafeManagementApplication.models
         public void updateProductByNameProduct(string nameProduct, UpdateDefinition<Product> update)
         {
             FilterDefinition<Product> filter = new BsonDocument("name", nameProduct);
-            //FilterDefinition<Category> cfilter = new BsonDocument("name", category);
-            IMongoCollection<Product> collection = getCollection();
-            //if (!CategoryModel.Instance.checkCategory(cfilter))
-            //{
-            //    BsonObjectId id = ObjectId.GenerateNewId();
-            //    CategoryModel.Instance.addCategory(new Category { Id = id, NameCategory = category });
-            //    UpdateDefinition<Product> update = new BsonDocument
-            //    {
-            //        {"$set", new BsonDocument{
-            //            {"name", nameProduct},
-            //            {"price", price },
-            //            {"category",id }
-            //        }}
-            //    };
-            //    collection.UpdateOneAsync(filter, update);
-            //}
-            //else
-            //{
-                
-                collection.UpdateOneAsync(filter, update);
-            //}
+            IMongoCollection<Product> collection = getCollection();           
+            collection.UpdateOneAsync(filter, update);
         }
         #endregion
 
@@ -141,6 +122,14 @@ namespace CafeManagementApplication.models
                 .AppendStage<BsonDocument>("{$set : {'category' : '$category.name'}}")
                 .ToList();
             return listProduct;
+        }
+
+        public BsonObjectId getIdProductByName(string nameProduct)
+        {
+            FilterDefinition<Product> filter = new BsonDocument("name", nameProduct);
+            IMongoCollection<Product> collection = getCollection();
+            List<Product> product = collection.Find(filter).ToList();
+            return product[0].Id;
         }
         #endregion
 

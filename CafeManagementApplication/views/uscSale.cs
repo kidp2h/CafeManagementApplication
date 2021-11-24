@@ -1,5 +1,7 @@
 ﻿using CafeManagementApplication.controllers;
+using CafeManagementApplication.models;
 using System;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -103,7 +105,7 @@ namespace CafeManagementApplication.views
                 f.BillId = BillId;
                 f.sale = inputSale;
                 
-                f.inputSubtotalText = uscSale.Instance.inputToTalPriceBill.Replace("đ","");
+                f.inputSubtotalText = inputToTalPriceBill.Replace("đ","");
                 f.Show();
             } 
             else
@@ -130,14 +132,14 @@ namespace CafeManagementApplication.views
         {
             if (tbSale.Text == "") tbSale.Text = "0";
             int Sale = Int32.Parse(tbSale.Text.ToString());
-            tbSale.Text = "" + (Sale + 1) ;
+            tbSale.Text = "" + (Sale + 5) ;
         }
 
         private void btnMinus_Click(object sender, EventArgs e)
         {
             if (tbSale.Text == "") tbSale.Text = "0";          
             int Sale = Int32.Parse(tbSale.Text.ToString());
-            if (Sale > 0) tbSale.Text = "" + (Sale - 1);
+            if (Sale > 0) tbSale.Text = "" + (Sale - 5);
 
         }
 
@@ -146,5 +148,29 @@ namespace CafeManagementApplication.views
             tbTotalPriceProducts_TextChanged(null, null);
         }
         #endregion
+
+        private void lvBillforOneTable_Click(object sender, EventArgs e)
+        {
+    
+        }
+
+        private void lvBillforOneTable_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lvBillforOneTable.SelectedItems.Count >= 1)
+            {
+                ListViewItem item = lvBillforOneTable.SelectedItems[0];
+                String mess = "BẠN CÓ MUỐN HỦY MÓN NÀY KHÔNG ???" + "\n\n" +
+                              "\tTÊN MÓN: " + item.Text + "\n" + 
+                              "\tGIÁ: " + item.SubItems[1].Text + "\n" +
+                              "\tSỐ LƯỢNG: " + item.SubItems[2].Text;
+                if(MessageBox.Show( mess, "HỦY MÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    BillModel.Instance.deleteProductFromBillByName(BillId, item.Text);
+                    LoadDataController.Instance.LoadBillOfTableByIdForViewSale(TableId);
+                    LoadItemController.Instance.LoadingItemTable(flpTableList);
+                }
+
+            }
+        }
     }
 }

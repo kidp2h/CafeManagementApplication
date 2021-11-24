@@ -8,98 +8,27 @@ using System.Data;
 
 namespace CafeManagementApplication.controllers
 {
-    public class LoadListController
+    public class LoadDataController
     {
-        private static LoadListController instance;
-        private static readonly object lockObject = new object();
-        public static LoadListController Instance
+
+        private static LoadDataController instance;
+       
+        public static LoadDataController Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    lock(lockObject)
-                    {
-                        if (instance == null) instance = new LoadListController();
-                    }
+                    instance = new LoadDataController();
                 }        
                 return instance;
             }
         }
+        private LoadDataController() { }
 
-        private LoadListController() { }
+  
 
-        //public void LoadingListForListViewOf(string form, ListView lv)
-        //{
-            
-        //    lv.Items.Clear();
-        //    if (form == "uscManager_Categories")
-        //    {
-        //        dynamic categoryList = CategoryModel.Instance.getListCategory();
-        //        foreach(dynamic category in categoryList)
-        //        {
-        //            ListViewItem categoryLvItem = new ListViewItem(category.NameCategory.ToString());
-        //            categoryLvItem.Tag = category.NameCategory.ToString();
-        //            lv.Items.Add(categoryLvItem);
-        //        }
-        //        return;
-        //    }
-        //    if (form == "useManager_Tables")
-        //    {
-        //        dynamic tableList = TableModel.Instance.getListTable();
-        //        foreach (dynamic table in tableList)
-        //        {
-        //            ListViewItem tableLvItem = new ListViewItem(table.TableName);
-        //            if (table.Status == types.sTable.FULL)
-        //            {
-        //                tableLvItem.SubItems.Add("Có người");
-        //            }
-        //            else tableLvItem.SubItems.Add("Bàn trống");
-        //            lv.Items.Add(tableLvItem);
-        //        }
-        //        return;
-        //    }
-        //    if (form == "useManager_Products")
-        //    {
-        //        dynamic productList = ProductModel.Instance.getListProduct();
-        //        foreach(dynamic product in productList)
-        //        {
-        //            ListViewItem productLvItem = new ListViewItem(product["name"].Value);
-        //            string category = product["category"].Value;
-        //            productLvItem.SubItems.Add(category);                  
-        //            int price = product["price"].Value;
-        //            productLvItem.SubItems.Add(price.ToString());
-        //            lv.Items.Add(productLvItem);
-        //        }
-        //        return;
-        //    }
-        //    if (form == "useManager_Users")
-        //    {
-        //        dynamic usersList = UserModel.Instance.getListUser();
-        //        foreach (dynamic user in usersList)
-        //        {
-        //            ListViewItem lvItem = new ListViewItem(user.Fullname);
-        //            int Age = user.Age;
-        //            lvItem.SubItems.Add(Age.ToString());
-        //            string Gender = user.Gender;
-        //            lvItem.SubItems.Add(Gender);
-        //            string Username = user.Username;
-        //            lvItem.SubItems.Add(Username);
-
-        //            if (user.Role == 0)
-        //            {
-        //                lvItem.SubItems.Add("Nhân viên");
-        //            }
-        //            else lvItem.SubItems.Add("Quản lý");
-
-        //            lv.Items.Add(lvItem);
-        //        }
-        //        return;
-
-        //    }
-        //}
-
-        public void LoadingBillForListViewFormTableID(string tableID)
+        public void LoadBillOfTableByIdForViewSale(string tableID)
         {
 
             uscSale.Instance.getLvBillforOneTable().Items.Clear();
@@ -136,7 +65,7 @@ namespace CafeManagementApplication.controllers
 
 
         //tải dữ liệu lên cái gridview -- gridview là một cái bảng chứa dữ liệu ở view
-        public void LoadingListForDataGirdView(string form, DataTable dt)
+        public void LoadDataTable(string form, DataTable dt)
         {
             //
             if (form == "uscManager_Tables")
@@ -218,14 +147,16 @@ namespace CafeManagementApplication.controllers
             }
         }
 
-        public void LoadListForComboBox(ComboBox cb)
+        public void LoadDataForComboBox(ComboBox cb)
         {
             dynamic categorys = CategoryModel.Instance.getListCategory();
             List<string> names = new List<string>();
+
             foreach (dynamic category in categorys)
             {
                 names.Add(category.NameCategory.ToString());
             }
+
             cb.DataSource = names;
         }
     }

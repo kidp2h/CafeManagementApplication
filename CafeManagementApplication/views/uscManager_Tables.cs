@@ -50,7 +50,7 @@ namespace CafeManagementApplication.views
                 //tạo một đối tượng data table
                 dt = new DataTable();
                 //gọi controler để lấy dữ liệu vào datable từ model
-                LoadListController.Instance.LoadingListForDataGirdView("uscManager_Tables", dt);   
+                LoadDataController.Instance.LoadDataTable("uscManager_Tables", dt);   
                 //tạo đối tượng data view 
                 dv = new DataView (dt);
                 tableList.DataSource = dv;
@@ -107,11 +107,13 @@ namespace CafeManagementApplication.views
 
             #region Handler View
             Table table = ManagerController.Instance.NewData("Table", this);
+
+            //dt.Rows.Add(); --> có thể thêm bằng cách này
             DataRow rowNew = dt.NewRow();
             rowNew["Tên bàn"] = tbTableName.Text;
             rowNew["Trạng thái"] = "Bàn trống";
+            //--> cách này để tối ưu trải nghiệm người dùng 
             dt.Rows.Add(rowNew);
-            
             dtgvTables.CurrentCell = dtgvTables[0, dt.Rows.IndexOf(rowNew)];
             #endregion
 
@@ -181,7 +183,9 @@ namespace CafeManagementApplication.views
         {               
             tbTableName.DataBindings.Add(new Binding("Text", dtgvTables.DataSource, "Tên bàn", true, DataSourceUpdateMode.Never));
             tbTableName.DataBindings.Add(new Binding("Tag", dtgvTables.DataSource, "Tên bàn", true, DataSourceUpdateMode.Never));
+
             tbStatus.DataBindings.Add(new Binding("Text", dtgvTables.DataSource, "Trạng thái"));
+
             if (tbStatus.Text == "Có người") rdoFull.Checked = true;
             else rdoEmpty.Checked = true;
         }
