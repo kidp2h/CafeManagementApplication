@@ -84,7 +84,7 @@ namespace CafeManagementApplication.views
             get { return tbUserPassword.Text; }
             set { tbUserPassword.Text = value; }
         }
-        public string inputGenderText
+        public string inputGenderText  //hỏi
         {
             get
             {
@@ -99,7 +99,7 @@ namespace CafeManagementApplication.views
                 else rdoOther.Checked = true;
             }
         }
-        public Role inputRole
+        public Role inputRole  //hỏi 
         {
             get
             {

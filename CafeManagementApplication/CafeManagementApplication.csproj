@@ -138,7 +138,6 @@
     <Compile Include="App.cs" />
     <Compile Include="config\Database.cs" />
     <Compile Include="controllers\BillController.cs" />
-    <Compile Include="controllers\fAddProduct.cs" />
     <Compile Include="controllers\ManagerController.cs" />
     <Compile Include="controllers\AuthController.cs" />
     <Compile Include="controllers\LoadListController.cs" />

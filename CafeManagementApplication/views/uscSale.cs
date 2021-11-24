@@ -117,6 +117,8 @@ namespace CafeManagementApplication.views
             LoadListTableForForm();
         }
 
+
+        // Mai coi 
         private void tbTotalPriceProducts_TextChanged(object sender, EventArgs e)
         {
             int TotalPriceProducts = Int32.Parse(tbTotalPriceProducts.Text.Replace("đ", ""));

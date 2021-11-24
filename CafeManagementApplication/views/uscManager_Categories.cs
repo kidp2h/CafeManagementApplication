@@ -177,8 +177,8 @@ namespace CafeManagementApplication.views
 
         }
 
+
         #endregion
 
-       
     }
 }

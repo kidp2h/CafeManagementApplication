@@ -75,12 +75,12 @@ namespace CafeManagementApplication.views
         {
             get
             {   
-                return sTable.EMPTY;
+                return sTable.EMPTY;  //hỏi là lấy giá trị từ đâu ( sTavle.EMPTY là lấy từ chỗ nào )
             }
             set
             {
                 if (value == sTable.EMPTY) rdoEmpty.Checked = true;
-                else rdoFull.Checked = true;
+                else rdoFull.Checked = true;  //hỏi tại sao phải check trong khi return luôn về trống
             }
         }
 
@@ -137,7 +137,7 @@ namespace CafeManagementApplication.views
             if (rdoEmpty.Checked == true) rowNew["Trạng thái"] = "Bàn trống";
             else rowNew["Trạng thái"] = "Có người";
 
-            string filter = string.Format("[Tên bàn] = '{0}'", tbTableSelected.Text = tbTableName.Tag.ToString());
+            string filter = string.Format("[Tên bàn] = '{0}'", tbTableSelected.Text = tbTableName.Tag.ToString()); //hỏi cái tbTableSelected.Text và  tbTableName.Tag. ở đâu ra
             DataRow[] rows = dt.Select(filter);
 
             int index = dt.Rows.IndexOf(rows[0]);
@@ -165,7 +165,7 @@ namespace CafeManagementApplication.views
             #endregion
 
             #region Handler View
-            string filter = string.Format("[Tên bàn] = '{0}'", tbTableSelected.Text = tbTableName.Tag.ToString());
+            string filter = string.Format("[Tên bàn] = '{0}'", tbTableSelected.Text = tbTableName.Tag.ToString());  //hỏi cái tbTableSelected.Text và  tbTableName.Tag. ở đâu ra
             DataRow[] rows = dt.Select(filter);
 
             int index = dt.Rows.IndexOf(rows[0]);
@@ -193,7 +193,7 @@ namespace CafeManagementApplication.views
 
         private void dtgvTables_CurrentCellChanged(object sender, EventArgs e)
         {
-            if (tbStatus.Text == "Có người") rdoFull.Checked = true;
+            if (tbStatus.Text == "Có người") rdoFull.Checked = true;  //hỏi cái tbStatus ở đâu ra 
             else rdoEmpty.Checked = true;
         }
         #endregion

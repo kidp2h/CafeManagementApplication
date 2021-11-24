@@ -32,7 +32,7 @@ namespace CafeManagementApplication.views
 
         public string CategoryId { get; set; }
         #endregion
-
+                                                                                                                                                        
         #region Handler Event 
         private void uscCategory_Click(object sender, EventArgs e)
         {

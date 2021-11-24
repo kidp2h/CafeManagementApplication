@@ -201,7 +201,7 @@ namespace CafeManagementApplication.views
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtgvTables.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgvTables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvTables.Location = new System.Drawing.Point(9, 60);
+            this.dtgvTables.Location = new System.Drawing.Point(9, 56);
             this.dtgvTables.Name = "dtgvTables";
             this.dtgvTables.ReadOnly = true;
             this.dtgvTables.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -235,10 +235,10 @@ namespace CafeManagementApplication.views
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.dtgvTables);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tbSearch);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tbStatus);
             this.Controls.Add(this.tbTableSelected);

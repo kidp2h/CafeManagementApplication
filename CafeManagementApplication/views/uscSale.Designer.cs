@@ -357,10 +357,10 @@ namespace CafeManagementApplication.views
             this.flpTableList.BackgroundImage = global::CafeManagementApplication.Properties.Resources.logoCaffe;
             this.flpTableList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.flpTableList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flpTableList.Location = new System.Drawing.Point(3, 53);
+            this.flpTableList.Location = new System.Drawing.Point(3, 65);
             this.flpTableList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flpTableList.Name = "flpTableList";
-            this.flpTableList.Size = new System.Drawing.Size(712, 718);
+            this.flpTableList.Size = new System.Drawing.Size(712, 706);
             this.flpTableList.TabIndex = 0;
             // 
             // button1

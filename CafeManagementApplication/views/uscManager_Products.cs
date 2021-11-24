@@ -123,7 +123,7 @@ namespace CafeManagementApplication.views
         {
             #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkProductName(tbProductName, sb, "Vui lòng chọn sản phẩm !", true);
+            ValidateForm.Instance.checkProductName(tbProductName, sb, "Vui lòng chọn sản phẩm !", false);
             ValidateForm.Instance.checkNumber(tbProductPrice, sb, "Vui lòng nhập giá sản phẩm !", "Giá sản phẩm");
             if (sb.Length > 0)
             {
