@@ -156,7 +156,7 @@ namespace CafeManagementApplication.controllers
                         }
                     }
                 };
-                UserModel.Instance.updateUserByUsername(view.UserNameTag, update);
+                UserModel.Instance.updateUserByUsername(view.OldUserName, update);
                 return;
             }
         }
@@ -181,7 +181,7 @@ namespace CafeManagementApplication.controllers
             }
             if (nameData == "User")
             {
-                UserModel.Instance.deleteUserByUsername(view.UserNameTag);
+                UserModel.Instance.deleteUserByUsername(view.OldUserName);
                 return;
             }
         }

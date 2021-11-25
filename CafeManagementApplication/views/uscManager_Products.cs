@@ -199,8 +199,6 @@ namespace CafeManagementApplication.views
             // true là tự động ép kiểu về một kiểu 
             // DataSourceUpdateMode.Never là binding một đường từ DataSource qua TextBox
             tbProductName.DataBindings.Add("Text", dtgvProducts.DataSource, "Tên món", true, DataSourceUpdateMode.Never);
-            
-
             tbProductName.DataBindings.Add("Tag", dtgvProducts.DataSource, "Tên món", true, DataSourceUpdateMode.Never);
             tbProductPrice.DataBindings.Add("Text", dtgvProducts.DataSource, "Giá món", true, DataSourceUpdateMode.Never);
         }

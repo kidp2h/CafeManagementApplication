@@ -33,25 +33,25 @@ namespace CafeManagementApplication.views
         {
             InitializeComponent();
             LoadListUsers();
-
-            dtgvUsers.CurrentCell = dtgvUsers[0, 0];
+            dtgvUsers.ClearSelection();
         }
         
         public void LoadListUsers()
         {
-                LoadDataController.Instance.LoadDataTable("useManager_Users", dt);
+            LoadDataController.Instance.LoadDataTable("useManager_Users", dt);
                
-                dv = new DataView(dt);
+            dv = new DataView(dt);
 
-                dtgvUsers.DataSource = dv;
+            dtgvUsers.DataSource = dv;
 
-                //set style cho đẹp 
-                dtgvUsers.Columns[0].Width = 300;
-                dtgvUsers.Columns[1].Width = 100;
-                dtgvUsers.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtgvUsers.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //set style cho đẹp 
+            dtgvUsers.Columns[0].Width = 300;
+            dtgvUsers.Columns[1].Width = 100;
+            dtgvUsers.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgvUsers.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-                UserBinding();
+            
+                //UserBinding();
         }
 
         #region Public Data In View
@@ -110,10 +110,10 @@ namespace CafeManagementApplication.views
             set { tbName.Tag = value; }
         }
 
-        public string UserNameTag
+        public string OldUserName
         {
-            get { return tbUserName.Text; }
-            set { tbUserName.Text = value; }
+            get { return tbUserName.Tag.ToString(); }
+            set { tbUserName.Tag = value; }
         }
         #endregion
 
@@ -175,7 +175,7 @@ namespace CafeManagementApplication.views
             rowNew["Tài khoản"] = tbUserName.Text;
             rowNew["Chức vụ"] = rdoManager.Checked == true ? "Quản lý" : "Nhân viên";
 
-            string filter = string.Format("[Tài khoản] = '{0}'", tbUserName.Tag.ToString());
+            string filter = string.Format("[Tài khoản] = '{0}'", OldUserName);
             DataRow[] rows = dt.Select(filter);
 
             int index = dt.Rows.IndexOf(rows[0]);
@@ -201,7 +201,7 @@ namespace CafeManagementApplication.views
             #endregion
 
             #region Handler View
-            string filter = String.Format("[Tài khoản] = '{0}'", tbUserName.Tag.ToString());
+            string filter = String.Format("[Tài khoản] = '{0}'", OldUserName);
             DataRow[] rows = dt.Select(filter);
 
             int index = dt.Rows.IndexOf(rows[0]);
@@ -221,22 +221,29 @@ namespace CafeManagementApplication.views
 
         private void dtgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) return;
 
-            if (tbGender.Text == "Nam") rdoMale.Checked = true;
-            else if (tbGender.Text == "Nữ") rdoFemale.Checked = true; else rdoOther.Checked = true;
-            if (tbRole.Text == "Quản lý") rdoManager.Checked = true; else rdoSaff.Checked = true;
+            DataGridViewRow row = dtgvUsers.Rows[e.RowIndex];
+
+            tbName.Text = row.Cells[0].Value.ToString();
+            tbAge.Text = row.Cells[1].Value.ToString();
+            if (row.Cells[2].Value.ToString() == "Nam") rdoMale.Checked = true;
+            else if (row.Cells[2].Value.ToString() == "Nữ") rdoFemale.Checked = true; else rdoOther.Checked = true;
+            tbUserName.Text = row.Cells[3].Value.ToString();
+            tbUserName.Tag = row.Cells[3].Value.ToString();
+            if (row.Cells[4].Value.ToString() == "Quản lý") rdoManager.Checked = true; else rdoSaff.Checked = true;
 
         }
 
-        private void UserBinding()
-        {
-            tbGender.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Giới tính"));
-            tbName.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Họ và tên", true, DataSourceUpdateMode.Never));         
-            tbAge.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Tuổi", true, DataSourceUpdateMode.Never));
+        //private void UserBinding()
+        //{
+        //    tbGender.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Giới tính"));
+        //    tbName.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Họ và tên", true, DataSourceUpdateMode.Never));         
+        //    tbAge.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Tuổi", true, DataSourceUpdateMode.Never));
 
-            tbUserName.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Tài khoản", true, DataSourceUpdateMode.Never));
-            tbUserName.DataBindings.Add(new Binding("Tag", dtgvUsers.DataSource, "Tài khoản", true, DataSourceUpdateMode.Never));
-        }
+        //    tbUserName.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Tài khoản", true, DataSourceUpdateMode.Never));
+        //    tbUserName.DataBindings.Add(new Binding("Tag", dtgvUsers.DataSource, "Tài khoản", true, DataSourceUpdateMode.Never));
+        //}
 
         #endregion
 
