@@ -1,4 +1,5 @@
 ﻿using CafeManagementApplication.models;
+using CafeManagementApplication.types;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
@@ -35,10 +36,14 @@ namespace CafeManagementApplication.controllers
             }
             if (nameData == "Product")
             {
+
                 Product product = new Product();
+                // lấy dữ liệu ở 3 cái ô input trên view
                 product.NameProduct = view.inputProductNameText;
                 product.CategoryName = view.inputCategoryName;
                 product.Price = int.Parse(view.inputPrice);
+                
+                // trả về đối tượng có dữ liệu
                 return product;
             }
             if (nameData == "User")
@@ -94,7 +99,7 @@ namespace CafeManagementApplication.controllers
                         }
                     }
                 };
-                CategoryModel.Instance.updateCategoryByName(view.CategoryNameTag, updateCategory);
+                CategoryModel.Instance.updateCategoryByName(view.OldCategoryName, updateCategory);
                 return;
             }
             if (nameData == "Table")
@@ -110,21 +115,28 @@ namespace CafeManagementApplication.controllers
                         }
                     }
                 };              
-                TableModel.Instance.updateTableByNameTable(view.TableNameTag, updateTable);
+                TableModel.Instance.updateTableByNameTable(view.OldTableName, updateTable);
 
                 return;
             }
             if (nameData == "Product")
             {
+                // tạo ra một đối tượng product mới, truyền view dô để lấy dữ liệu ở view
                 Product product = NewData(nameData, view);
+
+                // tạo một đối tượng update của mongo
+
                 UpdateDefinition<Product> updateProduct = new BsonDocument
                 {
+                    //hàm set để set lại thuộc tính của product trong database
                     {"$set", new BsonDocument{
                         {"name", product.NameProduct},
                         {"price", product.Price }
                     }}
                 };
-                ProductModel.Instance.updateProductByNameProduct(view.ProductNameTag, updateProduct);
+
+                //gọi hàm ở model truyền vào tên cũ của product: view.ProductNameTag và đối tượng update
+                ProductModel.Instance.updateProductByNameProduct(view.OldProductName, updateProduct);
                 return;
             }
             if (nameData == "User")
@@ -144,7 +156,7 @@ namespace CafeManagementApplication.controllers
                         }
                     }
                 };
-                UserModel.Instance.updateUserByUsername(view.UserNameTag, update);
+                UserModel.Instance.updateUserByUsername(view.OldUserName, update);
                 return;
             }
         }
@@ -153,23 +165,23 @@ namespace CafeManagementApplication.controllers
         {
             if (nameData == "Category")
             {
-                CategoryModel.Instance.deleteCategoryByName(view.CategoryNameTag);
+                CategoryModel.Instance.deleteCategoryByName(view.OldCategoryName);
                 return;
             }
             if (nameData == "Table")
             {
-                TableModel.Instance.deleteTableByTableName(view.TableNameTag);
+                TableModel.Instance.deleteTableByTableName(view.OldTableName);
                 return;
             }
             if (nameData == "Product")
             {
-                ProductModel.Instance.deleteProductByNameProduct(view.ProductNameTag);
+                ProductModel.Instance.deleteProductByNameProduct(view.OldProductName);
 
                 return;
             }
             if (nameData == "User")
             {
-                UserModel.Instance.deleteUserByUsername(view.UserNameTag);
+                UserModel.Instance.deleteUserByUsername(view.OldUserName);
                 return;
             }
         }
@@ -186,7 +198,7 @@ namespace CafeManagementApplication.controllers
         public void ResetTableDataInput(dynamic view)
         {
             view.inputTableNameText = "";
-            view.inputStatus = 0;
+            view.inputStatus = sTable.EMPTY;
         }
 
         public void ResetProductDataInput(dynamic view)

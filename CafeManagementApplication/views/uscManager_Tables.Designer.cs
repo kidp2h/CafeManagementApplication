@@ -214,7 +214,10 @@ namespace CafeManagementApplication.views
             this.dtgvTables.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvTables.Size = new System.Drawing.Size(605, 707);
             this.dtgvTables.TabIndex = 24;
+
+            this.dtgvTables.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvTables_CellClick);
             this.dtgvTables.CurrentCellChanged += new System.EventHandler(this.dtgvTables_CurrentCellChanged);
+       
             // 
             // tbStatus
             // 
@@ -244,7 +247,6 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.tbTableSelected);
             this.Name = "uscManager_Tables";
             this.Size = new System.Drawing.Size(1115, 770);
-            this.Load += new System.EventHandler(this.uscManager_Tables_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

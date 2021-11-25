@@ -179,7 +179,7 @@ namespace CafeManagementApplication.helpers
                 }
                 else
                 {
-                    if (!ProductModel.Instance.isExist(tb.Text))
+                    if (!ProductModel.Instance.isExist(tb.Tag.ToString()))
                     {
                         sb.Append("Món đó không tồn tại !\n");
                         sb.Append("Vui lòng chọn lại !\n");

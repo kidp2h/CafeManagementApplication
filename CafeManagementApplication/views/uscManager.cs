@@ -33,7 +33,6 @@ namespace CafeManagementApplication.views
                 pnlModule.Controls.Add(uscManager_Tables.Instance);
                 uscManager_Tables.Instance.Dock = DockStyle.Fill;
                 uscManager_Tables.Instance.BringToFront();
-
             }
             else uscManager_Tables.Instance.BringToFront();
 

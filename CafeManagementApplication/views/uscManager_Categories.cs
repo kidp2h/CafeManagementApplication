@@ -46,7 +46,6 @@ namespace CafeManagementApplication.views
                 dv = new DataView(dt);
                 dtgvCategories.DataSource = dv;
 
-                CategoryBinding();
 
             //});
             //loadList.IsBackground = true;
@@ -67,10 +66,10 @@ namespace CafeManagementApplication.views
             }
         }
 
-        public string CategoryNameTag
+        public string OldCategoryName
         {
-            get { return tbCategorySelected.Text; }
-            set { tbCategorySelected.Text = value; }
+            get { return tbCategoryName.Tag.ToString(); }
+            set { tbCategoryName.Tag = value; }
         }
         #endregion
 
@@ -97,6 +96,7 @@ namespace CafeManagementApplication.views
             ManagerController.Instance.AddData("Category", category);
 
             uscManager_Products.Instance.LoadListProducts(false);
+            OldCategoryName = dtgvCategories.SelectedRows[0].Cells[0].Value.ToString();
         }
 
         private void btnUpdateCategory_Click(object sender, EventArgs e)
@@ -115,7 +115,7 @@ namespace CafeManagementApplication.views
             DataRow rowNew = dt.NewRow();
             rowNew["Tên loại"] = tbCategoryName.Text;
           
-            string filter = string.Format("[Tên loại] = '{0}'", tbCategorySelected.Text = tbCategoryName.Tag.ToString());
+            string filter = string.Format("[Tên loại] = '{0}'", OldCategoryName);
             DataRow[] rows = dt.Select(filter);
 
             int index = dt.Rows.IndexOf(rows[0]);
@@ -128,6 +128,7 @@ namespace CafeManagementApplication.views
 
             ManagerController.Instance.UpdateData("Category", this);
             uscManager_Products.Instance.LoadListProducts(false);
+            OldCategoryName = dtgvCategories.SelectedRows[0].Cells[0].Value.ToString();
 
         }
 
@@ -144,7 +145,7 @@ namespace CafeManagementApplication.views
             #endregion
 
             #region Handler View
-            string filter = string.Format("[Tên loại] = '{0}'", tbCategorySelected.Text = tbCategoryName.Tag.ToString());
+            string filter = string.Format("[Tên loại] = '{0}'", OldCategoryName);
             DataRow[] rows = dt.Select(filter);
 
             int index = dt.Rows.IndexOf(rows[0]);
@@ -152,15 +153,8 @@ namespace CafeManagementApplication.views
             dt.Rows.RemoveAt(index);
             #endregion
 
-
             ManagerController.Instance.DeleteData("Category", this);
-            uscManager_Products.Instance.LoadListProducts(false); 
-        }
-
-        private void CategoryBinding()
-        {
-            tbCategoryName.DataBindings.Add(new Binding("Text", dtgvCategories.DataSource, "Tên loại", true, DataSourceUpdateMode.Never));
-            tbCategoryName.DataBindings.Add(new Binding("Tag", dtgvCategories.DataSource, "Tên loại", true, DataSourceUpdateMode.Never));
+            uscManager_Products.Instance.LoadListProducts(false);
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
@@ -180,5 +174,14 @@ namespace CafeManagementApplication.views
 
         #endregion
 
+        private void dtgvCategories_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+
+            DataGridViewRow row = dtgvCategories.Rows[e.RowIndex];
+
+            tbCategoryName.Text = row.Cells[0].Value.ToString();
+            tbCategoryName.Tag = row.Cells[0].Value.ToString();
+        }
     }
 }
