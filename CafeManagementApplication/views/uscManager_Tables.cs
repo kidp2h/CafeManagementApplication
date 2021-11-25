@@ -75,16 +75,12 @@ namespace CafeManagementApplication.views
         {
             get
             {   
-                return sTable.EMPTY;  //hỏi là lấy giá trị từ đâu ( sTavle.EMPTY là lấy từ chỗ nào )
-            }
-            set
-            {
-                if (value == sTable.EMPTY) rdoEmpty.Checked = true;
-                else rdoFull.Checked = true;  //hỏi tại sao phải check trong khi return luôn về trống
+                if (rdoEmpty.Checked == true) return sTable.EMPTY;  //hỏi là lấy giá trị từ đâu ( sTavle.EMPTY là lấy từ chỗ nào )
+                return sTable.FULL;
             }
         }
 
-        public string TableNameTag
+        public string TableNameTag //tên cũ
         {
             get { return tbTableSelected.Text; }
             set { tbTableSelected.Text = value; }
@@ -167,7 +163,7 @@ namespace CafeManagementApplication.views
             #endregion
 
             #region Handler View
-            string filter = string.Format("[Tên bàn] = '{0}'", tbTableSelected.Text = tbTableName.Tag.ToString());  //hỏi cái tbTableSelected.Text và  tbTableName.Tag. ở đâu ra
+            string filter = string.Format("[Tên bàn] = '{0}'", tbTableSelected.Text = tbTableName.Tag.ToString());
             DataRow[] rows = dt.Select(filter);
 
             int index = dt.Rows.IndexOf(rows[0]);
@@ -180,12 +176,11 @@ namespace CafeManagementApplication.views
         }
 
         private void TableBinding()
-        {               
+        {
             tbTableName.DataBindings.Add(new Binding("Text", dtgvTables.DataSource, "Tên bàn", true, DataSourceUpdateMode.Never));
             tbTableName.DataBindings.Add(new Binding("Tag", dtgvTables.DataSource, "Tên bàn", true, DataSourceUpdateMode.Never));
 
             tbStatus.DataBindings.Add(new Binding("Text", dtgvTables.DataSource, "Trạng thái"));
-
             if (tbStatus.Text == "Có người") rdoFull.Checked = true;
             else rdoEmpty.Checked = true;
         }
@@ -197,7 +192,7 @@ namespace CafeManagementApplication.views
 
         private void dtgvTables_CurrentCellChanged(object sender, EventArgs e)
         {
-            if (tbStatus.Text == "Có người") rdoFull.Checked = true;  //hỏi cái tbStatus ở đâu ra 
+            if (tbStatus.Text == "Có người") rdoFull.Checked = true; 
             else rdoEmpty.Checked = true;
         }
         #endregion
@@ -210,8 +205,12 @@ namespace CafeManagementApplication.views
         }
 
 
+
         #endregion
 
-      
+        private void uscManager_Tables_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
