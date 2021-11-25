@@ -186,7 +186,7 @@ namespace CafeManagementApplication.views
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvProducts.Location = new System.Drawing.Point(11, 60);
+            this.dtgvProducts.Location = new System.Drawing.Point(0, 59);
             this.dtgvProducts.Name = "dtgvProducts";
             this.dtgvProducts.ReadOnly = true;
             this.dtgvProducts.RowHeadersVisible = false;
@@ -203,9 +203,9 @@ namespace CafeManagementApplication.views
             // 
             // tbProductSelected
             // 
-            this.tbProductSelected.Location = new System.Drawing.Point(602, 735);
+            this.tbProductSelected.Location = new System.Drawing.Point(789, 694);
             this.tbProductSelected.Name = "tbProductSelected";
-            this.tbProductSelected.Size = new System.Drawing.Size(13, 22);
+            this.tbProductSelected.Size = new System.Drawing.Size(195, 22);
             this.tbProductSelected.TabIndex = 32;
             // 
             // pictureBox1
@@ -213,7 +213,7 @@ namespace CafeManagementApplication.views
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.BackgroundImage = global::CafeManagementApplication.Properties.Resources.Search;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(566, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(585, 20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(47, 33);
             this.pictureBox1.TabIndex = 35;
@@ -222,7 +222,7 @@ namespace CafeManagementApplication.views
             // tbSearch
             // 
             this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSearch.Location = new System.Drawing.Point(11, 19);
+            this.tbSearch.Location = new System.Drawing.Point(0, 22);
             this.tbSearch.Multiline = true;
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(605, 35);
