@@ -106,7 +106,7 @@ namespace CafeManagementApplication.views
 
             LoadDataController.Instance.LoadBillOfTableByIdForViewSale(this.TableId);
 
-            uscManager_Tables.Instance.LoadListTables(false);
+            uscManager_Tables.Instance.LoadListTables();
 
             MessageBox.Show("ĐÃ THÊM MÓN !!!!", "Thông báo", MessageBoxButtons.OK ,MessageBoxIcon.Information);
         } 

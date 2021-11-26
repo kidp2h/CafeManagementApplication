@@ -190,6 +190,7 @@ namespace CafeManagementApplication.models
             if (table.Count != 0) return table[0];
             return null;
         }
+
         public List<Table> getListTable()
         {
             IMongoCollection<Table> collection = getCollection();
@@ -207,9 +208,12 @@ namespace CafeManagementApplication.models
         }
         public void deleteTableByTableName(string tableName)
         {
+            BillModel.Instance.deleteBillById(BillModel.Instance.getIdBillByTableName(tableName));
+
             FilterDefinition<Table> _tableName = new BsonDocument("tableName", tableName);
             IMongoCollection<Table> collection = getCollection();
-            collection.DeleteOneAsync(_tableName);
+            collection.DeleteOne(_tableName);
+
         }
         #endregion
 

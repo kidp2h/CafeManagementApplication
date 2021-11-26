@@ -64,7 +64,7 @@ namespace CafeManagementApplication.views
             t1.Start();
 
             LoadDataController.Instance.LoadBillOfTableByIdForViewSale(this.TableId);
-            uscManager_Tables.Instance.LoadListTables(false);
+            uscManager_Tables.Instance.LoadListTables();
             uscStatistics.Instance.LoadListBillForView();
 
 

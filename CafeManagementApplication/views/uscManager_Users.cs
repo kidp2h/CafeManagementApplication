@@ -14,9 +14,7 @@ namespace CafeManagementApplication.views
     public partial class uscManager_Users : UserControl
     {
         private static uscManager_Users instance;
-        private DataTable dt = new DataTable();
-        private DataView dv;
-
+        
         public static uscManager_Users Instance
         {
             get
@@ -33,49 +31,58 @@ namespace CafeManagementApplication.views
         {
             InitializeComponent();
             LoadListUsers();
-            dtgvUsers.ClearSelection();
         }
-        
+
+        private DataTable dt;
+        private DataView dv;
+
         public void LoadListUsers()
         {
-            LoadDataController.Instance.LoadDataTable("useManager_Users", dt);
-               
+            dt = new DataTable();
+            LoadDataController.Instance.LoadDataTable("useManager_Users", dt);       
             dv = new DataView(dt);
-
             dtgvUsers.DataSource = dv;
 
             //set style cho đẹp 
             dtgvUsers.Columns[0].Width = 300;
             dtgvUsers.Columns[1].Width = 100;
             dtgvUsers.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dtgvUsers.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgvUsers.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; 
+        }
 
-            
-                //UserBinding();
+        private void ResetView()
+        {
+            ManagerController.Instance.ResetUserDataInput(this);
+            dtgvUsers.ClearSelection();
         }
 
         #region Public Data In View
         public DataTable Dt { get; set; }
+
         public string inputNameText
         {
             get { return tbName.Text; }
             set { tbName.Text = value;  }
         }
+
         public string inputAgeText
         {
             get { return tbAge.Text; }
             set { tbAge.Text = value; }
         }
+
         public string inputUsernameText
         {
             get { return tbUserName.Text; }
             set { tbUserName.Text = value; }
         }
+
         public string inputUserpasswordText
         {
             get { return tbUserPassword.Text; }
             set { tbUserPassword.Text = value; }
         }
+
         public string inputGenderText  
         {
             get
@@ -84,7 +91,14 @@ namespace CafeManagementApplication.views
                 else if (rdoFemale.Checked) return "Nữ";
                 else return "Khác";
             }
+            set
+            {
+                if (value == "Nam") rdoMale.Checked = true;
+                else if (value == "Nữ") rdoFemale.Checked = true;
+                else rdoOther.Checked = true;
+            }
         }
+
         public Role inputRole 
         {
             get
@@ -92,11 +106,11 @@ namespace CafeManagementApplication.views
                 if (rdoManager.Checked) return Role.MANAGER;
                 else return Role.STAFF;
             }
-        }
-        public string UserId
-        {
-            get { return tbName.Tag.ToString();}
-            set { tbName.Tag = value; }
+            set
+            {
+                if (value == Role.MANAGER) rdoManager.Checked = true;
+                else rdoSaff.Checked = true;
+            }
         }
 
         public string OldUserName
@@ -104,9 +118,14 @@ namespace CafeManagementApplication.views
             get { return tbUserName.Tag.ToString(); }
             set { tbUserName.Tag = value; }
         }
+
         #endregion
 
         #region Handler Event
+        private void uscManager_Users_Load(object sender, EventArgs e)
+        {
+            dtgvUsers.ClearSelection();
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -135,13 +154,14 @@ namespace CafeManagementApplication.views
             
 
             dt.Rows.Add(Name, Age.ToString(), Gender, Username, Role);
-            dtgvUsers.CurrentCell = dtgvUsers[0, dtgvUsers.RowCount -1 ];
+           
             #endregion
 
             ManagerController.Instance.AddData("User", user);
-            OldUserName = dtgvUsers.SelectedRows[0].Cells[0].Value.ToString();
+            ResetView();
 
         }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             #region Validate
@@ -168,15 +188,16 @@ namespace CafeManagementApplication.views
             DataRow[] rows = dt.Select(filter);
 
             int index = dt.Rows.IndexOf(rows[0]);
-            //btnDelete.Tag = index;
+            
             dt.Rows.RemoveAt(index);
             dt.Rows.InsertAt(rowNew, index);
-            dtgvUsers.CurrentCell = dtgvUsers[0, index];
+         
             #endregion
 
             ManagerController.Instance.UpdateData("User", this);
-            OldUserName = dtgvUsers.SelectedRows[0].Cells[0].Value.ToString();
+            ResetView();
         }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             #region Validate
@@ -195,19 +216,17 @@ namespace CafeManagementApplication.views
             DataRow[] rows = dt.Select(filter);
 
             int index = dt.Rows.IndexOf(rows[0]);
-            //btnDelete.Tag = index;
             dt.Rows.RemoveAt(index);
             #endregion
 
             ManagerController.Instance.DeleteData("User", this);
-            
+            ResetView();
         } 
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
             dv.RowFilter = String.Format("[Họ và tên] LIKE '%{0}%'", tbSearch.Text);
         }
-
 
         private void dtgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -225,15 +244,10 @@ namespace CafeManagementApplication.views
 
         }
 
-        //private void UserBinding()
-        //{
-        //    tbGender.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Giới tính"));
-        //    tbName.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Họ và tên", true, DataSourceUpdateMode.Never));         
-        //    tbAge.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Tuổi", true, DataSourceUpdateMode.Never));
-
-        //    tbUserName.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Tài khoản", true, DataSourceUpdateMode.Never));
-        //    tbUserName.DataBindings.Add(new Binding("Tag", dtgvUsers.DataSource, "Tài khoản", true, DataSourceUpdateMode.Never));
-        //}
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            ResetView();
+        }
 
         #endregion
 
@@ -268,19 +282,8 @@ namespace CafeManagementApplication.views
 
         #endregion
 
-        private void resertToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ManagerController.Instance.ResetDataInput(this);
-        }
+        
 
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            ManagerController.Instance.ResetDataInput(this);
-        }
-
-        private void dtgvUsers_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            
-        }
+       
     }
 }

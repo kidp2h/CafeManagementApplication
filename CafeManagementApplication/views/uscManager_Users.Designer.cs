@@ -29,7 +29,6 @@ namespace CafeManagementApplication.views
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Button btnAdd;
             System.Windows.Forms.Button btnNew;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -59,8 +58,6 @@ namespace CafeManagementApplication.views
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.dtgvUsers = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.resertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             btnAdd = new System.Windows.Forms.Button();
             btnNew = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -69,7 +66,6 @@ namespace CafeManagementApplication.views
             this.pnlRole.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAdd
@@ -375,7 +371,7 @@ namespace CafeManagementApplication.views
             this.dtgvUsers.Size = new System.Drawing.Size(1109, 397);
             this.dtgvUsers.TabIndex = 15;
             this.dtgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvUsers_CellClick);
-            this.dtgvUsers.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dtgvUsers_DataBindingComplete);
+       
             // 
             // pictureBox1
             // 
@@ -388,27 +384,11 @@ namespace CafeManagementApplication.views
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.resertToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(207, 28);
-            // 
-            // resertToolStripMenuItem
-            // 
-            this.resertToolStripMenuItem.Name = "resertToolStripMenuItem";
-            this.resertToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
-            this.resertToolStripMenuItem.Text = "Làm mới mẫu nhập";
-            this.resertToolStripMenuItem.Click += new System.EventHandler(this.resertToolStripMenuItem_Click);
-            // 
             // uscManager_Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dtgvUsers);
             this.Controls.Add(this.tbSearch);
@@ -416,6 +396,7 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.panel1);
             this.Name = "uscManager_Users";
             this.Size = new System.Drawing.Size(1115, 777);
+            this.Load += new System.EventHandler(this.uscManager_Users_Load);
             this.panel1.ResumeLayout(false);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
@@ -425,7 +406,6 @@ namespace CafeManagementApplication.views
             this.pnlRole.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvUsers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,7 +436,5 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.DataGridView dtgvUsers;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem resertToolStripMenuItem;
     }
 }

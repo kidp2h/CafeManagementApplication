@@ -15,10 +15,6 @@ namespace CafeManagementApplication.views
     {
         private static uscManager_Tables instance;
 
-        private DataTable dt;
-        private DataView dv;
-        private BindingSource tableList = new BindingSource();
-
         public static uscManager_Tables Instance
         {
             get
@@ -34,31 +30,29 @@ namespace CafeManagementApplication.views
         private uscManager_Tables()
         {
             InitializeComponent();
-            LoadData();
-            dtgvTables.CurrentCell = dtgvTables[0, 0];
-        } 
-        
-        private void LoadData()
-        {
             LoadListTables();
         }
 
-        public void LoadListTables(bool status = true)
-        {
-            //Thread loadList = new Thread(() => {
-                //tạo một đối tượng data table
-                dt = new DataTable();
-                //gọi controler để lấy dữ liệu vào datable từ model
-                LoadDataController.Instance.LoadDataTable("uscManager_Tables", dt);   
-                //tạo đối tượng data view 
-                dv = new DataView (dt);
-                dtgvTables.DataSource = dv;
-                
+        private DataTable dt;
+        private DataView dv;
 
-            //});
-            //loadList.IsBackground = true;
-            //loadList.Start();
+        public void LoadListTables()
+        {
+            dt = new DataTable();
+            //gọi controler để lấy dữ liệu vào datable từ model
+            LoadDataController.Instance.LoadDataTable("uscManager_Tables", dt);   
+            //tạo đối tượng data view 
+            dv = new DataView (dt);
+            dtgvTables.DataSource = dv;
+           
         }
+
+        private void ResetView()
+        {
+            ManagerController.Instance.ResetTableDataInput(this);
+            dtgvTables.ClearSelection();
+        }
+
 
         #region Public Data View
 
@@ -75,6 +69,11 @@ namespace CafeManagementApplication.views
                 if (rdoEmpty.Checked == true)  return sTable.EMPTY;
                 return sTable.FULL;
             }
+            set
+            {
+                if (value == sTable.FULL) rdoFull.Checked = true;
+                else rdoEmpty.Checked = true;
+            }
         }
 
         public string OldTableName //tên cũ
@@ -85,12 +84,16 @@ namespace CafeManagementApplication.views
         #endregion
 
         #region Handler Event
- 
+        private void uscManager_Tables_Load(object sender, EventArgs e)
+        {
+            dtgvTables.ClearSelection();
+        }
+
         private void btnAddTable_Click(object sender, EventArgs e)
         {
             #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkTableName(tbTableName, sb, "Vui lòng nhập tên bàn !", true);
+            ValidateForm.Instance.checkTableName(tbTableName, sb, "Vui lòng nhập tên bàn !", "add");
             if (sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -105,26 +108,31 @@ namespace CafeManagementApplication.views
             DataRow rowNew = dt.NewRow();
             rowNew["Tên bàn"] = tbTableName.Text;
             rowNew["Trạng thái"] = "Bàn trống";
-            //--> cách này để tối ưu trải nghiệm người dùng 
+       
             dt.Rows.Add(rowNew);
-            dtgvTables.CurrentCell = dtgvTables[0, dt.Rows.IndexOf(rowNew)];
+            
             #endregion
 
             ManagerController.Instance.AddData("Table", table);
+
+            ResetView();
+
             uscSale.Instance.LoadListTableForForm();
-            OldTableName = dtgvTables.SelectedRows[0].Cells[0].Value.ToString();
+
         }
 
         private void btnUpdateTabe_Click(object sender, EventArgs e)
         {
             #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkTableName(tbTableName, sb, "Vui lòng nhập tên bàn  !", true);
+            ValidateForm.Instance.checkTableName(tbTableName, sb, "Vui lòng nhập tên bàn  !", "update");
+
             if (sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             #endregion
 
             #region Handler View
@@ -137,22 +145,25 @@ namespace CafeManagementApplication.views
             DataRow[] rows = dt.Select(filter);
 
             int index = dt.Rows.IndexOf(rows[0]);
-            btnDeleteTable.Tag = index;
+  
             dt.Rows.RemoveAt(index);
             dt.Rows.InsertAt(rowNew, index);
-            dtgvTables.CurrentCell = dtgvTables[0, index];
+
             #endregion
 
             ManagerController.Instance.UpdateData("Table", this);
+
+            ResetView();
+
             uscSale.Instance.LoadListTableForForm();
-            OldTableName = dtgvTables.SelectedRows[0].Cells[0].Value.ToString();
+
         }
 
         private void btnDeleteTable_Click(object sender, EventArgs e)
         {
             #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkTableName(tbTableName, sb, "Vui lòng chọn bàn !", false);
+            ValidateForm.Instance.checkTableName(tbTableName, sb, "Vui lòng chọn bàn !", "delete");
             ValidateForm.Instance.checkTableStatus(tbStatus, sb, "Bàn này đang có người không thể xóa !");
             if (sb.Length > 0)
             {
@@ -162,40 +173,26 @@ namespace CafeManagementApplication.views
             #endregion
 
             #region Handler View
-            string filter = string.Format("[Tên bàn] = '{0}'", OldTableName);
+
+            string filter = String.Format("[Tên bàn] = '{0}'", OldTableName);
             DataRow[] rows = dt.Select(filter);
 
             int index = dt.Rows.IndexOf(rows[0]);
-            btnDeleteTable.Tag = index;
             dt.Rows.RemoveAt(index);
+            
             #endregion
 
             ManagerController.Instance.DeleteData("Table", this);
+
+            ResetView();
+
             uscSale.Instance.LoadListTableForForm();
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
             dv.RowFilter = String.Format("[Tên bàn] LIKE '%{0}%'", tbSearch.Text);
-        }
-
-        private void dtgvTables_CurrentCellChanged(object sender, EventArgs e)
-        {
-            //if (tbStatus.Text == "Có người") rdoFull.Checked = true;
-            //else rdoEmpty.Checked = true;
-        }
-        #endregion
-
-        #region Effect
-        private void tbTableName_TextChanged(object sender, EventArgs e)
-        {
-            if(tbTableName.BackColor != Color.White)
-            tbTableName.BackColor = Color.White;
-        }
-
-
-
-        #endregion
+        } 
 
         private void dtgvTables_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -205,8 +202,20 @@ namespace CafeManagementApplication.views
 
             tbTableName.Text = row.Cells[0].Value.ToString();
             tbTableName.Tag = row.Cells[0].Value.ToString();
+            //để validate
+            tbStatus.Text = row.Cells[1].Value.ToString();
             if (row.Cells[1].Value.ToString() == "Có người") rdoFull.Checked = true;
             else if (row.Cells[1].Value.ToString() == "Bàn trống") rdoEmpty.Checked = true; 
         }
+
+        #endregion
+
+        #region Effect
+        private void tbTableName_TextChanged(object sender, EventArgs e)
+        {
+            if (tbTableName.BackColor != Color.White)
+                tbTableName.BackColor = Color.White;
+        }
+        #endregion
     }
 }

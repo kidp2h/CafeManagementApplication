@@ -7,17 +7,14 @@ namespace CafeManagementApplication.controllers
     public class LoadItemController
     {
         private static LoadItemController instance;
-        private static readonly object lockObject = new object();
+
         public static LoadItemController Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    lock (lockObject)
-                    {
-                        if (instance == null) instance = new LoadItemController();
-                    }
+                   instance = new LoadItemController();
                 }
                 return instance;
 
