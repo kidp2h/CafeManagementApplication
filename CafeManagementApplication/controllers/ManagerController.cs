@@ -20,6 +20,8 @@ namespace CafeManagementApplication.controllers
             }
         }
 
+        private ManagerController() { }
+             
         public dynamic NewData(string nameData, dynamic view)
         {
             if (nameData == "Category")

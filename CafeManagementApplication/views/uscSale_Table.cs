@@ -10,7 +10,6 @@ namespace CafeManagementApplication.views
         public uscSale_Table()
         {
             InitializeComponent();
-
         }
 
         #region Getter & Setter 

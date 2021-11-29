@@ -30,7 +30,7 @@ namespace CafeManagementApplication.views
             }
         }
 
-        public uscManager_Categories()
+        private uscManager_Categories()
         {
             InitializeComponent();
             LoadListCategorysForForm();
@@ -93,8 +93,9 @@ namespace CafeManagementApplication.views
 
             ManagerController.Instance.AddData("Category", category);
             ResetView();
+            MessageBox.Show("ĐÃ THÊM LOẠI MÓN !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             uscManager_Products.Instance.LoadListProducts();
-            
         }
 
         private void btnUpdateCategory_Click(object sender, EventArgs e)
@@ -126,6 +127,8 @@ namespace CafeManagementApplication.views
 
             ManagerController.Instance.UpdateData("Category", this);
             ResetView();
+            MessageBox.Show("ĐÃ SỬA LOẠI MÓN !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             uscManager_Products.Instance.LoadListProducts();
            
 
@@ -133,6 +136,9 @@ namespace CafeManagementApplication.views
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("NẾU XÓA LOẠI MÓN, MÓN CÓ LOẠI NÀY CŨNG MẤT BẠN CÓ MUỐN XÓA ???", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.No) return; 
+
             #region Validate
             StringBuilder sb = new StringBuilder();
             ValidateForm.Instance.checkCategoryName(tbCategoryName, sb, "Vui lòng chọn loại sản phẩm !", "delete");

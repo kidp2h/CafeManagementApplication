@@ -127,7 +127,6 @@ namespace CafeManagementApplication.views
             this.lvBillforOneTable.TabIndex = 0;
             this.lvBillforOneTable.UseCompatibleStateImageBehavior = false;
             this.lvBillforOneTable.View = System.Windows.Forms.View.Details;
-            this.lvBillforOneTable.Click += new System.EventHandler(this.lvBillforOneTable_Click);
             this.lvBillforOneTable.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvBillforOneTable_MouseDoubleClick);
             // 
             // columnHeader1
@@ -359,10 +358,10 @@ namespace CafeManagementApplication.views
             this.flpTableList.BackgroundImage = global::CafeManagementApplication.Properties.Resources.logoCaffe;
             this.flpTableList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.flpTableList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flpTableList.Location = new System.Drawing.Point(3, 65);
+            this.flpTableList.Location = new System.Drawing.Point(3, 53);
             this.flpTableList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flpTableList.Name = "flpTableList";
-            this.flpTableList.Size = new System.Drawing.Size(712, 706);
+            this.flpTableList.Size = new System.Drawing.Size(712, 718);
             this.flpTableList.TabIndex = 0;
             // 
             // button1

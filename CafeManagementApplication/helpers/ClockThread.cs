@@ -19,6 +19,9 @@ namespace CafeManagementApplication.helpers
                 return instance;
             }
         }
+
+        private ClockThread() { }
+
         private Label lbl;
         public void setLbl(Label lbl)
         {

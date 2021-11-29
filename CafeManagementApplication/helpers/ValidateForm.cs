@@ -22,6 +22,8 @@ namespace CafeManagementApplication.helpers
             }
         }
 
+        private ValidateForm() { }
+
         public bool checkEmpty(dynamic tb, StringBuilder sb, string msg)
         {
             if(tb.Text.Equals(""))

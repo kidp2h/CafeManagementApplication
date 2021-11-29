@@ -10,17 +10,13 @@ namespace CafeManagementApplication.views
     public partial class uscSale : UserControl
     {
         private static uscSale instance;
-        private static readonly object lockObject = new object();
         public static uscSale Instance
         {
             get
             {
                 if (instance == null)
-                {
-                    lock(lockObject)
-                    {
-                        if (instance == null) instance = new uscSale();
-                    }    
+                {                  
+                   instance = new uscSale();                
                 }
                 return instance;
             }
@@ -104,8 +100,8 @@ namespace CafeManagementApplication.views
                 f.TableId = TableId;
                 f.BillId = BillId;
                 f.sale = inputSale;
-                
                 f.inputSubtotalText = inputToTalPriceBill.Replace("đ","");
+
                 f.Show();
             } 
             else
@@ -119,8 +115,6 @@ namespace CafeManagementApplication.views
             LoadListTableForForm();
         }
 
-
-        // Mai coi 
         private void tbTotalPriceProducts_TextChanged(object sender, EventArgs e)
         {
             int TotalPriceProducts = Int32.Parse(tbTotalPriceProducts.Text.Replace("đ", ""));
@@ -150,11 +144,6 @@ namespace CafeManagementApplication.views
             tbTotalPriceProducts_TextChanged(null, null);
         }
         #endregion
-
-        private void lvBillforOneTable_Click(object sender, EventArgs e)
-        {
-    
-        }
 
         private void lvBillforOneTable_MouseDoubleClick(object sender, MouseEventArgs e)
         {

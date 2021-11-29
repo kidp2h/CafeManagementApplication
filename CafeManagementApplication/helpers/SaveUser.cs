@@ -20,7 +20,8 @@ namespace CafeManagementApplication.helpers
                 return instance;
             }
         }
-        public SaveUser()
+
+        private SaveUser()
         {
             file = Path.GetTempPath() + "tempSaveUser.txt";
         }

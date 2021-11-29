@@ -55,7 +55,7 @@ namespace CafeManagementApplication
         private void fLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-            if (MessageBox.Show("Bạn có muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel) != DialogResult.OK)
+            if (MessageBox.Show("BẠN CÓ MUỐN THOÁT ?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question ) != DialogResult.OK)
             {
                 e.Cancel = true;
             }

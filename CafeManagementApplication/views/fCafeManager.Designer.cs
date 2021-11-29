@@ -135,7 +135,6 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.btnStatistics);
             this.Controls.Add(this.btnManager);
             this.Controls.Add(this.btnSale);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "fCafeManager";
