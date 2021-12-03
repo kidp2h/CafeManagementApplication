@@ -17,7 +17,6 @@ namespace CafeManagementApplication.views
 
         private DataTable dt;
         private DataView dv;
-        private BindingSource tableList = new BindingSource();
 
         public static uscManager_Tables Instance
         {

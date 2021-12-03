@@ -53,6 +53,8 @@ namespace CafeManagementApplication.models
         public Category getCategoryByName(string nameCategory)
         {
             IMongoCollection<Category> collection = this.getCollection();
+
+            // tạo mới 1 list category để lưu giá trị lọc của cái tên category tương ứng  
             List<Category> category = collection.Find(new BsonDocument("name", nameCategory)).ToList();
             return category[0];
         }
@@ -87,7 +89,7 @@ namespace CafeManagementApplication.models
         public bool checkCategory(FilterDefinition<Category> category)
         {
             IMongoCollection<Category> collection = this.getCollection();
-            List<Category> result = collection.Find(category).ToList();
+            List<Category> result = collection.Find(category).ToList(); // tạo ra một list và dùng hàm find để lọc category 
             if (result.Count != 0) return true;
             return false;
         }

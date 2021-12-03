@@ -31,8 +31,11 @@ namespace CafeManagementApplication.models
             }
         }
         public override IMongoCollection<Product> getCollection()
-        {
+        {   
             IMongoDatabase db = Database.getDatabase();
+
+            //lấy cái collection là products ở trong database (db)
+            //1 collection có kiểu dữ liệu là Product
             IMongoCollection<Product> collection = db.GetCollection<Product>("products");
             return collection;
         }
@@ -41,13 +44,17 @@ namespace CafeManagementApplication.models
         public void addProduct(Product newProduct, string nameCategory)
         {
             IMongoCollection<Product> collection = getCollection();
-            FilterDefinition<Category> filter = new BsonDocument("name", nameCategory);
-            BsonObjectId id = ObjectId.GenerateNewId();
+
+            //tạo ra một đối tượng filter với kiểu dữ liệu là category có cái key là name: nameCategory
+            FilterDefinition<Category> filter = new BsonDocument("name", nameCategory);        
+            BsonObjectId id = ObjectId.GenerateNewId(); // tự tạo ra một Id mới 
             if (!CategoryModel.Instance.checkCategory(filter))
-            {
+            {   //nếu hổng có loại đó thì gọi hàm addCategory để thêm mới 1 object loại vào collection Category của database 
                 CategoryModel.Instance.addCategory(new Category { Id = id, NameCategory = nameCategory });
+
+                // tạo mới 1 đối tượng product 
                 Product product = new Product { NameProduct = newProduct.NameProduct, Category = id, Price = newProduct.Price };
-                collection.InsertOneAsync(product);
+                collection.InsertOneAsync(product); // thêm vào collection product database
             }
             else
             {
@@ -93,8 +100,10 @@ namespace CafeManagementApplication.models
         }
 
         public void updateProductByNameProduct(string nameProduct, UpdateDefinition<Product> update)
-        {
+        {   
+            // tạo ra một đối tượng lọc có kiểu dữ liệu Product (filter) từ một bsondocument có trường name: nameProduct
             FilterDefinition<Product> filter = new BsonDocument("name", nameProduct);
+            //tạo ra một đối tượng collection = getCollection
             IMongoCollection<Product> collection = getCollection();           
             collection.UpdateOneAsync(filter, update);
         }
@@ -105,9 +114,10 @@ namespace CafeManagementApplication.models
         {
             IMongoCollection<Product> collection = getCollection();
             dynamic listProduct = collection.Aggregate()
-                .Lookup("categories", "category", "_id", "category")
-                .Unwind("category")
-                .AppendStage<BsonDocument>("{$set : {'category' : '$category.name'}}")
+                // category thứ 2 là local ( local field) , _id là foriegn field join vô categories thì nó sẽ trả về 1 document, sau đó gán lại cho category cuối  
+                .Lookup("categories", "category", "_id", "category") //(trả về 1 mảng)
+                .Unwind("category") // vì tại lookup trả về 1 mảng object, nên phải unwind để tách mảng ra
+                .AppendStage<BsonDocument>("{$set : {'category' : '$category.name'}}") // đặt object category thành tên của category đó 
                 .ToList();
             return listProduct;
         }

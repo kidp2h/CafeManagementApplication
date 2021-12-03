@@ -225,16 +225,6 @@ namespace CafeManagementApplication.views
 
         }
 
-        //private void UserBinding()
-        //{
-        //    tbGender.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Giới tính"));
-        //    tbName.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Họ và tên", true, DataSourceUpdateMode.Never));         
-        //    tbAge.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Tuổi", true, DataSourceUpdateMode.Never));
-
-        //    tbUserName.DataBindings.Add(new Binding("Text", dtgvUsers.DataSource, "Tài khoản", true, DataSourceUpdateMode.Never));
-        //    tbUserName.DataBindings.Add(new Binding("Tag", dtgvUsers.DataSource, "Tài khoản", true, DataSourceUpdateMode.Never));
-        //}
-
         #endregion
 
         #region Effect

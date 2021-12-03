@@ -41,15 +41,10 @@ namespace CafeManagementApplication.views
 
         public void LoadListCategorysForForm()
         {
-            //Thread loadList = new Thread(() => {
+            
                 LoadDataController.Instance.LoadDataTable("uscManager_Categories", dt);
                 dv = new DataView(dt);
                 dtgvCategories.DataSource = dv;
-
-
-            //});
-            //loadList.IsBackground = true;
-            //loadList.Start();
             
         }
 
