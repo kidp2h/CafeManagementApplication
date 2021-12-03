@@ -159,6 +159,7 @@ namespace CafeManagementApplication.views
 
             ManagerController.Instance.AddData("User", user);
             ResetView();
+            MessageBox.Show("ĐÃ THÊM NGƯỜI DÙNG !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
@@ -196,6 +197,7 @@ namespace CafeManagementApplication.views
 
             ManagerController.Instance.UpdateData("User", this);
             ResetView();
+            MessageBox.Show("ĐÃ SỬA THÔNG TIN NGƯỜI DÙNG !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -221,6 +223,7 @@ namespace CafeManagementApplication.views
 
             ManagerController.Instance.DeleteData("User", this);
             ResetView();
+            MessageBox.Show("ĐÃ XÓA NGƯỜI DÙNG !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         } 
 
         private void tbSearch_TextChanged(object sender, EventArgs e)

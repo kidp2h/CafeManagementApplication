@@ -48,6 +48,7 @@ namespace CafeManagementApplication.models
                 CategoryModel.Instance.addCategory(new Category { Id = id, NameCategory = nameCategory });
                 Product product = new Product { NameProduct = newProduct.NameProduct, Category = id, Price = newProduct.Price };
                 collection.InsertOneAsync(product);
+
             }
             else
             {

@@ -85,7 +85,6 @@ namespace CafeManagementApplication.views
         private void btnAdd_Click(object sender, EventArgs e)
         {
             fAddProducts f = new fAddProducts();   
-            
             f.BillID = this.BillId;
             f.TableId = this.TableId;
             f.TableStatus = this.TableStatus;
@@ -101,7 +100,6 @@ namespace CafeManagementApplication.views
                 f.BillId = BillId;
                 f.sale = inputSale;
                 f.inputSubtotalText = inputToTalPriceBill.Replace("đ","");
-
                 f.Show();
             } 
             else
@@ -150,7 +148,7 @@ namespace CafeManagementApplication.views
             if (lvBillforOneTable.SelectedItems.Count >= 1)
             {
                 ListViewItem item = lvBillforOneTable.SelectedItems[0];
-                String mess = "BẠN CÓ MUỐN HỦY MÓN NÀY KHÔNG ???" + "\n\n" +
+                string mess = "BẠN CÓ MUỐN HỦY MÓN NÀY KHÔNG ???" + "\n\n" +
                               "\tTÊN MÓN: " + item.Text + "\n" + 
                               "\tGIÁ: " + item.SubItems[1].Text + "\n" +
                               "\tSỐ LƯỢNG: " + item.SubItems[2].Text;

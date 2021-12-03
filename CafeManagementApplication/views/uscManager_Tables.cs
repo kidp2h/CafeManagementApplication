@@ -116,6 +116,7 @@ namespace CafeManagementApplication.views
             ManagerController.Instance.AddData("Table", table);
 
             ResetView();
+            MessageBox.Show("ĐÃ THÊM BÀN !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             uscSale.Instance.LoadListTableForForm();
 
@@ -154,6 +155,7 @@ namespace CafeManagementApplication.views
             ManagerController.Instance.UpdateData("Table", this);
 
             ResetView();
+            MessageBox.Show("ĐÃ SỬA BÀN !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             uscSale.Instance.LoadListTableForForm();
 
@@ -185,6 +187,7 @@ namespace CafeManagementApplication.views
             ManagerController.Instance.DeleteData("Table", this);
 
             ResetView();
+            MessageBox.Show("ĐÃ XÓA BÀN !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             uscSale.Instance.LoadListTableForForm();
         }

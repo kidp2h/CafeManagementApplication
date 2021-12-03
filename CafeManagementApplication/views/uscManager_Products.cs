@@ -67,7 +67,7 @@ namespace CafeManagementApplication.views
 
         public string inputCategoryName
         {
-            get { return cbCategory.SelectedItem.ToString(); }
+            get { return cbCategory.Text; }
             set { cbCategory.SelectedItem = value; }
         }
 
@@ -109,6 +109,7 @@ namespace CafeManagementApplication.views
 
             ManagerController.Instance.AddData("Product",product);
             ResetView();
+            MessageBox.Show("ĐÃ THÊM MÓN MỚI !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
@@ -152,6 +153,7 @@ namespace CafeManagementApplication.views
             // this là view
             ManagerController.Instance.UpdateData("Product", this);
             ResetView();
+            MessageBox.Show("ĐÃ SỬA MÓN !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
@@ -177,6 +179,7 @@ namespace CafeManagementApplication.views
 
             ManagerController.Instance.DeleteData("Product", this);
             ResetView();
+            MessageBox.Show("ĐÃ XÓA MÓN !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
                                    
         private void tbSearch_TextChanged(object sender, EventArgs e)

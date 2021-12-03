@@ -159,7 +159,10 @@ namespace CafeManagementApplication.views
 
             ManagerController.Instance.DeleteData("Category", this);
             ResetView();
+            MessageBox.Show("ĐÃ XÓA LOẠI MÓN !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             uscManager_Products.Instance.LoadListProducts();
+
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
