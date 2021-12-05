@@ -35,15 +35,11 @@ namespace CafeManagementApplication.views
             this.lblPrice = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnAddProduct = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.flpListProducts = new System.Windows.Forms.FlowLayoutPanel();
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
@@ -54,9 +50,9 @@ namespace CafeManagementApplication.views
             // 
             this.flpListCategorys.AutoScroll = true;
             this.flpListCategorys.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flpListCategorys.Location = new System.Drawing.Point(692, 55);
+            this.flpListCategorys.Location = new System.Drawing.Point(692, 12);
             this.flpListCategorys.Name = "flpListCategorys";
-            this.flpListCategorys.Size = new System.Drawing.Size(391, 283);
+            this.flpListCategorys.Size = new System.Drawing.Size(391, 326);
             this.flpListCategorys.TabIndex = 1;
             // 
             // txtBoxAmount
@@ -115,37 +111,10 @@ namespace CafeManagementApplication.views
             this.label1.TabIndex = 0;
             this.label1.Text = "THÔNG TIN CHI TIẾT";
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(1008, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 36);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "TÌM";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(692, 12);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(310, 37);
-            this.richTextBox1.TabIndex = 6;
-            this.richTextBox1.Text = "";
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.Location = new System.Drawing.Point(12, 13);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(574, 37);
-            this.richTextBox2.TabIndex = 8;
-            this.richTextBox2.Text = "";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
-            this.panel2.Location = new System.Drawing.Point(673, 0);
+            this.panel2.Location = new System.Drawing.Point(678, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(2, 762);
             this.panel2.TabIndex = 9;
@@ -192,17 +161,6 @@ namespace CafeManagementApplication.views
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.Red;
-            this.button4.Location = new System.Drawing.Point(592, 14);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 36);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "TÌM";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // flpListProducts
             // 
             this.flpListProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -213,9 +171,9 @@ namespace CafeManagementApplication.views
             this.flpListProducts.BackgroundImage = global::CafeManagementApplication.Properties.Resources.logoCaffe;
             this.flpListProducts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.flpListProducts.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flpListProducts.Location = new System.Drawing.Point(12, 55);
+            this.flpListProducts.Location = new System.Drawing.Point(12, 12);
             this.flpListProducts.Name = "flpListProducts";
-            this.flpListProducts.Size = new System.Drawing.Size(655, 684);
+            this.flpListProducts.Size = new System.Drawing.Size(655, 727);
             this.flpListProducts.TabIndex = 0;
             // 
             // btnMinus
@@ -248,15 +206,11 @@ namespace CafeManagementApplication.views
             this.ClientSize = new System.Drawing.Size(1095, 743);
             this.Controls.Add(this.btnPlus);
             this.Controls.Add(this.btnMinus);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.txtBoxAmount);
             this.Controls.Add(this.flpListCategorys);
@@ -278,15 +232,11 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.TextBox txtBoxAmount;
         private System.Windows.Forms.Panel pnlInfo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btnAddProduct;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Button btnMinus;

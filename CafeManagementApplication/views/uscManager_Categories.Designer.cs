@@ -144,9 +144,9 @@ namespace CafeManagementApplication.views
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.BackgroundImage = global::CafeManagementApplication.Properties.Resources.Search;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(561, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(562, 22);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(47, 33);
+            this.pictureBox1.Size = new System.Drawing.Size(44, 33);
             this.pictureBox1.TabIndex = 43;
             this.pictureBox1.TabStop = false;
             // 

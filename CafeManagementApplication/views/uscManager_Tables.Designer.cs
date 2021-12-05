@@ -171,7 +171,7 @@ namespace CafeManagementApplication.views
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(564, 19);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(47, 33);
+            this.pictureBox1.Size = new System.Drawing.Size(41, 33);
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
             // 
