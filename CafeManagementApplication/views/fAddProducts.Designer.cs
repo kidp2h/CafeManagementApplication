@@ -29,6 +29,7 @@ namespace CafeManagementApplication.views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fAddProducts));
             this.flpListCategorys = new System.Windows.Forms.FlowLayoutPanel();
             this.txtBoxAmount = new System.Windows.Forms.TextBox();
             this.pnlInfo = new System.Windows.Forms.Panel();
@@ -215,9 +216,10 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.txtBoxAmount);
             this.Controls.Add(this.flpListCategorys);
             this.Controls.Add(this.flpListProducts);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fAddProducts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "fDrinksCategory";
+            this.Text = "THÊM MÓN";
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
             this.ResumeLayout(false);

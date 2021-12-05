@@ -84,6 +84,7 @@ namespace CafeManagementApplication.views
         #region Handler Event
         private void btnAdd_Click(object sender, EventArgs e)
         {
+
             fAddProducts f = new fAddProducts();   
             f.BillID = this.BillId;
             f.TableId = this.TableId;
@@ -92,7 +93,7 @@ namespace CafeManagementApplication.views
         }
 
         private void btnPay_Click(object sender, EventArgs e)
-        {        
+        {   
             if(tbTotalPriceBill.Text != "0đ")
             {
                 fPay f = new fPay();

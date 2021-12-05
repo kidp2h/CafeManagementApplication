@@ -35,8 +35,6 @@ namespace CafeManagementApplication.views
                 btnManager.Enabled = true;
                 btnStatistics.Enabled = true;  
             }
-            btnManager.Enabled = true;
-            btnStatistics.Enabled = true;
             btnSale_Click(null, null);
 
             lblFullName.Text = Properties.Settings.Default.fullname;

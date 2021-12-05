@@ -104,7 +104,12 @@ namespace CafeManagementApplication.helpers
                 if (!UserModel.Instance.isExist(tb.Text))
                 {
                     sb.Append("Tài khoản không tồn tại !\n");
-                    sb.Append("Vui lòng chọn lại !\n");
+                    sb.Append("Vui lòng chọn đúng tài khoản để thao tác !\n");
+                    tb.BackColor = Color.Yellow;
+                }
+                else if(tb.Text == "admin")
+                {
+                    sb.Append("Tài khoản admin không thể xóa hoặc sửa !\n");
                     tb.BackColor = Color.Yellow;
                 }
                 else
