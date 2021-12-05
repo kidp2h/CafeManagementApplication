@@ -188,8 +188,8 @@ namespace CafeManagementApplication.views
             if (tbCategoryName.BackColor != Color.White)
                 tbCategoryName.BackColor = Color.White;
         }
+
         #endregion
 
-       
     }
 }

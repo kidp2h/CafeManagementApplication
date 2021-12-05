@@ -136,8 +136,8 @@ namespace CafeManagementApplication.helpers
                     
             }
             else if (status == "update")
-            {
-                if (!TableModel.Instance.isExist(tb.Tag.ToString()))
+            {    
+                if (tb.Tag == null || tb.Tag.ToString() == "")
                 {
                     sb.Append("Vui lòng chọn bàn để thao tác !\n");
                     tb.BackColor = Color.Yellow;
@@ -153,7 +153,7 @@ namespace CafeManagementApplication.helpers
             }
             else
             {
-                if (!TableModel.Instance.isExist(tb.Tag.ToString()))
+                if (tb.Tag == null || tb.Tag.ToString() == "")
                 {
                     sb.Append("Vui lòng chọn bàn để thao tác !\n");
                     tb.BackColor = Color.Yellow;
@@ -187,7 +187,7 @@ namespace CafeManagementApplication.helpers
             }
             else if (status == "update")
             {
-                if (!ProductModel.Instance.isExist(tb.Tag.ToString()))
+                if (tb.Tag == null || tb.Tag.ToString() == "")
                 {
                     sb.Append("Vui lòng chọn món để thao tác !\n");
                     tb.BackColor = Color.Yellow;
@@ -204,7 +204,7 @@ namespace CafeManagementApplication.helpers
             }
             else
             {
-                if (!ProductModel.Instance.isExist(tb.Tag.ToString()))
+                if (tb.Tag == null || tb.Tag.ToString() == "")
                 {
                     sb.Append("Vui lòng chọn món để thao tác !\n");
                     tb.BackColor = Color.Yellow;
@@ -230,7 +230,7 @@ namespace CafeManagementApplication.helpers
             }
             else if ( status ==  "update")
             {
-                if (!CategoryModel.Instance.isExist(tb.Tag.ToString()))
+                if (tb.Tag == null || tb.Tag.ToString() == "")
                 {
                     sb.Append("Vui lòng chọn loại món để thao tác !\n");
                     tb.BackColor = Color.Yellow;
@@ -247,7 +247,7 @@ namespace CafeManagementApplication.helpers
             }
             else
             {
-                if (!CategoryModel.Instance.isExist(tb.Tag.ToString()))
+                if (tb.Tag == null || tb.Tag.ToString() == "")
                 {
                     sb.Append("Vui lòng chọn loại món để thao tác !\n");
                     tb.BackColor = Color.Yellow;           

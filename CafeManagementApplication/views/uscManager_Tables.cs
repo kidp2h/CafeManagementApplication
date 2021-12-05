@@ -142,7 +142,7 @@ namespace CafeManagementApplication.views
             if (rdoEmpty.Checked == true) rowNew["Trạng thái"] = "Bàn trống";
             else rowNew["Trạng thái"] = "Có người";
 
-            string filter = string.Format("[Tên bàn] = '{0}'", OldTableName); //OldTableName
+            string filter = string.Format("[Tên bàn] = '{0}'", OldTableName); 
            DataRow[] rows = dt.Select(filter);
 
             int index = dt.Rows.IndexOf(rows[0]);
