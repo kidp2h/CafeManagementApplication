@@ -26,7 +26,7 @@ namespace CafeManagementApplication.views
         {          
             InitializeComponent();
             LoadListTableForForm();
-           
+            FormAddProduct = false;
         }
 
         public void LoadListTableForForm()
@@ -80,19 +80,27 @@ namespace CafeManagementApplication.views
         public string TableId { get; set; }
         public string TableStatus { get; set; }
 
+        public bool FormAddProduct { get; set; }
         #endregion
 
 
         #region Handler Event
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (FormAddProduct)
+            {
+                MessageBox.Show("Form thêm món đang được mở !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (lblTableName.Text != "Hãy chọn bàn")
             {
                 fAddProducts f = new fAddProducts();
                 f.BillID = this.BillId;
                 f.TableId = this.TableId;
                 f.TableStatus = this.TableStatus;
-                f.ShowDialog();
+                FormAddProduct = true;
+                f.Show();
             }
             else
             {
