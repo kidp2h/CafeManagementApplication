@@ -30,7 +30,7 @@ namespace CafeManagementApplication.controllers
             view.inputPasswordText = "";
             if (result[0] != null && result[1] == true)
             {
-                SaveUser.Instance.saveUserToFile(result[2].Username);
+                //SaveUser.Instance.saveUserToFile(result[2].Username);
                 Properties.Settings.Default.role = result[2].Role.ToString();
                 Properties.Settings.Default.fullname = result[2].Fullname;
                 MessageBox.Show("Đăng nhập thành công !", "Thông báo");

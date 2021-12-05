@@ -127,7 +127,14 @@ namespace CafeManagementApplication.views
         {
             int TotalPriceProducts = Int32.Parse(tbTotalPriceProducts.Text.Replace("đ", ""));
             if (tbSale.Text == "") tbSale.Text = "0";
-            int Sale = Int32.Parse(tbSale.Text.ToString());
+            int Sale;
+            if(int.TryParse(tbSale.Text.ToString(), out Sale))
+            {
+                Sale = Int32.Parse(tbSale.Text.ToString());
+            }else{
+                Sale = 0;
+            }
+            
             int total = TotalPriceProducts - (TotalPriceProducts * Sale) / 100;
             tbTotalPriceBill.Text = total.ToString() + "đ";
         }
