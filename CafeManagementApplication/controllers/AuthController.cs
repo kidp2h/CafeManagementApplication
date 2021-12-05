@@ -26,7 +26,6 @@ namespace CafeManagementApplication.controllers
         {
             string username = view.inputUsernameText;
             string password = view.inputPasswordText;
-            MessageBox.Show(password);
             List<dynamic> result = UserModel.Instance.checkAccount(username, password);
             view.inputPasswordText = "";
             if (result[0] != null && result[1] == true)

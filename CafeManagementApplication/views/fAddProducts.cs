@@ -155,5 +155,10 @@ namespace CafeManagementApplication.views
             lblPrice.BackColor = Color.White;
         }
         #endregion
+
+        private void fAddProducts_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
+        }
     }
 }

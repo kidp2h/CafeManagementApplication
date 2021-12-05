@@ -220,6 +220,7 @@ namespace CafeManagementApplication.views
             this.Name = "fAddProducts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "THÊM MÓN";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fAddProducts_FormClosed);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
             this.ResumeLayout(false);

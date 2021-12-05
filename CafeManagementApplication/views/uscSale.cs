@@ -26,6 +26,7 @@ namespace CafeManagementApplication.views
         {          
             InitializeComponent();
             LoadListTableForForm();
+           
         }
 
         public void LoadListTableForForm()
@@ -78,34 +79,42 @@ namespace CafeManagementApplication.views
         public string BillId { get; set; }
         public string TableId { get; set; }
         public string TableStatus { get; set; }
+
         #endregion
 
 
         #region Handler Event
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
-            fAddProducts f = new fAddProducts();   
-            f.BillID = this.BillId;
-            f.TableId = this.TableId;
-            f.TableStatus = this.TableStatus;
-            f.Show();
+            if (lblTableName.Text != "Hãy chọn bàn")
+            {
+                fAddProducts f = new fAddProducts();
+                f.BillID = this.BillId;
+                f.TableId = this.TableId;
+                f.TableStatus = this.TableStatus;
+                f.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Chọn bàn để thêm món !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void btnPay_Click(object sender, EventArgs e)
         {   
             if(tbTotalPriceBill.Text != "0đ")
             {
-                fPay f = new fPay();
+                fPay f = new fPay();       
                 f.TableId = TableId;
                 f.BillId = BillId;
                 f.sale = inputSale;
                 f.inputSubtotalText = inputToTalPriceBill.Replace("đ","");
-                f.Show();
+                f.ShowDialog();
             } 
             else
             {
-                MessageBox.Show("Bàn Chưa Có Người");
+                MessageBox.Show("Bàn chưa có người để thanh toán !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }       
         }
 
