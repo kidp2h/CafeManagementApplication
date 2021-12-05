@@ -130,6 +130,7 @@ namespace CafeManagementApplication.models
         private AggregateFluentBase<BsonDocument> lookupDepthBills()
         {
             IMongoCollection<Bill> collection = this.getCollection();
+
             dynamic bill = collection.Aggregate()
                 // bung mảng products trong collection bill
                 .Unwind("products")
@@ -191,6 +192,18 @@ namespace CafeManagementApplication.models
             dynamic bill = this.lookupDepthBills().Match(_idBill).ToList();
             return bill[0]["table"];
         }
+
+        public string getIdBillByTableName(string tableName)
+        {
+            IMongoCollection<Bill> collection = this.getCollection();
+            FilterDefinition<BsonDocument> filter = new BsonDocument("table.tableName", tableName);
+            dynamic bill = collection.Aggregate()
+                .Lookup("tables", "table", "_id", "table")
+                .Unwind("table")
+                .Match(filter).ToList();
+            
+            return bill[0]["_id"].Value.ToString();
+        }
         #endregion
 
         #region Delete Document
@@ -198,7 +211,7 @@ namespace CafeManagementApplication.models
         {
             FilterDefinition<Bill> filter = new BsonDocument("_id", new ObjectId(billId));
             IMongoCollection<Bill> collection = this.getCollection();
-            collection.DeleteOneAsync(filter);
+            collection.DeleteOne(filter);
         }
 
 

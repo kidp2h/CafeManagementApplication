@@ -90,23 +90,17 @@ namespace CafeManagementApplication.views
             if (this.TableStatus != "Có người")
             {
                 //nếu bàn chưa có người thì đổi lại trạng thái bàn
+                //bấm thêm nhiều lần ko cần phải loading lại
                 this.TableStatus = "Có người";
-                //Thread t1 = new Thread(() =>
-               // {
-                    //Invoke(new Action(() => // cách chạy đa luồng cho form không lỗi
-                    //{
-                        //render lại item bàn vào form bán hàng 
-                        uscSale.Instance.LoadListTableForForm();
-                //    }));
-                //});
-                //t1.IsBackground = true;
-                //t1.Start();
-                
+               
+                //render lại item bàn vào form bán hàng 
+                uscSale.Instance.LoadListTableForForm();
+               
             }
 
             LoadDataController.Instance.LoadBillOfTableByIdForViewSale(this.TableId);
 
-            uscManager_Tables.Instance.LoadListTables(false);
+            uscManager_Tables.Instance.LoadListTables();
 
             MessageBox.Show("ĐÃ THÊM MÓN !!!!", "Thông báo", MessageBoxButtons.OK ,MessageBoxIcon.Information);
         } 

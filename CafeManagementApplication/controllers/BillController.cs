@@ -22,6 +22,8 @@ namespace CafeManagementApplication.controllers
             }
         }
 
+        private BillController() { }
+
         public void LoadBill(DataTable dt)
         {
             dynamic billList = BillsPaidModel.Instance.getListBillsPaid();
@@ -67,15 +69,7 @@ namespace CafeManagementApplication.controllers
             FilterDefinition<Table> filter = new BsonDocument("bill", new ObjectId(billId));
             TableModel.Instance.updateStatusForTable(filter, types.sTable.FULL);
         }
-        public void AddProductToBill(string billID)
-        {
-           /* Bill newBill = new Bill
-            {
-                ProductsOrdered = new ListItemOrder(),
-                TableId = new ObjectId(idTable)
-            };
-            BillModel.Instance.addBill(newBill);*/
-        }
+
 
     }
 }

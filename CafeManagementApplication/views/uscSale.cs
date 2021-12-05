@@ -10,17 +10,13 @@ namespace CafeManagementApplication.views
     public partial class uscSale : UserControl
     {
         private static uscSale instance;
-        private static readonly object lockObject = new object();
         public static uscSale Instance
         {
             get
             {
                 if (instance == null)
-                {
-                    lock(lockObject)
-                    {
-                        if (instance == null) instance = new uscSale();
-                    }    
+                {                  
+                   instance = new uscSale();                
                 }
                 return instance;
             }
@@ -89,7 +85,6 @@ namespace CafeManagementApplication.views
         private void btnAdd_Click(object sender, EventArgs e)
         {
             fAddProducts f = new fAddProducts();   
-            
             f.BillID = this.BillId;
             f.TableId = this.TableId;
             f.TableStatus = this.TableStatus;
@@ -104,7 +99,6 @@ namespace CafeManagementApplication.views
                 f.TableId = TableId;
                 f.BillId = BillId;
                 f.sale = inputSale;
-                
                 f.inputSubtotalText = inputToTalPriceBill.Replace("đ","");
                 f.Show();
             } 
@@ -119,8 +113,6 @@ namespace CafeManagementApplication.views
             LoadListTableForForm();
         }
 
-
-        // Mai coi 
         private void tbTotalPriceProducts_TextChanged(object sender, EventArgs e)
         {
             int TotalPriceProducts = Int32.Parse(tbTotalPriceProducts.Text.Replace("đ", ""));
@@ -151,17 +143,12 @@ namespace CafeManagementApplication.views
         }
         #endregion
 
-        private void lvBillforOneTable_Click(object sender, EventArgs e)
-        {
-    
-        }
-
         private void lvBillforOneTable_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (lvBillforOneTable.SelectedItems.Count >= 1)
             {
                 ListViewItem item = lvBillforOneTable.SelectedItems[0];
-                String mess = "BẠN CÓ MUỐN HỦY MÓN NÀY KHÔNG ???" + "\n\n" +
+                string mess = "BẠN CÓ MUỐN HỦY MÓN NÀY KHÔNG ???" + "\n\n" +
                               "\tTÊN MÓN: " + item.Text + "\n" + 
                               "\tGIÁ: " + item.SubItems[1].Text + "\n" +
                               "\tSỐ LƯỢNG: " + item.SubItems[2].Text;

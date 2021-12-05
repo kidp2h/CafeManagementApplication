@@ -54,6 +54,8 @@ namespace CafeManagementApplication.models
 
                 // tạo mới 1 đối tượng product 
                 Product product = new Product { NameProduct = newProduct.NameProduct, Category = id, Price = newProduct.Price };
+         
+
                 collection.InsertOneAsync(product); // thêm vào collection product database
             }
             else
@@ -101,7 +103,7 @@ namespace CafeManagementApplication.models
 
         public void updateProductByNameProduct(string nameProduct, UpdateDefinition<Product> update)
         {   
-            // tạo ra một đối tượng lọc có kiểu dữ liệu Product (filter) từ một bsondocument có trường name: nameProduct
+            // tạo ra một đối tượng lọc có kiểu dữ liệu Product (filter) = một bsondocument có trường name: nameProduct
             FilterDefinition<Product> filter = new BsonDocument("name", nameProduct);
             //tạo ra một đối tượng collection = getCollection
             IMongoCollection<Product> collection = getCollection();           

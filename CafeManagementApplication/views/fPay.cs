@@ -54,22 +54,19 @@ namespace CafeManagementApplication.views
             #endregion
 
             PaymentController.Instance.payment(TableId, BillId, Int32.Parse(sale));
-            Thread t1 = new Thread(() =>
-            {
-                Invoke(new Action(() =>
-                {
-                    uscSale.Instance.LoadListTableForForm();
-                }));
-            });
-            t1.Start();
+            
+            uscSale.Instance.LoadListTableForForm();
 
             LoadDataController.Instance.LoadBillOfTableByIdForViewSale(this.TableId);
-            uscManager_Tables.Instance.LoadListTables(false);
+
+            uscManager_Tables.Instance.LoadListTables();
+
             uscStatistics.Instance.LoadListBillForView();
 
+            this.Close();
 
-            this.Hide();
-            
+            MessageBox.Show("ĐÃ THANH TOÁN !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
         private void tbMoney_TextChanged(object sender, EventArgs e)

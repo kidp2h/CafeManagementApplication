@@ -43,7 +43,6 @@ namespace CafeManagementApplication.views
             this.label5 = new System.Windows.Forms.Label();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.dtgvProducts = new System.Windows.Forms.DataGridView();
-            this.tbProductSelected = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
@@ -186,7 +185,7 @@ namespace CafeManagementApplication.views
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvProducts.Location = new System.Drawing.Point(0, 59);
+            this.dtgvProducts.Location = new System.Drawing.Point(3, 57);
             this.dtgvProducts.Name = "dtgvProducts";
             this.dtgvProducts.ReadOnly = true;
             this.dtgvProducts.RowHeadersVisible = false;
@@ -200,21 +199,13 @@ namespace CafeManagementApplication.views
             this.dtgvProducts.Size = new System.Drawing.Size(605, 707);
             this.dtgvProducts.TabIndex = 31;
             this.dtgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvProducts_CellClick);
-            this.dtgvProducts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dtgvProducts_DataBindingComplete);
-            // 
-            // tbProductSelected
-            // 
-            this.tbProductSelected.Location = new System.Drawing.Point(789, 694);
-            this.tbProductSelected.Name = "tbProductSelected";
-            this.tbProductSelected.Size = new System.Drawing.Size(195, 22);
-            this.tbProductSelected.TabIndex = 32;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.BackgroundImage = global::CafeManagementApplication.Properties.Resources.Search;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(585, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(561, 18);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(47, 33);
             this.pictureBox1.TabIndex = 35;
@@ -223,7 +214,7 @@ namespace CafeManagementApplication.views
             // tbSearch
             // 
             this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSearch.Location = new System.Drawing.Point(0, 22);
+            this.tbSearch.Location = new System.Drawing.Point(3, 18);
             this.tbSearch.Multiline = true;
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(605, 35);
@@ -245,10 +236,10 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.tbProductName);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tbProductPrice);
-            this.Controls.Add(this.tbProductSelected);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "uscManager_Products";
             this.Size = new System.Drawing.Size(1115, 770);
+            this.Load += new System.EventHandler(this.uscManager_Products_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -269,7 +260,6 @@ namespace CafeManagementApplication.views
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.DataGridView dtgvProducts;
-        private System.Windows.Forms.TextBox tbProductSelected;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Button btnNew;

@@ -1,4 +1,5 @@
-﻿using CafeManagementApplication.models;
+﻿using CafeManagementApplication.helpers;
+using CafeManagementApplication.models;
 using CafeManagementApplication.types;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -19,6 +20,8 @@ namespace CafeManagementApplication.controllers
             }
         }
 
+        private ManagerController() { }
+             
         public dynamic NewData(string nameData, dynamic view)
         {
             if (nameData == "Category")
@@ -151,7 +154,7 @@ namespace CafeManagementApplication.controllers
                             { "age", user.Age },
                             { "gender", user.Gender },
                             { "username", user.Username },
-                            { "password", user.Password },
+                            { "password", Hash.hashPassword(user.Password)},
                             { "role", user.Role },
                         }
                     }
@@ -186,30 +189,36 @@ namespace CafeManagementApplication.controllers
             }
         }
 
-        public void ResetDataInput(dynamic view)
+        public void ResetUserDataInput(dynamic view)
         {
             view.inputNameText = "";
             view.inputAgeText = "";
             view.inputGenderText = "Nam";
             view.inputUsernameText = "";
+            view.OldUserName = "";
             view.inputUserpasswordText = "";
             view.inputRole = 0;
         }
+
         public void ResetTableDataInput(dynamic view)
         {
             view.inputTableNameText = "";
+            view.OldTableName = "";
             view.inputStatus = sTable.EMPTY;
         }
 
         public void ResetProductDataInput(dynamic view)
         {
             view.inputProductNameText = "";
+            view.OldProductName = "";
             view.inputPrice = "";
             view.inputCategoryName = "";
         }
+
         public void ResetCategoryDataInput(dynamic view)
         {
             view.inputCategory = "";
+            view.OldCategoryName = "";
         }
     }
 }

@@ -29,11 +29,27 @@ namespace CafeManagementApplication.views
         private uscManager_Products()
         {
             InitializeComponent();
-            LoadData();
+            LoadListProducts();
         }
 
         private DataTable dt;
         private DataView dv;
+       
+        public void LoadListProducts()
+        {
+            dt = new DataTable();
+            LoadDataController.Instance.LoadDataTable("uscManager_Products", dt);
+            dv = new DataView(dt);
+            dtgvProducts.DataSource = dv;
+
+            LoadDataController.Instance.LoadDataForComboBox(cbCategory);             
+        }
+
+        private void ResetView()
+        {
+            ManagerController.Instance.ResetProductDataInput(this);
+            dtgvProducts.ClearSelection();
+        }
 
 
         #region Public Data View
@@ -51,7 +67,7 @@ namespace CafeManagementApplication.views
 
         public string inputCategoryName
         {
-            get { return cbCategory.SelectedItem.ToString(); }
+            get { return cbCategory.Text; }
             set { cbCategory.SelectedItem = value; }
         }
 
@@ -63,38 +79,17 @@ namespace CafeManagementApplication.views
 
         #endregion
 
-        private void LoadData()
-        {
-            LoadListProducts();
-           
-        }
-
-       
-        public void LoadListProducts(bool status = true)
-        {
-
-
-
-                dt = new DataTable();
-                LoadDataController.Instance.LoadDataTable("uscManager_Products", dt);
-                dv = new DataView(dt);
-                dtgvProducts.DataSource = dv;
-
-                LoadDataController.Instance.LoadDataForComboBox(cbCategory);
-           
-
-
-            //});
-            //loadList.IsBackground = true;
-            //loadList.Start();                            
-        }
-
         #region Handler Event
+        private void uscManager_Products_Load(object sender, EventArgs e)
+        {
+            dtgvProducts.ClearSelection();
+        }
+
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkProductName(tbProductName, sb, "Vui lòng nhập tên sản phẩm !",true);
+            ValidateForm.Instance.checkProductName(tbProductName, sb, "Vui lòng nhập tên sản phẩm !", "add");
             ValidateForm.Instance.checkNumber(tbProductPrice, sb, "Vui lòng nhập giá sản phẩm !", "Giá sản phẩm");
             if (sb.Length > 0)
             {
@@ -109,18 +104,20 @@ namespace CafeManagementApplication.views
             string Category = product.CategoryName;
             string Price = product.Price.ToString();
             dt.Rows.Add(Name, Category, Price);
-            dtgvProducts.CurrentCell = dtgvProducts[0, dtgvProducts.RowCount - 1];
+            
             #endregion
 
             ManagerController.Instance.AddData("Product",product);
-            OldProductName = dtgvProducts.SelectedRows[0].Cells[0].Value.ToString();
+            ResetView();
+            MessageBox.Show("ĐÃ THÊM MÓN MỚI !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
         private void btnUpdateProduct_Click(object sender, EventArgs e)
         {
             #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkProductName(tbProductName, sb, "Vui lòng chọn sản phẩm !", true);
+            ValidateForm.Instance.checkProductName(tbProductName, sb, "Vui lòng chọn sản phẩm !", "update");
             ValidateForm.Instance.checkNumber(tbProductPrice, sb, "Vui lòng nhập giá sản phẩm !", "Giá sản phẩm");
             if (sb.Length > 0)
             {
@@ -135,43 +132,35 @@ namespace CafeManagementApplication.views
             rowNew["Tên loại"] = cbCategory.SelectedItem.ToString();
             rowNew["Giá món"] = tbProductPrice.Text;
 
-            //trước khi xử lý ở view
-            tbProductSelected.Text = tbProductName.Tag.ToString(); // tbProductName.Tag -- là tên cũ của product cần update
-            // gán vào tbProductSelected.Text để giữ lại cái tên cũ, để update
-            // vì sau khi xử lý thì cái tbProductName.Tag bị binding ở dòng dtgvProducts.CurrentCell về cái tên mới và cái tên cũ bị mất đi
 
-
-            string filter = "[Tên món] = '" + OldProductName + "'";
             // filter = "[Tên món] = 'ABC'";
+            string filter = "[Tên món] = '" + OldProductName + "'";
+           
 
             //trả về cái dòng có "cột [Tên món] có tên là ABC"
             DataRow[] rows = dt.Select(filter);
-            //do tên món là duy nhất nên trong rows chỉ có một thằng duy nhất: rows[0]
 
-
+            //do tên món là duy nhất nên trong rows chỉ có duy nhất: rows[0]
             int index = dt.Rows.IndexOf(rows[0]);
-
-
             dt.Rows.RemoveAt(index);
             dt.Rows.InsertAt(rowNew, index);
 
-            //dòng này chọn lại cái 'phần tử mới update', làm cho dữ liệu binding qua các ô input tương ứng( ô tsp, ô category, ô giá)
-            dtgvProducts.CurrentCell = dtgvProducts[0, index];
+          
             #endregion
 
             //sau khi xử lý ở view xong
-            // gọi hàm update và có sẳn tên cũ được lưu ở tbProductSelected.Text 
             // và dữ liệu mới của product nẳm ở những ô input trên view ( ô tsp, ô category, ô giá)
             // this là view
             ManagerController.Instance.UpdateData("Product", this);
-            OldProductName = dtgvProducts.SelectedRows[0].Cells[0].Value.ToString();
+            ResetView();
+            MessageBox.Show("ĐÃ SỬA MÓN !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
             #region Validate
             StringBuilder sb = new StringBuilder();
-            ValidateForm.Instance.checkProductName(tbProductName, sb, "Vui lòng chọn sản phẩm !", false);
+            ValidateForm.Instance.checkProductName(tbProductName, sb, "Vui lòng chọn sản phẩm !", "delete");
             if (sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -184,53 +173,24 @@ namespace CafeManagementApplication.views
             DataRow[] rows = dt.Select(filter);
 
             int index = dt.Rows.IndexOf(rows[0]);
-            btnDeleteProduct.Tag = index;
             dt.Rows.RemoveAt(index);
+          
             #endregion
 
             ManagerController.Instance.DeleteData("Product", this);
+            ResetView();
+            MessageBox.Show("ĐÃ XÓA MÓN !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
                                    
-
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
             //format sẽ thay thế {0} thành cái tbSearch.Text. ví dụ [Tên món] LIKE '%Cafe%'
             dv.RowFilter = String.Format("[Tên món] LIKE '%{0}%'", tbSearch.Text);
         }
 
-        private void dtgvProducts_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            try
-            {
-                string name = (string)dtgvProducts.SelectedCells[0].OwningRow.Cells["Tên loại"].Value;
-                cbCategory.SelectedItem = name;
-            }
-            catch { }
-        }
-
-        #region Effect
-        private void tbProductName_TextChanged(object sender, EventArgs e)
-        {
-            if (tbProductName.BackColor != Color.White)
-                tbProductName.BackColor = Color.White;
-           
-        }
-
-        private void tbProductPrice_TextChanged(object sender, EventArgs e)
-        {
-            if (tbProductPrice.BackColor != Color.White)
-            tbProductPrice.BackColor = Color.White;
-        }
-
-
-
-        #endregion
-
-        #endregion
-
         private void btnNew_Click(object sender, EventArgs e)
         {
-            ManagerController.Instance.ResetProductDataInput(this);
+            ResetView();
         }
 
         private void dtgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -244,5 +204,26 @@ namespace CafeManagementApplication.views
             cbCategory.SelectedItem = row.Cells[1].Value.ToString(); ;
             tbProductPrice.Text = row.Cells[2].Value.ToString();
         }
+
+        #endregion
+
+        #region Effect
+        private void tbProductName_TextChanged(object sender, EventArgs e)
+        {
+            if (tbProductName.BackColor != Color.White)
+                tbProductName.BackColor = Color.White;
+
+        }
+
+        private void tbProductPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (tbProductPrice.BackColor != Color.White)
+                tbProductPrice.BackColor = Color.White;
+        }
+
+
+
+        #endregion
+
     }
 }

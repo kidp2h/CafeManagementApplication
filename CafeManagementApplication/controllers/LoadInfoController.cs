@@ -14,6 +14,8 @@ namespace CafeManagementApplication.controllers
             }
         }
 
+        private LoadInfoController() { }
+
         private dynamic view;
         public dynamic View
         {

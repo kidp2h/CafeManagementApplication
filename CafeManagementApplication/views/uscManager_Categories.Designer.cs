@@ -124,7 +124,7 @@ namespace CafeManagementApplication.views
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtgvCategories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgvCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvCategories.Location = new System.Drawing.Point(15, 62);
+            this.dtgvCategories.Location = new System.Drawing.Point(3, 60);
             this.dtgvCategories.Name = "dtgvCategories";
             this.dtgvCategories.ReadOnly = true;
             this.dtgvCategories.RowHeadersVisible = false;
@@ -144,7 +144,7 @@ namespace CafeManagementApplication.views
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.BackgroundImage = global::CafeManagementApplication.Properties.Resources.Search;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(570, 23);
+            this.pictureBox1.Location = new System.Drawing.Point(561, 21);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(47, 33);
             this.pictureBox1.TabIndex = 43;
@@ -153,7 +153,7 @@ namespace CafeManagementApplication.views
             // tbSearch
             // 
             this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSearch.Location = new System.Drawing.Point(15, 22);
+            this.tbSearch.Location = new System.Drawing.Point(3, 21);
             this.tbSearch.Multiline = true;
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(605, 35);
@@ -181,6 +181,7 @@ namespace CafeManagementApplication.views
             this.Controls.Add(this.tbCategorySelected);
             this.Name = "uscManager_Categories";
             this.Size = new System.Drawing.Size(1115, 770);
+            this.Load += new System.EventHandler(this.uscManager_Categories_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvCategories)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

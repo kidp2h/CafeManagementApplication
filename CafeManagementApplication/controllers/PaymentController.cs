@@ -23,6 +23,8 @@ namespace CafeManagementApplication.controllers
             }
         }
 
+        private PaymentController() { }
+
         public void payment(string TableId, string BillId, int sale)
         {
            
