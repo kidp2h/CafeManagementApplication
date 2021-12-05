@@ -24,26 +24,27 @@ namespace CafeManagementApplication.controllers
 
         public void handleLogin(fLogin view)
         {
-                string username = view.inputUsernameText;
-                string password = view.inputPasswordText;
-                List<dynamic> result = UserModel.Instance.checkAccount(username, password);
-                view.inputPasswordText = "";
-                if (result[0] != null)
-                {
-                    SaveUser.Instance.saveUserToFile(result[2].Username);
-                    Properties.Settings.Default.role = result[2].Role.ToString();
-                    Properties.Settings.Default.fullname = result[2].Fullname;
-                    MessageBox.Show("Đăng nhập thành công !","Thông báo");
-                    view.Hide();
-                    fCafeManager f = new fCafeManager();
-                    f.ShowDialog();
-                    view.Show();
+            string username = view.inputUsernameText;
+            string password = view.inputPasswordText;
+            MessageBox.Show(password);
+            List<dynamic> result = UserModel.Instance.checkAccount(username, password);
+            view.inputPasswordText = "";
+            if (result[0] != null && result[1] == true)
+            {
+                SaveUser.Instance.saveUserToFile(result[2].Username);
+                Properties.Settings.Default.role = result[2].Role.ToString();
+                Properties.Settings.Default.fullname = result[2].Fullname;
+                MessageBox.Show("Đăng nhập thành công !", "Thông báo");
+                view.Hide();
+                fCafeManager f = new fCafeManager();
+                f.ShowDialog();
+                view.Show();
 
-                }
-                else
-                {
-                    MessageBox.Show("Sai thông tin đăng nhập !\nVui lòng xem lại1!!!","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            else
+            {
+                MessageBox.Show("Sai thông tin đăng nhập !\nVui lòng xem lại!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
        
     }
