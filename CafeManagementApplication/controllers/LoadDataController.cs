@@ -30,7 +30,7 @@ namespace CafeManagementApplication.controllers
 
         public void LoadBillOfTableByIdForViewSale(string tableID)
         {
-
+       
             uscSale.Instance.getLvBillforOneTable().Items.Clear();
             
             dynamic table = TableModel.Instance.getBillFromIdTable(tableID);
@@ -43,26 +43,58 @@ namespace CafeManagementApplication.controllers
                     if(product["product"] != new BsonDocument())
                     {
                         ListViewItem lvItem = new ListViewItem(product["product"]["name"].Value);
-
-
+                     
                         int price = product["product"]["price"].Value;
                         lvItem.SubItems.Add(price.ToString() + "đ");
+                       
 
                         int amount = product["amount"].Value;
                         lvItem.SubItems.Add(amount.ToString());
+                       
 
                         int totalPriceProduct = price * amount;
                         lvItem.SubItems.Add(totalPriceProduct.ToString() + "đ");
+                       
 
                         uscSale.Instance.getLvBillforOneTable().Items.Add(lvItem);
                     }
                     
                 }
+              
                 uscSale.Instance.inputTotalPriceProducts = table["subtotal"].Value.ToString() + "đ";
              
-            }
+            }       
         }
 
+        public string GetBillForTableId(string tableID)
+        {
+            string billInfo = "Tên món-----Giá món-----Số lượng-----Tổng\n";
+            dynamic table = TableModel.Instance.getBillFromIdTable(tableID);
+            if (table["billId"] != null)
+            {
+                foreach (dynamic product in table["bill"])
+                {
+                    if (product["product"] != new BsonDocument())
+                    {
+          
+                        billInfo += product["product"]["name"].Value.ToString() + "-----";
+
+                        int price = product["product"]["price"].Value;                    
+                        billInfo += price.ToString() + "-----";
+
+                        int amount = product["amount"].Value;          
+                        billInfo += amount.ToString() + "-----";
+
+                        int totalPriceProduct = price * amount;      
+                        billInfo += totalPriceProduct.ToString() + "\n";
+               
+                    }
+                }
+
+                billInfo += "\nTỔNG TIỀN BILL: " + table["subtotal"].Value.ToString() + "\n";
+            }
+            return billInfo;
+        }
 
         //tải dữ liệu lên cái gridview -- gridview là một cái bảng chứa dữ liệu ở view
         public void LoadDataTable(string form, DataTable dt)

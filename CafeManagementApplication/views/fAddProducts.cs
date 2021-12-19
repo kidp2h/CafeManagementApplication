@@ -147,6 +147,7 @@ namespace CafeManagementApplication.views
         {
             if(lblName.BackColor != Color.White)
             lblName.BackColor = Color.White;
+            this.txtAmount = "1";
         }
 
         private void lblPrice_TextChanged(object sender, EventArgs e)
@@ -160,5 +161,7 @@ namespace CafeManagementApplication.views
         {
             uscSale.Instance.FormAddProduct = false;
         }
+
+
     }
 }

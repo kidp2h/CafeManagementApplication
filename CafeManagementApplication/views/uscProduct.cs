@@ -39,5 +39,15 @@ namespace CafeManagementApplication.views
             LoadInfoController.Instance.LoadingInfoProduct(this.NameProduct, this.Price, this.Id);
         }
         #endregion
+
+        private void lblName_Click(object sender, EventArgs e)
+        {
+            pictureBox1_Click(null, null);
+        }
+
+        private void lblPrice_Click(object sender, EventArgs e)
+        {
+            pictureBox1_Click(null, null);
+        }
     }
 }

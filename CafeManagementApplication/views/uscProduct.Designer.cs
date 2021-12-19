@@ -47,6 +47,7 @@ namespace CafeManagementApplication.views
             this.lblName.TabIndex = 1;
             this.lblName.Text = "Capuchino";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblName.Click += new System.EventHandler(this.lblName_Click);
             // 
             // lblPrice
             // 
@@ -58,6 +59,7 @@ namespace CafeManagementApplication.views
             this.lblPrice.TabIndex = 2;
             this.lblPrice.Text = "35.000 vnd";
             this.lblPrice.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblPrice.Click += new System.EventHandler(this.lblPrice_Click);
             // 
             // panel1
             // 

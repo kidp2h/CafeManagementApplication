@@ -53,6 +53,9 @@ namespace CafeManagementApplication.views
             }
             #endregion
 
+            string billInfo = LoadDataController.Instance.GetBillForTableId(this.TableId);
+            billInfo += "THÀNH TIỀN: " + inputSubtotalText;
+
             PaymentController.Instance.payment(TableId, BillId, Int32.Parse(sale));
             
             uscSale.Instance.LoadListTableForForm();
@@ -65,7 +68,7 @@ namespace CafeManagementApplication.views
 
             this.Close();
 
-            MessageBox.Show("ĐÃ THANH TOÁN !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("ĐÃ THANH TOÁN !!!!\n\n" + billInfo , "Thông báo", MessageBoxButtons.OK );
 
         }
 
