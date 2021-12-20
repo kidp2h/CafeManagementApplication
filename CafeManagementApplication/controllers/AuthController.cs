@@ -38,7 +38,10 @@ namespace CafeManagementApplication.controllers
                 fCafeManager f = new fCafeManager();
                 f.ShowDialog();
                 view.Show();
-
+                if (!view.cbRmb)
+                {
+                    view.inputUsernameText = "";
+                }
             }
             else
             {
