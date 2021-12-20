@@ -92,7 +92,7 @@ namespace CafeManagementApplication.models
                     {"status", status}
                 } }
             };
-            collection.UpdateOneAsync(filter, update);
+            collection.UpdateOne(filter, update);
         }
         public void updateBillForTable(string idTable, string idBill)
         {
@@ -127,8 +127,7 @@ namespace CafeManagementApplication.models
             BsonObjectId _idTable = new BsonObjectId(idTable);
             BsonObjectId newIdBill = ObjectId.GenerateNewId();
             BillModel.Instance.addBill(_idTable, newIdBill);
-            //Thread s1 = new Thread(() =>
-            //{
+    
             UpdateDefinition<Table> update1 = new BsonDocument
             {
                 {"$set", new BsonDocument
@@ -138,12 +137,7 @@ namespace CafeManagementApplication.models
                 } }
             };
             this.updateTableByIdTable(idTable, update1);
-            //});
-            //s1.IsBackground = true;         
-            //s1.Start();
-            //s1.Join();
-            //Thread s2 = new Thread(() =>
-            //{
+     
             UpdateDefinition<Bill> update2 = new BsonDocument
             {
                     {"$set", new BsonDocument{
@@ -166,9 +160,7 @@ namespace CafeManagementApplication.models
             BillsPaidModel.Instance.addBillPaid(newBillsPaid);
 
             BillModel.Instance.deleteBillById(oldBillId);
-            //});
-            //s2.IsBackground = true;
-            //s2.Start();
+     
         }
         #endregion
 
