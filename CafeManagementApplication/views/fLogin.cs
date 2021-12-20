@@ -69,6 +69,10 @@ namespace CafeManagementApplication
             get { return this.tbPassword.Text; }
             set { this.tbPassword.Text = value; }
         }
+        public bool cbRmb
+        {
+            get { return this.cbRemember.Checked; }
+        }
 
         private void cbRemember_CheckedChanged(object sender, EventArgs e)
         {
